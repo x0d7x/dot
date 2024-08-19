@@ -8,8 +8,8 @@ local map = vim.keymap.set
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "qq", "<ESC>")
 -- window management
-map("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
-map("n", "<leader>sb", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
+map("n", "<leader>s|", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
+map("n", "<leader>s-", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
 map("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
 map("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
 --comment&trouble
