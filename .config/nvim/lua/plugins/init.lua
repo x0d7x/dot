@@ -131,15 +131,13 @@ return {
             require("configs.cord")
         end,
     },
-    -- {
-    --     "rmagatti/auto-session",
-    --     config = function()
-    --         require("auto_session").setup({
-    --             -- auto_restore_enabled = false,
-    --             auto_session_suppress_dirs = { "~/", "~/Downloads" },
-    --         })
-    --     end,
-    -- },
+    {
+        "rmagatti/auto-session",
+        cmd = { "SessionRestore", "SessionSave" },
+        config = function()
+            require("configs.auto-session")
+        end,
+    },
     {
         "christoomey/vim-tmux-navigator",
         cmd = {
@@ -149,5 +147,13 @@ return {
             "TmuxNavigateRight",
             "TmuxNavigatePrevious",
         },
+    },
+    {
+        "mistricky/codesnap.nvim",
+        build = "make",
+        cmd = { "CodeSnap" },
+        config = function()
+            require("configs.snapcode")
+        end,
     },
 }
