@@ -182,4 +182,8 @@ return {
             "rcarriga/nvim-notify",
         },
     },
+    {
+        "Exafunction/codeium.vim",
+        event = "BufEnter",
+    },
 }
