@@ -5,12 +5,14 @@
 local M = {}
 
 M.ui = {
-    theme = "gatekeeper",
+    theme = "solarized_osaka",
     transparency = true,
     -- hl_override = {
     -- Comment = { italic = true },
     -- 	["@comment"] = { italic = true },
     -- },
 }
+
+M.lsp = { signature = false }
 
 return M

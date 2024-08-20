@@ -23,6 +23,7 @@ local options = {
         "json",
         "tsx",
         "gitignore",
+        "regex",
     },
 
     highlight = {
