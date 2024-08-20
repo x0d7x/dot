@@ -1,6 +1,3 @@
---FIX:
---BUG:
---TODO:
 local todo_comments = require("todo-comments")
 
 -- set keymaps
