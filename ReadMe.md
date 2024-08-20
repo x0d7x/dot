@@ -14,5 +14,5 @@
 `brew install aerospace`
 - [nvm](https://github.com/nvm-sh/nvm) >Node Version Manager
 `brew install nvm`
-- [yarn](https://github.com/yarnpkg/yarn >A package manager for the JavaScript programming language
+- [yarn](https://github.com/yarnpkg/yarn) >A package manager for the JavaScript programming language
 `brew install yarn`
