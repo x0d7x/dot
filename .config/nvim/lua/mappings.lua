@@ -34,6 +34,7 @@ map("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
 map("v", "<leader>cp", "<cmd>CodeSnap<cr>", { desc = "Save selected code snapshot into clipboard" })
 map("n", "<leader>ss", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" }) -- save workspace session for current working directory
 map("n", "<leader>sb", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" })
+map("n", "<leader>mp", "<cmd>Glow<CR>", { desc = "markdownpreview" })
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 --
 --
