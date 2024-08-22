@@ -113,13 +113,15 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+# --------------aliases----------------
 alias reload-zsh="source ~/.zshrc"
 alias edit-zsh="nvim ~/.zshrc"
 alias cd="z"
-alias ls="eza --all --icons=always --long --git --color=always --no-user --no-permissions --no-filesize --no-time"
+alias ls="eza --all --icons=always --long --git --color=always --no-user --no-filesize --no-time"
 alias c="clear"
 alias e="exit"
 alias n="nvim"
+alias lg="lazygit"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
