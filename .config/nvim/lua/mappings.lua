@@ -35,6 +35,9 @@ map("v", "<leader>cp", "<cmd>CodeSnap<cr>", { desc = "Save selected code snapsho
 map("n", "<leader>ss", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" }) -- save workspace session for current working directory
 map("n", "<leader>sb", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" })
 map("n", "<leader>mp", "<cmd>Glow<CR>", { desc = "markdownpreview" })
+map("n", "<leader>ls", "<cmd>LiveServerStart<CR>", { desc = "Start live server" })
+map("n", "<leader>lo", "<cmd>LiveServerStop<CR>", { desc = "Stop live server" })
+
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 --
 --
