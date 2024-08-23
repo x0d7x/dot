@@ -12,13 +12,13 @@ jq
 lazygit
 mas
 neovim
+pnpm
 powerlevel10k
 ripgrep
 stow
 thefuck
 tldr
 tmux
-yarn
 zellij
 zoxide
 zsh-autosuggestions
