@@ -7,6 +7,7 @@ lint.linters_by_ft = {
     typescriptreact = { "eslint_d" },
     -- svelte = { "eslint_d" },
     python = { "pylint" },
+    php = { "phpmd" },
 }
 eslint.args = {
     "--no-warn-ignored", -- <-- this is the key argument

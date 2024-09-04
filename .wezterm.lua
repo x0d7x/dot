@@ -8,7 +8,7 @@ local config = wezterm.config_builder()
 
 -- my coolnight colorscheme
 config.color_scheme = "Adventure"
-config.font = wezterm.font("NotoMono Nerd Font")
+config.font = wezterm.font("Hack Nerd Font")
 config.font_size = 19
 config.use_fancy_tab_bar = true
 config.window_close_confirmation = "NeverPrompt"

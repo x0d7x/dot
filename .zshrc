@@ -194,3 +194,4 @@ bindkey '^[[B' history-search-forward
 #set nvim as default editor
 export EDITOR=nvim
 export VISUAL="$EDITOR"
+export GROQ_API_KEY="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"

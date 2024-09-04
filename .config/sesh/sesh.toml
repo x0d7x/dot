@@ -6,7 +6,6 @@ startup_command = "ls"
 [[session]]
 name = "dotfiles📁"
 path = "~/dotfiles"
-startup_command = "ls"
 [[session]]
 name = "tmux config⚒️"
 path = "~/dotfiles/"
@@ -15,3 +14,4 @@ startup_command = "nvim .tmux.conf"
 name = "nvim config ⚒️"
 path = "~/dotfiles/.config/nvim/"
 startup_command = "nvim"
+

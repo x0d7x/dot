@@ -54,11 +54,11 @@ on-focus-changed = "move-mouse window-lazy-center"
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
 inner.horizontal = 9
-inner.vertical =   9
-outer.left =       9
-outer.bottom =     9
-outer.top =        0
-outer.right =      9
+inner.vertical = 9
+outer.left = 9
+outer.bottom = 9
+outer.top = 0
+outer.right = 9
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -183,7 +183,10 @@ alt-shift-semicolon = 'mode service'
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
 #s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+f = [
+    'layout floating tiling',
+    'mode main',
+] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
 
 alt-shift-h = ['join-with left', 'mode main']
@@ -194,11 +197,14 @@ alt-shift-l = ['join-with right', 'mode main']
 if.app-id = 'com.github.wez.wezterm'
 run = "move-node-to-workspace T"
 [[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser' 
+if.app-id = 'org.mozilla.com.zen.browser'
 run = "move-node-to-workspace B"
 [[on-window-detected]]
-if.app-id = 'com.smartcodeltd.stremio' 
+if.app-id = 'company.thebrowser.Browser'
+run = "move-node-to-workspace B"
+[[on-window-detected]]
+if.app-id = 'com.smartcodeltd.stremio'
 run = "move-node-to-workspace M"
 [[on-window-detected]]
-if.app-id = 'com.hnc.Discord' 
+if.app-id = 'com.hnc.Discord'
 run = "move-node-to-workspace D"

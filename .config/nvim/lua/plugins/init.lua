@@ -183,10 +183,11 @@ return {
         },
     },
     --AI
-    {
-        "Exafunction/codeium.vim",
-        event = "BufEnter",
-    },
+    -- {
+    --     "Exafunction/codeium.vim",
+    --     event = "BufEnter",
+    -- },
+    --## markdown plug ##--
     {
         "ellisonleao/glow.nvim",
         config = true,
@@ -198,4 +199,5 @@ return {
         cmd = { "LiveServerStart", "LiveServerStop" },
         config = true,
     },
+    --## AI ##--
 }
