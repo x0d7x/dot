@@ -7,7 +7,7 @@ local config = wezterm.config_builder()
 -- This is where you actually apply your config choices
 
 -- my coolnight colorscheme
-config.color_scheme = "Adventure"
+config.color_scheme = "Shaman"
 config.font = wezterm.font("Hack Nerd Font")
 config.font_size = 19
 config.use_fancy_tab_bar = true

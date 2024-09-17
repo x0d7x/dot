@@ -5,7 +5,7 @@
 local M = {}
 
 M.ui = {
-    theme = "mito-laser",
+    theme = "solarized_osaka",
     transparency = true,
     -- hl_override = {
     -- Comment = { italic = true },
