@@ -9,7 +9,6 @@ lspconfig.servers = {
     "lua_ls",
     "html",
     "cssls",
-    -- "tsserver",
     "taplo",
     "emmet_ls",
     "tailwindcss",
