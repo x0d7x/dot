@@ -11,13 +11,20 @@ lspconfig.servers = {
     "cssls",
     "taplo",
     "emmet_ls",
-    "tailwindcss",
+    -- "tailwindcss",
     "ts_ls",
     "intelephense",
 }
 
 -- list of servers configured with default config.
-local default_servers = { "html", "cssls", "emmet_ls", "tailwindcss", "taplo", "intelephense", "ts_ls" }
+local default_servers = {
+    "html",
+    "cssls",
+    "emmet_ls",
+    -- "tailwindcss",
+    "taplo",
+    "intelephense",
+}
 
 -- lsps with default config
 for _, lsp in ipairs(default_servers) do
@@ -27,6 +34,12 @@ for _, lsp in ipairs(default_servers) do
         capabilities = capabilities,
     })
 end
+lspconfig.ts_ls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    on_init = on_init,
+    init_options = {},
+})
 
 lspconfig.lua_ls.setup({
     on_attach = on_attach,
@@ -51,5 +64,35 @@ lspconfig.lua_ls.setup({
                 preloadFileSize = 10000,
             },
         },
+    },
+})
+lspconfig.ts_ls.setup({
+    on_attach = on_attach,
+    on_init = on_init,
+    capabilities = capabilities,
+
+    -- Initial options for the TypeScript language server
+    -- init_options = {
+    --     plugins = {
+    --         {
+    --             --             -- Name of the TypeScript plugin for Vue
+    --             --             name = '@vue/typescript-plugin',
+    --             --
+    --             --             -- Location of the Vue language server module (path defined in step 1)
+    --             --             location = vue_language_server_path,
+    --             --
+    --             --             -- Specify the languages the plugin applies to (in this case, Vue files)
+    --             languages = { "javascript", "typescript", "vue" },
+    --         },
+    --     },
+    -- },
+
+    -- Specify the file types that will trigger the TypeScript language server
+    filetypes = {
+        "typescript", -- TypeScript files (.ts)
+        "javascript", -- JavaScript files (.js)
+        "javascriptreact", -- React files with JavaScript (.jsx)
+        "typescriptreact", -- React files with TypeScript (.tsx)
+        "vue", -- Vue.js single-file components (.vue)
     },
 })

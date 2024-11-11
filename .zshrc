@@ -122,11 +122,11 @@ alias c="clear"
 alias e="exit"
 alias n="nvim"
 alias lg="lazygit"
+alias pn="pnpm"
+# ---------------------------------
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-eval $(thefuck --alias)
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completioneval $(thefuck --alias)
 eval $(thefuck --alias fk)
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
@@ -196,3 +196,10 @@ bindkey '^[[B' history-search-forward
 export EDITOR=nvim
 export VISUAL="$EDITOR"
 export GROQ_API_KEY="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"
+
+# bun completions
+[ -s "/Users/doxtech/.bun/_bun" ] && source "/Users/doxtech/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
