@@ -1,3 +1,4 @@
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -81,7 +82,7 @@ ZSH_THEME_RANDOM_CANDIDATES=(
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+# plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -123,10 +124,10 @@ alias e="exit"
 alias n="nvim"
 alias lg="lazygit"
 alias pn="pnpm"
+alias br="brew"
 # ---------------------------------
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completioneval $(thefuck --alias)
+eval "$(fnm env --use-on-cd --shell zsh)"
+eval $(thefuck --alias)
 eval $(thefuck --alias fk)
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
@@ -134,7 +135,7 @@ show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head
 export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 #               run nerdfetch
-              nerdfetch
+              # nerdfetch
 # Advanced customization of fzf options via _fzf_comprun function
 # - The first argument to the function is the name of the command.
 # - You should make sure to pass the rest of the arguments to fzf.
@@ -195,11 +196,11 @@ bindkey '^[[B' history-search-forward
 #set nvim as default editor
 export EDITOR=nvim
 export VISUAL="$EDITOR"
-export GROQ_API_KEY="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"
 
 # bun completions
-[ -s "/Users/doxtech/.bun/_bun" ] && source "/Users/doxtech/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+# [ -s "/Users/doxtech/.bun/_bun" ] && source "/Users/doxtech/.bun/_bun"
+#
+# # bun
+# export BUN_INSTALL="$HOME/.bun"
+export PATH="/usr/local/opt/php@5.6/sbin:$PATH"
+export PATH="/usr/local/opt/php@5.6/bin:$PATH"

@@ -10,6 +10,7 @@ local config = wezterm.config_builder()
 config.color_scheme = "Ayu Dark (Gogh)"
 config.font = wezterm.font("Hack Nerd Font")
 config.font_size = 19
+config.max_fps = 120
 config.use_fancy_tab_bar = true
 config.window_close_confirmation = "NeverPrompt"
 config.hide_tab_bar_if_only_one_tab = true
