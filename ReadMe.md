@@ -10,13 +10,15 @@
   ` brew install wezterm`
 - [tmux](https://github.com/tmux/tmux) > A terminal multiplexer.
   `brew install tmux `
-- [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh) > A community-driven framework for managing your zsh configuration.
-  `brew install zsh`
+- [starship](https://github.com/starship/starship) > ☄🌌️ The minimal, blazing-fast, and infinitely customizable prompt for any shell!
+
+  `brew install starship`
+
 - [aerospace](https://github.com/nikitabobko/AeroSpace) > AeroSpace is an i3-like tiling window manager for macOS.
   `brew install aerospace`
-- [nvm](https://github.com/nvm-sh/nvm) > Node Version Manager
-  `brew install nvm`
-- [yarn](https://github.com/yarnpkg/yarn) > A package manager for the JavaScript programming language
-  `brew install yarn`
+- [fnm](https://github.com/Schniz/fnm) > 🚀 Fast and simple Node.js version manager, built in Rust
+  `brew install fnm`
+- [pnpm](https://github.com/pnpm/pnpm) > Fast, disk space efficient package manager
+  `brew install pnpm`
   ### install homebrew Pkgs
   `xargs brew install < my_brew.txt`
