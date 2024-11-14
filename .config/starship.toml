@@ -1,0 +1,59 @@
+# A minimal left prompt
+format = """
+$directory\
+$git_branch\
+$git_status\
+$fill\
+$package\
+$python\
+$php\
+$nodejs\
+$lua\
+$cmd_duration\
+$golang\
+$line_break\
+$character"""
+
+[character]
+success_symbol = '[⇉](bold green) '
+error_symbol = '[✗](bold red) '
+[fill]
+symbol = ' '
+[git_branch]
+format = "on [$symbol$branch(:$remote_branch)]($style) "
+always_show_remote = true
+style = "fg:green"
+[git_status]
+ahead = ' ⇡${count}'
+diverged = ' ⇕⇡${ahead_count}⇣${behind_count}'
+behind = ' ⇣${count}'
+stashed = " +${count}"
+modified = " 📝${count}"
+staged = " ⇞${count}"
+[cmd_duration]
+format = '󰓅 [$duration]($style) '
+symbol = '⚡️ '
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = '[🍒 PICKING](bold red)'
+[git_commit]
+commit_hash_length = 4
+style = 'bold blue'
+[lua]
+format = 'lua [󰢱 $version](bold blue) '
+[nodejs]
+format = '[󰎙 $version](bold green) '
+[package]
+symbol = "📦 "
+style = "bold blue"
+format = "[$symbol$version]($style) "
+[php]
+format = "[$symbol(php $version )]($style)"
+[directory]
+style = "teal bold"
+truncation_length = 3
+truncate_to_repo = false
+truncation_symbol = ".../"
+[directory.substitutions]
+"downloads" = ""
+"Developer" = ""
