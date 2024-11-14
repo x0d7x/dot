@@ -15,7 +15,7 @@ $line_break\
 $character"""
 
 [character]
-success_symbol = '[⇉](bold green) '
+success_symbol = '[🚀 ⇉](bold green) '
 error_symbol = '[✗](bold red) '
 [fill]
 symbol = ' '
@@ -32,7 +32,6 @@ modified = " 📝${count}"
 staged = " ⇞${count}"
 [cmd_duration]
 format = '󰓅 [$duration]($style) '
-symbol = '⚡️ '
 [git_state]
 format = '[\($state( $progress_current of $progress_total)\)]($style) '
 cherry_pick = '[🍒 PICKING](bold red)'
