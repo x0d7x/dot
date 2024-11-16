@@ -68,9 +68,9 @@ bindkey '^[[B' history-search-forward
 export EDITOR=nvim
 export VISUAL="$EDITOR"
 # --- php version --- 
-# export PATH="/usr/local/opt/php@5.6/sbin:$PATH"
-# export PATH="/usr/local/opt/php@5.6/bin:$PATH"#
-
+export PATH="/usr/local/opt/php@5.6/sbin:$PATH"
+export PATH="/usr/local/opt/php@5.6/bin:$PATH"
 #------- run nerdfetch ------------
 # nerdfetch
-
+ # --------- Groq Api ------------ 
+ export GROQ_API_KEY= 

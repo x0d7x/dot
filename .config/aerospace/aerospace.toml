@@ -207,5 +207,5 @@ run = "move-node-to-workspace B"
 if.app-id = 'com.smartcodeltd.stremio'
 run = "move-node-to-workspace M"
 [[on-window-detected]]
-if.app-id = 'app.legcord.Legcord'
+if.app-id = 'com.hnc.Discord'
 run = "move-node-to-workspace D"

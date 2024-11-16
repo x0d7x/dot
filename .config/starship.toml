@@ -7,6 +7,7 @@ $fill\
 $package\
 $python\
 $php\
+$rust\
 $nodejs\
 $lua\
 $cmd_duration\
@@ -16,7 +17,7 @@ $character"""
 
 [character]
 success_symbol = '[🚀 ⇉](bold green) '
-error_symbol = '[✗](bold red) '
+error_symbol = '[❌ ⇉](bold red) '
 [fill]
 symbol = ' '
 [git_branch]
@@ -41,15 +42,17 @@ style = 'bold blue'
 [lua]
 format = 'lua [󰢱 $version](bold blue) '
 [nodejs]
-format = '[󰎙 $version](bold green) '
+format = ' [󰎙 $version](bold green) '
 [package]
 symbol = "📦 "
 style = "bold blue"
-format = "[$symbol$version]($style) "
+format = "[$symbol($version)]($style) "
+[rust]
+format = "[$symbol($version )]($style)"
 [php]
 format = "[$symbol(php $version )]($style)"
 [directory]
-style = "teal bold"
+style = "yellow bold"
 truncation_length = 3
 truncate_to_repo = false
 truncation_symbol = ".../"
