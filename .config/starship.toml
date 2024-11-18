@@ -8,6 +8,7 @@ $package\
 $python\
 $php\
 $rust\
+$bun\
 $nodejs\
 $lua\
 $cmd_duration\
@@ -41,14 +42,17 @@ commit_hash_length = 4
 style = 'bold blue'
 [lua]
 format = 'lua [󰢱 $version](bold blue) '
+[bun]
+format = " [🐇 $version ]($style)"
+detect_files = ['package.json', '.node-version', '!bunfig.toml', '!bun.lockb']
 [nodejs]
 format = ' [󰎙 $version](bold green) '
 [package]
 symbol = "📦 "
 style = "bold blue"
-format = "[$symbol($version)]($style) "
+format = "[$symbol$version]($style) "
 [rust]
-format = "[$symbol($version )]($style)"
+format = "[$symbol($version)]($style)"
 [php]
 format = "[$symbol(php $version )]($style)"
 [directory]

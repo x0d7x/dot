@@ -8,6 +8,7 @@ autoconf
 bash
 bat
 brotli
+bun
 ca-certificates
 cairo
 cjson

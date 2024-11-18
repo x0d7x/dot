@@ -11,8 +11,14 @@ alias n="nvim"
 alias lg="lazygit"
 alias pn="pnpm"
 alias br="brew"
+alias lsa='ls -lah'
+alias l='ls -lah'
+alias ll='ls -lh'
+alias la='ls -lAh'
 # starting zsh tools
+# ------ fnm --------
 eval "$(fnm env --use-on-cd --shell zsh)"
+# ------- the fuck ------
 eval $(thefuck --alias)
 eval $(thefuck --alias fk)
 # Set up fzf key bindings and fuzzy completion
