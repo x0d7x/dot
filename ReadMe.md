@@ -1,6 +1,6 @@
 ### My work Environment i use for Web Dev
 
-[![my work Env ScreenShoot](https://ibb.co/RjF1qmd)](https://ibb.co/RjF1qmd)
+[![my work Env ScreenShoot](https://i.ibb.co/qJSzvfV/SCR-20241118-sscu.jpg)](https://i.ibb.co/qJSzvfV/SCR-20241118-sscu.jpg)
 
 - [Neovim](https://github.com/neovim/neovim) > neovim (https://neovim.io/)
 - [NvChad](https://github.com/NvChad/NvChad) > Blazing fast Neovim config providing solid defaults and a beautiful UI, enhancing your neovim experience.
