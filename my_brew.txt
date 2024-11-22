@@ -8,6 +8,7 @@ autoconf
 bash
 bat
 brotli
+btop
 bun
 ca-certificates
 cairo
@@ -40,7 +41,6 @@ graphite2
 harfbuzz
 heroku
 highway
-htop
 icu4c
 icu4c@75
 icu4c@76

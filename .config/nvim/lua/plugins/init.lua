@@ -182,12 +182,6 @@ return {
             "rcarriga/nvim-notify",
         },
     },
-    --AI
-    -- {
-    --     "Exafunction/codeium.vim",
-    --     event = "BufEnter",
-    -- },
-    --## markdown plug ##--
     {
         "ellisonleao/glow.nvim",
         config = true,
@@ -200,4 +194,14 @@ return {
         config = true,
     },
     --## AI ##--
+    {
+        "Exafunction/codeium.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "hrsh7th/nvim-cmp",
+        },
+        config = function()
+            require("codeium").setup({})
+        end,
+    },
 }
