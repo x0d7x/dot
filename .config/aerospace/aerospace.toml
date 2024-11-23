@@ -57,7 +57,7 @@ inner.horizontal = 9
 inner.vertical = 9
 outer.left = 9
 outer.bottom = 9
-outer.top = 0
+outer.top = 6
 outer.right = 9
 
 # 'main' binding mode declaration
