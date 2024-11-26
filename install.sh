@@ -11,7 +11,18 @@ if [[ -e "$src" ]] && [[ -f "$file_path" ]]; then
     if [[  $ans == [yY] ]]; then
         echo "installing fourmal && cask from my_brew.txt ⏳📦"
         xargs brew install < ~/dotfiles/my_brew.txt
-        echo " done 💙 "
+        read -p " done ✅, would you like to copy dotfiles config to \$HOME direcory? [ y/ n ]⇉ " answ4
+        if [[ $answ4 == [yY] ]]; then
+            bash -c "cd ~/dotfiles/; stow . --adopt"
+            echo "you all set 👍 "
+            exit 1
+            elif [[ $answ4 == [nN] ]]; then
+                echo "Bye 👋 "
+                exit 1
+            else
+                read -p "you need to enter y / n " answ4
+        fi
+
     elif  [[ $ans == [nN] ]];then
         echo "ok 😔 "
         exit 1
