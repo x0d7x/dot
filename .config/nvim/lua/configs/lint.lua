@@ -5,7 +5,7 @@ lint.linters_by_ft = {
     typescript = { "eslint_d" },
     javascriptreact = { "eslint_d" },
     typescriptreact = { "eslint_d" },
-    -- svelte = { "eslint_d" },
+    svelte = { "eslint_d" },
     python = { "pylint" },
     php = { "phpmd" },
 }

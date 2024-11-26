@@ -178,7 +178,6 @@ font-hack-nerd-font
 font-meslo-lg-nerd-font
 iina
 kap
-legcord
 maccy
 stremio
 topnotch

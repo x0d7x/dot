@@ -11,6 +11,7 @@ local options = {
         markdown = { "prettier" },
         yaml = { "prettier" },
         python = { "isort", "black" },
+        bash = { "beautysh", "bash" },
     },
 
     format_on_save = {

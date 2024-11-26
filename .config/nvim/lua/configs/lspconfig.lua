@@ -11,17 +11,20 @@ lspconfig.servers = {
     "cssls",
     "taplo",
     "emmet_ls",
-    -- "tailwindcss",
+    "tailwindcss",
     "ts_ls",
     "intelephense",
+    "bashls",
 }
 
 -- list of servers configured with default config.
 local default_servers = {
     "html",
+    "ts_ls",
     "cssls",
     "emmet_ls",
-    -- "tailwindcss",
+    "bashls",
+    "tailwindcss",
     "taplo",
     "intelephense",
 }
