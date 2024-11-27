@@ -12,14 +12,20 @@ if [ -f "$homebrew_path" ] && [ -e "$dotfile_list" ]; then
     read -p "Would you like to install uninstalled packages from my_brew.txt [y/n]? " ans
     case "$ans" in
       [yY]*)
-                        # Read packages from the file and check their installation status
+# Read packages from the file and check their installation status
   while IFS= read -r package; do
-    if  brew list -1 | grep -q "$package"; then
-          echo "witing for uninstall pkg to load "
-        echo "Installing "${package}" ..." 
-        xargs brew install "$package"
+        echo "checking ${package}...⏳"
+    if  ! brew list -1 | grep -q "$package"; then
+        status="❌"
+        echo "Installing '${package}' ..." 
+        xargs brew install "${package}"
+        echo "${package} installed " 
       all_installed=false
+      else
+        status="✅"
     fi
+    echo "${package} ${status} "
+
   done < "$dotfile_list"
   if $all_installed ; then
       echo "all pkgs are installed ✅"
