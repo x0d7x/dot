@@ -1,66 +1,89 @@
-#! /bin/bash
-src=/usr/local/bin/brew
-file_path=~/dotfiles/my_brew.txt
-# check if homebrew iis installed 
-if [[ -e "$src" ]] && [[ -f "$file_path" ]]; then
-    cat $file_path
-    echo "homebrew is installed ✅ "
-    echo "my_brew file is exict ✅ "
-    read -p "would you like to install pkgs from my_brew.txt [ y ✅ / n ❌ ]⇉ " ans
-    # check for my_brew.txt file
-    if [[  $ans == [yY] ]]; then
-        echo "installing fourmal && cask from my_brew.txt ⏳📦"
-        xargs brew install < ~/dotfiles/my_brew.txt
-        read -p " done ✅, would you like to copy dotfiles config to \$HOME direcory? [ y/ n ]⇉ " answ4
-        if [[ $answ4 == [yY] ]]; then
+#!/bin/bash
+
+homebrew_path=/usr/local/bin/brew
+dotfile_list=~/dotfiles/my_brew.txt
+git_url=https://github.com/d7manDev/dotfiles
+all_installed=true
+# Check if Homebrew is installed
+if [ -f "$homebrew_path" ] && [ -e "$dotfile_list" ]; then
+  echo "Homebrew is installed ✅"
+  echo "my_brew.txt exists ✅"
+  while true; do
+    read -p "Would you like to install uninstalled packages from my_brew.txt [y/n]? " ans
+    case "$ans" in
+      [yY]*)
+                        # Read packages from the file and check their installation status
+  while IFS= read -r package; do
+    if  brew list -1 | grep -q "$package"; then
+          echo "witing for uninstall pkg to load "
+        echo "Installing "${package}" ..." 
+        xargs brew install "$package"
+      all_installed=false
+    fi
+  done < "$dotfile_list"
+  if $all_installed ; then
+      echo "all pkgs are installed ✅"
+  fi
+        break
+        ;;
+      [nN]*)
+        echo "Ok, exiting."
+        exit 1
+        ;;
+      *)
+        echo "Invalid input. Please enter 'y' or 'n'."
+        ;;
+    esac
+  done
+
+# Check if dotfiles directory and file exist, but Homebrew not installed
+elif ! [ -f "$homebrew_path" ] && [ -e "$dotfile_list" ]; then
+  read -p "Homebrew is not installed. Install it now? [y/n]? " answ1
+
+  case "$answ1" in
+    [yY]*)
+      echo "Installing Homebrew... ⏳"
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      bash -c "bash ~/dotfiles/install.sh"  # Assuming an install.sh in your dotfiles
+      ;;
+    [nN]*)
+      echo "Exiting. You can install Homebrew manually."
+      exit 1
+      ;;
+    *)
+      echo "Invalid input. Please enter 'y' or 'n'."
+      ;;
+  esac
+
+# Homebrew installed, but no dotfiles list
+else
+  read -p "Dotfiles not found. Install dotfiles from $git_url? [y/n]? " answ
+
+  case "$answ" in
+    [yY]*)
+      echo "Installing dotfiles... ⏳"
+      /bin/bash -c "mkdir ~/dotfiles; git clone $git_url ~/dotfiles"
+         read -p "done ✅, would you like to copy dotfiles config to \$HOME direcory? [ y/ n ]⇉ " answ4
+            if [[ $answ4 == [yY] ]]; then
             bash -c "cd ~/dotfiles/; stow . --adopt"
             echo "you all set 👍 "
-            exit 1
+            bash -c "bash ~/dotfiles/install.sh"
             elif [[ $answ4 == [nN] ]]; then
-                echo "Bye 👋 "
-                exit 1
+            echo "Bye 👋 "
+            exit 1
             else
-                read -p "you need to enter y / n " answ4
-        fi
-
-    elif  [[ $ans == [nN] ]];then
-        echo "ok 😔 "
-        exit 1
-    else
-        read -p  "you have to enter y / n : " ans
-    fi
-    # clone dotfiles repo if not
-elif [  "$file_path" !=  "\-e $file_path" ] && [ -e "$src" ]; then
-        read -p "installing dotfiles 📁... [ y ✅ , n ❌ ]⇉ " answ
-        if [ $answ == [yY] ]; then
-         /bin/bash -c "git clone https://github.com/d7manDev/dotfiles ~/; bash ~/dotfiles/install.sh"
-        else 
-        echo "ok see you next time 😔 "
-        exit 1
-        fi
-        # if homebbrew is not install 
-elif [ "$src" != "-e $src" ] && [ -e "$file_path" ]; then
-           read -p "u don't have homebrew would you install it ? [ y / n ]⇉ " answ1
-           if [ $answ1 == [yY] ]; then
-            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-            read -p "homebrew has installed ✅, would you like to get dotfiles repo ? [ y / n ] " answ2
-                if [[ $answ2 == [yY] ]]; then
-                /bin/bash -c "git clone https://github.com/d7manDev/dotfiles ~/; bash ~/dotfiles/install.sh" 
-                elif [ $answ2 == [nN] ]; then
-                    echo " Bye 👋 "
-                    exit 1
-                else
-                read -p "you have to answer y / n : " answ2
-                fi
-            elif [[ $answ1 == [nN] ]]; then
-                echo "bye 😔👋 "
-                exit 1
-            else
-                read -p "you have to answer y / n ! " answ1
-                
-           fi
-else
-     echo "somthing went wrong... 😔 "
-     exit 1
-            
+            read -p "you need to enter y / n " answ4
+            fi
+      bash -c "bash ~/dotfiles/install.sh"
+      ;;
+    [nN]*)
+      echo "Exiting."
+      exit 1
+      ;;
+    *)
+      echo "Invalid input. Please enter 'y' or 'n'."
+      ;;
+  esac
 fi
+
+echo "Done!"
