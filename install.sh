@@ -4,6 +4,20 @@ homebrew_path=/usr/local/bin/brew
 dotfile_list=~/dotfiles/my_brew.txt
 git_url=https://github.com/d7manDev/dotfiles
 all_installed=true
+cat << "EOF"
+
+ ____            __    ____                               
+/\  _`\         /\ \__/\  _`\                             
+\ \ \/\ \    ___\ \ ,_\ \ \L\ \  _ __    __   __  __  __  
+ \ \ \ \ \  / __`\ \ \/\ \  _ <'/\`'__\/'__`\/\ \/\ \/\ \ 
+  \ \ \_\ \/\ \L\ \ \ \_\ \ \L\ \ \ \//\  __/\ \ \_/ \_/ \
+   \ \____/\ \____/\ \__\\ \____/\ \_\\ \____\\ \___x___/'
+    \/___/  \/___/  \/__/ \/___/  \/_/ \/____/ \/__//__/  
+                                                          
+    Github:@d7manDev                   x:@d7g_x                                                      
+
+EOF
+
 # Check if Homebrew is installed
 if [ -f "$homebrew_path" ] && [ -e "$dotfile_list" ]; then
   echo "Homebrew is installed ✅"
@@ -25,7 +39,6 @@ if [ -f "$homebrew_path" ] && [ -e "$dotfile_list" ]; then
         status="✅"
     fi
     echo "${package} ${status} "
-
   done < "$dotfile_list"
   if $all_installed ; then
       echo "all pkgs are installed ✅"
@@ -41,7 +54,6 @@ if [ -f "$homebrew_path" ] && [ -e "$dotfile_list" ]; then
         ;;
     esac
   done
-
 # Check if dotfiles directory and file exist, but Homebrew not installed
 elif ! [ -f "$homebrew_path" ] && [ -e "$dotfile_list" ]; then
   read -p "Homebrew is not installed. Install it now? [y/n]? " answ1
@@ -73,7 +85,6 @@ else
             if [[ $answ4 == [yY] ]]; then
             bash -c "cd ~/dotfiles/; stow . --adopt"
             echo "you all set 👍 "
-            bash -c "bash ~/dotfiles/install.sh"
             elif [[ $answ4 == [nN] ]]; then
             echo "Bye 👋 "
             exit 1
@@ -92,4 +103,4 @@ else
   esac
 fi
 
-echo "Done!"
+echo "Done! ✅"
