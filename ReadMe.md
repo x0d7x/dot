@@ -22,7 +22,7 @@
   `brew install pnpm`
 - [zen-browser](https://github.com/zen-browser/www) > zen-browser as default browser
   ### install homebrew Pkgs && dotfiles repe
-  ````
+  ```
   git clone https://github.com/d7manDev/dotfiles/blob/master/install.sh
-  bash install.sh```
-  ````
+  bash install.sh
+  ```
