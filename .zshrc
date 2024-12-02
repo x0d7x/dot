@@ -10,11 +10,16 @@ alias e="exit"
 alias n="nvim"
 alias lg="lazygit"
 alias pn="pnpm"
+alias pni="pn install"
+alias pnr="pn run"
+alias pnx="pn dlx"
+alias pna="pn add"
 alias br="brew"
 alias lsa='ls -lah'
 alias l='ls -lah'
 alias ll='ls -lh'
 alias la='ls -lAh'
+
 # starting zsh tools
 # ------ fnm --------
 eval "$(fnm env --use-on-cd --shell zsh)"
@@ -77,6 +82,6 @@ export VISUAL="$EDITOR"
 export PATH="/usr/local/opt/php@5.6/sbin:$PATH"
 export PATH="/usr/local/opt/php@5.6/bin:$PATH"
 #------- run nerdfetch ------------
-# nerdfetch
+fastfetch
  # --------- Groq Api ------------ 
  export GROQ_API_KEY= 

@@ -115,7 +115,7 @@ alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
 alt-b = 'workspace B'
-alt-c = 'workspace C'
+# alt-c = 'workspace C'
 alt-d = 'workspace D'
 alt-e = 'workspace E'
 alt-f = 'workspace F'
@@ -211,4 +211,10 @@ if.app-id = 'com.hnc.Discord'
 run = "move-node-to-workspace D"
 [[on-window-detected]]
 if.app-id = 'cc.ffitch.shottr'
+run = "move-node-to-workspace S"
+[[on-window-detected]]
+if.app-id = 'maccatalyst.com.frontrow.vlog'
+run = "move-node-to-workspace S"
+[[on-window-detected]]
+if.app-id = 'com.wulkano.kap'
 run = "move-node-to-workspace S"
