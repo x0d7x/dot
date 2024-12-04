@@ -7,6 +7,7 @@
             "key": "User",
             "format": "{user-name}"
         },
+                "editor",
         {
             "type": "host",
             "key": "Model"

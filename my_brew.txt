@@ -7,6 +7,7 @@ aspell
 autoconf
 bash
 bat
+borders
 brotli
 btop
 bun
@@ -18,6 +19,7 @@ curl
 dav1d
 duti
 eza
+fastfetch
 fd
 ffmpeg
 flac
@@ -109,7 +111,6 @@ mpg123
 msgpack
 ncurses
 neovim
-nerdfetch
 net-snmp
 nettle
 ninja
@@ -180,7 +181,6 @@ dozer
 font-hack-nerd-font
 font-meslo-lg-nerd-font
 iina
-loom
 maccy
 stremio
 topnotch
