@@ -2,14 +2,14 @@
 
 [![my work Env ScreenShoot](https://i.ibb.co/qJSzvfV/SCR-20241118-sscu.jpg)](https://i.ibb.co/qJSzvfV/SCR-20241118-sscu.jpg)
 
-| app           | name        |
-| ------------- | ----------- |
-| browser       | zen-browser |
-| pkg manger    | homebrew    |
-| code Editor   | neovim      |
-| tiling window | AeroSpace   |
-| terminal      | wezTerm     |
-| node ver man  | fnm         |
+| app             | name        |
+| --------------- | ----------- |
+| browser         | zen-browser |
+| pkg manger      | homebrew    |
+| code Editor     | neovim      |
+| tiling window   | AeroSpace   |
+| terminal        | wezTerm     |
+| node ver manger | fnm         |
 
 ### recomanded tools ⬇︎
 
