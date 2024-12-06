@@ -76,6 +76,14 @@ return {
             { "<leader>sm", "<cmd>MaximizerToggle<CR>", desc = "Maximize/minimize a split" },
         },
     },
+    -- navigate bttwen buffers
+    {
+        "leath-dub/snipe.nvim",
+        opts = {},
+        config = function()
+            require("configs.snipe")
+        end,
+    },
     {
         "mfussenegger/nvim-lint",
         event = { "BufReadPre", "BufNewFile" },

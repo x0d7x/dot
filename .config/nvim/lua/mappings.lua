@@ -23,6 +23,9 @@ map(
 map("n", "<leader>tq", "<cmd>Trouble quickfix toggle<CR>", { desc = "Open trouble quickfix list" })
 map("n", "<leader>tl", "<cmd>Trouble loclist toggle<CR>", { desc = "Open trouble location list" })
 map("n", "<leader>tt", "<cmd>Trouble todo toggle<CR>", { desc = "Open todos in trouble" })
+map("n", "<leader>sb", function()
+    require("snipe").open_buffer_menu()
+end, { desc = "Open Snipe buffer menu" })
 -- git key map
 map("n", "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "git blame inline" })
 map("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
@@ -36,7 +39,7 @@ map("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
 map("n", "<leader>cp", "<cmd>CodeSnap<cr>", { desc = "Save selected code snapshot into clipboard" })
 -- sessions
 map("n", "<leader>ss", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" }) -- save workspace session for current working directory
-map("n", "<leader>sb", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" })
+map("n", "<leader>sr", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" })
 -- markdown
 map("n", "<leader>mv", "<cmd>Markview<CR>", { desc = "markdown view" })
 map("n", "<leader>ms", "<cmd>Markview splitEnable<CR>", { desc = "markdown splitEnb" })
