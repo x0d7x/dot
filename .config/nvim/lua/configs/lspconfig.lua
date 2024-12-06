@@ -3,9 +3,13 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require("lspconfig")
+local mason_registry = require("mason-registry")
+local vuepath = mason_registry.get_package("vue-language-server"):get_install_path()
+    .. "/node_modules/@vue/language-server"
 
 -- list of all servers configured.
 lspconfig.servers = {
+    "marksman",
     "lua_ls",
     "html",
     "cssls",
@@ -27,6 +31,7 @@ local default_servers = {
     "tailwindcss",
     "taplo",
     "intelephense",
+    "marksman",
 }
 
 -- lsps with default config
@@ -37,12 +42,12 @@ for _, lsp in ipairs(default_servers) do
         capabilities = capabilities,
     })
 end
-lspconfig.ts_ls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    on_init = on_init,
-    init_options = {},
-})
+-- lspconfig.ts_ls.setup({
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+--     on_init = on_init,
+--     init_options = {},
+-- })
 
 lspconfig.lua_ls.setup({
     on_attach = on_attach,
@@ -75,20 +80,19 @@ lspconfig.ts_ls.setup({
     capabilities = capabilities,
 
     -- Initial options for the TypeScript language server
-    -- init_options = {
-    --     plugins = {
-    --         {
-    --             --             -- Name of the TypeScript plugin for Vue
-    --             --             name = '@vue/typescript-plugin',
-    --             --
-    --             --             -- Location of the Vue language server module (path defined in step 1)
-    --             --             location = vue_language_server_path,
-    --             --
-    --             --             -- Specify the languages the plugin applies to (in this case, Vue files)
-    --             languages = { "javascript", "typescript", "vue" },
-    --         },
-    --     },
-    -- },
+    init_options = {
+        plugins = {
+            {
+                --             -- Name of the TypeScript plugin for Vue
+                name = "@vue/typescript-plugin",
+                --
+                --             -- Location of the Vue language server module (path defined in step 1)
+                location = vuepath, --
+                --             -- Specify the languages the plugin applies to (in this case, Vue files)
+                languages = { "vue" },
+            },
+        },
+    },
 
     -- Specify the file types that will trigger the TypeScript language server
     filetypes = {
@@ -96,6 +100,29 @@ lspconfig.ts_ls.setup({
         "javascript", -- JavaScript files (.js)
         "javascriptreact", -- React files with JavaScript (.jsx)
         "typescriptreact", -- React files with TypeScript (.tsx)
-        "vue", -- Vue.js single-file components (.vue)
+        "vue",
+    },
+})
+lspconfig.tailwindcss.setup({
+    on_attach = on_attach,
+    on_init = on_init,
+    capabilities = capabilities,
+    filetypes = {
+        "css",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "vue",
+        "svelte",
+    },
+})
+lspconfig.marksman.setup({
+    on_attach = on_attach,
+    on_init = on_init,
+    capabilities = capabilities,
+    filetypes = {
+        "markdown",
+        "mdx",
     },
 })
