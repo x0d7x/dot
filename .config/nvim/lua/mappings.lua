@@ -23,9 +23,13 @@ map(
 map("n", "<leader>tq", "<cmd>Trouble quickfix toggle<CR>", { desc = "Open trouble quickfix list" })
 map("n", "<leader>tl", "<cmd>Trouble loclist toggle<CR>", { desc = "Open trouble location list" })
 map("n", "<leader>tt", "<cmd>Trouble todo toggle<CR>", { desc = "Open todos in trouble" })
+-- snipe maaps for going bttwen bufs
 map("n", "<leader>sb", function()
     require("snipe").open_buffer_menu()
 end, { desc = "Open Snipe buffer menu" })
+-- to move the lines up & down in v mode
+map("v", "K", ":m .-2<CR>==", { desc = "move the line up" })
+map("v", "J", ":m .+1<CR>==", { desc = "move the line down" })
 -- git key map
 map("n", "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "git blame inline" })
 map("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
