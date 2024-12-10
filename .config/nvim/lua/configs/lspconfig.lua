@@ -78,21 +78,34 @@ lspconfig.ts_ls.setup({
     on_attach = on_attach,
     on_init = on_init,
     capabilities = capabilities,
-
-    -- Initial options for the TypeScript language server
-    init_options = {
-        plugins = {
-            {
-                --             -- Name of the TypeScript plugin for Vue
-                name = "@vue/typescript-plugin",
-                --
-                --             -- Location of the Vue language server module (path defined in step 1)
-                location = vuepath, --
-                --             -- Specify the languages the plugin applies to (in this case, Vue files)
-                languages = { "vue" },
+    settings = {
+        javascript = {
+            inlayHints = {
+                includeInlayParameterNameHints = "all",
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
             },
         },
     },
+
+    -- Initial options for the TypeScript language server
+    -- init_options = {
+    --     plugins = {
+    --         {
+    --             --             -- Name of the TypeScript plugin for Vue
+    --             name = "@vue/typescript-plugin",
+    --             --
+    --             --             -- Location of the Vue language server module (path defined in step 1)
+    --             location = vuepath, --
+    --             --             -- Specify the languages the plugin applies to (in this case, Vue files)
+    --             languages = { "vue" },
+    --         },
+    --     },
+    -- },
 
     -- Specify the file types that will trigger the TypeScript language server
     filetypes = {

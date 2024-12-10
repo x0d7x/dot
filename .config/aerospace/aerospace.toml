@@ -56,8 +56,8 @@ on-focus-changed = "move-mouse window-lazy-center"
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 9
-inner.vertical = 9
+inner.horizontal = 12
+inner.vertical = 12
 outer.left = 9
 outer.bottom = 9
 outer.top = 6
@@ -221,3 +221,6 @@ run = "move-node-to-workspace S"
 [[on-window-detected]]
 if.app-id = 'com.wulkano.kap'
 run = "move-node-to-workspace S"
+[[on-window-detected]]
+if.app-id = "net.freemacsoft.AppCleaner"
+run = "layout floating"

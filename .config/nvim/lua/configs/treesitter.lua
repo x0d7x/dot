@@ -22,7 +22,6 @@ local options = {
         "typescript",
         "python",
         "json",
-        "tsx",
         "gitignore",
         "regex",
     },

@@ -3,7 +3,7 @@
 -- -@type ChadrcConfig
 local M = {}
 M.base46 = {
-    theme = "dark_horizon",
+    theme = "solarized_dark",
     transparency = true,
 }
 
