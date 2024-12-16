@@ -4,7 +4,7 @@
 local M = {}
 
 M.base46 = {
-    theme = "solarized_dark",
+    theme = "palenight",
     transparency = true,
 }
 

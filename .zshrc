@@ -1,5 +1,10 @@
 # start starship 
 eval "$(starship init zsh)"
+# tmux attach session 
+if [ -z "$TMUX" ]
+then
+    tmux attach || tmux new -s TMUX
+fi
 # --------------aliases----------------
 alias reload-zsh="source ~/.zshrc"
 alias edit-zsh="nvim ~/.zshrc"
@@ -84,6 +89,6 @@ export VISUAL="$EDITOR"
 export PATH="/usr/local/opt/php@5.6/sbin:$PATH"
 export PATH="/usr/local/opt/php@5.6/bin:$PATH"
 #------- run nerdfetch ------------
-fastfetch
+# fastfetch
  # --------- Groq Api ------------ 
  export GROQ_API_KEY= 
