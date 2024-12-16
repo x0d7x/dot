@@ -11,6 +11,7 @@ alias n="nvim"
 alias lg="lazygit"
 alias pn="pnpm"
 alias pni="pn install"
+alias cat="bat"
 alias pnr="pn run"
 alias pnx="pn dlx"
 alias pna="pn add"
@@ -19,6 +20,7 @@ alias lsa='ls -lah'
 alias l='ls -lah'
 alias ll='ls -lh'
 alias la='ls -lAh'
+alias tok='tokei'
 
 # starting zsh tools
 # ------ fnm --------

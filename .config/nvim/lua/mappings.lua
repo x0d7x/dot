@@ -28,10 +28,11 @@ map("n", "<leader>sb", function()
     require("snipe").open_buffer_menu()
 end, { desc = "Open Snipe buffer menu" })
 -- to move the lines up & down in v mode
+map("n", "<leader>st", "<cmd>Screenkey toggle<CR>", { desc = "Screenkey toogle" })
 map("v", "K", ":m .-2<CR>==", { desc = "move the line up" })
 map("v", "J", ":m .+1<CR>==", { desc = "move the line down" })
 -- git key map
-map("n", "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "git blame inline" })
+map("n", "<leader>gb", "<cmd>BlameToggle<CR>", { desc = "git blame inline" })
 map("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
 map("n", "<leader>gh", "<cmd>Gitsigns preview_hunk<CR>", { desc = "git preview_hunk" })
 -- tmux navigate

@@ -71,6 +71,21 @@ return {
         },
     },
     {
+        "FabijanZulj/blame.nvim",
+        lazy = false,
+        config = function()
+            require("configs.blame")
+        end,
+    },
+    {
+        "NStefan002/screenkey.nvim",
+        lazy = false,
+        version = "*", -- or branch = "dev", to use the latest commit
+        config = function()
+            require("configs.screenkey")
+        end,
+    },
+    {
         "szw/vim-maximizer",
         keys = {
             { "<leader>sm", "<cmd>MaximizerToggle<CR>", desc = "Maximize/minimize a split" },
@@ -208,14 +223,14 @@ return {
         config = true,
     },
     --## AI ##--
-    {
-        "Exafunction/codeium.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "hrsh7th/nvim-cmp",
-        },
-        config = function()
-            require("codeium").setup({})
-        end,
-    },
+    -- {
+    --     "Exafunction/codeium.nvim",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --         "hrsh7th/nvim-cmp",
+    --     },
+    --     config = function()
+    --         require("codeium").setup({})
+    --     end,
+    -- },
 }

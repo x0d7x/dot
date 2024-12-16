@@ -2,6 +2,7 @@
 --https://github.com/NvChad/ui/blob/v2.5/lua/nvconfig.lua
 -- -@type ChadrcConfig
 local M = {}
+
 M.base46 = {
     theme = "solarized_dark",
     transparency = true,
@@ -17,8 +18,8 @@ M.ui = {
     cmp = {
         icons = true,
         lspkind_text = true,
-        style = "default", -- default/flat_light/flat_dark/atom/atom_colored
-        -- icons_left = true,
+        style = "atom_colored", -- default/flat_light/flat_dark/atom/atom_colored
+        icons_left = true,
     },
     -- hl_override = {
     -- Comment = { italic = true },
