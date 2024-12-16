@@ -56,6 +56,7 @@ return {
             require("configs.alpha")
         end,
     },
+    -- Git plugins
     {
         "kdheepak/lazygit.nvim",
         cmd = {
@@ -76,6 +77,26 @@ return {
         config = function()
             require("configs.blame")
         end,
+    },
+    {
+        "sindrets/diffview.nvim",
+        dependencies = {
+            { "nvim-tree/nvim-web-devicons", lazy = true },
+        },
+        -- to get it working wiith lazyvim
+        keys = {
+            {
+                "dv",
+                function()
+                    if next(require("diffview.lib").views) == nil then
+                        vim.cmd("DiffviewOpen")
+                    else
+                        vim.cmd("DiffviewClose")
+                    end
+                end,
+                desc = "Toggle Diffview window",
+            },
+        },
     },
     {
         "NStefan002/screenkey.nvim",
@@ -222,6 +243,7 @@ return {
         cmd = { "LiveServerStart", "LiveServerStop" },
         config = true,
     },
+
     --## AI ##--
     -- {
     --     "Exafunction/codeium.nvim",
