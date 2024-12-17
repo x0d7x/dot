@@ -17,6 +17,7 @@ cjson
 composer
 curl
 dav1d
+deno
 duti
 eza
 fastfetch
@@ -44,7 +45,6 @@ harfbuzz
 heroku
 highway
 httpd
-icu4c
 icu4c@75
 icu4c@76
 imath
@@ -154,6 +154,7 @@ theora
 tidy-html5
 tldr
 tmux
+tokei
 tree-sitter
 unbound
 unibilium

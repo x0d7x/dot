@@ -17,7 +17,7 @@ $line_break\
 $character"""
 
 [character]
-success_symbol = '[🚀 ⇉](bold green) '
+success_symbol = '[🚀 ⇉](bold yellow) '
 error_symbol = '[❌ ⇉](bold red) '
 [fill]
 symbol = ' '
@@ -56,7 +56,7 @@ format = "[$symbol($version)]($style)"
 [php]
 format = "[$symbol(php $version )]($style)"
 [directory]
-style = "yellow bold"
+style = "blue bold"
 truncation_length = 3
 truncate_to_repo = false
 truncation_symbol = ".../"

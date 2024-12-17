@@ -1,10 +1,7 @@
 # start starship 
 eval "$(starship init zsh)"
 # tmux attach session 
-if [ -z "$TMUX" ]
-then
-    tmux attach || tmux new -s TMUX
-fi
+./tmuxStart.sh
 # --------------aliases----------------
 alias reload-zsh="source ~/.zshrc"
 alias edit-zsh="nvim ~/.zshrc"
@@ -26,6 +23,8 @@ alias l='ls -lah'
 alias ll='ls -lh'
 alias la='ls -lAh'
 alias tok='tokei'
+alias dn="deno"
+alias dnr="deno run"
 
 # starting zsh tools
 # ------ fnm --------
