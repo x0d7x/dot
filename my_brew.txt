@@ -24,7 +24,6 @@ fastfetch
 fd
 ffmpeg
 flac
-fnm
 fontconfig
 freetds
 freetype
@@ -182,6 +181,7 @@ dozer
 font-hack-nerd-font
 font-meslo-lg-nerd-font
 iina
+kap
 maccy
 stremio
 topnotch

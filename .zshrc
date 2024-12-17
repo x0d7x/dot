@@ -26,8 +26,6 @@ alias dn="deno"
 alias dnr="deno run"
 
 # starting zsh tools
-# ------ fnm --------
-eval "$(fnm env --use-on-cd --shell zsh)"
 # ------- the fuck ------
 eval $(thefuck --alias)
 eval $(thefuck --alias fk)
