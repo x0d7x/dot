@@ -1,3 +1,4 @@
+#!/bin/zsh
 # start starship 
 eval "$(starship init zsh)"
 # --------------aliases----------------
@@ -88,6 +89,6 @@ export PATH="/usr/local/opt/php@5.6/bin:$PATH"
 #------- run nerdfetch ------------
 # fastfetch
 # tmux attach session 
-./tmuxStart.sh
+bash ~/tmuxStart.sh
  # --------- Groq Api ------------ 
  export GROQ_API_KEY= 
