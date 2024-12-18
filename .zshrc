@@ -1,4 +1,5 @@
 #!/bin/zsh
+# zmodload zsh/zprof
 # start starship 
 eval "$(starship init zsh)"
 # --------------aliases----------------
@@ -24,6 +25,9 @@ alias la='ls -lAh'
 alias tok='tokei'
 alias dn="deno"
 alias dnr="deno run"
+alias gcn="git clone --no-checkout"
+alias gsi="git sparse-checkout init"
+alias gss="git sparse-checkout set"
 
 # starting zsh tools
 # ------- the fuck ------
@@ -64,6 +68,15 @@ _fzf_compgen_dir() {
 }
 # Set up zoxiide 
 eval "$(zoxide init zsh)"
+# yazi setup for CWD when exit 
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 # history setup
 HISTFILE=$HOME/.zhistory
 SAVEHIST=1000
@@ -73,8 +86,9 @@ setopt hist_expire_dups_first
 setopt hist_ignore_dups
 setopt hist_verify
 # --sourcing zsh-plugins --
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+autoload -U _zsh_highlight_bind_widgets
+source ~/.zshshell/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+source ~/.zshshell/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 # completion using arrow keys (based on history)
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
@@ -87,6 +101,7 @@ export PATH="/usr/local/opt/php@5.6/bin:$PATH"
 #------- run nerdfetch ------------
 # fastfetch
 # tmux attach session 
-bash ~/tmuxStart.sh
+source ~/tmuxStart.sh
  # --------- Groq Api ------------ 
  export GROQ_API_KEY= 
+ # zprof
