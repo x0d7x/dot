@@ -1,5 +1,4 @@
 local lint = require("lint")
-local eslint = lint.linters.eslint_d
 lint.linters_by_ft = {
     javascript = { "deno" },
     typescript = { "deno" },
@@ -9,6 +8,8 @@ lint.linters_by_ft = {
     -- svelte = { "eslint_d" },
     python = { "pylint" },
     php = { "phpmd" },
+    markdown = { "deno" },
+    -- mdx = { "marksman" },
 }
 
 local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

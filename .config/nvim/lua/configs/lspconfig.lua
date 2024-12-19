@@ -3,13 +3,10 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 local lspconfig = require("lspconfig")
 local mason_registry = require("mason-registry")
-local vuepath = mason_registry.get_package("vue-language-server"):get_install_path()
-    .. "/node_modules/@vue/language-server"
 
 -- list of all servers configured.
 lspconfig.servers = {
     "denols",
-    "marksman",
     "lua_ls",
     "html",
     "cssls",
@@ -30,7 +27,6 @@ local default_servers = {
     "tailwindcss",
     "taplo",
     "intelephense",
-    "marksman",
 }
 
 -- lsps with default config
@@ -86,21 +82,12 @@ lspconfig.tailwindcss.setup({
         "astro-markdown",
     },
 })
-lspconfig.marksman.setup({
-    on_attach = on_attach,
-    on_init = on_init,
-    capabilities = capabilities,
-    filetypes = {
-        "markdown",
-        "mdx",
-    },
-})
 lspconfig.denols.setup({
     on_attach = on_attach,
     on_init = on_init,
     init_options = {
         lint = true,
-        unstable = true,
+        unstable = false,
         -- config = "./deno.jsonc",
         suggest = {
             imports = {

@@ -3,20 +3,12 @@
 # start starship 
 eval "$(starship init zsh)"
 # --------------aliases----------------
-alias reload-zsh="source ~/.zshrc"
-alias edit-zsh="nvim ~/.zshrc"
-alias cd="z"
 alias ls="eza --all --icons=always --long --git --color=always --no-user --no-filesize --no-time"
 alias c="clear"
 alias e="exit"
 alias n="nvim"
 alias lg="lazygit"
-alias pn="pnpm"
-alias pni="pn install"
 alias cat="bat"
-alias pnr="pn run"
-alias pnx="pn dlx"
-alias pna="pn add"
 alias br="brew"
 alias lsa='ls -lah'
 alias l='ls -lah'
@@ -28,6 +20,8 @@ alias dnr="deno run"
 alias gcn="git clone --no-checkout"
 alias gsi="git sparse-checkout init"
 alias gss="git sparse-checkout set"
+alias g="z"
+alias gi="zi"
 
 # starting zsh tools
 # ------- the fuck ------
