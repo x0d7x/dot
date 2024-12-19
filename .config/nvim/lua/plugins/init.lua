@@ -99,6 +99,13 @@ return {
         },
     },
     {
+        "echasnovski/mini.files",
+        version = "*",
+        config = function()
+            require("configs.minifiles")
+        end,
+    },
+    {
         "NStefan002/screenkey.nvim",
         lazy = false,
         version = "*", -- or branch = "dev", to use the latest commit
@@ -115,6 +122,15 @@ return {
     -- navigate bttwen buffers
     {
         "leath-dub/snipe.nvim",
+        keys = {
+            {
+                "sb",
+                function()
+                    require("snipe").open_buffer_menu()
+                end,
+                desc = "Open Snipe buffer menu",
+            },
+        },
         opts = {},
         config = function()
             require("configs.snipe")

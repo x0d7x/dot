@@ -4,6 +4,7 @@ require("nvchad.mappings")
 
 -- local CodeSnap <const> = require("codesnap")
 local map = vim.keymap.set
+local mini = require("mini.files")
 
 map("i", "qq", "<ESC>")
 -- window management
@@ -23,10 +24,8 @@ map(
 map("n", "<leader>tq", "<cmd>Trouble quickfix toggle<CR>", { desc = "Open trouble quickfix list" })
 map("n", "<leader>tl", "<cmd>Trouble loclist toggle<CR>", { desc = "Open trouble location list" })
 map("n", "<leader>tt", "<cmd>Trouble todo toggle<CR>", { desc = "Open todos in trouble" })
--- snipe maaps for going bttwen bufs
-map("n", "<leader>sb", function()
-    require("snipe").open_buffer_menu()
-end, { desc = "Open Snipe buffer menu" })
+-- file and folders navigate
+map("n", "<leader>e", mini.open, { desc = "open file explor" })
 -- to move the lines up & down in v mode
 map("n", "<leader>st", "<cmd>Screenkey toggle<CR>", { desc = "Screenkey toogle" })
 map("v", "K", ":m .-2<CR>==", { desc = "move the line up" })

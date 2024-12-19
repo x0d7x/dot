@@ -1,7 +1,6 @@
 local on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
-
 local lspconfig = require("lspconfig")
 local mason_registry = require("mason-registry")
 local vuepath = mason_registry.get_package("vue-language-server"):get_install_path()
@@ -9,6 +8,7 @@ local vuepath = mason_registry.get_package("vue-language-server"):get_install_pa
 
 -- list of all servers configured.
 lspconfig.servers = {
+    "denols",
     "marksman",
     "lua_ls",
     "html",
@@ -16,15 +16,14 @@ lspconfig.servers = {
     "taplo",
     "emmet_ls",
     "tailwindcss",
-    "ts_ls",
     "intelephense",
     "bashls",
 }
 
 -- list of servers configured with default config.
 local default_servers = {
+    "denols",
     "html",
-    "ts_ls",
     "cssls",
     "emmet_ls",
     "bashls",
@@ -42,13 +41,6 @@ for _, lsp in ipairs(default_servers) do
         capabilities = capabilities,
     })
 end
--- lspconfig.ts_ls.setup({
---     on_attach = on_attach,
---     capabilities = capabilities,
---     on_init = on_init,
---     init_options = {},
--- })
-
 lspconfig.lua_ls.setup({
     on_attach = on_attach,
     on_init = on_init,
@@ -74,52 +66,12 @@ lspconfig.lua_ls.setup({
         },
     },
 })
-lspconfig.ts_ls.setup({
-    on_attach = on_attach,
-    on_init = on_init,
-    capabilities = capabilities,
-    settings = {
-        javascript = {
-            inlayHints = {
-                includeInlayParameterNameHints = "all",
-                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHints = true,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-            },
-        },
-    },
-
-    -- Initial options for the TypeScript language server
-    -- init_options = {
-    --     plugins = {
-    --         {
-    --             --             -- Name of the TypeScript plugin for Vue
-    --             name = "@vue/typescript-plugin",
-    --             --
-    --             --             -- Location of the Vue language server module (path defined in step 1)
-    --             location = vuepath, --
-    --             --             -- Specify the languages the plugin applies to (in this case, Vue files)
-    --             languages = { "vue" },
-    --         },
-    --     },
-    -- },
-
-    -- Specify the file types that will trigger the TypeScript language server
-    filetypes = {
-        "typescript", -- TypeScript files (.ts)
-        "javascript", -- JavaScript files (.js)
-        "javascriptreact", -- React files with JavaScript (.jsx)
-        "typescriptreact", -- React files with TypeScript (.tsx)
-        "vue",
-    },
-})
 lspconfig.tailwindcss.setup({
     on_attach = on_attach,
     on_init = on_init,
     capabilities = capabilities,
+    -- to make bun || deno install it
+    cmd = { "bun", "run", "--bun", "tailwindcss-language-server", "--stdio" },
     filetypes = {
         "css",
         "javascript",
@@ -128,6 +80,10 @@ lspconfig.tailwindcss.setup({
         "typescriptreact",
         "vue",
         "svelte",
+        "markdown",
+        "mdx",
+        "astro",
+        "astro-markdown",
     },
 })
 lspconfig.marksman.setup({
@@ -138,4 +94,39 @@ lspconfig.marksman.setup({
         "markdown",
         "mdx",
     },
+})
+lspconfig.denols.setup({
+    on_attach = on_attach,
+    on_init = on_init,
+    init_options = {
+        lint = true,
+        unstable = true,
+        -- config = "./deno.jsonc",
+        suggest = {
+            imports = {
+                hosts = {
+                    ["https://deno.land"] = true,
+                    ["https://cdn.nest.land"] = true,
+                    ["https://crux.land"] = true,
+                },
+            },
+        },
+    },
+    capabilities = capabilities,
+    filetypes = {
+        "javascript",
+        "javascriptreact",
+        "javascript.jsx",
+        "typescript",
+        "typescriptreact",
+        "typescript.tsx",
+        "markdown",
+        "mdx",
+    },
+})
+lspconfig.emmet_ls.setup({
+    on_init = on_init,
+    on_attach = on_attach,
+    capabilities = capabilities,
+    cmd = { "bun", "run", "--bun", "emmet-ls", "--stdio" },
 })

@@ -31,6 +31,7 @@ snipe.setup({
         -- Charaters to use for hints (NOTE: make sure they don't collide with the navigation keymaps)
         dictionary = "sadflewcmpghio",
     },
+
     navigate = {
         -- When the list is too long it is split into pages
         -- `[next|prev]_page` options allow you to navigate
