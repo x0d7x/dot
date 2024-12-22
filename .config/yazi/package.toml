@@ -1,0 +1,5 @@
+[plugin]
+deps = [{ use = "yazi-rs/plugins:no-status", rev = "7afba3a" }]
+
+[flavor]
+deps = [{ use = "PinThePenguine/sunset", rev = "181acd4" }, { use = "kmlupreti/ayu-dark", rev = "441a38d" }, { use = "marcosvnmelo/kanagawa-dragon", rev = "2ddff30" }]

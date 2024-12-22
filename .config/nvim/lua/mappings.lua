@@ -24,6 +24,9 @@ map(
 map("n", "<leader>tq", "<cmd>Trouble quickfix toggle<CR>", { desc = "Open trouble quickfix list" })
 map("n", "<leader>tl", "<cmd>Trouble loclist toggle<CR>", { desc = "Open trouble location list" })
 map("n", "<leader>tt", "<cmd>Trouble todo toggle<CR>", { desc = "Open todos in trouble" })
+-- cht.sh for docs
+map("n", "<leader>cs", '<cmd>lua require("cheat-sh").search()<cr>', { desc = "serch cht.sh" })
+map("n", "<leader>cu", '<cmd>lua require("cheat-sh").get_cursor_word(true)<cr>', { desc = "get the word under cursor" })
 -- file and folders navigate
 map("n", "<leader>e", mini.open, { desc = "open file explor" })
 -- to move the lines up & down in v mode

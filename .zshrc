@@ -63,7 +63,7 @@ _fzf_compgen_dir() {
 # Set up zoxiide 
 eval "$(zoxide init zsh)"
 # yazi setup for CWD when exit 
-function y() {
+function zz() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
 	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
@@ -96,6 +96,11 @@ export PATH="/usr/local/opt/php@5.6/bin:$PATH"
 # fastfetch
 # tmux attach session 
 source ~/tmuxStart.sh
+# cheat sheet
+function ch ()
+{
+ curl https://cht.sh/$1;   
+}
  # --------- Groq Api ------------ 
  export GROQ_API_KEY= 
  # zprof

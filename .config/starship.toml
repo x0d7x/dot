@@ -48,7 +48,17 @@ detect_files = ['package.json', '.node-version', 'bun.lockb', 'bunfig.toml']
 detect_folders = ['node_modules']
 [deno]
 format = ' [🦕 $version](green bold) '
-detect_files = ['package.json', '.node-version', 'deno.json', 'deno.jsonc', 'deno.lock', 'mod.ts', 'mod.js', 'deps.ts', 'deps.js']
+detect_files = [
+    'package.json',
+    '.node-version',
+    'deno.json',
+    'deno.jsonc',
+    'deno.lock',
+    'mod.ts',
+    'mod.js',
+    'deps.ts',
+    'deps.js',
+]
 detect_folders = ['node_modules']
 [package]
 symbol = "📦 "
@@ -62,7 +72,7 @@ format = "[$symbol(php $version )]($style)"
 style = "blue bold"
 truncation_length = 3
 truncate_to_repo = false
-truncation_symbol = ".../"
+truncation_symbol = "👈/"
 [directory.substitutions]
 "downloads" = ""
 "Developer" = ""

@@ -1,0 +1,10 @@
+[manager]
+ratio = [2, 3, 3]
+sort_by = "mtime"
+sort_reverse = true
+linemode = "size"
+[preview]
+tab_size = 2
+[input]
+cursor_blink = true
+create_offset = [0, 1, 50, 3]

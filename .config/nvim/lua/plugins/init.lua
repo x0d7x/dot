@@ -78,6 +78,7 @@ return {
             require("configs.blame")
         end,
     },
+    { "kilavila/cheat-sh.nvim" }, -- cheat sheet docs
     {
         "sindrets/diffview.nvim",
         dependencies = {

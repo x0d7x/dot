@@ -14,8 +14,9 @@ after-login-command = []
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
     # (format: 0xAARRGGBB)
-    'exec-and-forget borders active_color=0xff742592 inactive_color=0xff494d64 width=5.0 style=round blur_radis=5.0',
+    'exec-and-forget borders active_color=0xff742592 inactive_color=0xff494d64 width=4.0 style=round blur_radis=5.0',
 ]
+
 
 # Start AeroSpace at login
 start-at-login = true
@@ -95,7 +96,6 @@ alt-h = 'focus left'
 alt-j = 'focus down'
 alt-k = 'focus up'
 alt-l = 'focus right'
-
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 alt-shift-h = 'move left'
 alt-shift-j = 'move down'
@@ -202,7 +202,12 @@ if.app-id = 'com.github.wez.wezterm'
 run = "move-node-to-workspace T"
 [[on-window-detected]]
 if.app-id = 'org.mozilla.com.zen.browser'
-run = "move-node-to-workspace B"
+if.window-title-regex-substring = 'Picture-in-Picture'
+check-further-callbacks = true
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'org.mozilla.com.zen.browser'
+run = 'move-node-to-workspace B'
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
 run = "move-node-to-workspace B"
