@@ -13,6 +13,7 @@ btop
 bun
 ca-certificates
 cairo
+chafa
 cjson
 composer
 curl
@@ -20,9 +21,11 @@ dav1d
 deno
 duti
 eza
+faad2
 fastfetch
 fd
 ffmpeg
+fftw
 flac
 fontconfig
 freetds
@@ -30,7 +33,9 @@ freetype
 frei0r
 fribidi
 fzf
+gcc
 gd
+gdk-pixbuf
 gettext
 ghostscript
 giflib
@@ -47,16 +52,19 @@ harfbuzz
 heroku
 highway
 httpd
+hwloc
 icu4c@75
 icu4c@76
 imagemagick
 imath
+isl
 jasper
 jbig2dec
 jpeg
 jpeg-turbo
 jpeg-xl
 jq
+kew
 krb5
 lame
 lazygit
@@ -79,6 +87,7 @@ libidn2
 libksba
 liblqr
 libmicrohttpd
+libmpc
 libnghttp2
 libogg
 libomp
@@ -86,6 +95,7 @@ libpng
 libpq
 libraw
 librist
+librsvg
 libsamplerate
 libsndfile
 libsodium
@@ -123,6 +133,7 @@ mas
 mbedtls
 meson
 mpdecimal
+mpfr
 mpg123
 msgpack
 ncurses
@@ -135,12 +146,14 @@ nspr
 nss
 nvm
 oniguruma
+open-mpi
 opencore-amr
 openexr
 openjpeg
 openldap
 openssl@3
 opus
+opusfile
 p11-kit
 pango
 pcre
@@ -150,6 +163,7 @@ php@5.6
 pinentry
 pixman
 pkgconf
+pmix
 poppler
 python-packaging
 python@3.12
@@ -170,6 +184,7 @@ srt
 starship
 stow
 svt-av1
+taglib
 tesseract
 thefuck
 theora
