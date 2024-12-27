@@ -95,7 +95,7 @@ export PATH="/usr/local/opt/php@5.6/bin:$PATH"
 #------- run nerdfetch ------------
 # fastfetch
 # tmux attach session 
-source ~/tmuxStart.sh
+# source ~/tmuxStart.sh
 # cheat sheet
 function ch ()
 {
