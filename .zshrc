@@ -83,6 +83,7 @@ setopt hist_verify
 autoload -U _zsh_highlight_bind_widgets
 source ~/.zshshell/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 source ~/.zshshell/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
 # completion using arrow keys (based on history)
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
@@ -93,9 +94,8 @@ export VISUAL="$EDITOR"
 export PATH="/usr/local/opt/php@5.6/sbin:$PATH"
 export PATH="/usr/local/opt/php@5.6/bin:$PATH"
 #------- run nerdfetch ------------
-# fastfetch
 # tmux attach session 
-# source ~/tmuxStart.sh
+source ~/tmuxStart.sh
 # cheat sheet
 function ch ()
 {

@@ -1,9 +1,9 @@
-term = xterm-256color
+term = xterm-ghostty
 font-family = "Hack Nerd Font"
 font-size = 18
-background-opacity = 0.7
+background-opacity = 0.8
 background-blur-radius = 20
-theme = Argonaut
+theme = gruber-darker
 font-thicken = true
 mouse-hide-while-typing = true
 cursor-text = black
@@ -11,5 +11,11 @@ cursor-color = yellow
 mouse-hide-while-typing = true
 macos-titlebar-style = hidden
 confirm-close-surface = false
-command = ~/dotfiles/tmuxStart.sh
-shell-integration = zsh
+#command = ~/dotfiles/tmuxStart.sh
+cursor-style-blink = true
+window-theme = ghostty
+shell-integration-features = true
+#custom-shader = shaders/just-snow.glsl
+#custom-shader = shaders/smoke-and-ghost.glsl
+keybind = global:cmd+s=toggle_quick_terminal
+keybind = super+i=inspector:toggle
