@@ -17,5 +17,5 @@ window-theme = ghostty
 shell-integration-features = true
 #custom-shader = shaders/just-snow.glsl
 #custom-shader = shaders/smoke-and-ghost.glsl
-keybind = global:cmd+s=toggle_quick_terminal
+keybind = cmd+s=toggle_quick_terminal
 keybind = super+i=inspector:toggle
