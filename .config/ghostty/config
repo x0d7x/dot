@@ -1,21 +1,27 @@
-term = xterm-ghostty
+#term = xterm-ghostty
 font-family = "Hack Nerd Font"
 font-size = 18
-background-opacity = 0.8
+background-opacity = 0.84
 background-blur-radius = 20
-theme = gruber-darker
+theme = GruvboxDarkHard  
 font-thicken = true
-mouse-hide-while-typing = true
 cursor-text = black
 cursor-color = yellow
+window-padding-balance = true
 mouse-hide-while-typing = true
 macos-titlebar-style = hidden
+window-colorspace = "display-p3"
 confirm-close-surface = false
-#command = ~/dotfiles/tmuxStart.sh
+initial-command= zsh --login -c "if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then tmux attach || tmux new -s Dev; else zsh; fi"
 cursor-style-blink = true
 window-theme = ghostty
 shell-integration-features = true
+auto-update = check
 #custom-shader = shaders/just-snow.glsl
+#custom-shader = shaders/geminiai.glsl
+#custom-shader = shaders/glitchy.glsl
+#custom-shader = shaders/retro-terminal.glsl
+#custom-shader = shaders/smoke-and-ghost.glsl
 #custom-shader = shaders/smoke-and-ghost.glsl
 keybind = cmd+s=toggle_quick_terminal
 keybind = super+i=inspector:toggle

@@ -10,7 +10,7 @@ local options = {
         javascriptreact = { "deno_fmt" },
         typescriptreact = { "deno_fmt" },
         markdown = { "deno_fmt" },
-        yaml = { "prettier" },
+        -- yaml = { "prettier" },
         python = { "isort", "black" },
         bash = { "beautysh", "bash" },
     },

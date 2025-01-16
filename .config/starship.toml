@@ -69,7 +69,7 @@ format = "[$symbol($version)]($style)"
 [php]
 format = "[$symbol(php $version )]($style)"
 [directory]
-style = "blue bold"
+style = "cyan bold"
 truncation_length = 3
 truncate_to_repo = false
 truncation_symbol = "👈/"

@@ -11,6 +11,7 @@ borders
 brotli
 btop
 bun
+c-ares
 ca-certificates
 cairo
 chafa
@@ -141,6 +142,7 @@ neovim
 net-snmp
 nettle
 ninja
+node
 npth
 nspr
 nss
@@ -199,6 +201,7 @@ unixodbc
 utf8proc
 uv
 webp
+wget
 x264
 x265
 xorgproto
@@ -212,17 +215,20 @@ zstd
 aerospace
 alt-tab
 appcleaner
+arc
 discord
 downie
 dozer
 font-hack-nerd-font
 font-meslo-lg-nerd-font
 font-symbols-only-nerd-font
+ghostty
+handbrake
 iina
 kap
+legcord
 maccy
 mechvibes
 stremio
 topnotch
-wezterm
-zen-browser
+zen-browser@twilight

@@ -8,7 +8,7 @@ lint.linters_by_ft = {
     -- svelte = { "eslint_d" },
     python = { "pylint" },
     php = { "phpmd" },
-    markdown = { "deno" },
+    -- markdown = { "deno" },
     -- mdx = { "marksman" },
 }
 

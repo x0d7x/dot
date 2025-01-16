@@ -204,12 +204,12 @@ run = "move-node-to-workspace T"
 if.app-id = 'com.github.wez.wezterm'
 run = "move-node-to-workspace T"
 [[on-window-detected]]
-if.app-id = 'org.mozilla.com.zen.browser'
+if.app-id = 'app.zen-browser.zen'
 if.window-title-regex-substring = 'Picture-in-Picture'
 check-further-callbacks = true
 run = 'layout floating'
 [[on-window-detected]]
-if.app-id = 'org.mozilla.com.zen.browser'
+if.app-id = 'app.zen-browser.zen'
 run = 'move-node-to-workspace B'
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
@@ -232,3 +232,6 @@ run = "move-node-to-workspace S"
 [[on-window-detected]]
 if.app-id = "net.freemacsoft.AppCleaner"
 run = "layout floating"
+[[on-window-detected]]
+if.app-id = 'app.legcord.Legcord'
+run = "move-node-to-workspace D"

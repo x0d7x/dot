@@ -15,6 +15,7 @@ lspconfig.servers = {
     "tailwindcss",
     "intelephense",
     "bashls",
+    "astro",
 }
 
 -- list of servers configured with default config.
@@ -27,6 +28,7 @@ local default_servers = {
     "tailwindcss",
     "taplo",
     "intelephense",
+    "astro",
 }
 
 -- lsps with default config
@@ -67,7 +69,6 @@ lspconfig.tailwindcss.setup({
     on_init = on_init,
     capabilities = capabilities,
     -- to make bun || deno install it
-    cmd = { "bun", "run", "--bun", "tailwindcss-language-server", "--stdio" },
     filetypes = {
         "css",
         "javascript",
@@ -80,6 +81,15 @@ lspconfig.tailwindcss.setup({
         "mdx",
         "astro",
         "astro-markdown",
+    },
+})
+lspconfig.astro.setup({
+    on_attach = on_attach,
+    on_init = on_init,
+    capabilities = capabilities,
+    filetypes = { "astro" },
+    init_options = {
+        typescript = {},
     },
 })
 lspconfig.denols.setup({
@@ -108,7 +118,7 @@ lspconfig.denols.setup({
         "typescriptreact",
         "typescript.tsx",
         "markdown",
-        "mdx",
+        -- "mdx",
     },
 })
 lspconfig.emmet_ls.setup({
@@ -116,4 +126,20 @@ lspconfig.emmet_ls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
     cmd = { "bun", "run", "--bun", "emmet-ls", "--stdio" },
+    filetypes = {
+        "astro",
+        "css",
+        "eruby",
+        "html",
+        "htmldjango",
+        "javascriptreact",
+        "less",
+        "pug",
+        "sass",
+        "scss",
+        "svelte",
+        "typescriptreact",
+        "vue",
+        "htmlangular",
+    },
 })
