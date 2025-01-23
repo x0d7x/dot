@@ -9,14 +9,14 @@
 # Available commands: https://nikitabobko.github.io/AeroSpace/commands
 after-login-command = []
 
-# You can use it to add commands that run after AeroSpace startup.
-# 'after-startup-command' is run after 'after-login-command'
-# Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
     # (format: 0xAARRGGBB)
     'exec-and-forget borders active_color=0xff742592 inactive_color=0xff494d64 width=4.0 style=round blur_radis=5.0',
-]
 
+]
+# You can use it to add commands that run after AeroSpace startup.
+# 'after-startup-command' is run after 'after-login-command'
+# Available commands : https://nikitabobko.github.io/AeroSpace/commands
 
 # Start AeroSpace at login
 start-at-login = true
@@ -47,8 +47,14 @@ key-mapping.preset = 'qwerty'
 # See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
-on-focus-changed = "move-mouse window-lazy-center"
-
+on-focus-changed = ["move-mouse window-lazy-center"]
+#NOTE: to make simple barr refresh when workspace changes
+# exec-on-workspace-change = [
+#     '/bin/bash',
+#     '-c',
+#     'osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh"',
+#
+# ]
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
 # - Constant:     gaps.outer.top = 8
@@ -60,8 +66,8 @@ on-focus-changed = "move-mouse window-lazy-center"
 inner.horizontal = 12
 inner.vertical = 12
 outer.left = 9
-outer.bottom = 9
-outer.top = 6
+outer.bottom = 5
+outer.top = 32
 outer.right = 9
 
 # 'main' binding mode declaration
@@ -184,7 +190,11 @@ alt-shift-semicolon = 'mode service'
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
-esc = ['reload-config', 'mode main']
+esc = [
+    'reload-config',
+    'exec-and-forget osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh"',
+    'mode main',
+]
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
 #s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 f = [
