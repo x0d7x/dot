@@ -12,6 +12,7 @@ after-login-command = []
 after-startup-command = [
     # (format: 0xAARRGGBB)
     'exec-and-forget borders active_color=0xff742592 inactive_color=0xff494d64 width=4.0 style=round blur_radis=5.0',
+    'exec-and-forget sketchybar',
 
 ]
 # You can use it to add commands that run after AeroSpace startup.
@@ -47,14 +48,21 @@ key-mapping.preset = 'qwerty'
 # See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
-on-focus-changed = ["move-mouse window-lazy-center"]
-#NOTE: to make simple barr refresh when workspace changes
-# exec-on-workspace-change = [
-#     '/bin/bash',
-#     '-c',
-#     'osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh"',
-#
-# ]
+on-focus-changed = [
+    "move-mouse window-lazy-center",
+    # 'exec-and-forget osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh"',
+]
+# NOTE: to make simple barr refresh when workspace changes
+exec-on-workspace-change = [
+    # '/bin/bash',
+    # '-c',
+    # 'curl http://localhost:7776/aerospace/spaces/refresh',
+    # 'osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh"',
+    # sketchybar on focus workspacce 
+    '/bin/bash',
+    '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
+]
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
 # - Constant:     gaps.outer.top = 8
@@ -67,7 +75,7 @@ inner.horizontal = 12
 inner.vertical = 12
 outer.left = 9
 outer.bottom = 5
-outer.top = 32
+outer.top = 30
 outer.right = 9
 
 # 'main' binding mode declaration
@@ -118,32 +126,17 @@ alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
 alt-5 = 'workspace 5'
-alt-6 = 'workspace 6'
-alt-7 = 'workspace 7'
-alt-8 = 'workspace 8'
-alt-9 = 'workspace 9'
-alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
-alt-b = 'workspace B'
-# alt-c = 'workspace C'
-alt-d = 'workspace D'
-alt-e = 'workspace E'
-alt-f = 'workspace F'
-alt-g = 'workspace G'
-# alt-i = 'workspace I'
-alt-m = 'workspace M'
-alt-n = 'workspace N'
-alt-o = 'workspace O'
-alt-p = 'workspace P'
+alt-d = ['workspace D', 'exec-and-forget open -a /Applications/legcord.app']
 alt-q = 'workspace Q'
-alt-r = 'workspace R'
 alt-s = 'workspace S'
-alt-t = 'workspace T'
-alt-u = 'workspace U'
-alt-v = 'workspace V'
-alt-w = 'workspace W'
-alt-x = 'workspace X'
-alt-y = 'workspace Y'
-alt-z = 'workspace Z'
+alt-m = ['workspace M', 'exec-and-forget open -a /Applications/Stremio.app']
+alt-t = ['workspace T', 'exec-and-forget open -a /Applications/Ghostty.app']
+alt-b = [
+    'workspace B',
+    'exec-and-forget open -a /Applications/Zen\ Browser.app',
+]
+alt-r = 'macos-native-fullscreen'
+alt-f = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
@@ -152,33 +145,14 @@ alt-shift-3 = 'move-node-to-workspace 3'
 alt-shift-4 = 'move-node-to-workspace 4'
 alt-shift-5 = 'move-node-to-workspace 5'
 alt-shift-6 = 'move-node-to-workspace 6'
-alt-shift-7 = 'move-node-to-workspace 7'
-alt-shift-8 = 'move-node-to-workspace 8'
-alt-shift-9 = 'move-node-to-workspace 9'
-alt-shift-a = 'move-node-to-workspace A'
 alt-shift-b = 'move-node-to-workspace B'
-alt-shift-c = 'move-node-to-workspace C'
+alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-d = 'move-node-to-workspace D'
-alt-shift-e = 'move-node-to-workspace E'
-alt-shift-g = 'move-node-to-workspace G'
-alt-shift-i = 'move-node-to-workspace I'
-alt-shift-m = 'move-node-to-workspace M'
-alt-shift-n = 'move-node-to-workspace N'
-alt-shift-o = 'move-node-to-workspace O'
-alt-shift-p = 'move-node-to-workspace P'
 alt-shift-q = 'move-node-to-workspace Q'
-# alt-shift-r = 'move-node-to-workspace R'
+alt-shift-m = 'move-node-to-workspace M'
 alt-shift-s = 'move-node-to-workspace S'
 alt-shift-t = 'move-node-to-workspace T'
-alt-shift-u = 'move-node-to-workspace U'
-alt-shift-v = 'move-node-to-workspace V'
-alt-shift-w = 'move-node-to-workspace W'
-alt-shift-x = 'move-node-to-workspace X'
-alt-shift-y = 'move-node-to-workspace Y'
-alt-shift-z = 'move-node-to-workspace Z'
 
-alt-shift-f = 'fullscreen'
-alt-shift-r = 'macos-native-fullscreen'
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
@@ -192,7 +166,7 @@ alt-shift-semicolon = 'mode service'
 [mode.service.binding]
 esc = [
     'reload-config',
-    'exec-and-forget osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh"',
+    # 'exec-and-forget osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh"',
     'mode main',
 ]
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
@@ -245,3 +219,9 @@ run = "layout floating"
 [[on-window-detected]]
 if.app-id = 'app.legcord.Legcord'
 run = "move-node-to-workspace D"
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.apple.Passwords'
+run = 'layout floating'

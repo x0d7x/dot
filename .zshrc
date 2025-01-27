@@ -10,6 +10,7 @@ alias n="nvim"
 alias lg="lazygit"
 alias cat="bat"
 alias br="brew"
+alias bri="brew install"
 alias lsa='ls -lah'
 alias l='ls -lah'
 alias ll='ls -lh'
@@ -95,6 +96,7 @@ export VISUAL="$EDITOR"
 # --- php version --- 
 export PATH="/usr/local/opt/php@5.6/sbin:$PATH"
 export PATH="/usr/local/opt/php@5.6/bin:$PATH"
+export PATH="/Users/dullx/.bun/bin:$PATH"
 #------- run nerdfetch ------------
 # tmux attach session 
 # source ~/tmuxStart.sh
