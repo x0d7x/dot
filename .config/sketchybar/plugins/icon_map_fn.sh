@@ -211,6 +211,9 @@ function icon_map() {
   "TIDAL")
     icon_result=":tidal:"
     ;;
+"stremio")
+    icon_result="􀜤"
+    ;;
   "VLC")
     icon_result=":vlc:"
     ;;

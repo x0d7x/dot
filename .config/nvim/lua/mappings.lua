@@ -5,8 +5,13 @@ require("nvchad.mappings")
 -- local CodeSnap <const> = require("codesnap")
 local map = vim.keymap.set
 local mini = require("mini.files")
-
+local completion = require("codeium.virtual_text")
+-- mapping
 map("i", "qq", "<ESC>")
+map("n", "<leader>at", function()
+    completion.complete()
+end, { desc = "open ai completion" })
+
 -- window management
 map("n", "<leader>s|", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
 map("n", "<leader>s-", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
@@ -56,7 +61,8 @@ map("n", "<leader>md", "<cmd>Markview splitDisable<CR>", { desc = "markdown spli
 map("n", "<leader>ls", "<cmd>LiveServerStart<CR>", { desc = "Start live server" })
 map("n", "<leader>lo", "<cmd>LiveServerStop<CR>", { desc = "Stop live server" })
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
---
+-- Lsp --
+map("n", "<leader>lr", "<cmd>LspRestart<CR>", { desc = "Lsp restart" })
 --
 -- terrminal
 --

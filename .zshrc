@@ -82,11 +82,8 @@ setopt share_history
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
 setopt hist_verify
-# --sourcing zsh-plugins --
-autoload -U _zsh_highlight_bind_widgets
-source ~/.zshshell/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-source ~/.zshshell/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
+# autoload -U _zsh_highlight_bind_widgets
+# source ~/.zshshell/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 # completion using arrow keys (based on history)
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
@@ -105,6 +102,10 @@ function ch ()
 {
  curl https://cht.sh/$1;   
 }
+# --sourcing zsh-plugins --
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
+source ~/.zshshell/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
  # --------- Groq Api ------------ 
  export GROQ_API_KEY= 
  # zprof

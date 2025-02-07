@@ -255,22 +255,38 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
     },
-    {
-        "barrett-ruth/live-server.nvim",
-        build = "pnpm add -g live-server",
-        cmd = { "LiveServerStart", "LiveServerStop" },
-        config = true,
-    },
+    -- {
+    --     "barrett-ruth/live-server.nvim",
+    --     build = "pnpm add -g live-server",
+    --     cmd = { "LiveServerStart", "LiveServerStop" },
+    --     config = true,
+    -- },
 
     --## AI ##--
+    -- TODO: check why there is none working with keeybinds
     -- {
-    --     "Exafunction/codeium.nvim",
+    --     "magicalne/nvim.ai",
+    --     version = "*",
     --     dependencies = {
     --         "nvim-lua/plenary.nvim",
-    --         "hrsh7th/nvim-cmp",
+    --         "nvim-treesitter/nvim-treesitter",
     --     },
+    --     lazy = false,
+    --     opts = {},
     --     config = function()
-    --         require("codeium").setup({})
+    --         require("configs.ai-completion")
     --     end,
     -- },
+
+    {
+        "Exafunction/codeium.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "hrsh7th/nvim-cmp",
+        },
+        lazy = false,
+        config = function()
+            require("configs.codeium")
+        end,
+    },
 }

@@ -4,13 +4,13 @@
 local M = {}
 
 M.base46 = {
-    theme = "gruvbox",
+    theme = "gruvchad",
     transparency = true,
 }
 
 M.ui = {
     statusline = {
-        theme = "minimal", -- default/vscode/vscode_colored/minimal
+        theme = "default", -- default/vscode/vscode_colored/minimal
         separator_style = "round",
         -- default/round/block/arrow separators work only for default statusline theme
         -- round and block will work for minimal theme only

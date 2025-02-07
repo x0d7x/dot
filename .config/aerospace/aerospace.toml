@@ -75,7 +75,7 @@ inner.horizontal = 12
 inner.vertical = 12
 outer.left = 9
 outer.bottom = 5
-outer.top = 30
+outer.top = 33
 outer.right = 9
 
 # 'main' binding mode declaration
@@ -133,10 +133,15 @@ alt-m = ['workspace M', 'exec-and-forget open -a /Applications/Stremio.app']
 alt-t = ['workspace T', 'exec-and-forget open -a /Applications/Ghostty.app']
 alt-b = [
     'workspace B',
-    'exec-and-forget open -a /Applications/Zen\ Browser.app',
+    'exec-and-forget open -a /Applications/Brave\ Browser.app',
 ]
 alt-r = 'macos-native-fullscreen'
 alt-f = 'fullscreen'
+alt-n = [
+    'workspace T',
+    'exec-and-forget open -a /Applications/Ghostty.app',
+    'exec-and-forget bash ~/dotfiles/notes.sh',
+]
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
@@ -197,6 +202,9 @@ if.app-id = 'app.zen-browser.zen'
 run = 'move-node-to-workspace B'
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
+run = "move-node-to-workspace B"
+[[on-window-detected]]
+if.app-id = 'com.brave.Browser'
 run = "move-node-to-workspace B"
 [[on-window-detected]]
 if.app-id = 'com.smartcodeltd.stremio'

@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # This is a demo config to showcase some of the most important commands.
 # It is meant to be changed and configured, as it is intentionally kept sparse.
 # For a (much) more advanced configuration example see my dotfiles:
@@ -31,12 +32,12 @@ default=(
                      label.padding_left=4                           \
                      label.padding_right=12                         \
                      background.padding_left=18                     \
-                     background.border_width=1\
-                     background.y_offset=2 \
-                     y_offset=3
+                     background.border_width=1                      \
+                     background.y_offset=2                          \
+                     y_offset=3                                     \
                       icon.font="SF Pro:Semibold:15.0"              \
                       label.font="SF Pro:Semibold:15.0"                             \
-                      icon.color=$WHITE                                             \
+                      icon.color=$LABEL_COLOR                                         \
                       label.color=$WHITE                                            \
 
 )
