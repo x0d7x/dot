@@ -2,4 +2,4 @@
 --ignore=.stowrc
 --ignore=ReadMe.md
 --ignore=my_brew.txt
-
+--ignore=nvim.bak
