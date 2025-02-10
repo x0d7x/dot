@@ -5,14 +5,15 @@
 
 [![my work Env ScreenShoot](https://i.imgur.com/vbaa9uQ.jpeg)](https://i.imgur.com/vbaa9uQ.jpeg)
 
-| app           | name        |
-| ------------- | ----------- |
-| browser       | zen-browser |
-| pkg manger    | homebrew    |
-| code Editor   | neovim      |
-| tiling window | AeroSpace   |
-| terminal      | ghostty     |
-| js runtime    | deno        |
+| app           | name                 |
+| ------------- | -------------------- |
+| browser       | zen-browser && brave |
+| pkg manger    | homebrew             |
+| code Editor   | neovim               |
+| tiling window | AeroSpace            |
+| terminal      | ghostty              |
+| js runtime    | deno && bun          |
+| menue Bar     | sketchyBar           |
 
 ### recomanded tools ⬇︎
 
@@ -26,8 +27,8 @@
 | ripgrep  |
 | yazi     |
 
-- [Neovim](https://github.com/neovim/neovim) > neovim (https://neovim.io/)
-- [NvChad](https://github.com/NvChad/NvChad) > Blazing fast Neovim config
+- [Neovim](https://github.com/neovim/neovim) > neovim (<https://neovim.io/>)
+- [LazyVim](https://www.lazyvim.org) > neovim Dist.
   providing solid defaults and a beautiful UI, enhancing your neovim experience.
 - [brew.sh](https://github.com/Homebrew/brew) > The missing package manager for
   macOS.

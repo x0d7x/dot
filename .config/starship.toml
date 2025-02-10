@@ -26,12 +26,12 @@ format = "on [$symbol$branch(:$remote_branch)]($style) "
 always_show_remote = true
 style = "fg:green"
 [git_status]
-ahead = ' ⇡${count}'
-diverged = ' ⇕⇡${ahead_count}⇣${behind_count}'
-behind = ' ⇣${count}'
-stashed = " +${count}"
-modified = " 📝${count}"
-staged = " ⇞${count}"
+ahead = '⇡ ${count}'
+diverged = ' ⇕⇡ ${ahead_count}⇣${behind_count}'
+behind = '⇣ ${count}'
+stashed = "+ ${count}"
+modified = "📝 ${count}"
+staged = "⇞ ${count}"
 [cmd_duration]
 format = '󰓅 [$duration]($style) '
 [git_state]

@@ -1,7 +1,7 @@
 #term = xterm-ghostty
-font-family = "Hack Nerd Font"
+font-family = "ZedMono Nerd Font"
 font-size = 18
-background-opacity = 0.84
+background-opacity = 0.90
 background-blur-radius = 20
 theme = SleepyHollow  
 font-thicken = true

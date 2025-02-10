@@ -1,10 +1,24 @@
 return {
   "folke/snacks.nvim",
   opts = {
+    dashboard = {
+      preset = {
+        header = [[
+░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░             ░▒▓█▓▒░░▒▓███████▓▒░ 
+░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░             ░▒▓█▓▒░▒▓█▓▒░        
+░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░             ░▒▓█▓▒░▒▓█▓▒░        
+░▒▓██████▓▒░ ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓███████▓▒░              ░▒▓█▓▒░░▒▓██████▓▒░  
+░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░ 
+░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓██▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░ 
+░▒▓█▓▒░       ░▒▓██████▓▒░ ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓██▓▒░░▒▓██████▓▒░░▒▓███████▓▒░  
+                                                                                       
+             ]],
+      },
+    },
     picker = {
       layout = {
         cycle = false,
-        preset = "ivy",
+        preset = "vertical",
       },
       matcher = {
         frecency = true,
@@ -42,12 +56,23 @@ return {
       function()
         Snacks.picker.files({
           layout = "vertical",
+          -- on_show = function()
+          --   vim.cmd.stopinsert()
+          -- end,
+        })
+      end,
+      desc = "Find Files (Root Dir)",
+    },
+    {
+      "<leader>,",
+      function()
+        Snacks.picker.buffers({
           on_show = function()
             vim.cmd.stopinsert()
           end,
         })
       end,
-      desc = "Find Files (Root Dir)",
+      desc = "open buffers pick",
     },
   },
 }

@@ -28,7 +28,7 @@ return {
   --       telescope = true,
   --       lazy = true,
   --     },
-  --     variant = "summer", -- "spring" | "summer" | "autumn" | "winter" (default)
+  --     variant = "spring", -- "spring" | "summer" | "autumn" | "winter" (default)
   --   },
   --   config = function(_, opts)
   --     vim.o.termguicolors = true
