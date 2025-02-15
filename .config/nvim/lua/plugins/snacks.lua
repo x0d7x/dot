@@ -18,7 +18,7 @@ return {
     picker = {
       layout = {
         cycle = false,
-        preset = "vertical",
+        preset = "ivy",
       },
       matcher = {
         frecency = true,

@@ -11,6 +11,22 @@ return {
   { "ellisonleao/gruvbox.nvim", opts = {
     transparent_mode = true,
   } },
+  -- {
+  --   "rebelot/kanagawa.nvim",
+  --   opts = {
+  --     transparent = true, -- do not set background color
+  --     -- setup must be called before loading
+  --     -- theme = "dragon",
+  --     background = {
+  --       dark = "dragon",
+  --     },
+  --   },
+  --   config = function(_, opts)
+  --     vim.o.background = "dark"
+  --     require("kanagawa").setup(opts)
+  --     vim.cmd.colorscheme("kanagawa")
+  --   end,
+  -- },
   --
   -- -- Configure LazyVim to load gruvbox
   -- {
