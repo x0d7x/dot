@@ -25,37 +25,39 @@ return {
       },
     }
   end,
+  -- make the last window expand to the eend of window
+  -- by https://github.com/0xwal
   init = function()
+    local function update_width_of_last_window()
+      local state = MiniFiles.get_explorer_state()
+      if not state then
+        return
+      end
+
+      local windows = state.windows
+      if #windows == 1 then
+        return
+      end
+
+      local lastWindow = windows[#windows]
+      local totalWidth = 0
+      for _, win in ipairs(windows) do
+        if lastWindow.win_id ~= win.win_id then
+          local config = vim.api.nvim_win_get_config(win.win_id)
+          totalWidth = totalWidth + config.width + 2
+          config.zindex = 1
+          vim.api.nvim_win_set_config(win.win_id, config)
+        end
+      end
+      local width = math.abs(vim.o.columns - (totalWidth + 2))
+      local config = vim.api.nvim_win_get_config(lastWindow.win_id)
+      config.width = width
+      vim.api.nvim_win_set_config(lastWindow.win_id, config)
+    end
     vim.api.nvim_create_autocmd("User", {
       pattern = "MiniFilesWindowUpdate",
-      callback = function(args)
-        local win_id = args.data.win_id
-
-        -- Customize window-local settings
-        local config = vim.api.nvim_win_get_config(win_id)
-        config.border, config.title_pos = "rounded", "right"
-        -- config.row = vim.o.lines - 2
-        vim.api.nvim_win_set_config(win_id, config)
-
-        local state = MiniFiles.get_explorer_state()
-
-        if not state or not state.windows then
-          print(vim.json.encode(state))
-          return
-        end
-
-        local totalWidth = 0
-
-        for _, win in ipairs(state.windows) do
-          local width = vim.api.nvim_win_get_width(win.win_id)
-          totalWidth = totalWidth + width
-        end
-
-        local lastWindow = state.windows[#state.windows]
-
-        local restWidth = vim.o.columns - totalWidth
-
-        vim.api.nvim_win_set_width(lastWindow.win_id, restWidth)
+      callback = function(_)
+        update_width_of_last_window()
       end,
     })
   end,

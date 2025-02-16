@@ -15,7 +15,7 @@ $cmd_duration\
 $golang\
 $line_break\
 $character"""
-
+command_timeout = 300
 [character]
 success_symbol = '[🚀 ⇉](bold yellow) '
 error_symbol = '[❌ ⇉](bold red) '

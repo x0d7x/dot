@@ -83,12 +83,31 @@ if status is-interactive
         fd --type=d --hidden --exclude .git . "$argv[1]"
     end
     # Zoxide initialization
-    zoxide init fish | source
-    ## The Fuck initialization
-    thefuck --alias fk | source
-    ## FZF key bindings and fuzzy completion
-    fzf --fish | source
-    #startship
-    starship init fish | source
+    # Lazy-load starship
+    function starship_init --on-event fish_prompt
+        starship init fish | source
+        functions --erase starship_init
+    end
+
+    # Lazy-load thefuck
+    function fk
+        if not type -q __thefuck_init
+            thefuck --alias fk | source
+            __thefuck_init
+        end
+        fk $argv
+    end
+
+    # Lazy-load fzf
+    function fzf_init --on-event fish_prompt
+        fzf --fish | source
+        functions --erase fzf_init
+    end
+
+    # Lazy-load zoxide
+    function zoxide_init --on-event fish_prompt
+        zoxide init fish | source
+        functions --erase zoxide_init
+    end
 
 end
