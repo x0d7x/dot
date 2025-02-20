@@ -4,7 +4,7 @@ font-size = 17
 background-opacity = 0.90
 background-blur-radius = 20
 # themes i Like [Banana Blueberry,Everforest Dark - Hard,Batman,CrayonPonyFish,duckbones,Builtin Tango Dark,embers-dark,CGA,Earthsong,Espresso Libre]
-theme = Batman
+theme = Espresso Libre
 font-thicken = true
 # command = /usr/local/bin/fish --login --interactive
 cursor-text = black

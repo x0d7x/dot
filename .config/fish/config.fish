@@ -1,34 +1,33 @@
 # Commands to run in interactive sessions can go here
-# Aliases
-alias ls="eza --all --icons=always --long --git --color=always --no-user --no-filesize --no-time"
-alias c="clear"
-alias e="exit"
-alias n="nvim"
-alias lg="lazygit"
-alias cat="bat"
-alias lsa='ls -lah'
-alias l='ls -lah'
-alias ll='ls -lh'
-alias la='ls -lAh'
-alias tok='tokei'
-alias gcn="git clone --no-checkout"
-alias gsi="git sparse-checkout init"
-alias gss="git sparse-checkout set"
-alias g="z"
-alias gi="zi"
-# Abbreviations
-abbr --add br brew
-abbr --add bri "brew install"
-abbr --add dn deno
-abbr --add dr "deno run"
-abbr --add ni "bun i"
-abbr --add nr "bun run"
-# Environment variables
-set -gx EDITOR nvim
-set -gx VISUAL "$EDITOR"
-set -gx fish_history_size 1000
-set -U fish_greeting
 if status is-interactive
+    # Aliases
+    set -U fish_greeting
+    alias ls="eza --all --icons=always --long --git --color=always --no-user --no-filesize --no-time"
+    alias c="clear"
+    alias e="exit"
+    alias n="nvim"
+    alias lg="lazygit"
+    alias cat="bat"
+    alias lsa='ls -lah'
+    alias l='ls -lah'
+    alias ll='ls -lh'
+    alias la='ls -lAh'
+    alias tok='tokei'
+    alias gcn="git clone --no-checkout"
+    alias gsi="git sparse-checkout init"
+    alias gss="git sparse-checkout set"
+    alias g="z"
+    alias gi="zi"
+    # Abbreviations
+    abbr --add br brew
+    abbr --add bri "brew install"
+    abbr --add dn deno
+    abbr --add dr "deno run"
+    abbr --add ni "bun i"
+    abbr --add nr "bun run"
+    # Environment variables
+    set -gx EDITOR nvim
+    set -gx VISUAL "$EDITOR"
     #yazi 
     function zz
         set tmp (mktemp -t "yazi-cwd.XXXXXX")
@@ -73,22 +72,46 @@ if status is-interactive
     #set -gx FZF_DEFAULT_COMMAND "fd --hidden --strip-cwd-prefix --exclude .git"
     #set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
     #set -gx FZF_ALT_C_COMMAND "fd --type=d --hidden --strip-cwd-prefix --exclude .git"
-
     # FZF path and directory completion functions
     function _fzf_compgen_path
         fd --hidden --exclude .git . "$argv[1]"
     end
-
     function _fzf_compgen_dir
         fd --type=d --hidden --exclude .git . "$argv[1]"
     end
-    # Zoxide initialization
+    #open tmux session in fzf
+    function tz
+        set session $(tmux list-sessions | cut -d ':' -f 1 | fzf)
+        if test -n "$session"
+            tmux attach-session -t $session
+        else
+            echo "No session selected"
+        end
+    end
+    # opeen files or dir iin nvim
+    function nz
+        # get first argument
+        # if it is a directory, cd into it
+        set -l dir $argv[1]
+        # check if it is empty
+        if test -z "$dir"
+        else
+            z $dir
+        end
+        set file $(fzf)
+        if test -n "$file"
+            nvim $file
+        else if test -n "$dir"
+            cd $dir
+        else
+            echo "No file selected"
+        end
+    end
     # Lazy-load starship
     function starship_init --on-event fish_prompt
         starship init fish | source
         functions --erase starship_init
     end
-
     # Lazy-load thefuck
     function fk
         if not type -q __thefuck_init

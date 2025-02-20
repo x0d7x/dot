@@ -133,7 +133,7 @@ alt-m = ['workspace M', 'exec-and-forget open -a /Applications/Stremio.app']
 alt-t = ['workspace T', 'exec-and-forget open -a /Applications/Ghostty.app']
 alt-b = [
     'workspace B',
-    'exec-and-forget open -a /Applications/Brave\ Browser.app',
+    'exec-and-forget open -a /Applications/Zen\ Browser.app',
 ]
 alt-r = 'macos-native-fullscreen'
 alt-f = 'fullscreen'
