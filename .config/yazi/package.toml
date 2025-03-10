@@ -1,5 +1,19 @@
-[plugin]
-deps = [{ use = "yazi-rs/plugins:no-status", rev = "7afba3a" }]
+[[plugin.deps]]
+use = "yazi-rs/plugins:no-status"
+rev = "7afba3a"
+hash = "f4d72c29cb0ddd9605e78f234216fd4e"
 
-[flavor]
-deps = [{ use = "PinThePenguine/sunset", rev = "181acd4" }, { use = "kmlupreti/ayu-dark", rev = "441a38d" }, { use = "marcosvnmelo/kanagawa-dragon", rev = "2ddff30" }]
+[[flavor.deps]]
+use = "PinThePenguine/sunset"
+rev = "181acd4"
+hash = "cc4c39af7098f02c42fec223fc1fc967"
+
+[[flavor.deps]]
+use = "kmlupreti/ayu-dark"
+rev = "441a38d"
+hash = "80fbe38dcb5885ab03d1bf84e03da9d2"
+
+[[flavor.deps]]
+use = "marcosvnmelo/kanagawa-dragon"
+rev = "2ddff30"
+hash = "c9e9fcf6b11c9fe63d4ac7c9408f628c"

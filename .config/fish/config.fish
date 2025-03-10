@@ -19,6 +19,7 @@ if status is-interactive
     alias g="z"
     alias gi="zi"
     # Abbreviations
+    abbr --add clone 'git clone'
     abbr --add br brew
     abbr --add bri "brew install"
     abbr --add dn deno
