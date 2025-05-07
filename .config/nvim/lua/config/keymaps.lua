@@ -14,3 +14,7 @@ map("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
 map("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>")
 map("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>")
 map("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
+map("n", "gK", function()
+  local new_config = not vim.diagnostic.config().virtual_lines
+  vim.diagnostic.config({ virtual_lines = new_config })
+end, { desc = "Toggle diagnostic virtual_lines" })

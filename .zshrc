@@ -1,5 +1,5 @@
 #!/bin/zsh
-# zmodload zsh/zprof
+zmodload zsh/zprof
 # start starship 
 eval "$(starship init zsh)"
 # --------------aliases----------------
@@ -109,3 +109,5 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
  # --------- Groq Api ------------ 
  export GROQ_API_KEY= 
  # zprof
+# mynav path export
+export PATH="$PATH:$HOME/.mynav"

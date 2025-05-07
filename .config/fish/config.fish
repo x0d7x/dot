@@ -20,16 +20,30 @@ if status is-interactive
     alias gi="zi"
     # Abbreviations
     abbr --add clone 'git clone'
+    # brew 
     abbr --add br brew
     abbr --add bri "brew install"
+    # deno
     abbr --add dn deno
     abbr --add dr "deno run"
-    abbr --add ni "bun i"
-    abbr --add nr "bun run"
+    # bun
+    abbr --add bi "bun i"
+    abbr --add bx bunx
+    abbr --add b bun
+    abbr --add ba "bun add"
+    abbr --add bu "bun update"
+    abbr --add brm "bun remove"
+    abbr --add brd "bun run dev"
+    abbr --add brb "bun run build"
+    # codex
+    abbr --add dx open-codex
     # Environment variables
     set -gx EDITOR nvim
     set -gx VISUAL "$EDITOR"
-    #yazi 
+    set -gx GOOGLE_GENERATIVE_AI_API_KEY (pass show google/geminiApiKey)
+    set -gx GEMINI_API_KEY (pass show google/geminiApiKey)
+    set -gx GITHUB_PERSONAL_ACCESS_TOKEN (pass show github/GITHUB_PERSONAL_ACCESS_TOKEN)
+    #yazi
     function zz
         set tmp (mktemp -t "yazi-cwd.XXXXXX")
         yazi $argv --cwd-file="$tmp"
@@ -40,6 +54,7 @@ if status is-interactive
         end
         rm -f -- "$tmp"
     end
+    fish_add_path "/Users/dullx/.bun/bin"
     # FZF preview function
     #function show_file_or_dir_preview
     #    if test -d $argv[1]

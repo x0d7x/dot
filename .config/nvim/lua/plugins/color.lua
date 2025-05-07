@@ -8,9 +8,10 @@ return {
   --   },
   -- },
   -- add gruvbox
-  { "ellisonleao/gruvbox.nvim", opts = {
-    transparent_mode = true,
-  } },
+  -- { "ellisonleao/gruvbox.nvim", opts = {
+  --   transparent_mode = true,
+  --   priority = 1000,
+  -- } },
   -- {
   --   "rebelot/kanagawa.nvim",
   --   opts = {
@@ -56,7 +57,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "gruvbox",
+      colorscheme = "taake",
     },
   },
 }
