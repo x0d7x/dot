@@ -1,9 +1,9 @@
-### My work Environment i use for Web Dev
+### My MacOs raicing Env 💻
 
 > [!NOTE]
 > ./tmuxStart.sh is making sure if tmux is open when lunch the shell
 
-[![my work Env ScreenShoot](https://i.imgur.com/vbaa9uQ.jpeg)](https://i.imgur.com/vbaa9uQ.jpeg)
+[![my work Env ScreenShoot](https://i.imgur.com/bx6niyH.jpeg)](https://i.imgur.com/bx6niyH.jpeg)
 
 | app           | name                       |
 | ------------- | -------------------------- |
