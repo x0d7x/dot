@@ -5,15 +5,15 @@
 
 [![my work Env ScreenShoot](https://i.imgur.com/vbaa9uQ.jpeg)](https://i.imgur.com/vbaa9uQ.jpeg)
 
-| app           | name                 |
-| ------------- | -------------------- |
-| browser       | zen-browser && brave |
-| pkg manger    | homebrew             |
-| code Editor   | neovim               |
-| tiling window | AeroSpace            |
-| terminal      | ghostty              |
-| js runtime    | deno && bun          |
-| menue Bar     | sketchyBar           |
+| app           | name                       |
+| ------------- | -------------------------- |
+| browser       | zen-browser && qutebrowser |
+| pkg manger    | homebrew                   |
+| code Editor   | neovim                     |
+| tiling window | AeroSpace                  |
+| terminal      | ghostty                    |
+| js runtime    | deno && bun                |
+| menue Bar     | sketchyBar                 |
 
 ### recomanded tools ⬇︎
 
@@ -42,6 +42,8 @@
   i3-like tiling window manager for macOS.
 - [zen-browser](https://github.com/zen-browser/www) > zen-browser as default
   browser
+- [qutebrowser](https://github.com/qutebrowser/qutebrowser) > A keyboard driven,
+  modern, secure, extensible and innovative web browser.
 
   ### install homebrew Pkgs && dotfiles repe
 
