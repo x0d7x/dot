@@ -43,6 +43,7 @@ if status is-interactive
     set -gx GOOGLE_GENERATIVE_AI_API_KEY (pass show google/geminiApiKey)
     set -gx GEMINI_API_KEY (pass show google/geminiApiKey)
     set -gx GITHUB_PERSONAL_ACCESS_TOKEN (pass show github/GITHUB_PERSONAL_ACCESS_TOKEN)
+    export MANPAGER="nvim +Man!"
     #yazi
     function zz
         set tmp (mktemp -t "yazi-cwd.XXXXXX")
@@ -150,3 +151,4 @@ if status is-interactive
     end
 
 end
+eval (brew shellenv)
