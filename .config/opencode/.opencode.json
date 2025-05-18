@@ -1,0 +1,31 @@
+{
+  "mcpServers": {
+    "github": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "command": "bunx",
+      "env": [
+        "$GITHUB_PERSONAL_ACCESS_TOKEN"
+      ],
+      "type": "stdio"
+    }
+  },
+  "providers": {
+    "google": {
+      "apikey": "GEMINI_API_KEY",
+      "disabled": "false",
+      "model": "gemini-2.5-flash"
+    }
+  },
+  "shell": {
+    "args": [
+      "-l"
+    ],
+    "path": "/usr/local/bin/fish"
+  },
+  "tui": {
+    "theme": "gruvbox"
+  }
+}

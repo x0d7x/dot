@@ -42,7 +42,7 @@ if status is-interactive
     set -gx VISUAL "$EDITOR"
     set -gx GOOGLE_GENERATIVE_AI_API_KEY (pass show google/geminiApiKey)
     set -gx GEMINI_API_KEY (pass show google/geminiApiKey)
-    set -gx GITHUB_PERSONAL_ACCESS_TOKEN (pass show github/GITHUB_PERSONAL_ACCESS_TOKEN)
+    export GITHUB_PERSONAL_ACCESS_TOKEN="$(pass show github/GITHUB_PERSONAL_ACCESS_TOKEN)"
     export MANPAGER="nvim +Man!"
     #yazi
     function zz
@@ -152,3 +152,6 @@ if status is-interactive
 
 end
 eval (brew shellenv)
+if test -z "$TMUX"
+    exec ~/tmuxStart.sh
+end

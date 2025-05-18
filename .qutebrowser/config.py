@@ -16,6 +16,7 @@ c.colors.statusbar.passthrough.fg = "#569cd6" # Example color
 c.colors.statusbar.url.fg = "#4ec9b0" # Example color
 c.colors.statusbar.url.success.https.fg = "#4ec9b0" # Example color
 c.colors.statusbar.url.hover.fg = "#c586c0" # Example color
+c.colors.statusbar.insert.bg = "#c586c0" # 
 # c.statusbar.show = "always"
 c.colors.tabs.even.bg = "#00000000" # transparent tabs!!
 c.colors.tabs.odd.bg = "#00000000"
@@ -73,6 +74,7 @@ c.url.searchengines = {
         'DEFAULT': 'https://duckduckgo.com/?q={}',
         '!gh': 'https://github.com/search?o=desc&q={}&s=stars',
         '!yt': 'https://www.youtube.com/results?search_query={}',
+    '!g': 'https://www.google.com/search?q={}',
         }
 
 c.completion.open_categories = ['searchengines', 'quickmarks', 'bookmarks', 'history', 'filesystem']
@@ -92,14 +94,16 @@ config.bind('pP', 'open -- {primary}')
 config.bind('pp', 'open -- {clipboard}')
 config.bind('pt', 'open -t -- {clipboard}')
 config.bind('qm', 'macro-record')
-config.bind('<ctrl-y>', 'spawn --userscript ytdl.sh') # Check if ytdl.sh is compatible with macOS or needs modification
+# config.bind('<ctrl-y>', 'spawn --userscript ytdl.sh') # Check if ytdl.sh is compatible with macOS or needs modification
 config.bind('tT', 'config-cycle tabs.position top left')
 config.bind('gJ', 'tab-move +')
 config.bind('gK', 'tab-move -')
 config.bind('gm', 'tab-move')
 config.bind('gn', ' tab-next ')
-config.bind('X', ' undo ')
 config.bind('gp', ' tab-prev ') 
+config.bind('X', ' undo ')
+config.bind('qq', 'mode-leave', mode='insert')
+config.bind('<Backspace>', 'mode-leave', mode='hint')
 # dark mode setup
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
@@ -140,22 +144,22 @@ config.set("content.cookies.store", True)
 # If you want additional blocklists, you can get the python-adblock package, or you can uncomment the ublock lists here.
 c.content.blocking.enabled = True
 # c.content.blocking.method = 'adblock' # uncomment this if you install python-adblock
-# c.content.blocking.adblock.lists = [
-#         "https://github.com/ewpratten/youtube_ad_blocklist/blob/master/blocklist.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/legacy.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2021.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2022.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2023.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2024.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badware.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances-cookies.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances-others.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/quick-fixes.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt"]
+c.content.blocking.adblock.lists = [
+        "https://github.com/ewpratten/youtube_ad_blocklist/blob/master/blocklist.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/legacy.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2021.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2022.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2023.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2024.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badware.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances-cookies.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances-others.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/quick-fixes.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt"]
