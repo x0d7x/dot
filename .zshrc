@@ -4,8 +4,7 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-# Source/Load zinit & zsh-defer
+# Source/Load zinit 
 source /usr/local/opt/zinit/zinit.zsh
 #######################################################
 # ZSH Basic Options
@@ -57,6 +56,7 @@ setopt hist_find_no_dups
 #######################################################
 # Shell integrations
 #######################################################
+#### --- p10k ---
 zinit light romkatv/powerlevel10k
 # zinit ice wait"1" lucid 
 # zinit snippet OMZ::plugins/starship/starship.plugin.zsh

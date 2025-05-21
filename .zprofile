@@ -13,4 +13,7 @@ path=(
   $path
 )
 export PATH="${(j/:/)path}"
-eval "$(/usr/local/bin/brew shellenv)"
+if [[ -f "/usr/local/bin/brew" ]] then
+  # If you're using macOS, you'll want this enabled
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
