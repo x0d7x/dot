@@ -11,7 +11,7 @@
 | pkg manger    | homebrew                   |
 | code Editor   | neovim                     |
 | tiling window | AeroSpace                  |
-| terminal      | ghostty                    |
+| terminal      | kitty                      |
 | js runtime    | deno && bun                |
 | menue Bar     | sketchyBar                 |
 
@@ -32,9 +32,7 @@
   providing solid defaults and a beautiful UI, enhancing your neovim experience.
 - [brew.sh](https://github.com/Homebrew/brew) > The missing package manager for
   macOS.
-- [ghostty](https://github.com/wez/wezterm) > 👻 Ghostty is a fast,
-  feature-rich, and cross-platform terminal emulator that uses platform-native
-  UI and GPU acceleration.
+- [kitty](https://github.com/kovidgoyal/kitty) > A cross-platform, fast, feature full, GPU based terminal emulator.
 - [tmux](https://github.com/tmux/tmux) > A terminal multiplexer.
 - [starship](https://github.com/starship/starship) > ☄🌌️ The minimal,
   blazing-fast, and infinitely customizable prompt for any shell!

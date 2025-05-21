@@ -1,6 +1,5 @@
 # Source/Load zinit & zsh-defer
 source /usr/local/opt/zinit/zinit.zsh
-
 #######################################################
 # ZSH Basic Options
 #######################################################
@@ -51,19 +50,19 @@ setopt hist_find_no_dups
 #######################################################
 # Shell integrations
 #######################################################
-zinit ice wait"1" lucid atload'eval "$(/usr/local/bin/starship init zsh)"'
+zinit ice wait"1" lucid 
 zinit snippet OMZ::plugins/starship/starship.plugin.zsh
 ### --- zoxide ---
-zinit ice wait"1" lucid atload'eval "$(/usr/local/bin/zoxide init zsh)"'
+zinit ice wait"1" lucid 
 zinit snippet OMZ::plugins/zoxide/zoxide.plugin.zsh
 ### --- fast-syntax-highlighting ---
 zinit ice wait"1" lucid
 zinit light zdharma-continuum/fast-syntax-highlighting
 ### --- thefuck ---
-zinit ice wait"2" lucid atload'eval "$(/usr/local/bin/thefuck --alias )"'
+zinit ice wait"2" lucid 
 zinit snippet OMZ::plugins/thefuck/thefuck.plugin.zsh
 ### --- zsh-autosuggestions ---
-zinit ice wait"1" lucid
+zinit ice wait"1" lucid 
 zinit light zsh-users/zsh-autosuggestions
 ### --- zsh-completions ---
 zinit ice wait"1" lucid
@@ -82,22 +81,25 @@ autoload -Uz compinit &&  compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --tree --color=always $realpath'
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
 #######################################################
 # Functions
 #######################################################
+# Load secrets once from pass
 function _load_secrets() {
-  export GEMINI_API_KEY="$(pass show google/geminiApiKey)"
-  export GITHUB_PERSONAL_ACCESS_TOKEN="$(pass show github/GITHUB_PERSONAL_ACCESS_TOKEN)"
+  export GEMINI_API_KEY="$(command pass show google/geminiApiKey)"
+  export GITHUB_PERSONAL_ACCESS_TOKEN="$(command pass show github/GITHUB_PERSONAL_ACCESS_TOKEN)"
 }
+
+# Override pass command to lazy-load secrets
 function pass() {
   if [[ -z $GEMINI_API_KEY || -z $GITHUB_PERSONAL_ACCESS_TOKEN ]]; then
     _load_secrets
   fi
-  unset -f pass
-  command pass "$@"
+  unset -f pass  # remove this override
+  command pass "$@"  # run actual pass
 }
 function zz() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
