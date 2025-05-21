@@ -1,27 +1,97 @@
-#!/bin/zsh
- # zmodload zsh/zprof
-# ─── Load zsh-defer ────────────────────────────────────────────────
-source ~/.local/share/zsh-defer/zsh-defer.plugin.zsh
-# ─── Lazy-load zsh-autosuggestions ───────────────
-zsh-defer source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# ─── Lazy-load zsh-syntax-highlighting ───────────
-zsh-defer source /usr/local/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-# defer plugin-like tools
-zsh-defer eval "$(zoxide init zsh)"
-zsh-defer eval "$(thefuck --alias)"
-zsh-defer eval "$(fzf --zsh)"
-# ─── Defer: Prompt and Tools ───────────────────────────────────────
-eval "$(starship init zsh)"
-# Avoid slow completion on startup, defer it
-# export ZSH_DISABLE_COMPFIX=true
-zsh-defer compinit 
-zsh-defer source ~/.zsh/fzf.zsh
-zsh-defer source ~/.zsh/aliases.zsh
+# Source/Load zinit & zsh-defer
+source /usr/local/opt/zinit/zinit.zsh
+
+#######################################################
+# ZSH Basic Options
+#######################################################
+setopt autocd
+setopt correct
+setopt interactivecomments
+setopt magicequalsubst
+setopt nonomatch
+setopt notify
+setopt numericglobsort
+setopt promptsubst
+
+#######################################################
+# Environment Variables
+#######################################################
+export EDITOR=nvim
+export VISUAL=nvim
+export SUDO_EDITOR=nvim
+export FCEDIT=nvim
+export TERMINAL=kitty
+
+#######################################################
+# ZSH Keybindings
+#######################################################
+bindkey -v
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+########################################################
+# History Configuration
+#######################################################
+
+HISTSIZE=10000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+#######################################################
+# Aliases, fzf setup
+#######################################################
+ source ~/.zsh/aliases.zsh
+ source ~/.zsh/fzf.zsh
+#######################################################
+# Shell integrations
+#######################################################
+zinit ice wait"1" lucid atload'eval "$(/usr/local/bin/starship init zsh)"'
+zinit snippet OMZ::plugins/starship/starship.plugin.zsh
+### --- zoxide ---
+zinit ice wait"1" lucid atload'eval "$(/usr/local/bin/zoxide init zsh)"'
+zinit snippet OMZ::plugins/zoxide/zoxide.plugin.zsh
+### --- fast-syntax-highlighting ---
+zinit ice wait"1" lucid
+zinit light zdharma-continuum/fast-syntax-highlighting
+### --- thefuck ---
+zinit ice wait"2" lucid atload'eval "$(/usr/local/bin/thefuck --alias )"'
+zinit snippet OMZ::plugins/thefuck/thefuck.plugin.zsh
+### --- zsh-autosuggestions ---
+zinit ice wait"1" lucid
+zinit light zsh-users/zsh-autosuggestions
+### --- zsh-completions ---
+zinit ice wait"1" lucid
+zinit light zsh-users/zsh-completions
+### --- fzf ---
+zinit ice wait"1" lucid atload'source /usr/local/opt/fzf/shell/key-bindings.zsh; source /usr/local/opt/fzf/shell/completion.zsh'
+zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh
+### --- fzf tab --- 
+zinit ice wait"1" lucid
+zinit light Aloxaf/fzf-tab
+#######################################################
+# Completion styling (after plugin setup)
+#######################################################
+autoload -Uz compinit &&  compinit
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+
+#######################################################
+# Functions
+#######################################################
 function _load_secrets() {
   export GEMINI_API_KEY="$(pass show google/geminiApiKey)"
   export GITHUB_PERSONAL_ACCESS_TOKEN="$(pass show github/GITHUB_PERSONAL_ACCESS_TOKEN)"
 }
-# Load them only when pass is first called
 function pass() {
   if [[ -z $GEMINI_API_KEY || -z $GITHUB_PERSONAL_ACCESS_TOKEN ]]; then
     _load_secrets
@@ -29,7 +99,6 @@ function pass() {
   unset -f pass
   command pass "$@"
 }
-# yazi setup for CWD when exit 
 function zz() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
@@ -37,24 +106,4 @@ function zz() {
 		builtin cd -- "$cwd"
 	fi
 	rm -f -- "$tmp"
-}
-# history setup
-HISTFILE=$HOME/.zhistory
-SAVEHIST=1000
-HISTSIZE=999
-setopt share_history hist_expire_dups_first hist_ignore_dups hist_verify
-setopt NO_HASH_LIST_ALL NO_AUTO_NAME_DIRS
-# keymaps
-bindkey '^[[A' history-search-backward
-bindkey '^[[B' history-search-forward
-# env
-export EDITOR=nvim
-export VISUAL="$EDITOR"
-export skip_global_compinit=1
-# Man pager
-export MANPAGER="nvim +Man!"
-# cheat sheet
-function ch ()
-{
- curl https://cht.sh/$1;   
 }
