@@ -2,8 +2,9 @@
 format = """
 $directory\
 $git_branch\
+$character"""
+right_format = """
 $git_status\
-$fill\
 $package\
 $python\
 $php\
@@ -11,10 +12,9 @@ $rust\
 $deno\
 $bun\
 $lua\
-$cmd_duration\
 $golang\
-$line_break\
-$character"""
+$cmd_duration"""
+add_newline = true
 command_timeout = 300
 [character]
 success_symbol = '[🚀 ⇉](bold yellow) '
@@ -49,17 +49,10 @@ detect_folders = ['node_modules']
 [deno]
 format = ' [🦕 $version](green bold) '
 detect_files = [
-    'package.json',
-    '.node-version',
     'deno.json',
     'deno.jsonc',
     'deno.lock',
-    'mod.ts',
-    'mod.js',
-    'deps.ts',
-    'deps.js',
 ]
-detect_folders = ['node_modules']
 [package]
 symbol = "📦 "
 style = "bold blue"

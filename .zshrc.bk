@@ -1,5 +1,9 @@
 #!/bin/zsh
  # zmodload zsh/zprof
+ # ⛔ Exit early if not inside tmux (avoid loading plugins/tools outside tmux)
+if [[ -z "$TMUX" ]]; then
+  return
+fi
 # ─── Load zsh-defer ────────────────────────────────────────────────
 source ~/.local/share/zsh-defer/zsh-defer.plugin.zsh
 # ─── Lazy-load zsh-autosuggestions ───────────────
@@ -58,3 +62,4 @@ function ch ()
 {
  curl https://cht.sh/$1;   
 }
+

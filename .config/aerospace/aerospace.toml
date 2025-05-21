@@ -11,7 +11,7 @@ after-login-command = []
 
 after-startup-command = [
     # (format: 0xAARRGGBB)
-    'exec-and-forget borders active_color=0xff742592 inactive_color=0xff494d64 width=4.0 style=round blur_radis=5.0',
+    'exec-and-forget borders active_color=0xff742592 inactive_color=0xff494d64 width=0.5 style=round blur_radis=8.0',
     'exec-and-forget sketchybar',
 
 ]
@@ -135,15 +135,11 @@ alt-b = [
     'workspace B',
     # 'exec-and-forget open -a /Applications/Brave\ Browser.app',
     # 'exec-and-forget open -a /Applications/Zen\ Browser.app',
-    'exec-and-forget open -a /Applications/qutebrowser.app',
+    # 'exec-and-forget open -a /Applications/qutebrowser.app',
 ]
 alt-r = 'macos-native-fullscreen'
 alt-f = 'fullscreen'
-alt-n = [
-    'workspace T',
-    'exec-and-forget open -a /Applications/Ghostty.app',
-    # 'exec-and-forget bash ~/dotfiles/notes.sh',
-]
+alt-n = ['workspace N']
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
