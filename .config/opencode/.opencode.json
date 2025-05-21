@@ -1,14 +1,9 @@
 {
   "mcpServers": {
     "github": {
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-github"
-      ],
+      "args": ["-y", "@modelcontextprotocol/server-github"],
       "command": "bunx",
-      "env": [
-        "$GITHUB_PERSONAL_ACCESS_TOKEN"
-      ],
+      "env": ["$GITHUB_PERSONAL_ACCESS_TOKEN"],
       "type": "stdio"
     }
   },
@@ -20,12 +15,11 @@
     }
   },
   "shell": {
-    "args": [
-      "-l"
-    ],
-    "path": "/usr/local/bin/fish"
+    "args": ["-l"],
+    "path": "/bin/zsh"
   },
   "tui": {
     "theme": "gruvbox"
   }
 }
+
