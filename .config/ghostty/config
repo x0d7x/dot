@@ -1,23 +1,23 @@
 # term = xterm-ghostty
 font-family = "JetBrainsMono Nerd Font Mono"
 font-size = 15
-background-opacity = 0.8
-background-blur-radius = 20
-# themes i Like [Banana Blueberry,Everforest Dark - Hard,Batman,CrayonPonyFish,duckbones,Builtin Tango Dark,embers-dark,CGA,Earthsong,Espresso Libre, Adwaita Dark, 3024 Night, 0x96f, Adventure, flexoki-dark, Monokai Pro Ristretto]
-theme = flexoki-dark
-font-thicken = true
+background-opacity = 0.7
+background-blur-radius = 25
+# themes i Like [Banana Blueberry,Everforest Dark - Hard,Batman,CrayonPonyFish,duckbones,Builtin Tango Dark,embers-dark,CGA,Earthsong,Espresso Libre, Adwaita Dark, 3024 Night, 0x96f, Adventure, flexoki-dark, Monokai Pro Ristretto, embers-dark, Solarized Dark Higher Contrast]
+theme = Solarized Dark Higher Contrast
+# font-thicken = true
 # command = /usr/local/bin/zshln --login --interactive
 cursor-text = black
-cursor-color = yellow
+cursor-color = #D59B53
 window-padding-balance = true
 mouse-hide-while-typing = true
 macos-titlebar-style = hidden
 window-colorspace = "display-p3"
 confirm-close-surface = false
-initial-command = /bin/bash --login -c  "if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then tmux attach || tmux new -s Dev; else zsh; fi"
-# cursor-style-blink = true
+# initial-command = /bin/bash --login -c  "if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then tmux attach || tmux new -s Dev; else zsh; fi"
+cursor-style-blink = true
+shell-integration-features = no-cursor
 window-theme = ghostty
-shell-integration-features = true
 auto-update = check
 # custom-shader = ghostty-shaders/crt.glsl
 # custom-shader = shaders/geminiai.glsl

@@ -1,3 +1,7 @@
+# Automatically start tmux if not inside it
+if command -v tmux >/dev/null 2>&1 && [ -z "$TMUX" ]; then
+exec tmux attach-session -t Dev || exec tmux new-session -s Dev
+fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -6,6 +10,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 # Source/Load zinit 
 source /usr/local/opt/zinit/zinit.zsh
+
 #######################################################
 # ZSH Basic Options
 #######################################################
@@ -25,8 +30,22 @@ export EDITOR=nvim
 export VISUAL=nvim
 export SUDO_EDITOR=nvim
 export FCEDIT=nvim
-export TERMINAL=kitty
-
+export TERMINAL=ghostty
+# Set unique PATH entries with correct order
+typeset -U path
+path=(
+/usr/local/bin
+/usr/local/sbin
+$HOME/.bun/bin
+$HOME/.local/bin
+$HOME/.cargo/bin
+$path
+)
+export PATH="${(j/:/)path}"
+# Homebrew shell environment
+if [[ -f "/usr/local/bin/brew" ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
 #######################################################
 # ZSH Keybindings
 #######################################################
@@ -57,27 +76,28 @@ setopt hist_find_no_dups
 # Shell integrations
 #######################################################
 #### --- p10k ---
+zinit ice depth"1"  
 zinit light romkatv/powerlevel10k
 # zinit ice wait"1" lucid 
 # zinit snippet OMZ::plugins/starship/starship.plugin.zsh
 ### --- zoxide ---
 zinit ice wait"1" lucid 
-zinit snippet OMZ::plugins/zoxide/zoxide.plugin.zsh
+zinit snippet OMZP::zoxide
 ### --- fast-syntax-highlighting ---
 zinit ice wait"1" lucid
 zinit light zdharma-continuum/fast-syntax-highlighting
 ### --- thefuck ---
 zinit ice wait"2" lucid 
-zinit snippet OMZ::plugins/thefuck/thefuck.plugin.zsh
+zinit snippet OMZP::thefuck
 ### --- zsh-autosuggestions ---
-zinit ice wait"1" lucid 
+zinit ice wait"1" lucid
 zinit light zsh-users/zsh-autosuggestions
 ### --- zsh-completions ---
 zinit ice wait"1" lucid
 zinit light zsh-users/zsh-completions
 ### --- fzf ---
 zinit ice wait"1" lucid atload'source /usr/local/opt/fzf/shell/key-bindings.zsh; source /usr/local/opt/fzf/shell/completion.zsh'
-zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh
+zinit snippet OMZP::fzf
 ### --- fzf tab --- 
 zinit ice wait"1" lucid
 zinit light Aloxaf/fzf-tab
@@ -85,7 +105,7 @@ zinit light Aloxaf/fzf-tab
 # Completion styling (after plugin setup)
 #######################################################
 autoload -Uz compinit &&  compinit
-
+zinit cdreplay -q
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
@@ -120,3 +140,4 @@ function zz() {
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
