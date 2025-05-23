@@ -16,7 +16,7 @@
     select_current_song_on_change: true,
     album_art: (
         method: Auto,
-        max_size_px: (width: 1000, height: 1000),
+        max_size_px: (width: 600, height: 600),
         disabled_protocols: ["http://", "https://"],
         vertical_align: Center,
         horizontal_align: Center,

@@ -135,7 +135,7 @@ alt-b = [
     'workspace B',
     # 'exec-and-forget open -a /Applications/Brave\ Browser.app',
     # 'exec-and-forget open -a /Applications/Zen\ Browser.app',
-    # 'exec-and-forget open -a /Applications/qutebrowser.app',
+    'exec-and-forget open -a /Applications/qutebrowser.app',
 ]
 alt-r = 'macos-native-fullscreen'
 alt-f = 'fullscreen'
