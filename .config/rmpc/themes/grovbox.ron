@@ -10,20 +10,20 @@
         direction: Vertical,
     panes: [
     (
-    size: "8", 
+    size: "9", 
     borders: "ALL",
     pane: Split(
     direction: Horizontal, 
     panes: [
     (
-    size: "29", pane: Pane(AlbumArt),
+    size: "20%", pane: Pane(AlbumArt),
     ), 
     (
-    size: "50%", 
+    size: "70%", 
     pane: Split 
     ( direction: Vertical, 
     panes: [
-    ( size: "3", pane: Pane(Header),), 
+    ( size: "2", pane: Pane(Header),), 
     ( size: "2", pane: Pane(ProgressBar),), 
 ]
 )), 
