@@ -3,7 +3,8 @@
 > [!NOTE]
 > ./tmuxStart.sh is making sure if tmux is open when lunch the shell
 
-[![my work Env ScreenShoot](https://i.imgur.com/bx6niyH.jpeg)](https://i.imgur.com/bx6niyH.jpeg)
+[![my work Env ScreenShoot](https://i.imgur.com/gZlAKA4.png)](https://i.imgur.com/gZlAKA4.png)
+![wallpaper](https://i.imgur.com/3VeMb4x.jpeg)
 
 | app           | name                       |
 | ------------- | -------------------------- |

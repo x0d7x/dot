@@ -1,3 +1,4 @@
 .opencode
-shaders/
+shaders
 .DS_Store
+
