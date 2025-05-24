@@ -130,7 +130,7 @@ alt-d = ['workspace D', 'exec-and-forget open -a /Applications/legcord.app']
 alt-q = 'workspace Q'
 alt-s = 'workspace S'
 alt-m = ['workspace M', 'exec-and-forget open -a /Applications/Stremio.app']
-alt-t = ['workspace T', 'exec-and-forget open -a /Applications/kitty.app']
+alt-t = ['workspace T', 'exec-and-forget open -a /Applications/Ghostty.app']
 alt-b = [
     'workspace B',
     # 'exec-and-forget open -a /Applications/Brave\ Browser.app',

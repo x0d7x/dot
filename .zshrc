@@ -1,7 +1,3 @@
-# Automatically start tmux if not inside it
-if command -v tmux >/dev/null 2>&1 && [ -z "$TMUX" ]; then
-exec tmux attach-session -t Dev || exec tmux new-session -s Dev
-fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -30,7 +26,6 @@ export EDITOR=nvim
 export VISUAL=nvim
 export SUDO_EDITOR=nvim
 export FCEDIT=nvim
-export TERMINAL=ghostty
 # Set unique PATH entries with correct order
 typeset -U path
 path=(
