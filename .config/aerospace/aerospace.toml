@@ -61,7 +61,7 @@ exec-on-workspace-change = [
     # sketchybar on focus workspacce 
     '/bin/bash',
     '-c',
-    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE'
 ]
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
@@ -75,7 +75,7 @@ inner.horizontal = 12
 inner.vertical = 12
 outer.left = 10
 outer.bottom = 10
-outer.top = 31
+outer.top = 35
 outer.right = 10
 
 # 'main' binding mode declaration

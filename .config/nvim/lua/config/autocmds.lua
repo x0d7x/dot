@@ -6,3 +6,13 @@
 --
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
+
+-- Reset terminal cursor shape on exit
+-- Add any additional autocmds here
+-- vim.api.nvim_create_autocmd("VimLeave", {
+--   callback = function()
+--     -- ESC code for blinking block cursor: \x1b[1 q
+--     -- We use vim.fn.system to send it to the terminal
+--     vim.fn.system("printf '\\033[1 q'")
+--   end,
+-- })

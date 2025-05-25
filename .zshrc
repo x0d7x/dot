@@ -33,7 +33,7 @@ path=(
 /usr/local/sbin
 $HOME/.bun/bin
 $HOME/.local/bin
-$HOME/.cargo/bin
+$HOME/.cargo/env
 $path
 )
 export PATH="${(j/:/)path}"
@@ -65,8 +65,8 @@ setopt hist_find_no_dups
 #######################################################
 # Aliases, fzf setup
 #######################################################
- source ~/.zsh/aliases.zsh
- source ~/.zsh/fzf.zsh
+ source ~/.config/zsh/aliases.zsh
+ source ~/.config/zsh/fzf.zsh
 #######################################################
 # Shell integrations
 #######################################################
@@ -110,19 +110,19 @@ zstyle ':fzf-tab:*' use-fzf-default-opts yes
 #######################################################
 # Functions
 #######################################################
-# Load secrets once from pass
 function _load_secrets() {
   export GEMINI_API_KEY="$(command pass show google/geminiApiKey)"
   export GITHUB_PERSONAL_ACCESS_TOKEN="$(command pass show github/GITHUB_PERSONAL_ACCESS_TOKEN)"
 }
 
-# Override pass command to lazy-load secrets
-function pass() {
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _load_secrets_once
+
+function _load_secrets_once() {
   if [[ -z $GEMINI_API_KEY || -z $GITHUB_PERSONAL_ACCESS_TOKEN ]]; then
     _load_secrets
   fi
-  unset -f pass  # remove this override
-  command pass "$@"  # run actual pass
+  add-zsh-hook -d precmd _load_secrets_once
 }
 function zz() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
