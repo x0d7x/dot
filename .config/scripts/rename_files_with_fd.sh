@@ -1,11 +1,36 @@
 #!/bin/bash
 
-# Directory containing the files (default to current directory if not provided)
-DIR="${1:-.}"
-# Base name for the new files
-BASE_NAME="${2:-Wallpaper}"
-# Counter starting number
+if ! command -v fd &> /dev/null
+then
+    echo "Error: fd is not installed. Please install it to run this script."
+    exit 1
+fi
+
+# Default values
+DIR="."
+BASE_NAME="Wallpaper"
 COUNTER=1
+
+# Parse command line options
+while getopts "d:" opt; do
+  case $opt in
+    d)
+      DIR="$OPTARG"
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      exit 1
+      ;;
+  esac
+done
+
+# Shift positional parameters so that $1 refers to the first non-option argument
+shift "$((OPTIND - 1))"
+
+# If a positional argument remains, use it as the base name
+if [ -n "$1" ]; then
+  BASE_NAME="$1"
+fi
 
 # Check if the directory exists
 if [ ! -d "$DIR" ]; then
@@ -14,6 +39,15 @@ if [ ! -d "$DIR" ]; then
 fi
 
 echo "Renaming files in '$DIR' with base name '$BASE_NAME'"
+
+# Use fd to find files in the directory. Adjust '.' to filter file types if needed (e.g., fd -e png).
+# -0 option is used for null termination to handle filenames with spaces or special characters.
+# Check if any png files were found
+if ! fd -e png "$DIR" -0 | grep -q .
+then
+  echo "No .png files found in '$DIR'."
+  exit 0
+fi
 
 # Use fd to find files in the directory. Adjust '.' to filter file types if needed (e.g., fd -e png).
 # -0 option is used for null termination to handle filenames with spaces or special characters.
