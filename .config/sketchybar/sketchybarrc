@@ -23,22 +23,22 @@ sketchybar --bar position=top height=25 corner_radius=50 blur_radius=30 color=$B
 # https://felixkratz.github.io/SketchyBar/config/items
 
 default=(
-                     background.color=$BG                    \
-                     blur_radius=2                                  \
-                     background.corner_radius=15                    \
-                     background.height=30                           \
-                     icon.padding_left=12                           \
-                     icon.padding_right=4                           \
-                     label.padding_left=4                           \
-                     label.padding_right=12                         \
-                     background.padding_left=18                     \
-                     background.border_width=1                      \
-                     background.y_offset=2                          \
-                     y_offset=3                                     \
-                      icon.font="SF Pro:Semibold:15.0"              \
-                      label.font="SF Pro:Semibold:15.0"                             \
-                      icon.color=$LABEL_COLOR                                         \
-                      label.color=$WHITE                                            \
+  background.color=$BG
+  blur_radius=2
+  background.corner_radius=15
+  background.height=30
+  icon.padding_left=12
+  icon.padding_right=4
+  label.padding_left=4
+  label.padding_right=12
+  background.padding_left=18
+  background.border_width=1
+  background.y_offset=2
+  y_offset=3
+  icon.font="SF Pro:Semibold:15.0"
+  label.font="SF Pro:Semibold:15.0"
+  icon.color=$LABEL_COLOR
+  label.color=$WHITE
 
 )
 sketchybar --default "${default[@]}"
@@ -49,10 +49,6 @@ source $ITEM_DIR/front_app.sh
 source $ITEM_DIR/calender.sh
 source $ITEM_DIR/volume.sh
 source $ITEM_DIR/battery.sh
-
-
-
-
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --hotload on

@@ -133,9 +133,9 @@ alt-m = ['workspace M', 'exec-and-forget open -a /Applications/Stremio.app']
 alt-t = ['workspace T', 'exec-and-forget open -a /Applications/Ghostty.app']
 alt-b = [
     'workspace B',
-    # 'exec-and-forget open -a /Applications/Brave\ Browser.app',
+    'exec-and-forget open -a /Applications/Brave\ Browser.app',
     # 'exec-and-forget open -a /Applications/Zen\ Browser.app',
-    'exec-and-forget open -a /Applications/qutebrowser.app',
+    # 'exec-and-forget open -a /Applications/qutebrowser.app',
 ]
 alt-r = 'macos-native-fullscreen'
 alt-f = 'fullscreen'
@@ -214,6 +214,9 @@ if.app-id = 'com.hnc.Discord'
 run = "move-node-to-workspace D"
 [[on-window-detected]]
 if.app-id = 'cc.ffitch.shottr'
+run = "move-node-to-workspace S"
+[[on-window-detected]]
+if.app-id = 'so.cap.desktop'
 run = "move-node-to-workspace S"
 [[on-window-detected]]
 if.app-id = 'maccatalyst.com.frontrow.vlog'

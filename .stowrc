@@ -5,3 +5,4 @@
 --ignore=my_brew.txt
 --ignore=nvim.bak
 --ignore=.opencode
+--ignore=README.md

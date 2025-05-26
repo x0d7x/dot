@@ -26,6 +26,6 @@
     "path": "/bin/zsh"
   },
   "tui": {
-    "theme": "gruvbox"
+    "theme": "opencode"
   }
 }

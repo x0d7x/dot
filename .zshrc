@@ -33,7 +33,7 @@ path=(
 /usr/local/sbin
 $HOME/.bun/bin
 $HOME/.local/bin
-$HOME/.cargo/env
+$HOME/.cargo/bin
 $path
 )
 export PATH="${(j/:/)path}"
