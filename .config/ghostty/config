@@ -4,7 +4,7 @@ font-size = 15
 background-opacity = 0.8
 background-blur-radius = 30
 # themes i Like [Banana Blueberry,Everforest Dark - Hard,Batman,CrayonPonyFish,duckbones,Builtin Tango Dark,embers-dark,CGA,Earthsong,Espresso Libre, Adwaita Dark, 3024 Night, 0x96f, Adventure, flexoki-dark, Monokai Pro Ristretto, embers-dark, Solarized Dark Higher Contrast]
-theme = rose-pine
+theme = GruvboxDarkHard
 # font-thicken = true
 cursor-text = black
 cursor-color = #D59B53
