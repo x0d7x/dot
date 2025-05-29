@@ -74,7 +74,7 @@ c.url.searchengines = {
         'DEFAULT': 'https://duckduckgo.com/?q={}',
         '!gh': 'https://github.com/search?o=desc&q={}&s=stars',
         '!yt': 'https://www.youtube.com/results?search_query={}',
-    '!g': 'https://www.google.com/search?q={}',
+        '!g': 'https://www.google.com/search?q={}',
         }
 
 c.completion.open_categories = ['searchengines', 'quickmarks', 'bookmarks', 'history', 'filesystem']
@@ -82,6 +82,7 @@ c.completion.open_categories = ['searchengines', 'quickmarks', 'bookmarks', 'his
 config.load_autoconfig() # load settings done via the gui
 
 c.auto_save.session = True # save tabs on quit/restart
+c.session.lazy_restore = True # restore tabs on startup
 
 # keybinding changes
 config.bind('=', 'cmd-set-text -s :open')

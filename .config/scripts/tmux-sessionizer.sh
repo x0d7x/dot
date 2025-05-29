@@ -6,7 +6,7 @@ else
   selected=$(
     find ~/Developer/ ~/ ~/repo ~/dot/.config -mindepth 1 -maxdepth 2 -type d |
       sed "s|^$HOME/||" |
-      fzf --margin 10% --color="bw"
+      fzf --margin 2% --color --border --cycle --prompt="📁 search> "
   )
   # Add home path back
   if [[ -n "$selected" ]]; then
