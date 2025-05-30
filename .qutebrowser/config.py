@@ -78,11 +78,11 @@ c.url.searchengines = {
         }
 
 c.completion.open_categories = ['searchengines', 'quickmarks', 'bookmarks', 'history', 'filesystem']
-
 config.load_autoconfig() # load settings done via the gui
 
 c.auto_save.session = True # save tabs on quit/restart
 c.session.lazy_restore = True # restore tabs on startup
+c.window.hide_decoration = True
 
 # keybinding changes
 config.bind('=', 'cmd-set-text -s :open')

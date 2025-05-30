@@ -1,12 +1,12 @@
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["g", "b"]
 run = "cd ~/Developer"
 desc = "Cd to ~/Developer"
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["g", "w"]
 run = "cd ~/Documents"
 desc = "Cd to ~/Developer"
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "<C-p>"
 run = '''
   shell 'qlmanage -p "$@"'
