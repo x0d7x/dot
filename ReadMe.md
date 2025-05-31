@@ -13,6 +13,30 @@
 | js runtime    | deno && bun                |
 | menue Bar     | sketchyBar                 |
 
+## **scripts**
+
+### install.sh
+
+#### install homebrew Pkgs && cask
+
+**\_the script will install homebrew if not and all the tools in
+/.config/script/brew_packages.txt**
+
+`https://github.com/d7manDev/dot/blob/master/.config/scripts/install.sh
+bash install.sh`
+
+### brewls.sh
+
+#### export all the brew packages in brew_packages.txt
+
+### github_open.sh
+
+#### open github in browser
+
+### tmux-sessionizer.sh
+
+#### manage tmux session via find and fzf
+
 ### recomanded tools ⬇︎
 
 | tools ⚒️ |
@@ -40,27 +64,3 @@
   browser
 - [qutebrowser](https://github.com/qutebrowser/qutebrowser) > A keyboard driven,
   modern, secure, extensible and innovative web browser.
-
-## **scripts**
-
-### install.sh
-
-#### install homebrew Pkgs && cask
-
-**\_the script will install homebrew if not and all the tools in
-/.config/script/brew_packages.txt**
-
-`https://github.com/d7manDev/dot/blob/master/.config/scripts/install.sh
-bash install.sh`
-
-### brewls.sh
-
-#### export all the brew packages in brew_packages.txt
-
-### github_open.sh
-
-#### open github in browser
-
-### tmux-sessionizer.sh
-
-#### manage tmux session via find and fzf
