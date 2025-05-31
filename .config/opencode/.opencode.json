@@ -1,4 +1,14 @@
 {
+"agents": {
+    "coder": {
+      "model": "gemini-2.5-flash"
+    },
+    "task": {
+      "model": "gemini-2.5-flash"
+    },
+    "title": {
+      "model": "gemini-2.5-flash"
+    },
   "mcpServers": {
     "github": {
       "args": ["-y", "@modelcontextprotocol/server-github"],
@@ -21,5 +31,6 @@
   "tui": {
     "theme": "opencode"
   }
+
 }
 
