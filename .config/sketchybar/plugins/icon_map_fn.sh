@@ -1,4 +1,3 @@
-
 function icon_map() {
   case "$1" in
   "Keynote" | "Keynote 讲演")
@@ -11,7 +10,7 @@ function icon_map() {
     icon_result=":vmware_fusion:"
     ;;
   "Alacritty" | "Hyper" | "iTerm2" | "kitty" | "Terminal" | "终端" | "WezTerm" | "Ghostty")
-    icon_result=":terminal:"
+    icon_result="􀩼 "
     ;;
   "Microsoft To Do" | "Things")
     icon_result=":things:"
@@ -188,7 +187,7 @@ function icon_map() {
     icon_result=":twitter:"
     ;;
   "Default")
-    icon_result=":default:"
+    icon_result="􀑋 "
     ;;
   "Pages" | "Pages 文稿")
     icon_result=":pages:"
@@ -211,7 +210,7 @@ function icon_map() {
   "TIDAL")
     icon_result=":tidal:"
     ;;
-"stremio")
+  "stremio")
     icon_result="􀜤"
     ;;
   "VLC")
@@ -428,7 +427,7 @@ function icon_map() {
     icon_result=":whats_app:"
     ;;
   *)
-    icon_result=":default:"
+    icon_result="􀑋 "
     ;;
   esac
 }
