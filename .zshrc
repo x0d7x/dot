@@ -5,7 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 # Source/Load zinit 
-source /usr/local/opt/zinit/zinit.zsh
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
 
 #######################################################
 # ZSH Basic Options
@@ -113,6 +116,8 @@ zstyle ':fzf-tab:*' use-fzf-default-opts yes
 function _load_secrets() {
   export GEMINI_API_KEY="$(command pass show google/geminiApiKey)"
   export GITHUB_PERSONAL_ACCESS_TOKEN="$(command pass show github/GITHUB_PERSONAL_ACCESS_TOKEN)"
+  # export OPENAI_API_KE="$GEMINI_API_KEY"
+  # export OPENAI_BASE_URL="https://generativelanguage.googleapis.com/v1beta/openai"
 }
 
 autoload -Uz add-zsh-hook
@@ -132,7 +137,6 @@ function zz() {
 	fi
 	rm -f -- "$tmp"
 }
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 

@@ -22,3 +22,4 @@ alias gss="git sparse-checkout set"
 alias g="z"
 alias gi="zi"
 alias mpd="mpd ~/.config/mpd/mpd.conf"
+alias convert='magick convert'
