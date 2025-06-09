@@ -1,0 +1,46 @@
+{
+    "profiles": [
+        {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": " cmd to F12",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "simultaneous": [
+                                        { "key_code": "left_command" },
+                                        { "key_code": "right_command" }
+                                    ],
+                                    "simultaneous_options": {
+                                        "to_after_key_up": [
+                                            {
+                                                "key_code": "f12",
+                                                "modifiers": ["fn"]
+                                            }
+                                        ]
+                                    }
+                                },
+                                "to": [{ "key_code": "vk_none" }],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "name": "Default profile",
+            "selected": true,
+            "simple_modifications": [
+                {
+                    "from": { "key_code": "caps_lock" },
+                    "to": [{ "key_code": "left_control" }]
+                },
+                {
+                    "from": { "key_code": "non_us_backslash" },
+                    "to": [{ "key_code": "escape" }]
+                }
+            ],
+            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+        }
+    ]
+}
