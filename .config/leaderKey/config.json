@@ -1,11 +1,6 @@
 {
   "actions" : [
     {
-      "key" : "t",
-      "type" : "application",
-      "value" : "/Applications/Ghostty.app"
-    },
-    {
       "actions" : [
         {
           "key" : "d",
@@ -56,10 +51,16 @@
           "key" : "m",
           "type" : "application",
           "value" : "/Applications/Stremio.app"
+        },
+        {
+          "key" : "t",
+          "type" : "application",
+          "value" : "/Applications/Ghostty.app"
         }
       ],
       "iconPath" : "app.badge.fill",
       "key" : "o",
+      "label" : "open app",
       "type" : "group"
     },
     {
@@ -142,6 +143,47 @@
       "iconPath" : "macwindow",
       "key" : "w",
       "label" : "windowmgr",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "b",
+          "label" : "change Bg",
+          "type" : "command",
+          "value" : "/Users/dox/dot/.config/scripts/chbg.sh"
+        },
+        {
+          "key" : "n",
+          "label" : "make notes",
+          "type" : "command",
+          "value" : "/Users/dox/dot/.config/scripts/notes.sh"
+        }
+      ],
+      "key" : "c",
+      "label" : "Commands",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "b",
+          "type" : "application",
+          "value" : "/Applications/Brave Browser.app"
+        },
+        {
+          "key" : "t",
+          "type" : "application",
+          "value" : "/Applications/Ghostty.app"
+        },
+        {
+          "key" : "c",
+          "type" : "application",
+          "value" : "/Applications/Cap.app"
+        }
+      ],
+      "key" : "v",
+      "label" : "capture vid",
       "type" : "group"
     }
   ],

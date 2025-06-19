@@ -4,7 +4,7 @@ if [[ $# -eq 1 ]]; then
   selected=$1
 else
   selected=$(
-    find ~/Developer/ ~/ ~/repo ~/dot/.config -mindepth 1 -maxdepth 2 -type d |
+    find ~/Developer ~/ ~/repo ~/dot .config -mindepth 1 -maxdepth 2 -type d |
       sed "s|^$HOME/||" |
       fzf --margin 2% --color --border --cycle --prompt="📁 search> "
   )

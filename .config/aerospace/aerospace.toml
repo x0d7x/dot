@@ -121,11 +121,6 @@ alt-shift-minus = 'resize smart -50'
 alt-shift-equal = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-alt-1 = 'workspace 1'
-alt-2 = 'workspace 2'
-alt-3 = 'workspace 3'
-alt-4 = 'workspace 4'
-alt-5 = 'workspace 5'
 alt-d = 'workspace D'
 alt-q = 'workspace Q'
 alt-s = 'workspace S'
@@ -137,20 +132,13 @@ alt-f = 'fullscreen'
 alt-n = 'workspace N'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-1 = 'move-node-to-workspace 1'
-alt-shift-2 = 'move-node-to-workspace 2'
-alt-shift-3 = 'move-node-to-workspace 3'
-alt-shift-4 = 'move-node-to-workspace 4'
-alt-shift-5 = 'move-node-to-workspace 5'
-alt-shift-6 = 'move-node-to-workspace 6'
 alt-shift-b = 'move-node-to-workspace B'
-alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-d = 'move-node-to-workspace D'
 alt-shift-q = 'move-node-to-workspace Q'
 alt-shift-m = 'move-node-to-workspace M'
 alt-shift-s = 'move-node-to-workspace S'
 alt-shift-t = 'move-node-to-workspace T'
-
+alt-shift-w = 'exec-and-forget ~/dot/.config/scripts/chbg.sh'
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
