@@ -2,6 +2,7 @@ return {
   "vyfor/cord.nvim",
   build = ":Cord update",
   opts = {
+
     usercmds = true, -- Enable user commands
     log_level = "error", -- One of 'trace', 'debug', 'info', 'warn', 'error', 'off'
     timer = {
@@ -21,6 +22,8 @@ return {
       swap_fields = false, -- If enabled, workspace is displayed first
       swap_icons = false, -- If enabled, editor is displayed on the main image
       workspace_blacklist = {}, -- List of workspace names to hide
+      theme = "default", -- Theme name
+      flavor = "dark",
     },
     lsp = {
       show_problem_count = false, -- Display number of diagnostics problems
