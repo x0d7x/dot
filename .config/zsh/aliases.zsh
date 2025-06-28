@@ -18,10 +18,10 @@ alias gi="zi"
 alias mpd="mpd ~/.config/mpd/mpd.conf"
 alias convert='magick convert'
 # Bun Aliases
-alias bi="bun install"
-alias br="bun run"
+alias bni="bun install"
+alias bnr="bun run"
 alias brd="bun run dev"
-alias bc="bun create"
+alias bnc="bun create"
 # Homebrew Alias
 alias bru="brew update"
 alias br="brew"

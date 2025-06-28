@@ -186,6 +186,9 @@ if.window-title-regex-substring = 'Picture-in-Picture'
 check-further-callbacks = true
 run = 'layout floating'
 [[on-window-detected]]
+if.app-id = 'net.kovidgoyal.kitty'
+run = 'move-node-to-workspace T'
+[[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
 run = 'move-node-to-workspace B'
 [[on-window-detected]]

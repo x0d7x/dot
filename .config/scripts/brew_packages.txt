@@ -205,11 +205,15 @@ font-sf-mono-nerd-font-ligaturized: cask
 font-sf-pro: cask
 font-symbols-only-nerd-font: cask
 ghostty: cask
+hammerspoon: cask
 hiddenbar: cask
+kap: cask
 karabiner-elements: cask
 keycastr: cask
+kitty: cask
 leader-key: cask
 legcord: cask
+obs: cask
 qutebrowser: cask
 raycast: cask
 sf-symbols: cask
