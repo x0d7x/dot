@@ -54,14 +54,12 @@ on-focus-changed = [
 ]
 # NOTE: to make simple barr refresh when workspace changes
 exec-on-workspace-change = [
-    # '/bin/bash',
-    # '-c',
-    # 'curl http://localhost:7776/aerospace/spaces/refresh',
-    # 'osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh"',
-    # sketchybar on focus workspacce 
     '/bin/bash',
     '-c',
-    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE'
+    '/Users/dox/dot/.config/aerospace/scripts/sticky.sh',
+    '/bin/bash',
+    '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE',
 ]
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
@@ -226,4 +224,7 @@ if.app-id = 'com.apple.finder'
 run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'com.apple.Passwords'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.obsproject.obs-studio'
 run = 'layout floating'
