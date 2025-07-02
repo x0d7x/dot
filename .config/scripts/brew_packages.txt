@@ -37,6 +37,7 @@ frei0r: formula
 fribidi: formula
 fzf: formula
 game-music-emu: formula
+gemini-cli: formula
 gettext: formula
 giflib: formula
 gitleaks: formula

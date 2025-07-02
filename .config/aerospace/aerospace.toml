@@ -11,7 +11,7 @@ after-login-command = []
 
 after-startup-command = [
     # (format: 0xAARRGGBB)
-    'exec-and-forget borders active_color=0xff742592 inactive_color=0xff494d64 width=0.5 style=round blur_radis=8.0',
+    # 'exec-and-forget borders active_color=0xff742592 inactive_color=0xff494d64 width=0.5 style=round blur_radis=8.0',
     'exec-and-forget sketchybar',
 
 ]
@@ -56,7 +56,7 @@ on-focus-changed = [
 exec-on-workspace-change = [
     '/bin/bash',
     '-c',
-    '/Users/dox/dot/.config/aerospace/scripts/sticky.sh',
+    '/Users/dox/dot/.config/scripts/sticky.sh',
     '/bin/bash',
     '-c',
     'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE',
