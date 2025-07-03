@@ -147,6 +147,7 @@ pcre2: formula
 pinentry: formula
 pipx: formula
 pixman: formula
+pkgconf: formula
 popt: formula
 portaudio: formula
 python@3.13: formula
@@ -208,7 +209,6 @@ font-symbols-only-nerd-font: cask
 ghostty: cask
 hammerspoon: cask
 hiddenbar: cask
-kap: cask
 karabiner-elements: cask
 keycastr: cask
 kitty: cask
