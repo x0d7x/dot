@@ -56,10 +56,8 @@ on-focus-changed = [
 exec-on-workspace-change = [
     '/bin/bash',
     '-c',
-    '/Users/dox/dot/.config/scripts/sticky.sh',
-    '/bin/bash',
-    '-c',
     'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE',
+    '/Users/dox/dot/.config/scripts/sticky.sh',
 ]
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
