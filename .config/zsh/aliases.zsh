@@ -13,6 +13,7 @@ alias tok='tokei'
 alias gcn="git clone --no-checkout"
 alias gsi="git sparse-checkout init"
 alias gss="git sparse-checkout set"
+alias gemi="gemini"
 alias g="z"
 alias gi="zi"
 alias mpd="mpd ~/.config/mpd/mpd.conf"
