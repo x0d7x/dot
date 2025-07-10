@@ -53,3 +53,4 @@ source $ITEM_DIR/battery.sh
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --hotload on
 sketchybar --update
+sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused)

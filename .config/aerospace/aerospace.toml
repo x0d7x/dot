@@ -50,14 +50,13 @@ key-mapping.preset = 'qwerty'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = [
     "move-mouse window-lazy-center",
-    # 'exec-and-forget osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh"',
+    'exec-and-forget ~/dot/.config/scripts/sticky.sh',
 ]
 # NOTE: to make simple barr refresh when workspace changes
 exec-on-workspace-change = [
     '/bin/bash',
     '-c',
     'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE',
-    '/Users/dox/dot/.config/scripts/sticky.sh',
 ]
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
@@ -126,7 +125,7 @@ alt-b = 'workspace B'
 alt-r = 'macos-native-fullscreen'
 alt-f = 'fullscreen'
 alt-n = 'workspace N'
-
+alt-w = 'exec-and-forget /Users/dox/dot/.config/scripts/sticky.sh'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-b = 'move-node-to-workspace B'
 alt-shift-d = 'move-node-to-workspace D'
@@ -146,16 +145,22 @@ alt-shift-semicolon = 'mode service'
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
-esc = [
+r = [
     'reload-config',
     'mode main',
+] # reset layout
+  esc = [
+  'mode main',
 ]
-r = ['flatten-workspace-tree', 'mode main'] # reset layout
+  m = [
+  'flatten-workspace-tree',
+  'mode main',
+]
 #s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 f = [
-    'layout floating tiling',
+    'layout floating tiling', # Toggle between floating and tiling layout
     'mode main',
-] # Toggle between floating and tiling layout
+] 
 backspace = ['close-all-windows-but-current', 'mode main']
 
 alt-shift-h = ['join-with left', 'mode main']

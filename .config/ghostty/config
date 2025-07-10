@@ -1,10 +1,10 @@
 # term = xterm-ghostty
 font-family = "JetBrainsMono Nerd Font Mono"
 font-size = 15
-background-opacity = 0.8
-background-blur-radius = 30
+background-opacity = 0.65
+background-blur-radius = 20
 # themes i Like [Banana Blueberry,Everforest Dark - Hard,Batman,CrayonPonyFish,duckbones,Builtin Tango Dark,embers-dark,CGA,Earthsong,Espresso Libre, Adwaita Dark, 3024 Night, 0x96f, Adventure, flexoki-dark, Monokai Pro Ristretto, embers-dark, Solarized Dark Higher Contrast]
-theme = GruvboxDarkHard
+theme = Adventure
 # font-thicken = true
 cursor-text = black
 cursor-color = #D59B53

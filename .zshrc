@@ -37,6 +37,7 @@ path=(
 $HOME/.bun/bin
 $HOME/.local/bin
 $HOME/.cargo/bin
+$HOME/go/bin
 $path
 )
 export PATH="${(j/:/)path}"

@@ -202,13 +202,16 @@ appcleaner: cask
 brave-browser: cask
 cap: cask
 cyberduck: cask
+discord: cask
 font-jetbrains-mono-nerd-font: cask
 font-sf-mono-nerd-font-ligaturized: cask
 font-sf-pro: cask
 font-symbols-only-nerd-font: cask
 ghostty: cask
 hammerspoon: cask
+handbrake-app: cask
 hiddenbar: cask
+iina: cask
 karabiner-elements: cask
 keycastr: cask
 kitty: cask
