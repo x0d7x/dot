@@ -5,9 +5,9 @@ PIP_WIN=$(aerospace list-windows --all | grep -E "(Picture in Picture)" | awk '{
 CHAT_WIN=$(aerospace list-windows --all | grep -E "(Chat)" | awk '{print $1}')
 CURRENT_WORKSPACE=$(aerospace list-workspaces --focused)
 FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE
-if [ -n "$WINDOW_ID" ]; then
-  aerospace move-node-to-workspace $FOCUSED_WORKSPACE --window-id $WINDOW_ID
-fi
+# if [ -n "$WINDOW_ID" ]; then
+#   aerospace move-node-to-workspace $FOCUSED_WORKSPACE --window-id $WINDOW_ID
+# fi
 if [[ -n "$PIP_WIN" ]]; then
   aerospace move-node-to-workspace --window-id "$PIP_WIN" "$CURRENT_WORKSPACE"
 fi

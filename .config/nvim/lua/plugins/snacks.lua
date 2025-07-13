@@ -4,22 +4,23 @@ return {
     dashboard = {
       preset = {
         header = [[
-NNNNNNNN        NNNNNNNN                           iiii                          
-N:::::::N       N::::::N                          i::::i                         
-N::::::::N      N::::::N                           iiii                          
-N:::::::::N     N::::::N                                                         
-N::::::::::N    N::::::Nvvvvvvv           vvvvvvviiiiiii    mmmmmmm    mmmmmmm   
-N:::::::::::N   N::::::N v:::::v         v:::::v i:::::i  mm:::::::m  m:::::::mm 
-N:::::::N::::N  N::::::N  v:::::v       v:::::v   i::::i m::::::::::mm::::::::::m
-N::::::N N::::N N::::::N   v:::::v     v:::::v    i::::i m::::::::::::::::::::::m
-N::::::N  N::::N:::::::N    v:::::v   v:::::v     i::::i m:::::mmm::::::mmm:::::m
-N::::::N   N:::::::::::N     v:::::v v:::::v      i::::i m::::m   m::::m   m::::m
-N::::::N    N::::::::::N      v:::::v:::::v       i::::i m::::m   m::::m   m::::m
-N::::::N     N:::::::::N       v:::::::::v        i::::i m::::m   m::::m   m::::m
-N::::::N      N::::::::N        v:::::::v        i::::::im::::m   m::::m   m::::m
-N::::::N       N:::::::N         v:::::v         i::::::im::::m   m::::m   m::::m
-N::::::N        N::::::N          v:::v          i::::::im::::m   m::::m   m::::m
-NNNNNNNN         NNNNNNN           vvv           iiiiiiiimmmmmm   mmmmmm   mmmmmm
+   ___  _____    
+ .'/,-Y"     "~-.  
+ l.Y             ^.           
+ /\               _\_  
+i            ___/"   "\ 
+|          /"   "\   o !   
+l         ]     o !__./   
+ \ _  _    \.___./    "~\  
+  X \/ \            ___./  
+ ( \ ___.   _..--~~"   ~`-.  
+  ` Z,--   /               \    
+    \__.  (   /       ______) 
+      \   l  /-----~~" /   
+       Y   \          / 
+       |    "x______.^ 
+       |           \    
+       |            \
 ]],
       },
     },
