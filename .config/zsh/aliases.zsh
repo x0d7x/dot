@@ -18,7 +18,9 @@ alias g="z"
 alias gi="zi"
 alias mpd="mpd ~/.config/mpd/mpd.conf"
 alias convert='magick convert'
+alias lzd="lazydocker"
 # Bun Aliases
+alias tbr="taproom"
 alias bni="bun install"
 alias bnr="bun run"
 alias brd="bun run dev"

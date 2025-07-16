@@ -58,6 +58,7 @@ jpeg-turbo: formula
 jpeg-xl: formula
 jq: formula
 lame: formula
+lazydocker: formula
 lazygit: formula
 leptonica: formula
 lftp: formula
@@ -167,6 +168,7 @@ sqlite: formula
 srt: formula
 stow: formula
 svt-av1: formula
+taproom: formula
 tesseract: formula
 thefuck: formula
 theora: formula
@@ -200,9 +202,8 @@ aerospace: cask
 alt-tab: cask
 appcleaner: cask
 brave-browser: cask
-cap: cask
 cyberduck: cask
-discord: cask
+docker-desktop: cask
 font-jetbrains-mono-nerd-font: cask
 font-sf-mono-nerd-font-ligaturized: cask
 font-sf-pro: cask
@@ -215,6 +216,7 @@ iina: cask
 karabiner-elements: cask
 keycastr: cask
 kitty: cask
+kunkun: cask
 leader-key: cask
 legcord: cask
 obs: cask
@@ -222,6 +224,6 @@ qutebrowser: cask
 raycast: cask
 sf-symbols: cask
 shottr: cask
+steam: cask
 stremio: cask
 topnotch: cask
-zen: cask
