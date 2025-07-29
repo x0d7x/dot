@@ -29,6 +29,7 @@ export EDITOR=nvim
 export VISUAL=nvim
 export SUDO_EDITOR=nvim
 export FCEDIT=nvim
+export ZEIT_DB=~/.config/zeit/zeit.db
 # Set unique PATH entries with correct order
 typeset -U path
 path=(

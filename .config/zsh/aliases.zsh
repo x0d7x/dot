@@ -19,13 +19,16 @@ alias gi="zi"
 alias mpd="mpd ~/.config/mpd/mpd.conf"
 alias convert='magick convert'
 alias lzd="lazydocker"
+alias mpt="mpv --vo=tct --quiet --really-quiet"
+alias oco="opencode"
 # Bun Aliases
-alias tbr="taproom"
 alias bni="bun install"
 alias bnr="bun run"
 alias brd="bun run dev"
 alias bnc="bun create"
+alias brm="bun remove"
 # Homebrew Alias
+alias tbr="taproom"
 alias bru="brew update"
 alias br="brew"
 alias bri="brew install"

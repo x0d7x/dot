@@ -1,0 +1,80 @@
+
+#################################################
+# This file is a sample of some things you 
+# can do with this leader key setup. It's active
+# right now! Set leader_key below and try it! The 
+# lua prioritizes home.toml, then work.toml,
+# then falls back to this sample.toml. If you
+# want different profile names, you can add it
+# to the list in ~/.hammerspoon/init.lua. 
+#################################################
+
+# settings
+leader_key = "f12"        # required, the leader key that starts the sequence
+leader_key_mods = ""      # optional, default "", not recommended - a dedicated leader key is better
+                             # supports cmd ctrl alt shift
+auto_reload = true        # optional, default true, reload when any file in this directory is saved
+toast_on_reload = true    # optional, default false, show a toast when the config is reloaded
+show_ui = true            # optional, default true, show the ui with your key maps
+
+
+# set a key to open an app
+t = "Ghostty"
+# groups can be nested too!
+[l]
+label = "[my_Links]"
+g = ["https://github.com/x0d7x", "my github"]
+b = ["https://d7man.netlify.app/", "blog"]
+t = ["https://twitter.com/x0d7x", "my twitter"]
+
+[l.s]
+label = "[my_Searches]"
+g = ["input:https://google.com/search?q={input}", "google"] # capture input and insert it into any other action
+y = ["input:https://www.youtube.com/results?search_query={input}", "youtube"] # capture input and insert it into any other action
+
+[o]
+label = "[open]"
+m = ["Stremio", "stremio"]
+s = ["Spark", "spark"]
+# create groups to nest actions
+[o.b]
+label = "[browser]" # the "label" key is reserved to change the label of the group
+b = [ "Brave Browser", "brave browser" ]
+q = [ "qutebrowser", "qutebrowser" ]
+
+[o.v]
+label = "[video]"
+v = ["VN", "vn"]
+o = ["OBS", "obs"]
+
+[g]
+label = "[Games]"
+d = ["legcord", "legcord"]
+
+# raycast deep links are supported
+[r]
+label = "[raycast]"
+p = ["raycast://extensions/raycast/raycast/confetti", "confetti"]
+e = ["raycast://extensions/raycast/emoji-symbols/search-emoji-symbols", "emoji"]
+c = ["raycast://extensions/raycast/clipboard-history/clipboard-history", "clipboard"]
+s = ["raycast://extensions/raycast/system/sleep", "sleep"]
+
+# use prefixes for special actions
+[p]
+label = "[prefixes]"
+t = ["text:a.bakider@gmail.com", "myemil"]       # types "sam@saml.dev"
+z = "cmd:nvim ~/.zshrc"       # run any terminal command
+# s = "shortcut:cmd shift 4"    # trigger a keyboard shortcut
+
+# this group is handy to copy over
+# for quick access to your config
+[h]
+label = "[hammerspoon]"
+c = "code: ~/.hammerspoon"
+r = "reload" # reserved for reloading your hammerspoon config (helpful when auto_reload is false)
+
+# for advanced hammerspoon users, you can use
+# the hs: prefix as an escape hatch to run any
+# hammerspoon command you want.
+[z]
+z = "hs:hs.alert('Hello, world!')"
