@@ -1,0 +1,34 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "github": {
+      "type": "local",
+      "command": ["bunx", "-y", "@modelcontextprotocol/server-github"],
+      "enabled": true,
+      "environment": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "{env:GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
+    }
+  },
+  "keybinds": {
+    "input_newline": "shift+ctrl+j"
+  },
+  "mode": {
+    "docs": {
+      "model": "google/gemini-2.5-flash",
+      "tools": {
+        "write": false,
+        "edit": false,
+        "bash": true,
+        "read": true,
+        "git": true,
+        "list": true
+      }
+    }
+  },
+  "log_level": "INFO",
+  "theme": "system",
+  "model": "google/gemini-2.5-flash",
+  "autoshare": false,
+  "autoupdate": true
+}

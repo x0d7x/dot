@@ -65,7 +65,7 @@ return {
   --       -----MAIN OPTIONS-----
   --       --
   --       -- Can be one of: bathory | burzum | dark-funeral | darkthrone | emperor | gorgoroth | immortal | impaled-nazarene | khold | marduk | mayhem | nile | taake | venom
-  --       theme = "immortal",
+  --       theme = "darkthrone",
   --       -- Can be one of: 'light' | 'dark', or set via vim.o.background
   --       variant = "dark",
   --       -- Use an alternate, darker bg
@@ -89,7 +89,7 @@ return {
   --       -- Keymap (in normal mode) to toggle between light and dark variants.
   --       toggle_variant_key = nil,
   --       -- Don't set background
-  --       transparent = true,
+  --       transparent = false,
   --
   --       -----DIAGNOSTICS and CODE STYLE-----
   --       --
@@ -109,7 +109,7 @@ return {
   --         operators = "none",
   --         keyword_return = "none",
   --         strings = "none",
-  --         variables = "none",
+  --         variables = "bold",
   --       },
   --
   --       -----PLUGINS-----
@@ -142,7 +142,7 @@ return {
   --     -- specified in your config.
   --     require("black-metal").load()
   --   end,
-  -- }
+  -- },
   --
   -- {
   --   "webhooked/kanso.nvim",
