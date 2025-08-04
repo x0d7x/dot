@@ -7,27 +7,10 @@ return {
       synchronize = "s",
     },
   },
-  keys = function()
-    return {
-      {
-        "<leader>e",
-        function()
-          require("mini.files").open(vim.api.nvim_buf_get_name(0), true)
-        end,
-        desc = "Open mini.files (Directory of Current File)",
-      },
-      {
-        "<leader>fM",
-        function()
-          require("mini.files").open(vim.uv.cwd(), true)
-        end,
-        desc = "Open mini.files (cwd)",
-      },
-    }
-  end,
   -- make the last window expand to the eend of window
   -- by https://github.com/0xwal
   init = function()
+    local MiniFiles = require("mini.files")
     local function update_width_of_last_window()
       local state = MiniFiles.get_explorer_state()
       if not state then

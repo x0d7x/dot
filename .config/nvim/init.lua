@@ -1,2 +1,6 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
+require("config.keymaps")
+require("config.opts")
+require("config.utils")
+vim.cmd("colorscheme vague")
+vim.cmd(":hi statusline guibg=NONE")
