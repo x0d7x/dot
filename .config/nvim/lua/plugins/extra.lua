@@ -140,7 +140,11 @@ return {
 		"folke/flash.nvim",
 		event = "VeryLazy",
 		---@type Flash.Config
-		opts = {},
+		opts = {
+			prompt = {
+				enabled = false,
+			},
+		},
     -- stylua: ignore
     keys = {
       { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
@@ -224,5 +228,11 @@ return {
 			-- build = 'pwsh install.ps1 yarn',
 			config = true,
 		},
+	},
+	{
+		"folke/ts-comments.nvim",
+		opts = {},
+		event = "VeryLazy",
+		enabled = vim.fn.has("nvim-0.10.0") == 1,
 	},
 }

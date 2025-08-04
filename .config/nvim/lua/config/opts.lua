@@ -57,7 +57,6 @@ o.splitbelow = true -- Horizontal splits open below
 o.splitright = true -- Vertical splits open right
 o.splitkeep = "screen" -- Keep view stable when splitting
 o.winminwidth = 5 -- Minimum window width
-
 o.wildmode = "longest:full,full"
 o.jumpoptions = "view"
 o.shortmess:append({ W = true, I = true, c = true, C = true })

@@ -40,15 +40,15 @@ return {
 		},
 		-- explorer = { enabled = true },
 		bigfile = { enabled = true },
-		indent = { enabled = true },
-		input = { enabled = true },
+		indent = { enabled = false },
+		input = { enabled = false },
 		notifier = {
-			enabled = true,
-			timeout = 3000,
+			enabled = false,
+			-- timeout = 3000,
 		},
 		quickfile = { enabled = true },
-		-- notify = { enabled = true },
-		scope = { enabled = true },
+		notify = { enabled = true },
+		scope = { enabled = false },
 		scroll = { enabled = true },
 		scratch = { enabled = true },
 		words = { enabled = true },
@@ -88,6 +88,12 @@ return {
 					:map("<leader>ub")
 				Snacks.toggle.inlay_hints():map("<leader>uh")
 				Snacks.toggle.indent():map("<leader>ug")
+				-- Toggle the profiler
+				Snacks.toggle.profiler():map("<leader>pp")
+				-- Toggle the profiler highlights
+				Snacks.toggle.profiler_highlights():map("<leader>ph")
+				Snacks.toggle.zen():map("<leader>uz")
+				Snacks.toggle.zoom():map("<leader>wm")
 			end,
 		})
 	end,

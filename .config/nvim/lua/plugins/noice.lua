@@ -5,7 +5,7 @@ return {
 	opts = {},
 	dependencies = {
 		"MunifTanjim/nui.nvim",
-		-- "rcarriga/nvim-notify",
+		"rcarriga/nvim-notify",
 	},
 	config = function()
 		require("noice").setup({
@@ -17,6 +17,19 @@ return {
 				},
 				hover = {
 					silent = true,
+				},
+			},
+			routes = {
+				{
+					filter = {
+						event = "msg_show",
+						any = {
+							{ find = "%d+L, %d+B" },
+							{ find = "; after #%d+" },
+							{ find = "; before #%d+" },
+						},
+					},
+					view = "mini",
 				},
 			},
 			presets = {
