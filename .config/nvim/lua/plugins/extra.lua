@@ -1,6 +1,7 @@
 return {
 	{
 		"leath-dub/snipe.nvim",
+		event = "VeryLazy",
 		opts = {
 			ui = {
 				max_height = -1, -- -1 means dynamic height
@@ -71,6 +72,7 @@ return {
 	},
 	{
 		"NStefan002/screenkey.nvim",
+		event = "VeryLazy",
 		version = "*", -- or branch = "dev", to use the latest commit
 		opts = {
 			win_opts = {
@@ -185,7 +187,7 @@ return {
 			-- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
 			-- - sd'   - [S]urround [D]elete [']quotes
 			-- - sr)'  - [S]urround [R]eplace [)] [']
-			require("mini.surround").setup()
+			-- require("mini.surround").setup()
 
 			require("mini.pairs").setup()
 
@@ -223,6 +225,7 @@ return {
 	{
 		{
 			"barrett-ruth/import-cost.nvim",
+			event = "VeryLazy",
 			build = "sh install.sh bun",
 			-- if on windows
 			-- build = 'pwsh install.ps1 yarn',

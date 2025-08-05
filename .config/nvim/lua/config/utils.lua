@@ -223,19 +223,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("TextChanged", {
-	callback = function()
-		vim.defer_fn(function()
-			pcall(vim.treesitter.start)
-		end, 10)
-	end,
-})
+-- vim.api.nvim_create_autocmd("TextChanged", {
+-- 	callback = function()
+-- 		vim.defer_fn(function()
+-- 			pcall(vim.treesitter.start)
+-- 		end, 10)
+-- 	end,
+-- })
 
-vim.api.nvim_create_autocmd("FileType", {
-	callback = function()
-		pcall(vim.treesitter.start)
-	end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	callback = function()
+-- 		pcall(vim.treesitter.start)
+-- 	end,
+-- })
 -- status line
 
 -- Diagnostic status

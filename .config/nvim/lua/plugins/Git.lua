@@ -1,6 +1,7 @@
 -- Adds git related signs to the gutter, as well as utilities for managing changes
 return {
 	"lewis6991/gitsigns.nvim",
+	event = "VeryLazy",
 	opts = {
 		signs = {
 			add = { text = "+" },
@@ -19,6 +20,7 @@ return {
 	},
 	{
 		"sindrets/diffview.nvim",
+		event = "VeryLazy",
 		dependencies = {
 			{ "nvim-tree/nvim-web-devicons", lazy = true },
 		},
@@ -26,6 +28,7 @@ return {
 	},
 	{
 		"NeogitOrg/neogit",
+		event = "VeryLazy",
 		opts = {
 			graph_style = "kitty",
 		},

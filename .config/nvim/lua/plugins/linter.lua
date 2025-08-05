@@ -91,7 +91,10 @@ return {
 				lint.try_lint(names)
 			end
 		end
-
+		-- vim.keymap.set("n", "<leader>ll", function()
+		-- 	lint.try_lint()
+		-- 	vim.notify("Linting...", vim.log.levels.INFO, { title = "nvim-lint" })
+		-- end, { desc = "Trigger linting for current file" })
 		-- Autocommand to trigger lint on specific events
 		vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave", "BufReadPost" }, {
 			group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
