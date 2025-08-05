@@ -2,7 +2,7 @@
 
 A smart, daily-driver Neovim configuration built from scratch for performance and a smooth, distro-free experience.
 
-![Neovim Setup](https://imgur.com/a/1yrRZCM)
+![https://i.imgur.com/qPNY2K0.jpeg](https://i.imgur.com/qPNY2K0.jpeg)
 
 ## Features
 
