@@ -142,7 +142,7 @@ map("n", "<leader>gL", function()
 end, { desc = "Git Log Line" })
 map("n", "<leader>gdv", function()
 	if next(require("diffview.lib").views) == nil then
-		vim.cmd("DiffviewOpen")
+		vim.cmd("DiffviewFileHistory")
 	else
 		vim.cmd("DiffviewClose")
 	end

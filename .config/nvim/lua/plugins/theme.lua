@@ -6,18 +6,7 @@ return {
 		},
 		config = function(_, opts)
 			require("vague").setup(opts)
-			vim.cmd.colorscheme("vague")
-		end,
-	},
-	{
-		"ellisonleao/gruvbox.nvim",
-		opts = {
-			transparent_mode = true,
-			priority = 1000,
-		},
-		config = function(_, opts)
-			require("gruvbox").setup(opts)
-			-- vim.cmd.colorscheme("gruvbox")
+			-- vim.cmd.colorscheme("vague")
 		end,
 	},
 	{
@@ -33,6 +22,22 @@ return {
 		config = function(_, opts)
 			require("kanagawa").setup(opts)
 			-- vim.cmd("colorscheme kanagawa-wave")
+		end,
+	},
+	{
+		"motaz-shokry/gruvbox",
+		url = "https://gitlab.com/motaz-shokry/gruvbox.nvim.git",
+		name = "gruvbox",
+		priority = 1000,
+		opts = {
+			variant = "hard", -- hard, medium, soft, light
+			styles = {
+				transparency = true,
+			},
+		},
+		config = function(_, opts)
+			require("gruvbox").setup(opts)
+			vim.cmd("colorscheme gruvbox")
 		end,
 	},
 }

@@ -50,5 +50,3 @@ Feel free to customize this setup to your liking. The main configuration files a
 - `lua/plugins/`: Add or remove plugins here.
 
 ---
-
-_This README was generated with love by Gemini._

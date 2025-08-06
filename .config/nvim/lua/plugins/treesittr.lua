@@ -11,6 +11,9 @@ return {
 			require("nvim-treesitter.configs").setup({
 				sync_install = false,
 				modules = {},
+				fold = {
+					enable = true,
+				},
 				highlight = {
 					enable = true,
 					additional_vim_regex_highlighting = false,

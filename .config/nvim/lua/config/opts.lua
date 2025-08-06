@@ -39,6 +39,11 @@ o.grepprg = "rg --vimgrep"
 -- ╭─────────────────────────────╮
 -- │ UI                          │
 -- ╰─────────────────────────────╯
+o.foldmethod = "expr"
+o.foldexpr = "nvim_treesitter#foldexpr()"
+o.foldenable = true
+o.foldlevel = 99
+o.foldlevelstart = 7
 o.mouse = "a" -- Enable mouse support
 o.cmdheight = 0 -- Command line height i Set this in autocmds
 o.showmode = false -- Don't show -- INSERT --

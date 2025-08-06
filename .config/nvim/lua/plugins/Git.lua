@@ -27,6 +27,14 @@ return {
 	{
 		"sindrets/diffview.nvim",
 		event = "VeryLazy",
+		opts = {
+			keymaps = {
+				disable_defaults = false, -- Disable the default keymaps
+				view = {
+					{ "n", "q", "<cmd>tabclose<cr>", { desc = "close diffview" } },
+				},
+			},
+		},
 		dependencies = {
 			{ "nvim-tree/nvim-web-devicons", lazy = true },
 		},
@@ -40,7 +48,6 @@ return {
 		},
 		dependencies = {
 			"nvim-lua/plenary.nvim", -- required
-			"sindrets/diffview.nvim", -- optional - Diff integration
 
 			-- Only one of these is needed.
 			-- "nvim-telescope/telescope.nvim", -- optional
