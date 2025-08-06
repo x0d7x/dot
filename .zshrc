@@ -1,3 +1,5 @@
+# must be here before p10k
+ export GPG_TTY=$TTY
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -30,7 +32,6 @@ export VISUAL=nvim
 export SUDO_EDITOR=nvim
 export FCEDIT=nvim
 export ZEIT_DB=~/.config/zeit/zeit.db
-export GPG_TTY=$(tty)
 # Set unique PATH entries with correct order
 typeset -U path
 path=(
