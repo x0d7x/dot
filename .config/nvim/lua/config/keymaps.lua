@@ -10,8 +10,10 @@ map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
 map("n", "<leader>cw", ":write<CR>", { desc = "write to file" })
 map("n", "<leader>co", ":update<CR> :source<CR>", { desc = "update the file and source it" })
--- Clear search highlight when pressing <Esc> twice
-map("n", "<Esc><Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlight" })
+-- Clear search highlight when pressing <Esc>
+map({ "i", "n", "s" }, "<esc>", function()
+	vim.cmd("noh")
+end, { expr = true, desc = "Escape and Clear hlsearch" })
 -- Move selected line / block of text in visual mode
 map("v", "J", ":m '>+1<CR>gv=gv", opts)
 map("v", "K", ":m '<-2<CR>gv=gv", opts)
@@ -39,6 +41,15 @@ end, { desc = "Toggle diagnostic virtual_lines" })
 map("x", "<leader>cp", "<cmd>CodeSnap<cr>", { desc = "Save selected code snapshot into clipboard" })
 map("x", "<leader>cP", "<cmd>CodeSnapASCII<cr>", { desc = "make ascii snapshot" })
 map("n", "<leader>uD", "<cmd>Twilight<cr>", { desc = "toggle diming" })
+-- buffer
+map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+map("n", "<leader>bd", function()
+	Snacks.bufdelete()
+end, { desc = "Delete Buffer" })
+map("n", "<leader>bo", function()
+	Snacks.bufdelete.other()
+end, { desc = "Delete Other Buffers" })
 ------------------- Snacks -------------------------
 map("n", "<leader>,", function()
 	Snacks.picker.buffers()

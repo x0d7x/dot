@@ -43,13 +43,19 @@ return {
 		indent = { enabled = false },
 		input = { enabled = false },
 		notifier = {
-			enabled = false,
-			-- timeout = 3000,
+			enabled = true,
+			timeout = 3000,
 		},
 		quickfile = { enabled = true },
-		notify = { enabled = true },
+		notify = { enabled = false },
+		picker = {
+			enabled = true,
+			matcher = {
+				frecency = true,
+			},
+		},
 		scope = { enabled = true },
-		scroll = { enabled = false },
+		scroll = { enabled = true },
 		scratch = { enabled = true },
 		words = { enabled = true },
 		toggle = { enabled = true },

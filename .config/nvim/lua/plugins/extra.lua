@@ -14,7 +14,7 @@ return {
 				-- for config options
 				open_win_override = {
 					-- title = "My Window Title",
-					border = "single", -- use "rounded" for rounded border
+					border = "rounded", -- use "rounded" for rounded border
 				},
 
 				-- Preselect the currently open buffer
@@ -169,6 +169,17 @@ return {
 			-- add any custom options here
 		},
 	},
+
+	{
+		"j-hui/fidget.nvim",
+		opts = {
+			notification = {
+				window = {
+					winblend = 0, -- Background color opacity in the notification window
+				},
+			},
+		},
+	},
 	-- moving around code
 	{
 		"echasnovski/mini.nvim",
@@ -187,7 +198,17 @@ return {
 			-- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
 			-- - sd'   - [S]urround [D]elete [']quotes
 			-- - sr)'  - [S]urround [R]eplace [)] [']
-			-- require("mini.surround").setup()
+			require("mini.surround").setup({
+				mappings = {
+					add = "gsa", -- Add surrounding in Normal and Visual modes
+					delete = "gsd", -- Delete surrounding
+					find = "gsf", -- Find surrounding (to the right)
+					find_left = "gsF", -- Find surrounding (to the left)
+					highlight = "gsh", -- Highlight surrounding
+					replace = "gsr", -- Replace surrounding
+					update_n_lines = "gsn", -- Update `n_lines`
+				},
+			})
 
 			require("mini.pairs").setup()
 

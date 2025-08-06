@@ -38,7 +38,7 @@ return {
 			},
 			scope = {
 				show_start = true,
-				show_end = false,
+				show_end = true,
 				highlight = highlight,
 			},
 			exclude = {

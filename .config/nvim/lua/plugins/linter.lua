@@ -3,20 +3,9 @@ return {
 	event = { "BufReadPost", "BufWritePost", "InsertLeave" },
 	config = function()
 		local lint = require("lint")
-
-		-- Custom linter configurations (optional args/conditions)
-		-- lint.linters.astro = {
-		--   cmd = "eslint_d",
-		--   stdin = true,
-		--   args = { "--stdin", "--stdin-filename", function() return vim.api.nvim_buf_get_name(0) end, "-f", "json" },
-		--   stream = "stdout",
-		--   ignore_exitcode = true,
-		--   parser = require("lint.parser.eslint")(),
-		--   condition = function(ctx)
-		--     return vim.fs.find({ ".eslintrc.cjs", ".eslintrc.js", ".eslintrc.json" }, { upward = true, path = ctx.dirname })[1]
-		--   end,
-		-- }
-
+		-- Customize golangcilint to ignore exit codes (golangci-lint exits with code 1-3 when issues are found)
+		local golangcilint = require("lint").linters.golangcilint
+		golangcilint.ignore_exitcode = true
 		-- Set filetype to linter mapping
 		lint.linters_by_ft = {
 			javascript = { "eslint_d" },
@@ -26,16 +15,10 @@ return {
 			astro = { "eslint_d" },
 			-- lua = { "luacheck" },
 			go = { "golangcilint" },
-			python = { "ruff" },
-			markdown = { "markdownlint-cli2" },
 			html = {},
 			css = {},
 			tailwindcss = {},
 			dockerfile = {},
-			sql = {},
-			terraform = {},
-			json = {},
-			yaml = {},
 		}
 		lint.linters.eslint_d = {
 			cmd = "eslint_d",

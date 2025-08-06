@@ -10,9 +10,9 @@ vim.g.loaded_netrw = 1 -- Disable netrw file explorer
 vim.g.loaded_netrwPlugin = 1
 vim.g.mapleader = " " -- Set <Leader> key to Space
 vim.g.maplocalleader = " " -- Set <LocalLeader> key to Space
-vim.g.snacks_animate = true
+-- vim.g.snacks_animate = true
 vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
-vim.g.trouble_lualine = true
+-- vim.g.trouble_lualine = true
 
 -- ╭─────────────────────────────╮
 -- │ Files & Backups             │
@@ -40,7 +40,7 @@ o.grepprg = "rg --vimgrep"
 -- │ UI                          │
 -- ╰─────────────────────────────╯
 o.mouse = "a" -- Enable mouse support
-o.cmdheight = 1 -- Command line height
+o.cmdheight = 0 -- Command line height i Set this in autocmds
 o.showmode = false -- Don't show -- INSERT --
 o.showtabline = 0 -- Hide tabline
 o.pumheight = 10 -- Popup menu height
@@ -60,7 +60,7 @@ o.winminwidth = 5 -- Minimum window width
 o.wildmode = "longest:full,full"
 o.jumpoptions = "view"
 o.shortmess:append({ W = true, I = true, c = true, C = true })
-o.pumblend = 10
+-- o.pumblend = 10
 o.list = true
 o.linebreak = true
 -- ╭─────────────────────────────╮
