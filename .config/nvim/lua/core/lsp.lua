@@ -56,7 +56,7 @@ local diagnostics = {
 		current_line = true,
 		spacing = 4,
 		source = "if_many",
-		prefix = "●",
+		prefix = "",
 	},
 	virtual_lines = false,
 	severity_sort = true,
@@ -154,8 +154,10 @@ local function check_lsp_capabilities()
 	end
 
 	for _, client in ipairs(clients) do
-		print("Capabilities for " .. client.name .. ":")
-		local caps = client.server_capabilities
+		print("Capabilities for " .. (client.name or "<unknown>") .. ":")
+
+		-- ‼ safer: fall back to empty table
+		local caps = client.server_capabilities or {}
 
 		local capability_list = {
 			{ "Completion", caps.completionProvider },
@@ -179,7 +181,7 @@ local function check_lsp_capabilities()
 		}
 
 		for _, cap in ipairs(capability_list) do
-			local status = cap[2] and "✓" or "✗"
+			local status = (cap[2] ~= nil and cap[2] ~= false) and "✓" or "✗"
 			print(string.format("  %s %s", status, cap[1]))
 		end
 		print("")
@@ -215,19 +217,15 @@ local function lsp_info()
 
 	print("═══════════════════════════════════")
 	print("           LSP INFORMATION          ")
-	print("═══════════════════════════════════")
-	print("")
+	print("═══════════════════════════════════\n")
 
-	-- Basic info
-	print("󰈙 Language client log: " .. vim.lsp.get_log_path())
-	print("󰈔 Detected filetype: " .. vim.bo.filetype)
-	print("󰈮 Buffer: " .. bufnr)
-	print("󰈔 Root directory: " .. (vim.fn.getcwd() or "N/A"))
-	print("")
+	print("󰈙 Log file:        " .. vim.lsp.get_log_path())
+	print("󰈔 Filetype:        " .. vim.bo.filetype)
+	print("󰈮 Buffer:          " .. bufnr)
+	print("󰈔 CWD:             " .. (vim.fn.getcwd() or "N/A") .. "\n")
 
 	if #clients == 0 then
-		print("󰅚 No LSP clients attached to buffer " .. bufnr)
-		print("")
+		print("󰅚 No LSP clients attached to buffer " .. bufnr .. "\n")
 		print("Possible reasons:")
 		print("  • No language server installed for " .. vim.bo.filetype)
 		print("  • Language server not configured")
@@ -236,61 +234,57 @@ local function lsp_info()
 		return
 	end
 
-	print("󰒋 LSP clients attached to buffer " .. bufnr .. ":")
+	print("󰒋 Clients attached (" .. #clients .. "):")
 	print("─────────────────────────────────")
 
 	for i, client in ipairs(clients) do
-		print(string.format("󰌘 Client %d: %s", i, client.name))
-		print("  ID: " .. client.id)
-		print("  Root dir: " .. (client.config.root_dir or "Not set"))
-		print("  Command: " .. table.concat(client.config.cmd or {}, " "))
-		print("  Filetypes: " .. table.concat(client.config.filetypes or {}, ", "))
+		print(string.format("󰌘 Client %d: %s", i, client.name or "<unknown>"))
+		print("  ID:          " .. client.id)
+		print("  Root dir:    " .. (client.config.root_dir or "Not set"))
+		print("  Command:     " .. table.concat(client.config.cmd or {}, " "))
+		print("  Filetypes:   " .. table.concat(client.config.filetypes or {}, ", "))
 
-		-- Server status
-		if client.is_stopped() then
-			print("  Status: 󰅚 Stopped")
-		else
-			print("  Status: 󰄬 Running")
-		end
+		-- status
+		print("  Status:      " .. (client.is_stopped and client:is_stopped() and "󰅚 Stopped" or "󰄬 Running"))
 
-		-- Workspace folders
-		if client.workspace_folders and #client.workspace_folders > 0 then
+		-- workspace folders
+		local folders = client.workspace_folders or {}
+		if #folders > 0 then
 			print("  Workspace folders:")
-			for _, folder in ipairs(client.workspace_folders) do
+			for _, folder in ipairs(folders) do
 				print("    • " .. folder.name)
 			end
 		end
 
-		-- Attached buffers count
-		local attached_buffers = {}
-		for buf, _ in pairs(client.attached_buffers or {}) do
-			table.insert(attached_buffers, buf)
+		-- attached buffers
+		local bufcount = 0
+		for _ in pairs(client.attached_buffers or {}) do
+			bufcount = bufcount + 1
 		end
-		print("  Attached buffers: " .. #attached_buffers)
+		print("  Attached buffers: " .. bufcount)
 
-		-- Key capabilities
-		local caps = client.server_capabilities
-		local key_features = {}
+		-- key capabilities (nil-safe)
+		local caps = client.server_capabilities or {}
+		local key_feats = {}
 		if caps.completionProvider then
-			table.insert(key_features, "completion")
+			table.insert(key_feats, "completion")
 		end
 		if caps.hoverProvider then
-			table.insert(key_features, "hover")
+			table.insert(key_feats, "hover")
 		end
 		if caps.definitionProvider then
-			table.insert(key_features, "definition")
+			table.insert(key_feats, "definition")
 		end
 		if caps.documentFormattingProvider then
-			table.insert(key_features, "formatting")
+			table.insert(key_feats, "formatting")
 		end
 		if caps.codeActionProvider then
-			table.insert(key_features, "code_action")
+			table.insert(key_feats, "code_action")
 		end
 
-		if #key_features > 0 then
-			print("  Key features: " .. table.concat(key_features, ", "))
+		if #key_feats > 0 then
+			print("  Key features: " .. table.concat(key_feats, ", "))
 		end
-
 		print("")
 	end
 

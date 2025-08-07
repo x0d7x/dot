@@ -147,6 +147,7 @@ api.nvim_create_autocmd("LspAttach", {
 		end, "Format File")
 	end,
 })
+
 -- inline_hints
 api.nvim_create_autocmd("LspAttach", {
 	group = augroup("lsp_inlay_hints"),
@@ -165,27 +166,33 @@ api.nvim_create_autocmd("LspAttach", {
 
 -- ========== Statusline Utilities ========== --
 
-function DiagnosticStatus()
-	local icons = { Error = " ", Warn = " ", Info = " ", Hint = " " }
-	local counts = { Error = 0, Warn = 0, Info = 0, Hint = 0 }
+local function diagnostic_status()
+	local icons = { Error = "", Warn = "", Info = "", Hint = "" }
+	local count = { Error = 0, Warn = 0, Info = 0, Hint = 0 }
 
 	for _, d in ipairs(vim.diagnostic.get(0)) do
-		for level, _ in pairs(counts) do
+		for level in pairs(count) do
 			if d.severity == vim.diagnostic.severity[level:upper()] then
-				counts[level] = counts[level] + 1
+				count[level] = count[level] + 1
 			end
 		end
 	end
 
-	local result = {}
-	for k, v in pairs(counts) do
-		if v > 0 then
-			table.insert(result, icons[k] .. v)
+	local parts = {}
+	for level, n in pairs(count) do
+		if n > 0 then
+			table.insert(parts, icons[level] .. n)
 		end
 	end
 
-	return table.concat(result, " ")
+	if #parts == 0 then
+		return ""
+	end
+	return " " .. table.concat(parts, " ") .. " "
 end
+
+_G.DiagnosticStatus = diagnostic_status
+
 function BufferStatus()
 	local current_buf = vim.api.nvim_get_current_buf()
 	local listed_buffers = vim.fn.getbufinfo({ buflisted = 1 })
@@ -199,7 +206,7 @@ function BufferStatus()
 		end
 	end
 
-	return string.format(" [%d/%d]", current_index, total)
+	return string.format(" [%d/%d] ", current_index, total)
 end
 
 function GitsignsStatus()
@@ -218,14 +225,18 @@ function GitsignsStatus()
 end
 
 function Lsp_status()
-	local clients = vim.lsp.get_clients({ bufnr = 0 })
-	if #clients == 0 then
+	local names = {}
+	for _, client in pairs(vim.lsp.get_clients({ bufnr = 0 })) do
+		if not client.is_stopped or not client:is_stopped() then
+			table.insert(names, client.name)
+		end
+	end
+
+	if #names == 0 then
 		return ""
 	end
-	local names = vim.tbl_map(function(c)
-		return c.name
-	end, clients)
-	return "󱒄 " .. table.concat(names, ",")
+
+	return (" [󱒄 %s]"):format(table.concat(names, ","))
 end
 
 function Formatter_status()
@@ -257,17 +268,25 @@ function Linter_status()
 	return "󰁨 " .. table.concat(linters, ",")
 end
 
+-- register the key to store the last key pressed
+vim.on_key(function(k)
+	vim.g.last_key = k
+end, vim.api.nvim_create_namespace("last_key_ns"))
+
 vim.opt.statusline = table.concat({
-	"%f",
-	"%m",
-	"%r",
-	"%=",
+	"%f", -- filename
+	"%m", -- modified
+	-- "%y", -- filetype
+	"%r", -- readonly
+	"%=", -- right align
 	-- "%{v:lua.GitsignsStatus()}",
-	"%{v:lua.BufferStatus()}",
+	-- "%{mode()} ",  -- mode short (n,i,v)
 	"%{v:lua.DiagnosticStatus()}",
-	"%{v:lua.Linter_status()}",
-	"%{v:lua.Formatter_status()}",
-	"%{v:lua.Lsp_status()}",
-	" %l:%c",
-	" %p%%",
-}, " ")
+	"%{exists('g:last_key') ? (' ' .. g:last_key .. ' ') : ''}",
+	"%{v:lua.BufferStatus()}", -- buffer
+	"%{v:lua.Lsp_status()}", -- lsp
+	-- "%{v:lua.Linter_status()}",  -- linter
+	-- "%{v:lua.Formatter_status()}",  -- formatter
+	-- " %l:%c",  -- line and column
+	-- " %p%%", -- percentage
+})
