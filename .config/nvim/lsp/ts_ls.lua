@@ -33,8 +33,45 @@
 --- - organize imports
 --- - remove unused code
 
+local astro_ts_plugin_path = vim.fn.stdpath("data")
+	.. "/mason/packages/astro-language-server/node_modules/@astrojs/typescript/lib"
+
 return {
-	init_options = { hostInfo = "neovim" },
+	init_options = {
+		hostInfo = "neovim",
+		preferences = {
+			includeInlayParameterNameHints = "all",
+			includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+			includeInlayFunctionParameterTypeHints = true,
+			includeInlayVariableTypeHints = true,
+			includeInlayPropertyDeclarationTypeHints = true,
+			includeInlayFunctionLikeReturnTypeHints = true,
+			includeInlayEnumMemberValueHints = true,
+		},
+		settings = {
+			typescript = {
+				inlayHints = {
+					enumMemberValues = { enabled = true },
+					functionLikeReturnTypes = { enabled = true },
+					parameterNames = { enabled = "literals" },
+					parameterTypes = { enabled = true },
+					propertyDeclarationTypes = { enabled = true },
+					variableTypes = { enabled = false },
+				},
+				suggest = { completeFunctionCalls = true },
+				updateImportsOnFileMove = { enabled = "always" },
+			},
+			tsserver = {
+				globalPlugins = astro_ts_plugin_path and {
+					{
+						name = "@astrojs/typescript",
+						location = astro_ts_plugin_path,
+						enableForWorkspaceTypeScriptVersions = true,
+					},
+				} or nil,
+			},
+		},
+	},
 	cmd = { "typescript-language-server", "--stdio" },
 	filetypes = {
 		"javascript",

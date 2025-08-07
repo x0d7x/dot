@@ -204,8 +204,7 @@ map("n", "]d", function()
 end, { desc = "Go to next diagnostic message" })
 
 -- map('n', '<leader>df', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-map("n", "<leader>dl", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
-map("n", "<leader>lt", "<cmd>LspStart<cr>", { desc = "toggle Lsp" })
+map("n", "<leader>xl", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
 -- conform
 map({ "n", "v" }, "<leader>cf", function()

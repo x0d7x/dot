@@ -147,6 +147,21 @@ api.nvim_create_autocmd("LspAttach", {
 		end, "Format File")
 	end,
 })
+-- inline_hints
+api.nvim_create_autocmd("LspAttach", {
+	group = augroup("lsp_inlay_hints"),
+	callback = function(args)
+		local bufnr = args.buf
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+		if
+			client
+			and (client.server_capabilities.inlayHintProvider or client:supports_method("textDocument/inlayHint"))
+		then
+			vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+		end
+	end,
+})
 
 -- ========== Statusline Utilities ========== --
 
