@@ -1,0 +1,186 @@
+{
+  "actions" : [
+    {
+      "key" : "t",
+      "type" : "application",
+      "value" : "/Applications/Ghostty.app"
+    },
+    {
+      "actions" : [
+        {
+          "actions" : [
+            {
+              "key" : "q",
+              "type" : "application",
+              "value" : "/Applications/qutebrowser.app"
+            },
+            {
+              "key" : "b",
+              "type" : "application",
+              "value" : "/Applications/Brave Browser.app"
+            }
+          ],
+          "iconPath" : "app.badge.fill",
+          "key" : "b",
+          "label" : "browser",
+          "type" : "group"
+        },
+        {
+          "actions" : [
+            {
+              "key" : "b",
+              "type" : "application",
+              "value" : "/Applications/Brave Browser.app"
+            },
+            {
+              "key" : "t",
+              "type" : "application",
+              "value" : "/Applications/Ghostty.app"
+            },
+            {
+              "key" : "v",
+              "type" : "application",
+              "value" : "/Applications/VN.app"
+            },
+            {
+              "key" : "o",
+              "type" : "application",
+              "value" : "/Applications/OBS.app"
+            }
+          ],
+          "key" : "v",
+          "label" : "capture vid",
+          "type" : "group"
+        },
+        {
+          "actions" : [
+            {
+              "key" : "d",
+              "type" : "application",
+              "value" : "/Applications/legcord.app"
+            }
+          ],
+          "key" : "g",
+          "label" : "game",
+          "type" : "group"
+        },
+        {
+          "key" : "m",
+          "type" : "application",
+          "value" : "/Applications/Stremio.app"
+        },
+        {
+          "key" : "s",
+          "type" : "application",
+          "value" : "/Applications/Spark.app"
+        }
+      ],
+      "iconPath" : "app.badge.fill",
+      "key" : "o",
+      "label" : "open app",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "e",
+          "label" : "emoji picker ",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/emoji-symbols/search-emoji-symbols"
+        },
+        {
+          "key" : "p",
+          "label" : "party ",
+          "type" : "url",
+          "value" : "raycast://confetti"
+        },
+        {
+          "key" : "s",
+          "label" : "sleep",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/system/sleep"
+        },
+        {
+          "key" : "c",
+          "label" : "clipboard ",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/clipboard-history/clipboard-history"
+        }
+      ],
+      "iconPath" : "/Applications/Raycast.app",
+      "key" : "r",
+      "label" : "Ray-action",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "iconPath" : "/Applications/Raycast.app",
+          "key" : "h",
+          "label" : "move left ",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/window-management/left-half"
+        },
+        {
+          "iconPath" : "/Applications/Raycast.app",
+          "key" : "l",
+          "label" : "move right ",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/window-management/right-half"
+        },
+        {
+          "iconPath" : "/Applications/Raycast.app",
+          "key" : "m",
+          "label" : "max",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/window-management/maximize"
+        },
+        {
+          "iconPath" : "/Applications/Raycast.app",
+          "key" : "k",
+          "label" : "move top",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/window-management/top-half"
+        },
+        {
+          "iconPath" : "/Applications/Raycast.app",
+          "key" : "j",
+          "label" : "move down ",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/window-management/bottom-half"
+        },
+        {
+          "iconPath" : "/Applications/Raycast.app",
+          "key" : "c",
+          "label" : "center",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/window-management/center-half"
+        }
+      ],
+      "iconPath" : "macwindow",
+      "key" : "w",
+      "label" : "windowmgr",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "b",
+          "label" : "change Bg",
+          "type" : "command",
+          "value" : "/Users/dox/dot/.config/scripts/chbg.sh"
+        },
+        {
+          "key" : "n",
+          "label" : "make notes",
+          "type" : "command",
+          "value" : "/Users/dox/dot/.config/scripts/notes.sh"
+        }
+      ],
+      "key" : "c",
+      "label" : "Commands",
+      "type" : "group"
+    }
+  ],
+  "type" : "group"
+}
