@@ -1,5 +1,7 @@
 return {
 	"vyfor/cord.nvim",
 	build = ":Cord update",
-	-- opts = {}
+	opts = {
+		display = { theme = "atom", flavor = "dark" },
+	},
 }
