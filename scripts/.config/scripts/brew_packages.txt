@@ -19,7 +19,9 @@ cairo: formula
 certifi: formula
 chromaprint: formula
 cjson: formula
+composer: formula
 croc: formula
+curl: formula
 curlie: formula
 dav1d: formula
 duf: formula
@@ -33,11 +35,13 @@ flac: formula
 fluid-synth: formula
 fmt: formula
 fontconfig: formula
+freetds: formula
 freetype: formula
 frei0r: formula
 fribidi: formula
 fzf: formula
 game-music-emu: formula
+gd: formula
 gemini-cli: formula
 gettext: formula
 giflib: formula
@@ -58,6 +62,7 @@ jasper: formula
 jpeg-turbo: formula
 jpeg-xl: formula
 jq: formula
+krb5: formula
 lame: formula
 lazydocker: formula
 lazygit: formula
@@ -67,6 +72,7 @@ libao: formula
 libarchive: formula
 libass: formula
 libassuan: formula
+libavif: formula
 libb2: formula
 libbluray: formula
 libde265: formula
@@ -91,6 +97,7 @@ libogg: formula
 libomp: formula
 libplacebo: formula
 libpng: formula
+libpq: formula
 libraw: formula
 librist: formula
 libsamplerate: formula
@@ -134,6 +141,7 @@ mpg123: formula
 mpv: formula
 mujs: formula
 ncurses: formula
+net-snmp: formula
 nettle: formula
 nlohmann-json: formula
 node: formula
@@ -143,12 +151,14 @@ opencode: formula
 opencore-amr: formula
 openexr: formula
 openjpeg: formula
+openldap: formula
 openssl@3: formula
 opus: formula
 p11-kit: formula
 pango: formula
 pass: formula
 pcre2: formula
+php: formula
 pinentry: formula
 pipx: formula
 pixman: formula
@@ -161,6 +171,7 @@ rav1e: formula
 readline: formula
 ripgrep: formula
 rsync: formula
+rtmpdump: formula
 rubberband: formula
 rustup: formula
 sdl2: formula
@@ -178,12 +189,14 @@ taproom: formula
 tesseract: formula
 thefuck: formula
 theora: formula
+tidy-html5: formula
 tldr: formula
 tmux: formula
 tokei: formula
 tree: formula
 uchardet: formula
 unbound: formula
+unixodbc: formula
 utf8proc: formula
 uv: formula
 vapoursynth: formula

@@ -6,6 +6,8 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+
 # Source/Load zinit 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
@@ -80,8 +82,6 @@ setopt hist_find_no_dups
 #### --- p10k ---
 zinit ice depth"1"  
 zinit light romkatv/powerlevel10k
-# zinit ice wait"1" lucid 
-# zinit snippet OMZ::plugins/starship/starship.plugin.zsh
 ### --- zoxide ---
 zinit ice wait"1" lucid 
 zinit snippet OMZP::zoxide
@@ -141,6 +141,15 @@ fi
 autoload -Uz add-zsh-hook
 # This hook will run before each command
 add-zsh-hook precmd _load_secrets_once
+
+# if we ewant to start starship on zsh startup
+# autoload -Uz add-zsh-hook
+# __starship_boot_once() {
+#   add-zsh-hook -d precmd __starship_boot_once
+#   eval "$(starship init zsh)"
+#   zle && zle reset-prompt
+# }
+# add-zsh-hook precmd __starship_boot_once
 
 function _load_secrets_once() {
 # Only attempt to load secrets if they are not set AND we haven't attempted yet in this session

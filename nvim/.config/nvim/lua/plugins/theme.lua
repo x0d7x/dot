@@ -6,7 +6,25 @@ return {
 		},
 		config = function(_, opts)
 			require("vague").setup(opts)
-			-- vim.cmd.colorscheme("vague")
+			vim.cmd.colorscheme("vague")
+		end,
+	},
+	{
+		"Koalhack/darcubox-nvim",
+		opts = {
+			options = {
+				transparent = true, -- don't set background
+				styles = {
+					comments = { italic = true }, -- italic
+					functions = { bold = true }, -- bold
+					keywords = { italic = true },
+					types = { italic = true, bold = true }, -- italics and bold
+				},
+			},
+		},
+		config = function(_, opts)
+			require("darcubox").setup(opts)
+			-- vim.cmd("colorscheme darcubox")
 		end,
 	},
 	{
@@ -37,7 +55,7 @@ return {
 		},
 		config = function(_, opts)
 			require("gruvbox").setup(opts)
-			vim.cmd("colorscheme gruvbox-hard")
+			-- vim.cmd("colorscheme gruvbox-hard")
 		end,
 	},
 }

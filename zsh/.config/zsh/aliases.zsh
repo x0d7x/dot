@@ -20,6 +20,7 @@ alias mpd="mpd ~/.config/mpd/mpd.conf"
 alias convert='magick convert'
 alias lzd="lazydocker"
 alias mpt="mpv --vo=tct --quiet --really-quiet"
+alias rec='asciinema rec'
 alias oco="opencode"
 # Bun Aliases
 alias bni="bun install"

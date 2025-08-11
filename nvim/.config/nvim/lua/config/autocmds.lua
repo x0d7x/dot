@@ -27,7 +27,7 @@ vim.api.nvim_create_autocmd({ "RecordingEnter", "RecordingLeave" }, {
 			vim.notify("⏹️ Stopped recording macro", vim.log.levels.INFO, { title = "Macro" })
 		end
 	end,
-	desc = "Adjust cmdheight for macro recording",
+	desc = "Notify when recording starts and stops",
 })
 
 api.nvim_create_autocmd("TextYankPost", {
