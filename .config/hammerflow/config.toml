@@ -40,15 +40,17 @@ s = ["Spark", "spark"]
 label = "[browser]" # the "label" key is reserved to change the label of the group
 b = [ "Brave Browser", "brave browser" ]
 q = [ "qutebrowser", "qutebrowser" ]
+z = [ "Zen", "zen browser" ]
 
 [o.v]
 label = "[video]"
 v = ["VN", "vn"]
 o = ["OBS", "obs"]
+c = ["Cap", "cap"]
 
 [o.g]
 label = "[Games]"
-d = ["legcord", "legcord"]
+d = ["Discord", "discord"]
 
 # raycast deep links are supported
 [r]

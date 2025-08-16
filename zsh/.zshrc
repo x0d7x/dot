@@ -34,6 +34,7 @@ export VISUAL=nvim
 export SUDO_EDITOR=nvim
 export FCEDIT=nvim
 export ZEIT_DB=~/.config/zeit/zeit.db
+export blog_tmpl=~/.nb/blogs/tmpl.md
 # Set unique PATH entries with correct order
 typeset -U path
 path=(
@@ -72,10 +73,11 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 #######################################################
-# Aliases, fzf setup
+# Aliases, fzf setup, func setup
 #######################################################
  source ~/.config/zsh/aliases.zsh
  source ~/.config/zsh/fzf.zsh
+ source ~/.config/zsh/func.zsh
 #######################################################
 # Shell integrations
 #######################################################
@@ -142,15 +144,6 @@ autoload -Uz add-zsh-hook
 # This hook will run before each command
 add-zsh-hook precmd _load_secrets_once
 
-# if we ewant to start starship on zsh startup
-# autoload -Uz add-zsh-hook
-# __starship_boot_once() {
-#   add-zsh-hook -d precmd __starship_boot_once
-#   eval "$(starship init zsh)"
-#   zle && zle reset-prompt
-# }
-# add-zsh-hook precmd __starship_boot_once
-
 function _load_secrets_once() {
 # Only attempt to load secrets if they are not set AND we haven't attempted yet in this session
 if [[ ( -z $GEMINI_API_KEY || -z $GITHUB_PERSONAL_ACCESS_TOKEN ) && "$_secrets_load_attempted" = false ]]; then
@@ -162,14 +155,6 @@ fi
 if [[ -n $GEMINI_API_KEY && -n $GITHUB_PERSONAL_ACCESS_TOKEN ]]; then
 add-zsh-hook -d precmd _load_secrets_once
 fi
-}
-function zz() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
 }
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

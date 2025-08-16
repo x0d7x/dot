@@ -34,7 +34,7 @@ function icon_map() {
     icon_result=":joplin:"
     ;;
   "Discord" | "Discord Canary" | "Discord PTB" | "Legcord")
-    icon_result=":discord:"
+    icon_result="󰙯"
     ;;
   "Logseq")
     icon_result=":logseq:"
@@ -159,8 +159,8 @@ function icon_map() {
   "GitHub Desktop")
     icon_result=":git_hub:"
     ;;
-  "Firefox" | "Zen Browser")
-    icon_result=":firefox:"
+  "Firefox" | "Zen")
+    icon_result="󰊯"
     ;;
   "Slack")
     icon_result=":slack:"

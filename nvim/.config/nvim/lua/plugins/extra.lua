@@ -142,6 +142,24 @@ return {
 			require("mini.pairs").setup()
 		end,
 	},
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {
+			-- your configuration comes here
+		},
+	},
+	{
+		"uga-rosa/ccc.nvim",
+		-- cond = not is_vscode(),
+		event = { "BufReadPost" },
+		opts = {
+			highlighter = {
+				auto_enable = true,
+				lsp = false,
+			},
+		},
+	},
 	-- taking pic for the code
 	{
 		"mistricky/codesnap.nvim",
