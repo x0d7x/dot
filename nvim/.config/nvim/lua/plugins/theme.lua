@@ -3,10 +3,13 @@ return {
 		"vague2k/vague.nvim",
 		opts = {
 			transparent = true, -- don't set background
+			colors = {
+				visual = "#cb945b",
+			},
 		},
 		config = function(_, opts)
 			require("vague").setup(opts)
-			-- vim.cmd.colorscheme("vague")
+			vim.cmd.colorscheme("vague")
 		end,
 	},
 	{
@@ -24,7 +27,7 @@ return {
 		},
 		config = function(_, opts)
 			require("darcubox").setup(opts)
-			-- vim.cmd("colorscheme darcubox")
+			-- vim.cmd([[colorscheme darcubox]])
 		end,
 	},
 	{
@@ -32,14 +35,15 @@ return {
 		opts = {
 			transparent = true, -- do not set background color
 			-- setup must be called before loading
-			-- theme = "dragon",
+			terminalColors = true,
+			theme = "dragon",
 			background = {
 				dark = "dragon",
 			},
 		},
 		config = function(_, opts)
 			require("kanagawa").setup(opts)
-			-- vim.cmd("colorscheme kanagawa-wave")
+			-- vim.cmd("colorscheme kanagawa-dragon")
 		end,
 	},
 	{
@@ -55,7 +59,7 @@ return {
 		},
 		config = function(_, opts)
 			require("gruvbox").setup(opts)
-			vim.cmd("colorscheme gruvbox-hard")
+			-- vim.cmd("colorscheme gruvbox-hard")
 		end,
 	},
 }
