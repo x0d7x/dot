@@ -8,7 +8,9 @@ asciinema: formula
 aspell: formula
 autoconf: formula
 bash: formula
+bash-completion@2: formula
 bat: formula
+bdw-gc: formula
 bob: formula
 brotli: formula
 btop: formula
@@ -45,6 +47,7 @@ gd: formula
 gemini-cli: formula
 gettext: formula
 giflib: formula
+git: formula
 gitleaks: formula
 glib: formula
 gmp: formula
@@ -85,6 +88,7 @@ libheif: formula
 libid3tag: formula
 libidn2: formula
 libksba: formula
+liblinear: formula
 liblqr: formula
 libmicrohttpd: formula
 libmikmod: formula
@@ -128,6 +132,7 @@ libxrender: formula
 libzip: formula
 little-cms2: formula
 llvm: formula
+lua: formula
 luajit: formula
 lz4: formula
 lzo: formula
@@ -140,10 +145,12 @@ mpdecimal: formula
 mpg123: formula
 mpv: formula
 mujs: formula
+nb: formula
 ncurses: formula
 net-snmp: formula
 nettle: formula
 nlohmann-json: formula
+nmap: formula
 node: formula
 npth: formula
 oniguruma: formula
@@ -155,6 +162,7 @@ openldap: formula
 openssl@3: formula
 opus: formula
 p11-kit: formula
+pandoc: formula
 pango: formula
 pass: formula
 pcre2: formula
@@ -165,6 +173,7 @@ pixman: formula
 pkgconf: formula
 popt: formula
 portaudio: formula
+pygments: formula
 python@3.13: formula
 qrencode: formula
 rav1e: formula
@@ -183,6 +192,7 @@ snappy: formula
 speex: formula
 sqlite: formula
 srt: formula
+starship: formula
 stow: formula
 svt-av1: formula
 taproom: formula
@@ -190,6 +200,7 @@ tesseract: formula
 thefuck: formula
 theora: formula
 tidy-html5: formula
+tig: formula
 tldr: formula
 tmux: formula
 tokei: formula
@@ -202,6 +213,7 @@ uv: formula
 vapoursynth: formula
 vulkan-headers: formula
 vulkan-loader: formula
+w3m: formula
 wavpack: formula
 webp: formula
 wget: formula
@@ -223,9 +235,12 @@ aerospace: cask
 alt-tab: cask
 appcleaner: cask
 brave-browser: cask
+cap: cask
 cyberduck: cask
+discord: cask
 docker-desktop: cask
 font-jetbrains-mono-nerd-font: cask
+font-noto-emoji: cask
 font-sf-mono-nerd-font-ligaturized: cask
 font-sf-pro: cask
 font-symbols-only-nerd-font: cask
@@ -249,3 +264,4 @@ shottr: cask
 steam: cask
 stremio: cask
 topnotch: cask
+zen: cask

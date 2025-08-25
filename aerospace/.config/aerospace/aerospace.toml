@@ -133,6 +133,7 @@ alt-shift-q = 'move-node-to-workspace Q'
 alt-shift-m = 'move-node-to-workspace M'
 alt-shift-s = 'move-node-to-workspace S'
 alt-shift-t = 'move-node-to-workspace T'
+alt-shift-n = 'move-node-to-workspace N'
 alt-shift-w = 'exec-and-forget ~/dot/scripts/.config/scripts/chbg.sh'
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -204,6 +205,9 @@ run = "move-node-to-workspace M"
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
 run = "move-node-to-workspace D"
+[[on-window-detected]]
+if.app-id = 'md.obsidian'
+run = "move-node-to-workspace N"
 [[on-window-detected]]
 if.app-id = 'cc.ffitch.shottr'
 run = "move-node-to-workspace S"

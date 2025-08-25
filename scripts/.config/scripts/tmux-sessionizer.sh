@@ -1,35 +1,38 @@
 #!/usr/bin/env bash
 
+SEARCH_DIRS=(
+  "$HOME/Developer"
+  "$HOME/repo"
+  "$HOME/dot"
+  "$HOME/.config"
+  "$HOME"
+)
+
 if [[ $# -eq 1 ]]; then
-  selected=$1
+  selected="$1"
 else
-  selected=$(
-    find ~/Developer ~/ ~/repo ~/dot .config -mindepth 1 -maxdepth 2 -type d |
+  selected="$(
+    fd -t d -d 2 --absolute-path . "${SEARCH_DIRS[@]}" |
       sed "s|^$HOME/||" |
-      fzf --margin 2% --color --border --cycle --prompt="📁 search> "
-  )
-  # Add home path back
-  if [[ -n "$selected" ]]; then
-    selected="$HOME/$selected"
-  fi
+      fzf --margin=2% --color --border --cycle --prompt="📁 search> " |
+      sed "s|^|$HOME/|"
+  )"
 fi
 
-if [[ -z $selected ]]; then
-  exit 0
+[[ -z "$selected" ]] && exit 0
+
+selected_name="$(basename "$selected" | tr ' ./:' '_')"
+
+if [[ -z "${TMUX:-}" ]] && ! pgrep -x tmux >/dev/null 2>&1; then
+  exec tmux new-session -s "$selected_name" -c "$selected"
 fi
 
-selected_name=$(basename "$selected" | tr . _)
-tmux_running=$(pgrep tmux)
-
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-  tmux new-session -s $selected_name -c $selected
-  exit 0
+if ! tmux has-session -t "$selected_name" 2>/dev/null; then
+  tmux new-session -ds "$selected_name" -c "$selected"
 fi
 
-if ! tmux has-session -t=$selected_name 2>/dev/null; then
-  tmux new-session -ds $selected_name -c $selected
-  # select first window
-  tmux select-window -t $selected_name:1
+if [[ -n "${TMUX:-}" ]]; then
+  tmux switch-client -t "$selected_name"
+else
+  exec tmux attach -t "$selected_name"
 fi
-
-tmux switch-client -t $selected_name

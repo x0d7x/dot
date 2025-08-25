@@ -36,6 +36,7 @@ label = "[open]"
 m = ["Stremio", "stremio"]
 s = ["Spark", "spark"]
 a = ["AltServer", "altv"]
+n = ["Obsidian", "obsidian"]
 # create groups to nest actions
 [o.b]
 label = "[browser]" # the "label" key is reserved to change the label of the group
