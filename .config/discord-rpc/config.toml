@@ -1,0 +1,9 @@
+id = "1405294960646946928"
+hosts = ["/tmp/mpd_socket", "127.0.0.1:6600"]
+
+[format]
+details = "$title"
+state = "$artist / $album"
+timestamp = "both"
+large_image = "album_art"
+small_image = "album_art"

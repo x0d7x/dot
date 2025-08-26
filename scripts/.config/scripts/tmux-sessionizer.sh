@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 
 SEARCH_DIRS=(
+  "$HOME"
   "$HOME/Developer"
   "$HOME/repo"
   "$HOME/dot"
   "$HOME/.config"
-  "$HOME"
 )
 
 if [[ $# -eq 1 ]]; then
   selected="$1"
 else
   selected="$(
-    fd -t d -d 2 --absolute-path . "${SEARCH_DIRS[@]}" |
+    fd -H -t d -d 2 --absolute-path . "${SEARCH_DIRS[@]}" |
       sed "s|^$HOME/||" |
       fzf --margin=2% --color --border --cycle --prompt="📁 search> " |
       sed "s|^|$HOME/|"
