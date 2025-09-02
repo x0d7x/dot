@@ -120,6 +120,7 @@ alt-d = 'workspace D'
 alt-q = 'workspace Q'
 alt-s = 'workspace S'
 alt-m = 'workspace M'
+alt-g = 'workspace G'
 alt-t = 'workspace T'
 alt-b = 'workspace B'
 alt-r = 'macos-native-fullscreen'
@@ -134,6 +135,7 @@ alt-shift-m = 'move-node-to-workspace M'
 alt-shift-s = 'move-node-to-workspace S'
 alt-shift-t = 'move-node-to-workspace T'
 alt-shift-n = 'move-node-to-workspace N'
+alt-shift-g = 'move-node-to-workspace G'
 alt-shift-w = 'exec-and-forget ~/dot/scripts/.config/scripts/chbg.sh'
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -183,6 +185,17 @@ run = "move-node-to-workspace T"
 if.app-id = 'org.qutebrowser.qutebrowser'
 run = "move-node-to-workspace B"
 [[on-window-detected]]
+if.app-id = 'net.waterfox.waterfox'
+run = "move-node-to-workspace G"
+[[on-window-detected]]
+if.app-id = 'net.waterfox.waterfox'
+run = "move-node-to-workspace B"
+[[on-window-detected]]
+if.app-id = 'net.waterfox.waterfox'
+if.window-title-regex-substring = 'Picture-in-Picture'
+check-further-callbacks = true
+run = 'layout floating'
+[[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
 if.window-title-regex-substring = 'Picture-in-Picture'
 check-further-callbacks = true
@@ -198,6 +211,9 @@ if.app-id = 'company.thebrowser.Browser'
 run = "move-node-to-workspace B"
 [[on-window-detected]]
 if.app-id = 'com.brave.Browser'
+run = "move-node-to-workspace B"
+[[on-window-detected]]
+if.app-id = 'com.brave.Browser.nightly'
 run = "move-node-to-workspace B"
 [[on-window-detected]]
 if.app-id = 'com.smartcodeltd.stremio'

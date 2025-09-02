@@ -40,9 +40,10 @@ n = ["Obsidian", "obsidian"]
 # create groups to nest actions
 [o.b]
 label = "[browser]" # the "label" key is reserved to change the label of the group
-b = [ "Brave Browser", "brave browser" ]
+b = [ "Brave Browser Nightly", "brave" ]
 q = [ "qutebrowser", "qutebrowser" ]
 z = [ "Zen", "zen browser" ]
+w = [ "Waterfox", "waterfox" ]
 
 [o.v]
 label = "[video]"
