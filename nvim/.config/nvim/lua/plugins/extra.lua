@@ -1,71 +1,4 @@
 return {
-	{
-		"NStefan002/screenkey.nvim",
-		event = "VeryLazy",
-		version = "*", -- or branch = "dev", to use the latest commit
-		opts = {
-			win_opts = {
-				col = vim.o.columns - 1,
-				relative = "editor",
-				anchor = "SE",
-				width = 25,
-				height = 3,
-				border = "none",
-				title = "",
-				title_pos = "center",
-				style = "minimal",
-				focusable = false,
-				noautocmd = true,
-			},
-			compress_after = 3,
-			clear_after = 2,
-			disable = {
-				filetypes = {},
-				buftypes = {},
-				events = false,
-			},
-			show_leader = false,
-			group_mappings = false,
-			display_infront = {},
-			display_behind = {},
-			filter = function(keys)
-				return keys
-			end,
-			keys = {
-				["<TAB>"] = "󰌒",
-				["<CR>"] = "󰌑",
-				["<ESC>"] = "Esc",
-				["<SPACE>"] = "␣",
-				["<BS>"] = "󰌥",
-				["<DEL>"] = "Del",
-				["<LEFT>"] = "",
-				["<RIGHT>"] = "",
-				["<UP>"] = "",
-				["<DOWN>"] = "",
-				["<HOME>"] = "Home",
-				["<END>"] = "End",
-				["<PAGEUP>"] = "PgUp",
-				["<PAGEDOWN>"] = "PgDn",
-				["<INSERT>"] = "Ins",
-				["<F1>"] = "󱊫",
-				["<F2>"] = "󱊬",
-				["<F3>"] = "󱊭",
-				["<F4>"] = "󱊮",
-				["<F5>"] = "󱊯",
-				["<F6>"] = "󱊰",
-				["<F7>"] = "󱊱",
-				["<F8>"] = "󱊲",
-				["<F9>"] = "󱊳",
-				["<F10>"] = "󱊴",
-				["<F11>"] = "󱊵",
-				["<F12>"] = "󱊶",
-				["CTRL"] = "Ctrl",
-				["ALT"] = "Alt",
-				["SUPER"] = "󰘳",
-				["<leader>"] = "<leader>",
-			},
-		},
-	},
 	-- moving around code
 	{
 		"folke/flash.nvim",
@@ -98,15 +31,17 @@ return {
 			-- add any custom options here
 		},
 	},
-
+	-- showkeys
 	{
-		"j-hui/fidget.nvim",
+		"nvzone/showkeys",
+		cmd = "ShowkeysToggle",
 		opts = {
-			notification = {
-				window = {
-					winblend = 0, -- Background color opacity in the notification window
-				},
-			},
+			timeout = 1,
+			maxkeys = 5,
+			show_count = true,
+			-- bottom-left, bottom-right, bottom-center, top-left, top-right, top-center
+			position = "bottom-center",
+			-- more opts
 		},
 	},
 	-- moving around code
@@ -196,5 +131,18 @@ return {
 		opts = {},
 		event = "VeryLazy",
 		enabled = vim.fn.has("nvim-0.10.0") == 1,
+	},
+	{
+		"Wansmer/treesj",
+		keys = {
+			"<space>m",
+			"<space>j",
+			"<space>s",
+		},
+		dependencies = { "nvim-treesitter/nvim-treesitter" }, -- if you install parsers with `nvim-treesitter`
+		config = function()
+			require("treesj").setup({--[[ your config ]]
+			})
+		end,
 	},
 }

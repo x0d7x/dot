@@ -170,44 +170,43 @@ alt-shift-h = ['join-with left', 'mode main']
 alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
+# terminals
 [[on-window-detected]]
-if.app-id = 'com.brave.Browser'
-if.window-title-regex-substring = 'Picture in Picture'
-check-further-callbacks = true
-run = 'layout floating'
+if.app-id = 'net.kovidgoyal.kitty'
+run = 'move-node-to-workspace T'
 [[on-window-detected]]
 if.app-id = "com.mitchellh.ghostty"
 run = "move-node-to-workspace T"
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
 run = "move-node-to-workspace T"
+# browsers
+[[on-window-detected]]
+if.app-id = 'com.brave.Browser'
+if.window-title-regex-substring = 'Picture in Picture'
+check-further-callbacks = true
+run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'org.qutebrowser.qutebrowser'
 run = "move-node-to-workspace B"
 [[on-window-detected]]
-if.app-id = 'net.waterfox.waterfox'
-run = "move-node-to-workspace G"
-[[on-window-detected]]
-if.app-id = 'net.waterfox.waterfox'
-run = "move-node-to-workspace B"
-[[on-window-detected]]
-if.app-id = 'net.waterfox.waterfox'
-if.window-title-regex-substring = 'Picture-in-Picture'
-check-further-callbacks = true
-run = 'layout floating'
-[[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
 if.window-title-regex-substring = 'Picture-in-Picture'
 check-further-callbacks = true
 run = 'layout floating'
 [[on-window-detected]]
-if.app-id = 'net.kovidgoyal.kitty'
-run = 'move-node-to-workspace T'
+if.app-id = 'org.mozilla.floorp'
+if.window-title-regex-substring = 'Picture-in-Picture'
+check-further-callbacks = true
+run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
 run = 'move-node-to-workspace B'
 [[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
+if.app-id = 'org.mozilla.floorp'
+run = 'move-node-to-workspace B'
+[[on-window-detected]]
+if.app-id = 'com.operasoftware.OperaAir'
 run = "move-node-to-workspace B"
 [[on-window-detected]]
 if.app-id = 'com.brave.Browser'
@@ -215,6 +214,7 @@ run = "move-node-to-workspace B"
 [[on-window-detected]]
 if.app-id = 'com.brave.Browser.nightly'
 run = "move-node-to-workspace B"
+# media
 [[on-window-detected]]
 if.app-id = 'com.smartcodeltd.stremio'
 run = "move-node-to-workspace M"

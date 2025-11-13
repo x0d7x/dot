@@ -18,7 +18,7 @@ show_ui = true            # optional, default true, show the ui with your key ma
 
 
 # set a key to open an app
-t = "kitty"
+t = "Ghostty"
 # groups can be nested too!
 [l]
 label = "[my_Links]"
@@ -43,7 +43,8 @@ label = "[browser]" # the "label" key is reserved to change the label of the gro
 b = [ "Brave Browser Nightly", "brave" ]
 q = [ "qutebrowser", "qutebrowser" ]
 z = [ "Zen", "zen browser" ]
-w = [ "Waterfox", "waterfox" ]
+o = [ "Opera Air", "opera" ]
+f = [ "Floorp", "floorp" ]
 
 [o.v]
 label = "[video]"

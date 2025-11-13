@@ -315,3 +315,245 @@ end
 
 -- Create command
 vim.api.nvim_create_user_command("LspInfo", lsp_info, { desc = "Show comprehensive LSP information" })
+
+--blend LspProgrrss
+do
+	local blend = blend._282828;
+
+	(function(config)
+		local function setup_highlights()
+			local opt = { underline = true, bold = true }
+			vim.api.nvim_set_hl(0, "LspProgressSpinner", vim.tbl_extend("force", { fg = config.colors.spinner }, opt))
+			vim.api.nvim_set_hl(0, "LspProgressTitle", vim.tbl_extend("force", { fg = config.colors.title }, opt))
+			vim.api.nvim_set_hl(
+				0,
+				"LspProgressMessage",
+				vim.tbl_extend("force", { fg = config.colors.progress, italic = true }, opt)
+			)
+			vim.api.nvim_set_hl(
+				0,
+				"LspProgressPercentage",
+				vim.tbl_extend("force", { fg = config.colors.percentage }, opt)
+			)
+		end
+
+		setup_highlights()
+
+		local ns_id = vim.api.nvim_create_namespace(config.namespace_name)
+		local extmark_id
+		local progress_data = {}
+		local spinner_index = 1
+		local spinner_timer
+		local hide_timer
+
+		local function get_spinner()
+			local frame = config.spinner_frames[spinner_index]
+			spinner_index = (spinner_index % #config.spinner_frames) + 1
+			return frame
+		end
+
+		local function create_virt_text(data)
+			local virt_text = {}
+			local spinner = get_spinner()
+
+			table.insert(virt_text, { spinner .. " ", "LspProgressSpinner" })
+
+			if config.show_title and data.title then
+				table.insert(virt_text, { data.title, "LspProgressTitle" })
+				if data.message or data.percentage then
+					table.insert(virt_text, { " ", "Normal" })
+				end
+			end
+
+			if config.show_message and data.message then
+				table.insert(virt_text, { data.message, "LspProgressMessage" })
+				if data.percentage then
+					table.insert(virt_text, { " ", "Normal" })
+				end
+			end
+
+			if config.show_percentage and data.percentage then
+				table.insert(virt_text, { string.format("(%d%%)", data.percentage), "LspProgressPercentage" })
+			end
+
+			return virt_text
+		end
+
+		local function update_extmark(data)
+			if not data then
+				return
+			end
+
+			local bufnr = vim.api.nvim_get_current_buf()
+			local cursor_pos = vim.api.nvim_win_get_cursor(0)
+			local row = cursor_pos[1] - 1
+			local virt_text = create_virt_text(data)
+
+			if extmark_id then
+				pcall(vim.api.nvim_buf_del_extmark, bufnr, ns_id, extmark_id)
+			end
+
+			extmark_id = vim.api.nvim_buf_set_extmark(bufnr, ns_id, row, 0, {
+				virt_text = virt_text,
+				virt_text_pos = "eol",
+				priority = 1000,
+			})
+		end
+
+		local function clear_extmark()
+			if extmark_id then
+				local bufnr = vim.api.nvim_get_current_buf()
+				pcall(vim.api.nvim_buf_del_extmark, bufnr, ns_id, extmark_id)
+				extmark_id = nil
+			end
+		end
+
+		local function has_active_progress()
+			for _, data in pairs(progress_data) do
+				if data.active then
+					return true
+				end
+			end
+			return false
+		end
+
+		local function get_combined_progress()
+			local active_items = {}
+			for _, data in pairs(progress_data) do
+				if data.active then
+					table.insert(active_items, data)
+				end
+			end
+
+			if #active_items == 0 then
+				return nil
+			end
+
+			table.sort(active_items, function(a, b)
+				return (a.percentage or 0) > (b.percentage or 0)
+			end)
+
+			return active_items[1]
+		end
+
+		local function start_spinner()
+			if spinner_timer then
+				return
+			end
+
+			spinner_timer = vim.uv.new_timer()
+			spinner_timer:start(
+				0,
+				config.update_interval,
+				vim.schedule_wrap(function()
+					local data = get_combined_progress()
+					if data then
+						update_extmark(data)
+					else
+						if spinner_timer then
+							spinner_timer:stop()
+							spinner_timer:close()
+							spinner_timer = nil
+						end
+					end
+				end)
+			)
+		end
+
+		local function schedule_hide()
+			if hide_timer then
+				hide_timer:stop()
+				hide_timer:close()
+			end
+
+			hide_timer = vim.uv.new_timer()
+			hide_timer:start(
+				config.auto_hide_delay,
+				0,
+				vim.schedule_wrap(function()
+					clear_extmark()
+					if hide_timer then
+						hide_timer:close()
+						hide_timer = nil
+					end
+				end)
+			)
+		end
+
+		local function handle_progress(args)
+			local client_id = args.data.client_id
+			local params = args.data.params
+			local token = params.token
+			local value = params.value
+
+			if not token then
+				return
+			end
+
+			local key = string.format("%d:%s", client_id, tostring(token))
+
+			if value.kind == "begin" then
+				progress_data[key] = {
+					percentage = value.percentage,
+					title = value.title,
+					message = value.message,
+					active = true,
+				}
+				start_spinner()
+			elseif value.kind == "report" then
+				if progress_data[key] then
+					progress_data[key].message = value.message or progress_data[key].message
+					progress_data[key].percentage = value.percentage or progress_data[key].percentage
+				end
+			elseif value.kind == "end" then
+				if progress_data[key] then
+					progress_data[key].active = false
+					progress_data[key] = nil
+				end
+
+				if not has_active_progress() then
+					schedule_hide()
+				end
+			end
+		end
+
+		vim.api.nvim_create_augroup("LspProgressExtmark", { clear = true })
+		vim.api.nvim_create_autocmd("LspProgress", {
+			group = "LspProgressExtmark",
+			callback = handle_progress,
+		})
+	end)({
+		namespace_name = "lsp_progress_extmark",
+		show_percentage = true,
+		show_title = true,
+		show_message = true,
+		colors = {
+			spinner = blend("#ff6b47", 55),
+			title = blend("#ffb347", 25),
+			progress = blend("#b3c6a7", 25),
+			percentage = blend("#87ceeb", 55),
+		},
+		-- spinner_frames = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' },
+		-- spinner_frames = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+		-- spinner_frames = { "◐", "◓", "◑", "◒" },
+		spinner_frames = { "◰", "◳", "◲", "◱" },
+		-- spinner_frames = { "▱", "▰", "▰▱", "▰▰" },
+		-- spinner_frames = { "○", "⬭", "●", "⬮" },
+		-- spinner_frames = { "○   ", " ○  ", "  ○ ", "   ○", "  ○ ", " ○  " },
+		-- spinner_frames = {
+		-- 	"○○○",
+		-- 	"●○○",
+		-- 	"○●○",
+		-- 	"○○●",
+		-- 	"●●○",
+		-- 	"●○●",
+		-- 	"○●●",
+		-- 	"●●●",
+		-- },
+		-- spinner_frames = { "⬢", "⬡", "⬢", "⬡" },
+		-- spinner_frames = { "◐", "◓", "◑", "◒" },
+		auto_hide_delay = 10,
+		update_interval = 100,
+	})
+end
+-- spinners

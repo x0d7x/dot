@@ -47,7 +47,7 @@ return {
 			timeout = 3000,
 		},
 		quickfile = { enabled = true },
-		notify = { enabled = false },
+		notify = { enabled = true },
 		picker = {
 			enabled = true,
 			matcher = {

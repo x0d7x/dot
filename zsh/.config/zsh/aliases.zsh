@@ -35,13 +35,4 @@ alias tbr="taproom"
 alias bru="brew update"
 alias br="brew"
 alias bri="brew install"
-# Note taking nb
-alias nba="nb add"
-alias nbd="nb -"
-alias nbat="nb add --title"
-alias nbs="nb q"  #search by tag -t tag 1 -t tag 2
-alias nbt="nb todo"
-alias nbc='nb add --content'
-alias nbat='nb blogs:a --template "$blog_tmpl"'
-alias nbto='nb todo add'
 
