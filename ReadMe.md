@@ -4,7 +4,8 @@ A curated collection of dotfiles to create a beautiful and productive developmen
 
 ## Showcase
 
-[![Desktop Screenshot](https://i.imgur.com/gZlAKA4.png)](https://i.imgur.com/gZlAKA4.png)
+<img width="1680" height="1050" alt="image" src="https://github.com/user-attachments/assets/59d4d3ec-81ae-4a72-aa60-16bbd16431b2" />
+
 _Wallpaper: [City Night](https://i.imgur.com/3VeMb4x.jpeg)_
 
 ---
