@@ -18,7 +18,7 @@ show_ui = true            # optional, default true, show the ui with your key ma
 
 
 # set a key to open an app
-t = "Ghostty"
+t = "WezTerm"
 # groups can be nested too!
 [l]
 label = "[my_Links]"

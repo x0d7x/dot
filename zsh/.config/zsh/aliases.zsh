@@ -23,16 +23,18 @@ alias mpt="mpv --vo=tct --quiet --really-quiet"
 alias rec='asciinema rec'
 alias aggif="agg --font-family 'JetBrainsMono Nerd Font Mono,NotoColorEmoji'"
 alias asp="asciinema play"
-alias oco="opencode"
+alias opco="opencode"
+alias kitty-theme='tmux detach-client; kitty +kitten themes'
 # Bun Aliases
 alias bni="bun install"
 alias bnr="bun run"
-alias brd="bun run dev"
+alias bnd="bun run dev"
 alias bnc="bun create"
-alias brm="bun remove"
+alias bnrm="bun remove"
 # Homebrew Alias
 alias tbr="taproom"
 alias bru="brew update"
+alias brug="brew upgrade"
 alias br="brew"
 alias bri="brew install"
-
+alias br-up="brew update && brew upgrade && brew cleanup"

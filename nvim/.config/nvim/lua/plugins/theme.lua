@@ -9,7 +9,7 @@ return {
 		},
 		config = function(_, opts)
 			require("vague").setup(opts)
-			-- vim.cmd.colorscheme("vague")
+			vim.cmd.colorscheme("vague")
 		end,
 	},
 	{
@@ -59,7 +59,19 @@ return {
 		},
 		config = function(_, opts)
 			require("gruvbox").setup(opts)
-			vim.cmd("colorscheme gruvbox-hard")
+			-- vim.cmd("colorscheme gruvbox-hard")
+		end,
+	},
+	{
+		"darianmorat/gruvdark.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {
+			transparent = true, -- Show or hide background
+		},
+		config = function(_, opts)
+			require("gruvdark").setup(opts)
+			-- vim.cmd.colorscheme("gruvdark")
 		end,
 	},
 }

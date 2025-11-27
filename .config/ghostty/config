@@ -1,14 +1,15 @@
 # vim: set ft=bash:
 font-family = "JetBrainsMono Nerd Font Mono"
 font-size = 15
-background-opacity = 0.74
-background-blur-radius = 25
+background-opacity = 0.7
+background-blur-radius = 27
 # themes i Like [Banana Blueberry,Everforest Dark - Hard,Batman,CrayonPonyFish,duckbones,Builtin Tango Dark,embers-dark,CGA,Earthsong,Espresso Libre, Adwaita Dark, 3024 Night, 0x96f, Adventure, flexoki-dark, Monokai Pro Ristretto, embers-dark, Solarized Dark Higher Contrast]
-theme = 0x96f
+theme = Black Metal
 font-thicken = true
-cursor-text = black
+cursor-text = white
 window-save-state = always
 # cursor-style = block
+# alpha-blending = linear-corrected
 cursor-color = #D59B53
 mouse-hide-while-typing = true
 macos-titlebar-style = hidden
@@ -19,8 +20,7 @@ cursor-style-blink = true
 shell-integration-features = true
 window-theme = ghostty
 auto-update = check
-alpha-blending = linear-corrected
 window-padding-balance = true
-adjust-cell-height = 29%
+adjust-cell-height = 35%
 keybind = cmd+s=toggle_quick_terminal
 keybind = super+i=inspector:toggle
