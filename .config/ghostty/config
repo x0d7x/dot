@@ -1,6 +1,7 @@
 # vim: set ft=bash:
-font-family = "FantasqueSansM Nerd Font"
+font-family = "DepartureMono Nerd Font Mono"
 font-size = 16
+font-thicken = true
 background-opacity = 0.7
 background-blur-radius = 27
 # themes i Like [Banana Blueberry,Everforest Dark - Hard,Batman,CrayonPonyFish,duckbones,Builtin Tango Dark,embers-dark,CGA,Earthsong,Espresso Libre, Adwaita Dark, 3024 Night, 0x96f, Adventure, flexoki-dark, Monokai Pro Ristretto, embers-dark, Solarized Dark Higher Contrast]
@@ -8,9 +9,9 @@ theme = Black Metal
 font-thicken = true
 cursor-text = white
 window-save-state = always
-# cursor-style = block
+cursor-style = block
 # alpha-blending = linear-corrected
-cursor-color = #D59B53
+# cursor-color = #D59B53
 mouse-hide-while-typing = true
 macos-titlebar-style = hidden
 window-colorspace = "display-p3"

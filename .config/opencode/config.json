@@ -10,25 +10,7 @@
       }
     }
   },
-  "keybinds": {
-    "input_newline": "shift+ctrl+j"
-  },
-  "mode": {
-    "docs": {
-      "model": "google/gemini-2.5-flash",
-      "tools": {
-        "write": false,
-        "edit": false,
-        "bash": true,
-        "read": true,
-        "git": true,
-        "list": true
-      }
-    }
-  },
-  "log_level": "INFO",
-  "theme": "system",
-  "model": "google/gemini-2.5-flash",
+  "theme": "vasper",
   "autoshare": false,
   "autoupdate": true
 }
