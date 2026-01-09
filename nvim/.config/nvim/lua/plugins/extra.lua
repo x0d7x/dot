@@ -18,6 +18,10 @@ return {
       { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
     },
 	},
+	{
+		"mistweaverco/bafa.nvim",
+		version = "v1.10.1",
+	},
 	-- tmux move with nevim
 	{
 		"christoomey/vim-tmux-navigator",

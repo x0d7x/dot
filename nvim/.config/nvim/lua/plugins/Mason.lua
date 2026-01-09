@@ -29,11 +29,6 @@ return {
 				-- Additional useful tools
 				"shfmt", -- Shell formatter
 				"shellcheck", -- Shell linter
-
-				-- Optional but useful additions
-				-- "markdownlint", -- Markdown linting
-				-- "yamllint",     -- YAML linting
-				-- "jsonlint",     -- JSON linting
 			},
 		},
 		config = function(_, opts)

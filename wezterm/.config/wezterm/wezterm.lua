@@ -22,12 +22,12 @@ return {
 	-- =================== Fonts ===================
 	font = wezterm.font_with_fallback({
 		{
-			family = "JetBrainsMono Nerd Font Mono",
+			family = "FantasqueSansM Nerd Font",
 			weight = "Bold",
 		},
 	}),
-	font_size = 15.5,
-	line_height = 1.24,
+	font_size = 18,
+	line_height = 1.25,
 
 	-- =================== Cursor ===================
 	-- WezTerm doesn’t support trail, but we use smooth blinking animation
@@ -55,7 +55,12 @@ return {
 	hide_tab_bar_if_only_one_tab = true,
 
 	-- =================== Padding ===================
-	window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
+	window_padding = {
+		left = 8,
+		right = 8,
+		top = 6,
+		bottom = 6,
+	},
 
 	-- =================== Bells / Sounds ===================
 	audible_bell = "Disabled",
@@ -69,5 +74,5 @@ return {
 	-- never askee to confirm closing a window
 	window_close_confirmation = "NeverPrompt",
 	-- Preferred default shell for new windows (after the first)
-	default_prog = { "/bin/zsh", "-i" },
+	default_prog = { "/bin/zsh" },
 }

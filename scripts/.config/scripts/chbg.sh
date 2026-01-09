@@ -7,7 +7,7 @@ if [[ ! -d "$wallpaper_dir" ]]; then
   exit 1
 fi
 
-wallpapers=($(fd . "$wallpaper_dir" -e jpg -e png -e jpeg -e webp))
+wallpapers=($(/run/current-system/sw/bin/fd . "$wallpaper_dir" -e jpg -e png -e jpeg -e webp))
 
 if [[ ${#wallpapers[@]} -eq 0 ]]; then
   echo "❌ No wallpapers found in: $wallpaper_dir"
@@ -16,9 +16,9 @@ fi
 
 random_wallpaper="${wallpapers[RANDOM % ${#wallpapers[@]}]}"
 
-wal -i "$random_wallpaper"
+# wal -i "$random_wallpaper"
 
-osascript -e "tell application \"Finder\" to set desktop picture to POSIX file \"$random_wallpaper\""
+/usr/bin/osascript -e "tell application \"Finder\" to set desktop picture to POSIX file \"$random_wallpaper\""
 
 echo "✅ Wallpaper changed to:"
 echo "$random_wallpaper"

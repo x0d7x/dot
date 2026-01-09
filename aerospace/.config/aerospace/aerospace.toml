@@ -50,7 +50,7 @@ key-mapping.preset = 'qwerty'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = [
     "move-mouse window-lazy-center",
-    'exec-and-forget ~/dot/scripts/.config/scripts/sticky.sh',
+    'exec-and-forget ~/.config/scripts/sticky.sh',
 ]
 # NOTE: to make simple barr refresh when workspace changes
 exec-on-workspace-change = [
@@ -69,7 +69,7 @@ exec-on-workspace-change = [
 inner.horizontal = 12
 inner.vertical = 12
 outer.left = 14
-outer.bottom = 17
+outer.bottom = 15
 outer.top = 35
 outer.right = 14
 
@@ -126,7 +126,7 @@ alt-b = 'workspace B'
 alt-r = 'macos-native-fullscreen'
 alt-f = 'fullscreen'
 alt-n = 'workspace N'
-alt-w = 'exec-and-forget ~/dot/scripts/.config/scripts/sticky.sh'
+# alt-w = 'exec-and-forget ~/dot/scripts/.config/scripts/sticky.sh'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-b = 'move-node-to-workspace B'
 alt-shift-d = 'move-node-to-workspace D'
@@ -136,7 +136,7 @@ alt-shift-s = 'move-node-to-workspace S'
 alt-shift-t = 'move-node-to-workspace T'
 alt-shift-n = 'move-node-to-workspace N'
 alt-shift-g = 'move-node-to-workspace G'
-alt-shift-w = 'exec-and-forget ~/dot/scripts/.config/scripts/chbg.sh'
+alt-shift-w = 'exec-and-forget ~/.config/scripts/chbg.sh'
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
@@ -144,6 +144,8 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-shift-semicolon = 'mode service'
+alt-shift-space = 'layout floating tiling' # Toggle between floating and tiling layout
+
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -160,10 +162,6 @@ r = [
   'mode main',
 ]
 #s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-f = [
-    'layout floating tiling', # Toggle between floating and tiling layout
-    'mode main',
-] 
 backspace = ['close-all-windows-but-current', 'mode main']
 
 alt-shift-h = ['join-with left', 'mode main']
@@ -186,9 +184,6 @@ if.app-id = 'com.brave.Browser'
 if.window-title-regex-substring = 'Picture in Picture'
 check-further-callbacks = true
 run = 'layout floating'
-[[on-window-detected]]
-if.app-id = 'org.qutebrowser.qutebrowser'
-run = "move-node-to-workspace B"
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
 if.window-title-regex-substring = 'Picture-in-Picture'
@@ -214,12 +209,23 @@ run = "move-node-to-workspace B"
 [[on-window-detected]]
 if.app-id = 'com.brave.Browser.nightly'
 run = "move-node-to-workspace B"
+[[on-window-detected]]
+if.app-id = "org.nixos.qutebrowser"
+check-further-callbacks = true
+run = "layout tiling"
+[[on-window-detected]]
+if.app-id = 'org.nixos.qutebrowser'
+run = "move-node-to-workspace B"
 # media
+[[on-window-detected]]
+if.app-id = 'io.mpv'
+# check-further-callbacks = true
+run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'com.smartcodeltd.stremio'
 run = "move-node-to-workspace M"
 [[on-window-detected]]
-if.app-id = 'com.hnc.Discord'
+if.app-id = 'dev.vencord.vesktop'
 run = "move-node-to-workspace D"
 [[on-window-detected]]
 if.app-id = 'md.obsidian'

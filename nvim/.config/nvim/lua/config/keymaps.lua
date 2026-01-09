@@ -51,10 +51,14 @@ map("n", "<leader>bo", function()
 	Snacks.bufdelete.other()
 end, { desc = "Delete Other Buffers" })
 map("n", "<leader>cp", "<cmd>CccPick<cr>", { desc = "Code color Picker" })
-------------------- Snacks -------------------------
 map("n", "<leader>,", function()
-	Snacks.picker.buffers()
+	require("bafa").toggle()
 end, { desc = "Buffers" })
+
+------------------- Snacks -------------------------
+-- map("n", "<leader>,", function()
+-- 	Snacks.picker.buffers()
+-- end, { desc = "Buffers" })
 map("n", "<leader>/", function()
 	Snacks.picker.grep()
 end, { desc = "Grep" })

@@ -4,12 +4,15 @@ apr: formula
 apr-util: formula
 argon2: formula
 aribb24: formula
+asciidoctor: formula
 asciinema: formula
 aspell: formula
 autoconf: formula
+automake: formula
 bash: formula
 bat: formula
 bison: formula
+bmake: formula
 bob: formula
 brotli: formula
 btop: formula
@@ -18,6 +21,7 @@ c-ares: formula
 ca-certificates: formula
 cabal-install: formula
 cairo: formula
+cargo-c: formula
 certifi: formula
 chafa: formula
 chromaprint: formula
@@ -29,7 +33,9 @@ coreutils: formula
 croc: formula
 curl: formula
 curlie: formula
+cython: formula
 dav1d: formula
+deno: formula
 docbook: formula
 docbook-xsl: formula
 docutils: formula
@@ -76,8 +82,11 @@ icu4c@77: formula
 icu4c@78: formula
 imagemagick: formula
 imath: formula
+ipatool: formula
 isl: formula
+itstool: formula
 jasper: formula
+jj: formula
 jpeg-turbo: formula
 jpeg-xl: formula
 jq: formula
@@ -146,11 +155,13 @@ libxau: formula
 libxcb: formula
 libxdmcp: formula
 libxext: formula
+libxml2: formula
 libxrender: formula
 libyaml: formula
 libzip: formula
 lit: formula
 little-cms2: formula
+lld: formula
 llvm: formula
 lowdown: formula
 luajit: formula
@@ -161,6 +172,7 @@ m4: formula
 make: formula
 mas: formula
 mbedtls: formula
+mbedtls@3: formula
 meson: formula
 molten-vk: formula
 mpd: formula
@@ -169,10 +181,12 @@ mpfr: formula
 mpg123: formula
 mpv: formula
 mujs: formula
+nasm: formula
 ncurses: formula
 net-snmp: formula
 nettle: formula
 ninja: formula
+nlohmann-json: formula
 node: formula
 npth: formula
 oniguruma: formula
@@ -196,6 +210,7 @@ pixman: formula
 pkgconf: formula
 popt: formula
 portaudio: formula
+python-setuptools: formula
 python@3.13: formula
 python@3.14: formula
 qrencode: formula
@@ -244,6 +259,7 @@ webp: formula
 wget: formula
 x264: formula
 x265: formula
+xmlto: formula
 xorgproto: formula
 xvid: formula
 xxhash: formula
@@ -267,8 +283,8 @@ cap: cask
 cyberduck: cask
 discord: cask
 docker-desktop: cask
-floorp: cask
 flutter: cask
+font-fantasque-sans-mono-nerd-font: cask
 font-jetbrains-mono-nerd-font: cask
 font-noto-emoji: cask
 font-sf-mono-nerd-font-ligaturized: cask
@@ -294,4 +310,5 @@ shottr: cask
 steam: cask
 stremio: cask
 topnotch: cask
+wezterm: cask
 zen: cask

@@ -13,6 +13,18 @@ return {
 		end,
 	},
 	{
+		"nendix/zen.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {
+			transparent = true, -- don't set background
+		},
+		config = function(_, opts)
+			require("zen").setup(opts)
+			-- vim.cmd.colorscheme("zen")
+		end,
+	},
+	{
 		"Koalhack/darcubox-nvim",
 		opts = {
 			options = {
@@ -72,6 +84,17 @@ return {
 		config = function(_, opts)
 			require("gruvdark").setup(opts)
 			-- vim.cmd.colorscheme("gruvdark")
+		end,
+	},
+	{
+		"mcauley-penney/techbase.nvim",
+		priority = 1000,
+		opts = {
+			transparent = true, -- don't set background
+		},
+		config = function(_, opts)
+			require("techbase").setup(opts)
+			-- vim.cmd.colorscheme("techbase")
 		end,
 	},
 }
