@@ -1,8 +1,5 @@
-# Created by Zap installer
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
-plug "zsh-users/zsh-autosuggestions"
 # plug "zap-zsh/supercharge"
-plug "Aloxaf/fzf-tab"
 plug "TunaCuma/zsh-vi-man"
 # ZSH Basic Options
 setopt autocd
@@ -34,24 +31,18 @@ path+=(
 $HOME/.local/bin
 $HOME/.bun/bin
 )
+typeset -U path
+path=($^path(N-/))
 export PATH
 # ZSH Keybindings
 bindkey -v
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 # History Configuration
-
 HISTSIZE=10000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
- # Source custom user files
-if [ -f "$HOME/.config/zsh/aliases.zsh" ]; then
-  source "$HOME/.config/zsh/aliases.zsh"
-fi
-if [ -f "$HOME/.config/zsh/fzf.zsh" ]; then
-  source "$HOME/.config/zsh/fzf.zsh"
-fi
 # Set zstyle
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"

@@ -73,6 +73,7 @@ z = "cmd:nvim ~/.zshrc"       # run any terminal command
 # for quick access to your config
 [h]
 label = "[hammerspoon]"
+w = "cmd:mpv https://www.youtube.com/watch?v=rMYMfnOpxP0" # run a script
 c = "code: ~/.hammerspoon"
 r = "reload" # reserved for reloading your hammerspoon config (helpful when auto_reload is false)
 

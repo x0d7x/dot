@@ -1,10 +1,10 @@
 # A minimal left prompt
 format = """
 $directory\
-$git_branch\
 $line_break\
 $character"""
 right_format = """
+$git_branch\
 $git_status\
 $package\
 $python\
@@ -18,8 +18,8 @@ $cmd_duration"""
 add_newline = true
 command_timeout = 300
 [character]
-success_symbol = '[🚀 ⇉](bold yellow) '
-error_symbol = '[❌ ⇉](bold red) '
+success_symbol = '[\$ ⇉](bold yellow) '
+error_symbol = '[\$ ⇉](bold red) '
 [fill]
 symbol = ' '
 [git_branch]
