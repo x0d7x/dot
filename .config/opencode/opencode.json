@@ -2,6 +2,7 @@
   "$schema": "https://opencode.ai/config.json",
   "mcp": {
     "github": {
+      "enabled": false,
       "type": "local",
       "command": ["bunx", "-y", "@modelcontextprotocol/server-github"],
       "enabled": true,
@@ -10,7 +11,8 @@
       }
     }
   },
-  "theme": "vasper",
+  "theme": "system",
+  "default_agent": "plan",
   "autoshare": false,
-  "autoupdate": true
+  "autoupdate": "notify"
 }

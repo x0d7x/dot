@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 source "$CONFIG_DIR/color.sh"
 sketchybar --add event aerospace_workspace_change
 current_workspace=$(aerospace list-workspaces --focused)
