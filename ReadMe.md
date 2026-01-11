@@ -15,9 +15,9 @@ This setup is built around a collection of powerful and customizable tools:
 
 | Type                     | Tool                                                                                                  | Description                                                                                         |
 | ------------------------ | ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| **Window Manager**       | [AeroSpace](https://github.com/nikitabobko/AeroSpace)                                                 | An i3-like tiling window manager for macOS that enforces focus and organization.                    |
+| **Window Manager**       | [AeroSpace](https://github.com/nikitabobko/AeroSpace)                                                 | An i3-like tiling window manager for macOS, configured declaratively via nix-darwin for focus and organization. |
 | **Terminal**             | [Kitty](https://github.com/kovidgoyal/kitty)                                                          | A fast, feature-rich, GPU-based terminal emulator.                                                  |
-| **Shell**                | [Zsh](https://www.zsh.org/) + [Starship](https://github.com/starship/starship)                        | A powerful shell combined with a minimal, blazing-fast, and infinitely customizable prompt.         |
+| **Shell**                | [Zsh](https://www.zsh.org/) + [Starship](https://github.com/starship/starship)                        | A powerful shell configured with plugins, themes, and environment variables via nix-darwin, combined with a minimal prompt. |
 | **Code Editor**          | [Neovim](https://neovim.io/)                                                                          | A highly extensible, Vim-based text editor, configured for a modern IDE experience.                 |
 | **Terminal Multiplexer** | [Tmux](https://github.com/tmux/tmux)                                                                  | Manages multiple terminal sessions, making it easy to switch between projects and preserve layouts. |
 | **Menu Bar**             | [SketchyBar](https://github.com/FelixKratz/SketchyBar)                                                | A highly customizable status bar that displays system information and workspaces.                   |
@@ -40,12 +40,12 @@ This environment is enhanced by a suite of modern command-line tools for a more 
 
 ## Nix Configuration Overview
 
-Your environment is managed declaratively using Nix and nix-darwin. Key files:
-- `nix/.config/nix/flake.nix`: Main flake defining inputs and outputs.
-- `nix/.config/nix/hosts/darwin/pkgs.nix`: System packages and fonts.
-- Other `hosts/darwin/*.nix` files handle system settings, services, and macOS defaults.
+Your environment is managed declaratively using Nix and nix-darwin. The nix-darwin configuration, including Zsh shell and AeroSpace window manager setups, has been moved to a separate repository for better organization.
 
-To update packages or settings, edit the Nix files and run `darwin-rebuild switch --flake nix/.config/nix/.#dox`.
+- Main nix-darwin repo: [x0d7x/nix-config](https://github.com/x0d7x/nix-config)
+- Key files in nix-config: `flake.nix`, `hosts/darwin/shell.nix` (Zsh config), `hosts/darwin/aerospace.nix` (AeroSpace config), etc.
+
+To update packages or settings, clone the nix-config repo and run `darwin-rebuild switch --flake .#dox`.
 
 ---
 
@@ -68,15 +68,16 @@ To update packages or settings, edit the Nix files and run `darwin-rebuild switc
    experimental-features = nix-command flakes
    ```
 4. **Apply the nix-darwin configuration:**
-   ```sh
-   cd nix/.config/nix
-   darwin-rebuild switch --flake .#dox
-   ```
-   This applies your system configuration, installing packages and settings from the flake.
+    ```sh
+    git clone https://github.com/x0d7x/nix-config.git ~/.config/nix
+    cd ~/.config/nix
+    darwin-rebuild switch --flake .#dox
+    ```
+    This applies your system configuration, including Zsh and AeroSpace, installing packages and settings from the flake.
 5. **Symlink dotfiles:**
    Manually symlink configuration files to your home directory using `stow` or your preferred method (e.g., `stow -d ~/.dot -t ~ .config`).
 
-**Note:** The old `brew_packages.txt` is kept for reference. If you encounter issues, check the [nix-darwin manual](https://daiderd.com/nix-darwin/manual/index.html).
+**Note:** The old `brew_packages.txt` is kept for reference. Zsh and AeroSpace configurations are now handled via nix-darwin. If you encounter issues, check the [nix-darwin manual](https://daiderd.com/nix-darwin/manual/index.html) or the [nix-config README](https://github.com/x0d7x/nix-config).
 
 ## 🛠️ Helper Scripts
 
