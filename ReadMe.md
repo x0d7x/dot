@@ -34,13 +34,12 @@ This environment is enhanced by a suite of modern command-line tools for a more 
 - **[Bat](https://github.com/sharkdp/bat):** A `cat` clone with syntax highlighting and Git integration.
 - **[fd](https://github.com/sharkdp/fd):** A simple, fast, and user-friendly alternative to `find`.
 - **[Ripgrep](https://github.com/BurntSushi/ripgrep):** A line-oriented search tool that recursively searches for a regex pattern.
-- **[Maccy](https://maccy.app/):** A lightweight and powerful clipboard manager for macOS.
 
 ---
 
 ## Nix Configuration Overview
 
-Your environment is managed declaratively using Nix and nix-darwin. The nix-darwin configuration, including Zsh shell and AeroSpace window manager setups, has been moved to a separate repository for better organization.
+My environment is managed declaratively using Nix and nix-darwin. The nix-darwin configuration, including Zsh shell and AeroSpace window manager setups, has been moved to a separate repository for better organization.
 
 - Main nix-darwin repo: [x0d7x/nix-config](https://github.com/x0d7x/nix-config)
 - Key files in nix-config: `flake.nix`, `hosts/darwin/shell.nix` (Zsh config), `hosts/darwin/aerospace.nix` (AeroSpace config), etc.
