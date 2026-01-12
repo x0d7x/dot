@@ -2,10 +2,12 @@
 
 # make sure it's executable with:
 # chmod +x ~/.config/sketchybar/plugins/aerospace.sh
-source "$CONFIG_DIR/items/spaces.sh"
-if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
-  sketchybar --set space.$current_workspace label="$current_workspace"
 
+# $1 is the workspace ID passed from the space item
+WORKSPACE_ID="$1"
+
+if [ "$WORKSPACE_ID" = "$FOCUSED_WORKSPACE" ]; then
+    sketchybar --set $NAME background.drawing=on label.color=0xffffffff
 else
-  sketchybar --set $NAME
+    sketchybar --set $NAME background.drawing=off label.color=0xff689d6a
 fi
