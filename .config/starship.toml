@@ -1,7 +1,7 @@
+"$schema" = 'https://starship.rs/config-schema.json'
 # A minimal left prompt
 format = """
 $directory\
-$line_break\
 $character"""
 right_format = """
 $git_branch\
@@ -9,30 +9,17 @@ $git_status\
 $package\
 $python\
 $php\
-$rust\
-$deno\
-$bun\
 $lua\
-$golang\
 $cmd_duration"""
-add_newline = true
-command_timeout = 300
+# add_newline = true
+command_timeout = 200
 [character]
-success_symbol = '[\$ ⇉](bold yellow) '
-error_symbol = '[\$ ⇉](bold red) '
-[fill]
-symbol = ' '
+success_symbol = '[\$](bold yellow) '
+error_symbol = '[\$](bold red) '
 [git_branch]
-format = "on [$symbol$branch(:$remote_branch)]($style) "
+format = "[$symbol$branch(:$remote_branch)]($style) "
 always_show_remote = true
 style = "fg:green"
-[git_status]
-ahead = '⇡ ${count}'
-diverged = ' ⇕⇡ ${ahead_count}⇣${behind_count}'
-behind = '⇣ ${count}'
-stashed = "+ ${count}"
-modified = "📝 ${count}"
-staged = "⇞ ${count}"
 [cmd_duration]
 format = '󰓅 [$duration]($style) '
 [git_state]
@@ -44,22 +31,17 @@ style = 'bold blue'
 [lua]
 format = 'lua [󰢱 $version](bold blue) '
 [bun]
-format = ' [🐇 $version ](bold #a779b4)'
-detect_files = ['package.json', '.node-version', 'bun.lockb', 'bunfig.toml']
-detect_folders = ['node_modules']
-[deno]
-format = ' [🦕 $version](green bold) '
+# format = ' [🐇 $version ](bold #a779b4)'
 detect_files = [
-    'deno.json',
-    'deno.jsonc',
-    'deno.lock',
+  'package.json',
+  '.node-version',
+  'bun.lockb',
+  'bunfig.toml'
 ]
+detect_folders = ['node_modules']
 [package]
 symbol = "📦 "
 style = "bold blue"
-format = "[$symbol$version]($style) "
-[rust]
-format = "[$symbol($version)]($style)"
 [php]
 format = "[$symbol(php $version )]($style)"
 [directory]

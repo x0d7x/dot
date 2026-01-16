@@ -11,7 +11,7 @@
   "flash.nvim": { "branch": "main", "commit": "fcea7ff883235d9024dc41e638f164a450c14ca2" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
   "gitsigns.nvim": { "branch": "main", "commit": "42d6aed4e94e0f0bbced16bbdcc42f57673bd75e" },
-  "gruvbox": { "branch": "main", "commit": "5e16ecf5e4796f673498ac35e9a17c609e93c479" },
+  "gruvbox": { "branch": "main", "commit": "067e4b86b843c2fe8c63cbd487c25b5cbdecd355" },
   "gruvdark.nvim": { "branch": "main", "commit": "acc0114855c0851e49430a8ce59bc71315312340" },
   "import-cost.nvim": { "branch": "main", "commit": "d0074e4e7c986b69fc1d0e2b50995218c5daaa95" },
   "indent-blankline.nvim": { "branch": "master", "commit": "005b56001b2cb30bfa61b7986bc50657816ba4ba" },
