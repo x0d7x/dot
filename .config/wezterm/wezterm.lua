@@ -22,12 +22,12 @@ return {
 	-- =================== Fonts ===================
 	font = wezterm.font_with_fallback({
 		{
-			family = "FantasqueSansM Nerd Font",
+			family = "DepartureMono Nerd Font Mono",
 			weight = "Bold",
 		},
 	}),
-	font_size = 18,
-	line_height = 1.25,
+	font_size = 17,
+	-- line_height = 1.2,
 
 	-- =================== Cursor ===================
 	-- WezTerm doesn’t support trail, but we use smooth blinking animation
@@ -40,14 +40,14 @@ return {
 
 	-- =================== Colors / Theme ===================
 	-- To list all themes: wezterm ls-colorschemes
-	color_scheme = "Black Metal (base16)", -- Safe fallback if "Black Metal" not found
+	color_scheme = "Gruvbox dark, hard (base16)", -- Safe fallback if "Black Metal" not found
 	colors = {
 		cursor_bg = "white",
 	},
 
 	-- =================== Background (blur + opacity) ===================
-	window_background_opacity = 0.75,
-	macos_window_background_blur = 20,
+	window_background_opacity = 0.8,
+	macos_window_background_blur = 30,
 
 	-- =================== Decorations / Titlebar ===================
 	window_decorations = "RESIZE",

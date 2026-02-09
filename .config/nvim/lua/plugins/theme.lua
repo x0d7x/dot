@@ -66,12 +66,12 @@ return {
 		opts = {
 			variant = "hard", -- hard, medium, soft, light
 			styles = {
-				transparency = true,
+				-- transparency = true,
 			},
 		},
 		config = function(_, opts)
 			require("gruvbox").setup(opts)
-			vim.cmd("colorscheme gruvbox-hard")
+			-- vim.cmd("colorscheme gruvbox-hard")
 		end,
 	},
 	{
@@ -87,10 +87,20 @@ return {
 		end,
 	},
 	{
+		"connormxfadden/petrolnoir.nvim",
+		priority = 1000, -- load before other UI plugins
+		opts = {
+			-- transparent = false, -- don't set background
+		},
+		config = function()
+			vim.cmd.colorscheme("petrolnoir")
+		end,
+	},
+	{
 		"mcauley-penney/techbase.nvim",
 		priority = 1000,
 		opts = {
-			transparent = true, -- don't set background
+			-- transparent = true, -- don't set background
 		},
 		config = function(_, opts)
 			require("techbase").setup(opts)
