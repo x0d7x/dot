@@ -9,7 +9,7 @@ return {
 		},
 		config = function(_, opts)
 			require("vague").setup(opts)
-			-- vim.cmd.colorscheme("vague")
+			vim.cmd.colorscheme("vague")
 		end,
 	},
 	{
@@ -66,7 +66,7 @@ return {
 		opts = {
 			variant = "hard", -- hard, medium, soft, light
 			styles = {
-				-- transparency = true,
+				transparency = true,
 			},
 		},
 		config = function(_, opts)
@@ -93,14 +93,14 @@ return {
 			-- transparent = false, -- don't set background
 		},
 		config = function()
-			vim.cmd.colorscheme("petrolnoir")
+			-- vim.cmd.colorscheme("petrolnoir")
 		end,
 	},
 	{
 		"mcauley-penney/techbase.nvim",
 		priority = 1000,
 		opts = {
-			-- transparent = true, -- don't set background
+			transparent = true, -- don't set background
 		},
 		config = function(_, opts)
 			require("techbase").setup(opts)

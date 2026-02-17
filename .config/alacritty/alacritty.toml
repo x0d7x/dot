@@ -1,20 +1,22 @@
 [general]
-import = [
-  "~/.config/alacritty/themes/themes/gruvbox_material_hard_dark.toml"
-]
+# import = [
+#   "~/.config/alacritty/themes/themes/gruvbox_material_hard_dark.toml"
+# ]
 [env]
 TERM = "alacritty"
 [window]
-padding = {x = 10, y = 0}
-# dynamic_padding = true
+padding = {x = 2, y = 0}
+dynamic_padding = true
 decorations = "Buttonless"
 opacity = 0.8
 blur = true
 option_as_alt = "Both"
 [font]
-size = 18
+size = 18.0
 normal.family = "DepartureMono Nerd Font Mono"
 [selection]
 save_to_clipboard = true
 [mouse]
 hide_when_typing = true
+[terminal]
+shell ={ program = "zsh", args = ["-l", "-c", "tmux attach -t Dev || tmux new -s Dev"]}

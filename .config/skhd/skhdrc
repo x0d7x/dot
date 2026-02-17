@@ -1,0 +1,70 @@
+# Focus windows
+# alt - h                 : komorebic focus left
+# alt - j                 : komorebic focus down
+# alt - k                 : komorebic focus up
+# alt - l                 : komorebic focus right
+# alt + shift - 0x21      : komorebic cycle-focus previous # 0x21 is [
+# alt + shift - 0x1E      : komorebic cycle-focus next # 0x1E is ]
+#
+# # Move windows
+# alt + shift - h         : komorebic move left
+# alt + shift - j         : komorebic move down
+# alt + shift - k         : komorebic move up
+# alt + shift - l         : komorebic move right
+# alt + shift - return    : komorebic promote
+#
+# # Stack windows
+# ctrl + alt - h       : komorebic stack left
+# ctrl + alt - j       : komorebic stack down
+# ctrl + alt - k         : komorebic stack up
+# ctrl + alt - l      : komorebic stack right
+# alt - 0x29              : komorebic unstack-all # # 0x29 is ;
+# alt - 0x21              : komorebic cycle-stack previous # 0x21 is [
+# alt - 0x1E              : komorebic cycle-stack next # 0x1E is ]
+# alt - s                 : komorebic stack-all
+#
+# # Workspace layer
+# alt + shift - 0x29      : komorebic toggle-workspace-layer # 0x29 is ;
+#
+# # Resize
+# alt - 0x18              : komorebic resize-axis horizontal increase # 0x18 is +
+# alt - 0x1B              : komorebic resize-axis horizontal decrease # 0x1B is -
+# alt + shift - 0x18      : komorebic resize-axis vertical increase
+# alt + shift - 0x1B      : komorebic resize-axis vertical decrease
+#
+# # Manipulate windows
+# alt - f                 : komorebic toggle-float
+# alt + shift - f         : komorebic toggle-workspace-float-override
+# alt - m                 : komorebic toggle-monocle
+#
+# # Window manager options
+# alt + shift - r         : komorebic retile
+# alt - p                 : komorebic toggle-pause
+# alt - 0                 : komorebic toggle-window-contriner-behaviour
+#
+# # Layouts
+# alt - x                 : komorebic flip-layout horizontal
+# alt - v                 : komorebic flip-layout vertical
+# alt + shift - x         : komorebic session-float-rule
+#
+# # Workspaces
+# alt - d                 : komorebic focus-named-workspace D
+# alt - t                 : komorebic focus-named-workspace T
+# alt - s                 : komorebic focus-named-workspace S
+# alt - b                 : komorebic focus-named-workspace B
+# alt - tab               : komorebic focus-last-workspace 
+#
+#
+# # Move windows across workspaces
+# alt + shift - t         : komorebic move-to-named-workspace T
+# alt + shift - d         : komorebic move-to-named-workspace D
+# alt + shift - s         : komorebic move-to-named-workspace S
+# alt + shift - b         : komorebic move-to-named-workspace B
+# # applacatoin
+alt + shift - a         : open -a kitty  # Terminal
+alt + shift - v : open -a brave-browser # Brave
+alt + shift - w : ~/.local/bin/chbg
+#
+# # hyper = cmd + ctrl + alt + shift
+# #
+# # caps_lock :: hyper 
