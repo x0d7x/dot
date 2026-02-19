@@ -119,17 +119,6 @@ return {
 			-- refer to the configuration section below
 		},
 	},
-	-- import lib size
-	{
-		{
-			"barrett-ruth/import-cost.nvim",
-			event = "VeryLazy",
-			build = "sh install.sh bun",
-			-- if on windows
-			-- build = 'pwsh install.ps1 yarn',
-			config = true,
-		},
-	},
 	{
 		"folke/ts-comments.nvim",
 		opts = {},

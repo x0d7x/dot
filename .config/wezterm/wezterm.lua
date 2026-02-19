@@ -61,6 +61,7 @@ return {
 		top = 6,
 		bottom = 6,
 	},
+	term = "xterm-256color",
 
 	-- =================== Bells / Sounds ===================
 	audible_bell = "Disabled",

@@ -43,6 +43,7 @@ label = "[browser]" # the "label" key is reserved to change the label of the gro
 q = [ "qutebrowser", "qutebrowser" ]
 z = [ "Zen", "zen browser" ]
 v = [ "Vivaldi", "vivaldi" ]
+b = [ "Brave Browser", "brave" ]
 
 [o.v]
 label = "[video]"

@@ -43,7 +43,7 @@ default=(
 )
 sketchybar --default "${default[@]}"
 #-- Left items --
-# source $ITEM_DIR/spaces.sh
+source $ITEM_DIR/spaces.sh
 source $ITEM_DIR/front_app.sh
 #---- right items -----------
 source $ITEM_DIR/calender.sh
@@ -53,4 +53,4 @@ source $ITEM_DIR/battery.sh
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --hotload on
 sketchybar --update
-sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused)
+sketchybar --trigger rift_workspace_change RIFT_WORKSPACE_NAME="D"
