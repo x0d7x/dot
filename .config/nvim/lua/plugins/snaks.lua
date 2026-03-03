@@ -40,6 +40,12 @@ return {
 		},
 		-- explorer = { enabled = true },
 		bigfile = { enabled = true },
+		dim = {
+			enabled = true,
+			padding = { 4, 4 }, -- lines to keep visible above/below (default: 1, 2)
+			alpha = 0.4, -- dim intensity (0=invisible, 1=no dim, default: ~0.4)
+			exclude = {},
+		},
 		indent = { enabled = false },
 		input = { enabled = false },
 		notifier = {
@@ -77,7 +83,7 @@ return {
 					Snacks.debug.backtrace()
 				end
 				vim.print = _G.dd -- Override print to use snacks for `:=` command
-
+				Snacks.dim()
 				-- Create some toggle mappings
 				Snacks.toggle.scroll():map("<leader>uS")
 				Snacks.toggle.animate():map("<leader>ua")

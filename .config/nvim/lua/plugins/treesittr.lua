@@ -8,7 +8,7 @@ return {
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
 		config = function()
-			require("nvim-treesitter.configs").setup({
+			require("nvim-treesitter").setup({
 				sync_install = false,
 				modules = {},
 				fold = {
@@ -26,6 +26,7 @@ return {
 					"html",
 					"javascript",
 					"json",
+					"toml",
 					"lua",
 					"luadoc",
 					"luap",

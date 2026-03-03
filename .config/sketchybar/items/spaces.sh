@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source "$CONFIG_DIR/color.sh"
+
 sketchybar --add event rift_workspace_change
 
 # Remove old space items if they exist
@@ -16,8 +16,8 @@ sketchybar --add item focused_workspace left \
   background.height=30 \
   background.padding_left=10 \
   background.padding_right=10 \
-  background.drawing=woff \
-  label.color=0xffeda95b \
+  background.drawing=off \
+  label.color="$WHITE" \
   label="$RIFT_WORKSPACE_NAME" \
   click_script="rift-cli workspace next" \
   script="$CONFIG_DIR/plugins/rift_focused.sh"

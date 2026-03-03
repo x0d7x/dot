@@ -99,17 +99,18 @@ return {
 			},
 		},
 	},
+
 	-- taking pic for the code
-	{
-		"mistricky/codesnap.nvim",
-		build = "make",
-		opts = {
-			save_path = "~/Developer/codepic",
-			has_breadcrumbs = true,
-			bg_theme = "peach",
-			watermark = "@x0d7x",
-		},
-	},
+	-- {
+	-- 	"mistricky/codesnap.nvim",
+	-- 	build = "make",
+	-- 	opts = {
+	-- 		save_path = "~/Developer/codepic",
+	-- 		has_breadcrumbs = true,
+	-- 		bg_theme = "peach",
+	-- 		watermark = "@x0d7x",
+	-- 	},
+	-- },
 	-- dimming
 	{
 		"folke/twilight.nvim",
@@ -135,6 +136,14 @@ return {
 		dependencies = { "nvim-treesitter/nvim-treesitter" }, -- if you install parsers with `nvim-treesitter`
 		config = function()
 			require("treesj").setup({--[[ your config ]]
+			})
+		end,
+	},
+	{
+		"Root-lee/screensaver.nvim",
+		config = function()
+			require("screensaver").setup({
+				idle_ms = 60 * 1000, -- Idle time in milliseconds (1 minute)
 			})
 		end,
 	},

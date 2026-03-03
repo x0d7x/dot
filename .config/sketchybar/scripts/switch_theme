@@ -1,0 +1,13 @@
+#!/bin/bash
+
+THEME="${1:-tokyonight}"
+
+if [ ! -f "$CONFIG_DIR/themes/$THEME" ]; then
+  echo "Theme '$THEME' not found. Available themes:"
+  ls "$CONFIG_DIR/themes/"
+  exit 1
+fi
+
+export THEME
+sketchybar --reload
+echo "Switched to $THEME theme"

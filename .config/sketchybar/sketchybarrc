@@ -1,50 +1,41 @@
 #!/bin/bash
 
-# This is a demo config to showcase some of the most important commands.
-# It is meant to be changed and configured, as it is intentionally kept sparse.
-# For a (much) more advanced configuration example see my dotfiles:
-# https://github.com/FelixKratz/dotfiles
-source "$CONFIG_DIR/colors.sh" # Loads all defined colors
+source "$CONFIG_DIR/environment"
+source "$THEME_DIR/$THEME"
+
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 ITEM_DIR="$CONFIG_DIR/items"
 
 ##### Bar Appearance #####
-# Configuring the general appearance of the bar.
-# These are only some of the options available. For all options see:
-# https://felixkratz.github.io/SketchyBar/config/bar
-# If you are looking for other colors, see the color picker:
-# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
-
-sketchybar --bar position=top height=25 corner_radius=20 blur_radius=10 color=$BAR_COLOR
+sketchybar --bar position="$BAR_POSITION" height="$BAR_HEIGHT" corner_radius="$BAR_CORNER_RADIUS" blur_radius="$BAR_BLUR_RADIUS" color="$BAR_COLOR" margin="$BAR_MARGIN" y_offset="$BAR_Y_OFFSET"
 
 ##### Changing Defaults #####
-# We now change some default values, which are applied to all further items.
-# For a full list of all available item properties see:
-# https://felixkratz.github.io/SketchyBar/config/items
-
 default=(
-  background.color=$BG
-  blur_radius=2
-  background.corner_radius=15
-  background.height=30
+  # background.color="$BACKGROUND_COLOR"
+  blur_radius=5
+  background.corner_radius="$BACKGROUND_CORNER_RADIUS"
+  background.height="$BACKGROUND_HEIGHT"
   icon.padding_left=12
   icon.padding_right=4
-  label.padding_left=4
-  label.padding_right=12
+  label.padding_left="$LABEL_PADDING_LEFT"
+  label.padding_right="$LABEL_PADDING_RIGHT"
   background.padding_left=18
-  background.border_width=1
+  background.border_width="$BACKGROUND_BORDER_WIDTH"
   background.y_offset=2
-  y_offset=3
-  icon.font="SF Pro:bold:15.0"
-  label.font="SF Pro:Semibold:15.0"
-  icon.color=$LABEL_COLOR
-  label.color=$WHITE
-
+  y_offset="$Y_OFFSET"
+  icon.font="$ICON_FONT"
+  label.font="$LABEL_FONT"
+  icon.color="$LABEL_COLOR"
+  label.color="$LABEL_COLOR"
+  icon.drawing=on
+  label.highlight_color="$LABEL_HIGHLIGHT_COLOR"
 )
 sketchybar --default "${default[@]}"
+
 #-- Left items --
 source $ITEM_DIR/spaces.sh
 source $ITEM_DIR/front_app.sh
+
 #---- right items -----------
 source $ITEM_DIR/calender.sh
 source $ITEM_DIR/volume.sh

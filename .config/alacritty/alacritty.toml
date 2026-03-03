@@ -3,16 +3,16 @@
 #   "~/.config/alacritty/themes/themes/gruvbox_material_hard_dark.toml"
 # ]
 [env]
-TERM = "alacritty"
+# TERM = "alacritty"
 [window]
 padding = {x = 2, y = 0}
 dynamic_padding = true
 decorations = "Buttonless"
-opacity = 0.8
+opacity = 0.6
 blur = true
 option_as_alt = "Both"
 [font]
-size = 18.0
+size = 17.5
 normal.family = "DepartureMono Nerd Font Mono"
 [selection]
 save_to_clipboard = true

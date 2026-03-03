@@ -535,9 +535,9 @@ do
 		},
 		-- spinner_frames = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' },
 		-- spinner_frames = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
-		spinner_frames = { "◐", "◓", "◑", "◒" },
+		-- spinner_frames = { "◐", "◓", "◑", "◒" },
 		-- spinner_frames = { "◰", "◳", "◲", "◱" },
-		-- spinner_frames = { "▱", "▰", "▰▱", "▰▰" },
+		spinner_frames = { "▱", "▰", "▰▱", "▰▰" },
 		-- spinner_frames = { "○", "⬭", "●", "⬮" },
 		-- spinner_frames = { "○   ", " ○  ", "  ○ ", "   ○", "  ○ ", " ○  " },
 		-- spinner_frames = {

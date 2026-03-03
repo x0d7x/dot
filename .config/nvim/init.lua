@@ -1,5 +1,6 @@
 require("core.lazy")
 require("config.utils")
+-- require("custom.colorscheme")
 require("core.lsp")
 require("core.Mason-path")
 require("config.mason-verify")

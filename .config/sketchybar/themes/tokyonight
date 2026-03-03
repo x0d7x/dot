@@ -1,0 +1,63 @@
+#!/bin/bash
+
+# Tokyonight Night Color Palette
+black="0xff24283b"
+blue="0xff7aa2f7"
+blue1="0xff1a1b26"
+blue1_semitransparent="0xaa1a1b26"
+cyan="0xff7dcfff"
+green="0xff9ece6a"
+magenta="0xffbb9af7"
+orange="0xffff9e64"
+purple="0xff9d7cd8"
+red="0xfff7768e"
+transparent="0x00000000"
+white="0xffa9b1d6"
+yellow="0xffe0af68"
+
+# Bar Settings
+BAR_BLUR_RADIUS=30
+BAR_COLOR="$transparent"
+BAR_CORNER_RADIUS=12
+BAR_HEIGHT=24
+BAR_MARGIN=6
+BAR_PADDING=0
+BAR_POSITION="top"
+BAR_Y_OFFSET=6
+
+# Background Settings
+BACKGROUND_BORDER_COLOR="$red"
+BACKGROUND_BORDER_WIDTH=2
+BACKGROUND_COLOR="$blue1_semitransparent"
+BACKGROUND_CORNER_RADIUS=4
+BACKGROUND_HEIGHT=24
+
+# Bracket Settings
+BRACKET_BACKGROUND_BORDER_COLOR="$blue"
+BRACKET_BACKGROUND_BORDER_WIDTH=0
+BRACKET_BACKGROUND_COLOR="$blue1_semitransparent"
+BRACKET_BACKGROUND_CORNER_RADIUS=12
+
+# Icon Settings
+ICON_BASE_FONT="SF Pro"
+ICON_FONT_SIZE=16
+ICON_FONT="$ICON_BASE_FONT:Bold:$ICON_FONT_SIZE"
+
+# Label Settings
+LABEL_ALIGN="center"
+LABEL_BASE_FONT="SF Pro"
+LABEL_FONT_SIZE=15
+LABEL_COLOR="$white"
+LABEL_FONT="$LABEL_BASE_FONT:Semibold:$LABEL_FONT_SIZE"
+LABEL_HIGHLIGHT_COLOR="$red"
+LABEL_HIGHLIGHT_FONT="$LABEL_BASE_FONT:Bold:$LABEL_FONT_SIZE"
+LABEL_PADDING_LEFT=4
+LABEL_PADDING_RIGHT=12
+LABEL_Y_OFFSET=0
+
+# Y Offset
+Y_OFFSET=3
+
+# Backward Compatibility
+BG="$BACKGROUND_COLOR"
+WHITE="$white"

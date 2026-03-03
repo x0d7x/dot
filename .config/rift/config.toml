@@ -7,9 +7,9 @@
 # - animation_duration: seconds per animation (>= 0.0, typical 0.15–0.35)
 # - animation_fps: frames per second (0.0 = display refresh rate). 60–120 recommended.
 #   ease_in_circ, ease_out_circ, ease_in_out_circ
-animate = false
-animation_duration = 0.3
-animation_fps = 100.0
+animate = true
+animation_duration = 0.2
+animation_fps = 60.0
 
 # Space activation behavior
 # - If true, spaces start inactive (rift does not manage windows there)
@@ -81,7 +81,7 @@ mode = "scrolling"
 # these settings only apply when layout mode == "master_stack"
 [settings.layout.master_stack]
 # Fraction of space reserved for the master area (0.05..0.95)
-master_ratio = 0.7
+master_ratio = 0.6
 # Number of windows kept in the master area (>= 1)
 master_count = 1
 # Which side the master area occupies (left | right | top | bottom)
@@ -92,7 +92,7 @@ new_window_placement = "stack"
 # these settings only apply when layout mode == "scrolling"
 [settings.layout.scrolling]
 # width of the active column (0..1 of screen width)
-column_width_ratio = 0.7
+column_width_ratio = 0.6
 # min_column_width_ratio / max_column_width_ratio: clamp bounds used by resize commands
 min_column_width_ratio = 0.3
 max_column_width_ratio = 0.9
@@ -102,10 +102,10 @@ alignment = "center"
 # - "niri": reveal columns only when needed based on navigation direction
 # 			(disrespects alignment setting above)
 # - "anchored": always align focused column according to `alignment`
-focus_navigation_style = "niri"
+focus_navigation_style = "anchored"
 # the scrolling layout tends to function better without animations,
 # so you can disable them if you like
-# animate = true
+animate = false
 
 [settings.layout.scrolling.gestures]
 # Enable horizontal scroll gestures to switch columns
@@ -210,7 +210,7 @@ fingers = 3
 # Normalized horizontal distance (0..1) to trigger swipe for NSTouch-based detection
 distance_pct = 0.08
 # Haptic feedback on commit (generic | alignment | level_change)
-haptics_enabled = true
+haptics_enabled = false
 haptic_pattern = "level_change"
 
 # Window snapping / drag-swap behavior
@@ -337,7 +337,9 @@ app_rules = [
   { app_name = "Stremio", workspace = "N" },
   { app_id = "cc.ffitch.shottr", workspace = "U", floating = true },
   { app_id = "com.brave.Browser", title_substring = "Picture in Picture", floating = true },
-  { app_id = "com.brave.Browser", workspace = "B" },
+  { app_id = "app.zen-browser.zen", title_substring = "Picture-in-Picture", floating = true },
+  { app_id = "app.zen-browser.zen", workspace = "B" },
+  # { app_name = "qutebrowser", workspace = "B", floting = false  },
   { app_id = "so.cap.desktop", workspace = "S", floating = true },
   { app_id = "net.freemacsoft.AppCleaner", floating = true },
   { app_id = "com.apple.finder", floating = true },
@@ -399,7 +401,7 @@ comb1 = "Alt + Shift"
 # - scroll_strip = { delta = 0.5 }
 # - snap_strip / center_selection
 
-"Alt + Z" = "toggle_space_activated"
+"Alt + R" = "toggle_space_activated"
 
 "Alt + H" = { move_focus = "left" }
 "Alt + J" = { move_focus = "down" }
@@ -471,9 +473,10 @@ comb1 = "Alt + Shift"
 # this will show the mission control view shown in the readme
 # "Alt + Ctrl + M" = "show_mission_control_all"
 
-"Alt + Enter" = {"exec" = "kitty"}
-"Alt + V" = {"exec" = "brave"}
+# "Alt + Enter" = {"exec" = "kitty"}
+"Alt + Z" = {"exec" = ["zsh", "-c", "open -a /Applications/Zen.app"]}
 "comb1 + W" = {"exec" = ["zsh", "-c", "~/.local/bin/chbg"]}
+"Alt + Enter" = {"exec" = ["zsh", "-c", "open -a '/Applications/Nix Apps/kitty.app'"]}
 
 # "Alt + Shift + slash" = "debug" # prints layout tree
 

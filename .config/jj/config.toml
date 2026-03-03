@@ -1,0 +1,81 @@
+"$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
+
+[user]
+name = "x0d7x"
+email = "75843278+x0d7x@users.noreply.github.com"
+
+[signing]
+backend = "gpg"
+key = "672910B4BB401394"
+behavior = "own"
+[templates]
+show = "builtin_log_compact"
+# op_log = "builtin_op_log_compact"
+log = "builtin_log_oneline"
+
+[template-aliases]
+'format_short_signature(signature)' = '"[" ++ signature.name() ++ "]"'
+'format_short_signature_oneline(signature)' = 'label("committer", "[" ++ signature.name() ++ "]")'
+'format_short_commit_id(commit)' = 'label("commit_id", "<"++ commit.short(8)++">")'
+'format_short_cryptographic_signature(signature)' = '''
+if(signature,
+  label("signature status", 
+    label(signature.status(), coalesce(
+      if(signature.status() == "good", "- ✓︎"),
+      if(signature.status() == "unknown", "- ?"),
+      "- x",
+    )
+  ))
+)
+'''
+
+'format_operation(op)' = '''
+concat(
+  separate(" ",
+    format_short_operation_id(op.id()),
+    op.user(),
+    format_time_range(op.time()),
+  ), "\n",
+  op.description().first_line(), "\n",
+  surround("", "\n", op.tags()),
+)
+'''
+
+'format_timestamp(timestamp)' = 'label("timestamp ago", stringify(concat("[", timestamp.ago(), "]")))'
+
+'builtin_log_oneline(commit)' = '''
+if(commit.root(),
+  format_root_commit(commit),
+  label(
+    separate(" ",
+      if(commit.current_working_copy(), "working_copy"),
+      if(commit.immutable(), "immutable", "mutable"),
+      if(commit.conflict(), "conflicted"),
+    ),
+    separate(" ",
+      format_short_change_id_with_change_offset(commit),
+            format_short_commit_id(commit.commit_id()),
+      format_short_signature_oneline(commit.author()),
+            format_timestamp(commit_timestamp(commit)),
+      if(commit.bookmarks(), label("bookmark", "["++ commit.bookmarks() ++ "]")),
+      commit.tags(),
+      commit.working_copies(),
+      format_commit_labels(commit),
+      
+      if(commit.empty(), empty_commit_marker),
+
+
+      if(commit.description(),
+        commit.description().first_line(),
+        label(if(commit.empty(), "empty"), description_placeholder),
+      ),
+            if(config("ui.show-cryptographic-signatures").as_boolean(),
+                format_short_cryptographic_signature(commit.signature())
+                ),
+    ) ++ "\n",
+  )
+)
+'''
+
+'changeid(c)' = 'change_id.short()'
+# 'builtin_op_log_compact(operation)' = 'json(operation)'
