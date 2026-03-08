@@ -58,7 +58,8 @@ auto_focus_blacklist = []
 # ]
 
 run_on_start = [ 
- "rift-cli subscribe cli --event workspace_changed --command sh --args -c --args 'sketchybar --trigger rift_workspace_change RIFT_WORKSPACE_NAME=\"$RIFT_WORKSPACE_NAME\" RIFT_WORKSPACE_ID=\"$RIFT_WORKSPACE_ID\"'"
+ "rift-cli subscribe cli --event workspace_changed --command sh --args -c --args 'sketchybar --trigger rift_workspace_change RIFT_WORKSPACE_NAME=\"$RIFT_WORKSPACE_NAME\" RIFT_WORKSPACE_ID=\"$RIFT_WORKSPACE_ID\"'",
+ "borders active_color=0xffebdbb2 inactive_color=0xff494d64 width=3.0 style=round &"
 ]
 
 # Hot Reloading
@@ -249,7 +250,7 @@ workspace_rules = [
   { workspace = "N", layout = "master_stack" },
   { workspace = "B", layout = "master_stack" },
   { workspace = "U", layout = "bsp" },
-  { workspace = "S", layout = "master_stack" },
+  { workspace = "T", layout = "master_stack" },
 ]
 
 
@@ -264,7 +265,7 @@ workspace_rules = [
 workspace_names = [
 "D",
 "U",
-"S",
+"T",
 "N",
 "B",
 ]
@@ -333,18 +334,19 @@ workspace_names = [
 #
 # By default there are no app rules; add or uncomment rules below as needed.
 app_rules = [
-  { app_name = "kitty", workspace = "D" },
+  { app_name = "kitty", title_regex = "dropdown", floating = true },
+  { app_name = "kitty", workspace = "D"},
   { app_name = "Stremio", workspace = "N" },
   { app_id = "cc.ffitch.shottr", workspace = "U", floating = true },
   { app_id = "com.brave.Browser", title_substring = "Picture in Picture", floating = true },
   { app_id = "app.zen-browser.zen", title_substring = "Picture-in-Picture", floating = true },
   { app_id = "app.zen-browser.zen", workspace = "B" },
   # { app_name = "qutebrowser", workspace = "B", floting = false  },
-  { app_id = "so.cap.desktop", workspace = "S", floating = true },
+  { app_id = "so.cap.desktop", workspace = "T", floating = true },
   { app_id = "net.freemacsoft.AppCleaner", floating = true },
   { app_id = "com.apple.finder", floating = true },
   { app_name = "System Settings", floating = true },
-  { app_id = "com.obsproject.obs-studio", workspace = "S" },
+  { app_id = "com.obsproject.obs-studio", workspace = "T" },
   { app_id = "dev.vencord.vesktop", workspace = "U" },
   { ax_subrole = "AXDialog", floating = true },
   # { app_name = "qutebrowser", workspace = "Browser" },
@@ -415,13 +417,13 @@ comb1 = "Alt + Shift"
 
 "Alt + D" = { switch_to_workspace = "D" }
 "Alt + U" = { switch_to_workspace = "U"  }
-"Alt + S" = { switch_to_workspace = "S" }
+"Alt + T" = { switch_to_workspace = "T" }
 "Alt + N" = { switch_to_workspace = "N"  }
 "Alt + B" = { switch_to_workspace = "B"  }
 
 "comb1 + D" = { move_window_to_workspace = "D" }
 "comb1 + U" = { move_window_to_workspace = "U" }
-"comb1 + S" = { move_window_to_workspace = "S"}
+"comb1 + T" = { move_window_to_workspace = "T"}
 "comb1 + N" = { move_window_to_workspace = "N"}
 "comb1 + B" = { move_window_to_workspace = "B"}
 
@@ -477,7 +479,15 @@ comb1 = "Alt + Shift"
 "Alt + Z" = {"exec" = ["zsh", "-c", "open -a /Applications/Zen.app"]}
 "comb1 + W" = {"exec" = ["zsh", "-c", "~/.local/bin/chbg"]}
 "Alt + Enter" = {"exec" = ["zsh", "-c", "open -a '/Applications/Nix Apps/kitty.app'"]}
-
+# "comb1 + Z" = {"exec" = "kitty --title dropdown --override initial_window_width=80c --override initial_window_height=18c sh -c 'fastfetch; exec $SHELL'"}
+# "comb1 + Z" = {"exec" = "open -a '/Applications/Nix Apps/kitty.app' --args --title dropdown --override initial_window_width=400 --override initial_window_height=400 sh -c 'fastfetch; exec $SHELL'"}
+# "comb1 + Z" = {
+#   "exec" = [
+#     "zsh",
+#     "-c",
+#     "kitty --title dropdown --override initial_window_width=80c --override initial_window_height=18c sh -c 'fastfetch; exec $SHELL'"
+#   ]
+# }
 # "Alt + Shift + slash" = "debug" # prints layout tree
 
 "Alt + Ctrl + S" = "serialize"

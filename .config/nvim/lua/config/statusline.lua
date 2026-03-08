@@ -136,9 +136,9 @@ vim.opt.statusline = table.concat({
 	"%m", -- modified
 	-- "%y", -- filetype
 	"%r", -- readonly
+	"[%{mode()}] ", -- mode short (n,i,v)
 	"%=", -- right align
 	-- "%{v:lua.GitsignsStatus()}",
-	-- "%{mode()} ",  -- mode short (n,i,v)
 	"%{v:lua.DiagnosticStatus()}",
 	"%{exists('g:last_key') ? (' ' .. g:last_key .. ' ') : ''}",
 	"%{v:lua.BufferStatus()}", -- buffer

@@ -5,7 +5,7 @@ return {
 			transparent = true, -- don't set background
 			colors = {
 				visual = "#cb945b",
-				comment = "#6f7b68",
+				comment = "#666666",
 			},
 		},
 		config = function(_, opts)
@@ -76,8 +76,9 @@ return {
 		},
 		config = function(_, opts)
 			require("kanagawa").setup(opts)
-			-- vim.cmd("colorscheme kanagawa-dragon")
+			vim.cmd("colorscheme kanagawa-dragon")
 			vim.api.nvim_set_hl(0, "LineNr", { fg = "#666666", bg = "NONE" })
+			vim.api.nvim_set_hl(0, "Comment", { fg = "#666666", italic = true })
 			vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#CC7653", bold = true, bg = "NONE" })
 		end,
 	},
@@ -117,7 +118,7 @@ return {
 			transparent = false, -- don't set background
 		},
 		config = function()
-			vim.cmd.colorscheme("petrolnoir")
+			-- vim.cmd.colorscheme("petrolnoir")
 			vim.api.nvim_set_hl(0, "LineNr", { fg = "#666666" })
 			vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#CC7653", bold = true })
 		end,

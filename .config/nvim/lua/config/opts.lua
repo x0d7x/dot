@@ -13,7 +13,6 @@ vim.g.maplocalleader = " " -- Set <LocalLeader> key to Space
 -- vim.g.snacks_animate = true
 vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
 -- vim.g.trouble_lualine = true
-
 -- ╭─────────────────────────────╮
 -- │ Files & Backups             │
 -- ╰─────────────────────────────╯
@@ -56,6 +55,7 @@ o.title = true -- Set terminal title
 o.confirm = true -- Confirm before closing modified buffer
 o.fillchars = { eob = " " } -- Hide ~ at end of buffer
 o.guifont = "monospace:h17" -- Font for GUI clients
+vim.opt.guicursor = ""
 o.winborder = "rounded" -- Window border style
 o.laststatus = 3 -- global statusline
 o.splitbelow = true -- Horizontal splits open below
