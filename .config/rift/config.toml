@@ -103,7 +103,7 @@ alignment = "center"
 # - "niri": reveal columns only when needed based on navigation direction
 # 			(disrespects alignment setting above)
 # - "anchored": always align focused column according to `alignment`
-focus_navigation_style = "anchored"
+focus_navigation_style = "niri"
 # the scrolling layout tends to function better without animations,
 # so you can disable them if you like
 animate = false
