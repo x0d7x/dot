@@ -4,6 +4,7 @@ end
 
 local api = vim.api
 local cmd = vim.cmd
+local start_time = vim.g.start_time or vim.loop.hrtime()
 
 local vim_version = vim.version()
 if vim_version.minor < 12 then
@@ -17,12 +18,36 @@ cmd("highlight Ascii guifg=#280068 guibg=#3f007f")
 
 local NVIM_VERSION = "NVIM " .. vim_version.major .. "." .. vim_version.minor
 
+local function center_str(str, width)
+	local len = #str
+	if len >= width then
+		return str
+	end
+	local left = math.floor((width - len) / 2)
+	local right = width - len - left
+	return string.rep(" ", left) .. str .. string.rep(" ", right)
+end
+
 local function pad_str(padding, str)
 	local result = ""
 	for _ = 1, padding do
 		result = result .. " "
 	end
 	return result .. str
+end
+
+local function format_shortcut(left, right)
+	local left_width = 18
+	local right_width = 10
+	local gap = 2
+	local line = string.format("%-" .. left_width .. "s", left)
+	line = line .. string.rep(" ", gap)
+	if right and right ~= "" then
+		line = line .. string.format("%-" .. right_width .. "s", right)
+	else
+		line = line .. string.rep(" ", right_width)
+	end
+	return line
 end
 
 local ascii_coords = {
@@ -46,6 +71,7 @@ local ascii_coords = {
 
 local intro_active = false
 local intro_buf = nil
+local cached_stats = nil
 
 local function color_buf(buf, padding)
 	local ns = api.nvim_create_namespace("ascii_ns")
@@ -78,6 +104,30 @@ local function dismiss_intro()
 	api.nvim_win_set_option(win, "list", true)
 end
 
+local function get_stats()
+	if cached_stats then
+		return cached_stats
+	end
+
+	local ok, lazy = pcall(require, "lazy")
+	if not ok then
+		return "⚡ Loading..."
+	end
+
+	local stats = lazy.stats()
+	if not stats or stats.loaded == 0 then
+		return "⚡ Loading..."
+	end
+
+	local startup_ms = stats.startuptime
+	if not startup_ms or startup_ms == 0 then
+		startup_ms = math.floor((vim.loop.hrtime() - start_time) / 1000000)
+	end
+
+	cached_stats = "⚡ " .. stats.loaded .. " plugins in " .. math.floor(startup_ms) .. "ms"
+	return cached_stats
+end
+
 local function set_ascii_bg()
 	if not intro_active then
 		return
@@ -105,14 +155,15 @@ local function set_ascii_bg()
 		"             ▔▔▀▀▜█████████▛▀▀▔▔",
 		"                   ▔▔▔▔▔▔▔",
 		"__NVIM_VERSION__",
+		"__STATS__",
 		"",
 		" Nvim is open source and freely distributable",
 		"            https://neovim.io/#chat",
 		"",
-		" [f] Find Files     [g] Grep",
-		" [r] Recent Files  [c] Config",
-		" [o] Old Session  [h] Help",
-		" [q] Quit",
+		"__SHORTCUT_1__",
+		"__SHORTCUT_2__",
+		"__SHORTCUT_3__",
+		"__SHORTCUT_4__",
 		"",
 		"type  :help nvim<Enter>       if you are new",
 		"type  :q<Enter>               to exit",
@@ -129,6 +180,16 @@ local function set_ascii_bg()
 	for i, _ in ipairs(ascii) do
 		if ascii[i] == "__NVIM_VERSION__" then
 			ascii[i] = pad_str(pad_cols, pad_str(math.ceil((ascii_cols - #NVIM_VERSION) / 2), NVIM_VERSION))
+		elseif ascii[i] == "__STATS__" then
+			ascii[i] = center_str(get_stats(), width)
+		elseif ascii[i] == "__SHORTCUT_1__" then
+			ascii[i] = center_str(format_shortcut("[f] Find Files", "[g] Grep"), width)
+		elseif ascii[i] == "__SHORTCUT_2__" then
+			ascii[i] = center_str(format_shortcut("[r] Recent Files", "[c] Config"), width)
+		elseif ascii[i] == "__SHORTCUT_3__" then
+			ascii[i] = center_str(format_shortcut("[o] Old Session", "[h] Help"), width)
+		elseif ascii[i] == "__SHORTCUT_4__" then
+			ascii[i] = center_str(format_shortcut("[q] Quit", nil), width)
 		elseif ascii[i] ~= "" then
 			ascii[i] = pad_str(pad_cols, ascii[i])
 		else
@@ -142,6 +203,7 @@ local function set_ascii_bg()
 	intro_buf = buf
 
 	api.nvim_buf_set_lines(buf, 0, -1, false, ascii)
+	vim.cmd("redraw")
 	color_buf(buf, pad_cols)
 
 	api.nvim_buf_set_option(buf, "modified", false)
@@ -155,13 +217,19 @@ local function set_ascii_bg()
 	api.nvim_win_set_option(win, "list", false)
 
 	vim.keymap.set("n", "f", function()
-		dismiss_intro()
-		require("fff").find_files()
+		require("fff").find_files({
+			layout = {
+				fullscreen = false,
+			},
+		})
 	end, { buffer = buf })
 
 	vim.keymap.set("n", "g", function()
-		dismiss_intro()
-		require("fff").live_grep()
+		require("fff").live_grep({
+			layout = {
+				fullscreen = false,
+			},
+		})
 	end, { buffer = buf })
 
 	vim.keymap.set("n", "r", function()
@@ -190,6 +258,18 @@ local function set_ascii_bg()
 	end, { buffer = buf })
 end
 
+local function is_intro_only()
+	for _, win in ipairs(vim.api.nvim_list_wins()) do
+		local buf = vim.api.nvim_win_get_buf(win)
+		local bt = vim.bo[buf].buftype
+
+		if bt ~= "" and bt ~= "nofile" then
+			return false
+		end
+	end
+	return true
+end
+
 vim.api.nvim_create_autocmd("VimEnter", {
 	once = true,
 	callback = function()
@@ -198,10 +278,26 @@ vim.api.nvim_create_autocmd("VimEnter", {
 
 		vim.api.nvim_create_autocmd("VimResized", {
 			callback = function()
-				if intro_active then
+				if intro_active and is_intro_only() then
 					set_ascii_bg()
 				end
 			end,
 		})
+	end,
+})
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = "LazyDone",
+	callback = function()
+		if intro_active then
+			vim.defer_fn(function()
+				if intro_active then
+					local ok, err = pcall(set_ascii_bg)
+					if not ok then
+						vim.notify("Intro error: " .. err, vim.log.levels.ERROR)
+					end
+				end
+			end, 100)
+		end
 	end,
 })

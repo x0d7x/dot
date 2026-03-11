@@ -5,6 +5,7 @@ local function augroup(name)
 	return api.nvim_create_augroup("custom_" .. name, { clear = true })
 end
 
+vim.cmd.packadd("nvim.undotree")
 -- ========== Basic Autocmds ========== --
 
 api.nvim_create_autocmd("BufEnter", {

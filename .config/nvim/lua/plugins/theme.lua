@@ -2,7 +2,7 @@ return {
 	{
 		"vague2k/vague.nvim",
 		opts = {
-			transparent = true, -- don't set background
+			transparent = false, -- don't set background
 			colors = {
 				visual = "#cb945b",
 				comment = "#666666",
@@ -10,7 +10,19 @@ return {
 		},
 		config = function(_, opts)
 			require("vague").setup(opts)
-			-- vim.cmd.colorscheme("vague")
+			vim.cmd.colorscheme("vague")
+		end,
+	},
+	{
+		"Aejkatappaja/sora",
+		lazy = false,
+		priority = 1000,
+		opts = {
+			transparent = true, -- don't set background
+		},
+		config = function(_, opts)
+			require("sora").setup(opts)
+			-- vim.cmd("colorscheme sora")
 		end,
 	},
 	{
@@ -18,7 +30,7 @@ return {
 		lazy = false, -- make sure we load this during startup if it is your main colorscheme
 		priority = 1000, -- make sure to load this before all the other start plugins
 		opts = {
-			transparent = true, -- enable for transparent backgrounds
+			transparent = false, -- enable for transparent backgrounds
 			on_highlights = function(hl, c)
 				hl.Comment = { fg = "#666666", italic = true }
 			end,
@@ -27,7 +39,7 @@ return {
 			-- require("koda").setup({ transparent = true })
 			require("koda").setup(opts)
 			-- vim.cmd("colorscheme koda")
-			vim.cmd("colorscheme koda-dark")
+			-- vim.cmd("colorscheme koda-dark")
 			-- vim.cmd("colorscheme koda-light")
 			-- vim.cmd("colorscheme koda-moss")
 			-- vim.cmd("colorscheme koda-glade")
@@ -115,7 +127,7 @@ return {
 		"connormxfadden/petrolnoir.nvim",
 		priority = 1000, -- load before other UI plugins
 		opts = {
-			transparent = false, -- don't set background
+			-- transparent = true, -- don't set background
 		},
 		config = function()
 			-- vim.cmd.colorscheme("petrolnoir")

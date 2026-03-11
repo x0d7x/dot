@@ -59,7 +59,7 @@ auto_focus_blacklist = []
 
 run_on_start = [ 
  "rift-cli subscribe cli --event workspace_changed --command sh --args -c --args 'sketchybar --trigger rift_workspace_change RIFT_WORKSPACE_NAME=\"$RIFT_WORKSPACE_NAME\" RIFT_WORKSPACE_ID=\"$RIFT_WORKSPACE_ID\"'",
- "borders active_color=0xffebdbb2 inactive_color=0xff494d64 width=3.0 style=round &"
+ "borders active_color=0xffebdbb2 inactive_color=0xff494d64 width=3.0 style=round"
 ]
 
 # Hot Reloading
@@ -103,7 +103,7 @@ alignment = "center"
 # - "niri": reveal columns only when needed based on navigation direction
 # 			(disrespects alignment setting above)
 # - "anchored": always align focused column according to `alignment`
-focus_navigation_style = "niri"
+focus_navigation_style = "anchored"
 # the scrolling layout tends to function better without animations,
 # so you can disable them if you like
 animate = false

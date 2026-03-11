@@ -1,54 +1,161 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 # A minimal left prompt
 format = """
+$os\
 $directory\
-$character"""
+$line_break\
+$character\
+"""
 right_format = """
-$git_branch\
-$git_status\
-$package\
-$python\
-$php\
-$lua\
-$cmd_duration"""
-# add_newline = true
-command_timeout = 200
+$cmd_duration\
+${custom.jj}\
+"""
+
+add_newline = false
+scan_timeout = 200
+command_timeout = 500
+palette = "gruvbox_dark"
+
+[os]
+disabled = false
+
+[line_break]
+disabled = true
+
+[custom.giturl]
+description = "Display symbol for remote Git server"
+command = """
+GIT_REMOTE=$(command git ls-remote --get-url 2> /dev/null)
+if [[ "$GIT_REMOTE" =~ "github" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+elif [[ "$GIT_REMOTE" =~ "gitlab" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+elif [[ "$GIT_REMOTE" =~ "bitbucket" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+elif [[ "$GIT_REMOTE" =~ "git" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+else
+    GIT_REMOTE_SYMBOL=" "
+fi
+echo "$GIT_REMOTE_SYMBOL "
+"""
+when = "git rev-parse --is-inside-work-tree 2> /dev/null"
+format = "$output"
+require_repo = true
+ignore_timeout = true
+
+[git_branch] 
+symbol = "(base) "
+style = "fg:lavender "
+format =  "  [$symbol$branch]($style)(base)"
+disabled = true
+
+# [git_status] 
+# MINIMAL git status 
+# format = " [($all_status$ahead_behind )]($style)"
+# ahead    = "⇡${count} "
+# behind   = "⇣${count} "
+# diverged = "⇕⇡${ahead_count}⇣${behind_count} "
+
+[git_status]
+format = "[$staged$modified$renamed$conflicted$ahead_behind]($style)"
+# options available for format
+staged     = "[+${count} ](green)"
+modified   = "[!${count} ](yellow)"
+renamed    = "[»${count} ](blue)"
+deleted    = "[-${count} ](red)"
+untracked  = "[?${count} ](sapphire)"
+stashed    = "[≡${count} ](lavender)"
+conflicted = "[✖${count} ](red bold)"
+
+ahead      = "[⇡${count} ](teal)"
+behind     = "[⇣${count} ](peach)"
+diverged   = "[⇕⇡${ahead_count}⇣${behind_count} ](mauve)"
+disabled = true
+
+[custom.jj]
+when = "jj-starship detect"
+shell = ["jj-starship"]
+format = "$output "
+ignore_timeout = true
+
+
+[os.symbols]
+Macos = " "
+Linux = " "
+Windows = " "
+
 [character]
-success_symbol = '[\$](bold yellow) '
-error_symbol = '[\$](bold red) '
-[git_branch]
-format = "[$symbol$branch(:$remote_branch)]($style) "
-always_show_remote = true
-style = "fg:green"
+success_symbol = '[\$](bold yellow)'
+error_symbol = '[\$](bold red)'
+
 [cmd_duration]
 format = '󰓅 [$duration]($style) '
-[git_state]
-format = '[\($state( $progress_current of $progress_total)\)]($style) '
-cherry_pick = '[🍒 PICKING](bold red)'
-[git_commit]
-commit_hash_length = 4
-style = 'bold blue'
+
 [lua]
 format = 'lua [󰢱 $version](bold blue) '
-[bun]
-# format = ' [🐇 $version ](bold #a779b4)'
-detect_files = [
-  'package.json',
-  '.node-version',
-  'bun.lockb',
-  'bunfig.toml'
-]
-detect_folders = ['node_modules']
+
 [package]
-symbol = "📦 "
-style = "bold blue"
+disabled =false
+
+[nodejs]
+symbol = ""
+format = "[ $symbol( $version) ]($style)"
+detect_files = ["package.json"]
+
 [php]
-format = "[$symbol(php $version )]($style)"
+format = "[ $symbol($version) ]($style)"
+
+[golang]
+symbol = ""
+format = "[ $symbol( $version) ]($style)"
+detect_files = ["go.mod"]
+
 [directory]
 style = "cyan bold"
-truncation_length = 3
+truncation_length = 4
 truncate_to_repo = false
 truncation_symbol = "👈/"
+
 [directory.substitutions]
-"downloads" = ""
-"Developer" = ""
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"Developer" = "󰲋 "
+"Others" = " "
+
+[palettes.gruvbox_dark]
+# --- background ---
+crust = "#1d2021"
+mantle = "#282828"
+base = "#fbf1c7" # git branch bg
+
+surface0 = "#3c3836"
+surface1 = "#504945"
+surface2 = "#665c54"
+
+overlay0 = "#7c6f64"
+overlay1 = "#a89984"
+overlay2 = "#bdae93"
+
+# --- text ---
+text = "#ebdbb2"
+subtext0 = "#d5c4a1"
+subtext1 = "#fbf1c7"
+
+# --- accents gruvbox ---
+rosewater = "#fbf1c7"
+flamingo = "#fe8019"
+pink = "#d3869b"
+mauve = "#d3869b"
+red = "#cc241d"
+maroon = "#fb4934"
+peach = "#fe8019"
+yellow = "#d79921"
+green = "#98971a"
+teal = "#8ec07c"
+sky = "#8ec07c"
+sapphire = "#83a598"
+blue = "#458588"
+lavender = "#d3869b" # git branch fg
