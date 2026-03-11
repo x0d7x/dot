@@ -54,12 +54,12 @@ return {
 		},
 		quickfile = { enabled = true },
 		notify = { enabled = true },
-		picker = {
-			enabled = true,
-			matcher = {
-				frecency = true,
-			},
-		},
+		-- picker = {
+		-- 	enabled = true,
+		-- 	matcher = {
+		-- 		frecency = true,
+		-- 	},
+		-- },
 		scope = { enabled = true },
 		scroll = { enabled = true },
 		scratch = { enabled = true },

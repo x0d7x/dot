@@ -27,7 +27,7 @@ return {
 			-- require("koda").setup({ transparent = true })
 			require("koda").setup(opts)
 			-- vim.cmd("colorscheme koda")
-			-- vim.cmd("colorscheme koda-dark")
+			vim.cmd("colorscheme koda-dark")
 			-- vim.cmd("colorscheme koda-light")
 			-- vim.cmd("colorscheme koda-moss")
 			-- vim.cmd("colorscheme koda-glade")
@@ -76,7 +76,7 @@ return {
 		},
 		config = function(_, opts)
 			require("kanagawa").setup(opts)
-			vim.cmd("colorscheme kanagawa-dragon")
+			-- vim.cmd("colorscheme kanagawa-dragon")
 			vim.api.nvim_set_hl(0, "LineNr", { fg = "#666666", bg = "NONE" })
 			vim.api.nvim_set_hl(0, "Comment", { fg = "#666666", italic = true })
 			vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#CC7653", bold = true, bg = "NONE" })
