@@ -83,7 +83,7 @@ local function restart_lsp(bufnr)
 	local clients = vim.lsp.get_clients({ bufnr = bufnr })
 
 	for _, client in ipairs(clients) do
-		vim.lsp.stop_client(client.id)
+		client:stop()
 	end
 
 	vim.defer_fn(function()
@@ -219,7 +219,7 @@ local function lsp_info()
 	print("           LSP INFORMATION          ")
 	print("═══════════════════════════════════\n")
 
-	print("󰈙 Log file:        " .. vim.lsp.get_log_path())
+	print("󰈙 Log file:        " .. vim.lsp.log.get_filename())
 	print("󰈔 Filetype:        " .. vim.bo.filetype)
 	print("󰈮 Buffer:          " .. bufnr)
 	print("󰈔 CWD:             " .. (vim.fn.getcwd() or "N/A") .. "\n")
@@ -535,9 +535,9 @@ do
 		},
 		-- spinner_frames = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' },
 		-- spinner_frames = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
-		-- spinner_frames = { "◐", "◓", "◑", "◒" },
+		spinner_frames = { "◐", "◓", "◑", "◒" },
 		-- spinner_frames = { "◰", "◳", "◲", "◱" },
-		spinner_frames = { "▱", "▰", "▰▱", "▰▰" },
+		-- spinner_frames = { "▱", "▰", "▰▱", "▰▰" },
 		-- spinner_frames = { "○", "⬭", "●", "⬮" },
 		-- spinner_frames = { "○   ", " ○  ", "  ○ ", "   ○", "  ○ ", " ○  " },
 		-- spinner_frames = {
