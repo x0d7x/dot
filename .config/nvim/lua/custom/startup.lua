@@ -13,9 +13,6 @@ end
 
 vim.opt.shortmess:append("I")
 
-cmd("highlight AsciiBorder guifg=#280068")
-cmd("highlight Ascii guifg=#280068 guibg=#3f007f")
-
 local NVIM_VERSION = "NVIM " .. vim_version.major .. "." .. vim_version.minor
 
 local function center_str(str, width)
@@ -50,38 +47,9 @@ local function format_shortcut(left, right)
 	return line
 end
 
-local ascii_coords = {
-	{ 25, 28 },
-	{ 38, 50 },
-	{ 22, 67 },
-	{ 14, 77 },
-	{ 14, 57 },
-	{ 11, 48 },
-	{ 18, 56 },
-	{ 8, 87 },
-	{ 8, 79 },
-	{ 18, 62 },
-	{ 11, 59 },
-	{ 14, 51 },
-	{ 16, 81 },
-	{ 18, 69 },
-	{ 37, 50 },
-	{ 25, 28 },
-}
-
 local intro_active = false
 local intro_buf = nil
 local cached_stats = nil
-
-local function color_buf(buf, padding)
-	local ns = api.nvim_create_namespace("ascii_ns")
-
-	for line, coord in ipairs(ascii_coords) do
-		api.nvim_buf_add_highlight(buf, ns, "AsciiBorder", line, 0, coord[1] + padding)
-		api.nvim_buf_add_highlight(buf, ns, "Ascii", line, coord[1] + padding, coord[2] + padding - 1)
-		api.nvim_buf_add_highlight(buf, ns, "AsciiBorder", line, coord[2] + padding - 1, 1000)
-	end
-end
 
 local function dismiss_intro()
 	if not intro_active then
@@ -135,23 +103,16 @@ local function set_ascii_bg()
 	local width = api.nvim_get_option("columns")
 
 	local ascii = {
-		"                                              ",
-		"                   ▁▁▁▁▁▁▁",
-		"             ▁▁▄▄▟█████████▙▄▄▁▁",
-		"            ▟███████████████████▙",
-		"          ▄████▛▀▀▀▀▀▀▀▀▀▀▀▀▀▜████▄",
-		"         ▟████▛               ▜████▙",
-		"        ▟████▛                 ▜████▙",
-		"       ▐████▛                   ▜████▌",
-		"       ████▛                     ▜████",
-		"       ████▙                     ▟████",
-		"       ▐████▙                   ▟████▌",
-		"        ▜████▙                 ▟████▛",
-		"         ▜████▙               ▟████▛",
-		"          ▀████▙▄▄▄▄▄▄▄▄▄▄▄▄▄▟████▀",
-		"            ▜███████████████████▛",
-		"             ▔▔▀▀▜█████████▛▀▀▔▔",
-		"                   ▔▔▔▔▔▔▔",
+		[[_,    _   _    ,_]],
+		[[.o888P     Y8o8Y     Y888o.]],
+		[[d88888      88888      88888b]],
+		[[d888888b_  _d88888b_  _d888888b]],
+		[[8888888888888888888888888888888]],
+		[[8888888888888888888888888888888]],
+		[[YJGS8P"Y888P"Y888P"Y888P"Y8888P]],
+		[[Y888   '8'   Y8P   '8'   888Y]],
+		[['8o          V          o8']],
+		[[`                     `]],
 		"__NVIM_VERSION__",
 		"__STATS__",
 		"",
@@ -163,21 +124,19 @@ local function set_ascii_bg()
 		"__SHORTCUT_3__",
 		"__SHORTCUT_4__",
 		"",
-		"type  :help nvim<Enter>       if you are new",
-		"type  :q<Enter>               to exit",
 	}
 
 	local ascii_rows = #ascii
 	local ascii_cols = #ascii[1]
 	local pad_cols = math.floor((width - ascii_cols) / 2)
-
 	if height < ascii_rows or width < ascii_cols then
 		return
 	end
+	local pad_rows = math.floor((height - ascii_rows) / 2)
 
 	for i, _ in ipairs(ascii) do
 		if ascii[i] == "__NVIM_VERSION__" then
-			ascii[i] = pad_str(pad_cols, pad_str(math.ceil((ascii_cols - #NVIM_VERSION) / 2), NVIM_VERSION))
+			ascii[i] = center_str(NVIM_VERSION, width)
 		elseif ascii[i] == "__STATS__" then
 			ascii[i] = center_str(get_stats(), width)
 		elseif ascii[i] == "__SHORTCUT_1__" then
@@ -189,10 +148,21 @@ local function set_ascii_bg()
 		elseif ascii[i] == "__SHORTCUT_4__" then
 			ascii[i] = center_str(format_shortcut("[q] Quit", nil), width)
 		elseif ascii[i] ~= "" then
-			ascii[i] = pad_str(pad_cols, ascii[i])
+			ascii[i] = center_str(ascii[i], width)
 		else
 			ascii[i] = pad_str(pad_cols, "")
 		end
+	end
+
+	if pad_rows > 0 then
+		local padded = {}
+		for _ = 1, pad_rows do
+			table.insert(padded, "")
+		end
+		for _, line in ipairs(ascii) do
+			table.insert(padded, line)
+		end
+		ascii = padded
 	end
 
 	local buf = api.nvim_get_current_buf()
@@ -202,7 +172,6 @@ local function set_ascii_bg()
 
 	api.nvim_buf_set_lines(buf, 0, -1, false, ascii)
 	vim.cmd("redraw")
-	color_buf(buf, pad_cols)
 
 	api.nvim_buf_set_option(buf, "modified", false)
 	api.nvim_buf_set_option(buf, "buflisted", false)
