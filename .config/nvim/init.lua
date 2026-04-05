@@ -1,7 +1,9 @@
-require("core.lazy")
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+require("core.pack")
 require("config.utils")
--- require("custom.colorscheme")
 require("core.lsp")
+-- require("custom.colorscheme")
 require("core.Mason-path")
 require("config.mason-verify")
 require("config.keymaps")

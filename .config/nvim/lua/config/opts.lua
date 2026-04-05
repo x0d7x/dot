@@ -55,7 +55,7 @@ o.title = true -- Set terminal title
 o.confirm = true -- Confirm before closing modified buffer
 o.fillchars = { eob = " " } -- Hide ~ at end of buffer
 o.guifont = "monospace:h17" -- Font for GUI clients
-o.guicursor = ""
+o.guicursor = "n-v-c:block,i:block,r-cr:block,o:block"
 o.winborder = "rounded" -- Window border style
 o.laststatus = 3 -- global statusline
 o.splitbelow = true -- Horizontal splits open below

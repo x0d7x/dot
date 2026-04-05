@@ -6,7 +6,8 @@
     },
     "bafa.nvim": {
       "rev": "7526f5fd61dba671c5fd571fb5351a031caf7b1a",
-      "src": "https://github.com/mistweaverco/bafa.nvim"
+      "src": "https://github.com/mistweaverco/bafa.nvim",
+      "version": "'v1.10.1'"
     },
     "blink.cmp": {
       "rev": "451168851e8e2466bc97ee3e026c3dcb9141ce07",
