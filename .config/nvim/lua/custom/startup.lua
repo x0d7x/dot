@@ -64,10 +64,10 @@ local function dismiss_intro()
 	end
 	intro_buf = nil
 
-	api.nvim_win_set_option(win, "colorcolumn", "100")
-	api.nvim_win_set_option(win, "relativenumber", true)
-	api.nvim_win_set_option(win, "number", true)
-	api.nvim_win_set_option(win, "list", true)
+	api.nvim_set_option_value("colorcolumn", "100", { win = win })
+	api.nvim_set_option_value("relativenumber", true, { win = win })
+	api.nvim_set_option_value("number", true, { win = win })
+	api.nvim_set_option_value("list", true, { win = win })
 end
 
 local function get_pack_plugin_count()
@@ -122,8 +122,8 @@ local function set_ascii_bg()
 		return
 	end
 
-	local height = api.nvim_get_option("lines")
-	local width = api.nvim_get_option("columns")
+	local height = vim.o.lines
+	local width = vim.o.columns
 
 	local ascii = {
 		[[_,    _   _    ,_]],
@@ -196,15 +196,15 @@ local function set_ascii_bg()
 	api.nvim_buf_set_lines(buf, 0, -1, false, ascii)
 	vim.cmd("redraw")
 
-	api.nvim_buf_set_option(buf, "modified", false)
-	api.nvim_buf_set_option(buf, "buflisted", false)
-	api.nvim_buf_set_option(buf, "bufhidden", "wipe")
-	api.nvim_buf_set_option(buf, "buftype", "nofile")
-	api.nvim_buf_set_option(buf, "swapfile", false)
-	api.nvim_win_set_option(win, "colorcolumn", "")
-	api.nvim_win_set_option(win, "relativenumber", false)
-	api.nvim_win_set_option(win, "number", false)
-	api.nvim_win_set_option(win, "list", false)
+	api.nvim_set_option_value("modified", false, { buf = buf })
+	api.nvim_set_option_value("buflisted", false, { buf = buf })
+	api.nvim_set_option_value("bufhidden", "wipe", { buf = buf })
+	api.nvim_set_option_value("buftype", "nofile", { buf = buf })
+	api.nvim_set_option_value("swapfile", false, { buf = buf })
+	api.nvim_set_option_value("colorcolumn", "", { win = win })
+	api.nvim_set_option_value("relativenumber", false, { win = win })
+	api.nvim_set_option_value("number", false, { win = win })
+	api.nvim_set_option_value("list", false, { win = win })
 
 	vim.keymap.set("n", "f", function()
 		require("fff").find_files({
@@ -224,7 +224,7 @@ local function set_ascii_bg()
 
 	vim.keymap.set("n", "r", function()
 		dismiss_intro()
-		Snacks.picker.oldfiles()
+		Snacks.picker.recent()
 	end, { buffer = buf })
 
 	vim.keymap.set("n", "c", function()
@@ -234,7 +234,7 @@ local function set_ascii_bg()
 
 	vim.keymap.set("n", "o", function()
 		dismiss_intro()
-		require("persistence").load({ last = true })
+		require("persistence").load()
 	end, { buffer = buf })
 
 	vim.keymap.set("n", "h", function()
