@@ -223,7 +223,6 @@ local function set_ascii_bg()
 	end, { buffer = buf })
 
 	vim.keymap.set("n", "r", function()
-		dismiss_intro()
 		Snacks.picker.recent()
 	end, { buffer = buf })
 

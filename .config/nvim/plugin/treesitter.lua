@@ -34,27 +34,37 @@ local ensure_installed = {
 }
 
 -- Install parsers on buffer enter
+local installed = {}
+
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = "*",
 	callback = function(args)
-		if not args.filetype or args.filetype == "" then
+		local buf = args.buf
+
+		if vim.bo[buf].buftype ~= "" then
 			return
 		end
 
-		local lang = vim.treesitter.language.get_lang(args.filetype)
-		if not lang then
+		local ft = vim.bo[buf].filetype
+		if not ft or ft == "" then
 			return
 		end
 
-		local ts = require("nvim-treesitter")
-		ts.install(lang)
-		vim.defer_fn(function()
-			vim.treesitter.start()
-		end, 100)
-		vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+		local ok, lang = pcall(vim.treesitter.language.get_lang, ft)
+		if not ok or not lang then
+			return
+		end
 
-		local win = vim.fn.bufwinid(args.buf)
-		if win > 0 then
+		if not installed[lang] then
+			installed[lang] = true
+			require("nvim-treesitter").install(lang)
+		end
+
+		pcall(vim.treesitter.start, buf, lang)
+
+		vim.bo[buf].indentexpr = "v:lua.vim.treesitter.indentexpr()"
+
+		local win = vim.fn.bufwinid(buf)
+		if win ~= -1 then
 			vim.wo[win].foldexpr = "v:lua.vim.treesitter.foldexpr()"
 			vim.wo[win].foldmethod = "expr"
 		end

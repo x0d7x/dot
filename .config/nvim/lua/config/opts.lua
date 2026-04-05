@@ -3,9 +3,7 @@ local o = vim.opt
 local undodir = vim.fn.stdpath("state") .. "/undo"
 vim.fn.mkdir(undodir, "p")
 
--- ╭─────────────────────────────╮
 -- │ General                     │
--- ╰─────────────────────────────╯
 vim.g.loaded_netrw = 1 -- Disable netrw file explorer
 vim.g.loaded_netrwPlugin = 1
 vim.g.mapleader = " " -- Set <Leader> key to Space
@@ -13,9 +11,8 @@ vim.g.maplocalleader = " " -- Set <LocalLeader> key to Space
 -- vim.g.snacks_animate = true
 vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
 -- vim.g.trouble_lualine = true
--- ╭─────────────────────────────╮
+
 -- │ Files & Backups             │
--- ╰─────────────────────────────╯
 o.undofile = true -- Enable persistent undo
 o.undodir = undodir -- Set undo directory
 o.undolevels = 1000 -- Max undo steps
@@ -25,9 +22,7 @@ o.writebackup = false -- Disable write backup
 o.swapfile = false -- Optional: disable swap files
 o.autowrite = true -- Auto save before commands like :next, :make
 
--- ╭─────────────────────────────╮
 -- │ Search                      │
--- ╰─────────────────────────────╯
 o.ignorecase = true -- Case insensitive search...
 o.smartcase = true -- ...unless capital letter in query
 o.incsearch = true -- Incremental search
@@ -35,9 +30,8 @@ o.hlsearch = false -- Highlight matches
 o.inccommand = "nosplit" -- Show live preview of :s command
 o.grepformat = "%f:%l:%c:%m"
 o.grepprg = "rg --vimgrep"
--- ╭─────────────────────────────╮
+
 -- │ UI                          │
--- ╰─────────────────────────────╯
 o.foldmethod = "expr"
 o.foldexpr = "nvim_treesitter#foldexpr()"
 o.foldenable = true
@@ -68,26 +62,23 @@ o.shortmess:append({ W = true, I = true, c = true, C = true })
 -- o.pumblend = 10
 o.list = true
 o.linebreak = true
--- ╭─────────────────────────────╮
+
 -- │ Tabs & Indentation          │
--- ╰─────────────────────────────╯
 o.expandtab = true -- Convert tabs to spaces
 o.tabstop = 2 -- Spaces per tab
 o.softtabstop = 2 -- Spaces per <Tab>
 o.shiftwidth = 2 -- Spaces per indent
 o.smartindent = true -- Smart auto-indenting
 o.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
--- ╭─────────────────────────────╮
+
 -- │ Line Numbers & Layout       │
--- ╰─────────────────────────────╯
 o.number = true -- Show absolute line numbers
 o.relativenumber = true -- Show relative line numbers
 o.cursorline = true -- Highlight current line
 o.breakindent = true -- Indent wrapped lines
 o.wrap = false -- Disable line wrap
 o.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
--- ╭─────────────────────────────╮
+
 -- │ Completion & Conceal        │
--- ╰─────────────────────────────╯
 o.completeopt = { "menu", "menuone", "noselect" } -- Completion behavior
 o.conceallevel = 0 -- Show `` in markdown files

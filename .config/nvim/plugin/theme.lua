@@ -14,7 +14,7 @@ pack.add({
 })
 
 require("vague").setup({
-	transparent = false,
+	transparent = true,
 	colors = {
 		visual = "#cb945b",
 		comment = "#666666",
@@ -24,15 +24,19 @@ require("vague").setup({
 
 require("sora").setup({ transparent = true })
 
+-- vim.cmd("colorscheme sora")
+
 require("koda").setup({
 	transparent = true,
 	on_highlights = function(hl)
 		hl.Comment = { fg = "#666666", italic = true }
 	end,
 })
-vim.cmd("colorscheme koda-dark")
+-- vim.cmd("colorscheme koda-dark")
 
-require("zen").setup({ transparent = true })
+require("zen").setup({ transparent = false })
+
+vim.cmd("colorscheme zen")
 
 require("darcubox").setup({
 	options = {
@@ -69,7 +73,11 @@ require("techbase").setup({ transparent = true })
 -- vim.cmd.colorscheme("techbase")
 
 require("petrolnoir").setup({ transparent = true })
-
+-- vim.api.nvim_set_hl(0, "CursorLine", {
+-- fg = "#ffffff",
+-- bg = "#CC7653",
+-- bold = true,
+-- })
 -- vim.api.nvim_set_hl(0, "LineNr", { fg = "#666666", bg = "NONE" })
 -- vim.api.nvim_set_hl(0, "Comment", { fg = "#666666", italic = true })
 -- vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#CC7653", bold = true, bg = "NONE" })

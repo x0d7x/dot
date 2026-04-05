@@ -10,7 +10,6 @@ pack.add({
 	"https://github.com/nvim-lua/plenary.nvim",
 	"https://github.com/uga-rosa/ccc.nvim",
 	"https://github.com/folke/twilight.nvim",
-	"https://github.com/Wansmer/treesj",
 })
 
 require("flash").setup({
@@ -63,5 +62,3 @@ if vim.fn.has("nvim-0.10.0") == 1 then
 	pack.add({ "https://github.com/folke/ts-comments.nvim" })
 	require("ts-comments").setup({})
 end
-
-require("treesj").setup({})

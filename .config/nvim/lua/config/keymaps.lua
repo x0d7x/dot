@@ -5,6 +5,11 @@ map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr =
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 map("n", "<leader>tu", "<cmd>Undotree<cr>", { desc = "Undotree" })
+map("n", "<C-d>", "<C-d>zz") -- Scroll down and center the cursor
+map("n", "<C-u>", "<C-u>zz") -- Scroll up and center the cursor
+-- Goto
+map("n", "gl", "$", { desc = "Go to end of line" })
+map("n", "gh", "^", { desc = "Go to start of line" })
 -- splits
 map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
 map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
@@ -24,10 +29,8 @@ map("v", "<", "<gv")
 map("v", ">", ">gv")
 map("n", "<leader>nr", ":restart<CR>", { desc = "restart  nvim" })
 map("i", "jk", "<Esc>", { noremap = false })
-map("n", "<leader>bs", function()
-	require("snipe").open_buffer_menu()
-end, { desc = "Open Snipe buffer menu" })
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
+map("n", "<leader>pu", "<cmd>lua vim.pack.update()<cr>", { desc = "Update Plugins" })
 -- tmux navigate
 map("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>")
 map("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>")
@@ -38,12 +41,10 @@ map("n", "<leader>cv", function()
 	vim.diagnostic.config({ virtual_lines = new_config })
 end, { desc = "Toggle diagnostic virtual_lines" })
 -- snapcode
-map("x", "<leader>cp", "<cmd>CodeSnap<cr>", { desc = "Save selected code snapshot into clipboard" })
-map("x", "<leader>cP", "<cmd>CodeSnapASCII<cr>", { desc = "make ascii snapshot" })
 map("n", "<leader>uD", "<cmd>Twilight<cr>", { desc = "toggle diming" })
 -- buffer
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
-map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+map("n", "bp", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 map("n", "<leader>bd", function()
 	Snacks.bufdelete()
 end, { desc = "Delete Buffer" })
@@ -56,7 +57,10 @@ end, { desc = "Code color Picker" })
 map("n", "<leader>,", function()
 	require("bafa").toggle()
 end, { desc = "Buffers" })
-
+map("n", "<leader>R", function()
+	require("persistence").save()
+	vim.cmd("restart source " .. vim.fn.fnameescape(require("persistence").current()))
+end, { desc = "Restart Neovim" })
 ------------------- Snacks -------------------------
 -- map("n", "<leader>,", function()
 -- 	Snacks.picker.buffers()

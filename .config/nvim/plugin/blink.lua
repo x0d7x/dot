@@ -3,7 +3,7 @@ local pack = require("core.pack")
 pack.add({
 	"https://github.com/L3MON4D3/LuaSnip",
 	"https://github.com/rafamadriz/friendly-snippets",
-	{ src = "https://github.com/saghen/blink.cmp", version = "v1" },
+	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.*") },
 })
 
 vim.cmd("highlight NormalFloat guibg=NONE blend=0")
@@ -18,7 +18,7 @@ require("blink.cmp").setup({
 		use_nvim_cmp_as_default = false,
 		nerd_font_variant = "mono",
 	},
-	fuzzy = { implementation = "prefer_rust_with_warning" },
+	fuzzy = { implementation = "prefer_rust" },
 	sources = {
 		default = { "lsp", "path", "snippets", "buffer" },
 	},
