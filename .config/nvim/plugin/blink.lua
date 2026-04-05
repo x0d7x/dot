@@ -3,7 +3,7 @@ local pack = require("core.pack")
 pack.add({
 	"https://github.com/L3MON4D3/LuaSnip",
 	"https://github.com/rafamadriz/friendly-snippets",
-	{ "https://github.com/saghen/blink.cmp", version = "1.*" },
+	{ src = "https://github.com/saghen/blink.cmp", version = "v1" },
 })
 
 vim.cmd("highlight NormalFloat guibg=NONE blend=0")

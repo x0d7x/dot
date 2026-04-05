@@ -25,12 +25,12 @@ require("vague").setup({
 require("sora").setup({ transparent = true })
 
 require("koda").setup({
-	transparent = false,
+	transparent = true,
 	on_highlights = function(hl)
 		hl.Comment = { fg = "#666666", italic = true }
 	end,
 })
--- vim.cmd("colorscheme koda-dark")
+vim.cmd("colorscheme koda-dark")
 
 require("zen").setup({ transparent = true })
 
@@ -54,9 +54,6 @@ require("kanagawa").setup({
 		dark = "dragon",
 	},
 })
--- vim.api.nvim_set_hl(0, "LineNr", { fg = "#666666", bg = "NONE" })
--- vim.api.nvim_set_hl(0, "Comment", { fg = "#666666", italic = true })
--- vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#CC7653", bold = true, bg = "NONE" })
 
 require("gruvbox").setup({
 	variant = "hard",
@@ -64,10 +61,15 @@ require("gruvbox").setup({
 		transparency = true,
 	},
 })
-vim.cmd.colorscheme("gruvbox")
+-- vim.cmd.colorscheme("gruvbox")
 
 require("gruvdark").setup({ transparent = false })
--- vim.api.nvim_set_hl(0, "LineNr", { fg = "#666666" })
--- vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#CC7653", bold = true })
 
 require("techbase").setup({ transparent = true })
+-- vim.cmd.colorscheme("techbase")
+
+require("petrolnoir").setup({ transparent = true })
+
+-- vim.api.nvim_set_hl(0, "LineNr", { fg = "#666666", bg = "NONE" })
+-- vim.api.nvim_set_hl(0, "Comment", { fg = "#666666", italic = true })
+-- vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#CC7653", bold = true, bg = "NONE" })

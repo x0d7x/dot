@@ -1,107 +1,44 @@
 local pack = require("core.pack")
 
 pack.add({
-  "https://github.com/nvim-treesitter/nvim-treesitter",
-  "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
+    { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 })
 
-require("nvim-treesitter").setup({
-  sync_install = false,
-  modules = {},
-  fold = {
-    enable = true,
-  },
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-  indent = { enable = true },
-  auto_install = true,
-  ensure_installed = {
-    "bash",
-    "c",
-    "html",
-    "javascript",
-    "json",
-    "toml",
-    "lua",
-    "luadoc",
-    "luap",
-    "markdown",
-    "markdown_inline",
-    "python",
-    "regex",
-    "tsx",
-    "typescript",
-    "vue",
-    "vim",
-    "vimdoc",
-    "yaml",
-    "rust",
-    "go",
-    "gomod",
-    "gowork",
-    "gosum",
-    "php",
-    "astro",
-  },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "<leader>vv",
-      node_incremental = "+",
-      scope_incremental = false,
-      node_decremental = "_",
-    },
-  },
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true,
-      keymaps = {
-        ["af"] = { query = "@function.outer", desc = "around a function" },
-        ["if"] = { query = "@function.inner", desc = "inner part of a function" },
-        ["ac"] = { query = "@class.outer", desc = "around a class" },
-        ["ic"] = { query = "@class.inner", desc = "inner part of a class" },
-        ["ai"] = { query = "@conditional.outer", desc = "around an if statement" },
-        ["ii"] = { query = "@conditional.inner", desc = "inner part of an if statement" },
-        ["al"] = { query = "@loop.outer", desc = "around a loop" },
-        ["il"] = { query = "@loop.inner", desc = "inner part of a loop" },
-        ["ap"] = { query = "@parameter.outer", desc = "around parameter" },
-        ["ip"] = { query = "@parameter.inner", desc = "inside a parameter" },
-      },
-      selection_modes = {
-        ["@parameter.outer"] = "v",
-        ["@parameter.inner"] = "v",
-        ["@function.outer"] = "v",
-        ["@conditional.outer"] = "V",
-        ["@loop.outer"] = "V",
-        ["@class.outer"] = "<c-v>",
-      },
-      include_surrounding_whitespace = false,
-    },
-    move = {
-      enable = true,
-      set_jumps = true,
-      goto_previous_start = {
-        ["[f"] = { query = "@function.outer", desc = "Previous function" },
-        ["[c"] = { query = "@class.outer", desc = "Previous class" },
-        ["[p"] = { query = "@parameter.inner", desc = "Previous parameter" },
-      },
-      goto_next_start = {
-        ["]f"] = { query = "@function.outer", desc = "Next function" },
-        ["]c"] = { query = "@class.outer", desc = "Next class" },
-        ["]p"] = { query = "@parameter.inner", desc = "Next parameter" },
-      },
-    },
-    swap = {
-      enable = true,
-      swap_next = {
-        ["<leader>a"] = "@parameter.inner",
-      },
-      swap_previous = {
-        ["<leader>A"] = "@parameter.inner",
-      },
-    },
-  },
+local ensure_installed = {
+    "bash", "c", "html", "javascript", "json", "toml", "lua", "luadoc", "luap",
+    "markdown", "markdown_inline", "python", "regex", "tsx", "typescript", "vue",
+    "vim", "vimdoc", "yaml", "rust", "go", "gomod", "gowork", "gosum", "php", "astro",
+}
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "*",
+    callback = function(args)
+        pcall(vim.treesitter.start)
+        vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end,
+})
+
+vim.api.nvim_create_autocmd("User", {
+    pattern = "PackChanged",
+    callback = function(args)
+        local kind = args.data and args.data.kind
+        if kind ~= "install" and kind ~= "update" then
+            return
+        end
+
+        local name = args.data.spec and args.data.spec.name
+        if name ~= "nvim-treesitter" then
+            return
+        end
+
+        local ts = require("nvim-treesitter")
+        local installed = ts.config.get_installed()
+        local to_install = vim.tbl_filter(function(parser)
+            return not vim.tbl_contains(installed, parser)
+        end, ensure_installed)
+
+        if #to_install > 0 then
+            ts.install(to_install)
+        end
+    end,
 })

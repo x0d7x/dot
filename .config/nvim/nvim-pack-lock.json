@@ -7,11 +7,12 @@
     "bafa.nvim": {
       "rev": "7526f5fd61dba671c5fd571fb5351a031caf7b1a",
       "src": "https://github.com/mistweaverco/bafa.nvim",
-      "version": "'v1.10.1'"
+      "version": "'main'"
     },
     "blink.cmp": {
       "rev": "451168851e8e2466bc97ee3e026c3dcb9141ce07",
-      "src": "https://github.com/saghen/blink.cmp"
+      "src": "https://github.com/saghen/blink.cmp",
+      "version": "'v1'"
     },
     "ccc.nvim": {
       "rev": "9d1a256e006decc574789dfc7d628ca11644d4c2",
@@ -91,11 +92,13 @@
     },
     "nvim-treesitter": {
       "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
-      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter",
+      "version": "'main'"
     },
     "nvim-treesitter-textobjects": {
       "rev": "93d60a475f0b08a8eceb99255863977d3a25f310",
-      "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
+      "version": "'main'"
     },
     "nvim-web-devicons": {
       "rev": "40e9d5a6cc3db11b309e39593fc7ac03bb844e38",
