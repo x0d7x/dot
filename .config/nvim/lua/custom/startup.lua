@@ -96,8 +96,6 @@ local function dismiss_intro()
 	end
 	intro_buf = nil
 
-	vim.cmd("enew")
-
 	api.nvim_win_set_option(win, "colorcolumn", "100")
 	api.nvim_win_set_option(win, "relativenumber", true)
 	api.nvim_win_set_option(win, "number", true)
@@ -270,11 +268,33 @@ local function is_intro_only()
 	return true
 end
 
+local function is_real_buffer(buf)
+	if not api.nvim_buf_is_valid(buf) then
+		return false
+	end
+	if vim.bo[buf].buftype ~= "" then
+		return false
+	end
+	local name = api.nvim_buf_get_name(buf)
+	if name == "" then
+		return false
+	end
+	return true
+end
+
 vim.api.nvim_create_autocmd("VimEnter", {
 	once = true,
 	callback = function()
 		intro_active = true
 		set_ascii_bg()
+
+		vim.api.nvim_create_autocmd("BufEnter", {
+			callback = function(ev)
+				if intro_active and is_real_buffer(ev.buf) then
+					dismiss_intro()
+				end
+			end,
+		})
 
 		vim.api.nvim_create_autocmd("VimResized", {
 			callback = function()
