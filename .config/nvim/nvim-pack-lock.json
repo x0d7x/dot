@@ -4,6 +4,10 @@
       "rev": "642b0c595e11608b4c18219e93b88d7637af27bc",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
+    "Oshen.nvim": {
+      "rev": "8eac34550bbb5b22788fd92e164e0c442d0dc4ba",
+      "src": "https://github.com/54L1M/Oshen.nvim"
+    },
     "bafa.nvim": {
       "rev": "7526f5fd61dba671c5fd571fb5351a031caf7b1a",
       "src": "https://github.com/mistweaverco/bafa.nvim",
@@ -158,6 +162,10 @@
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
       "src": "https://github.com/folke/which-key.nvim"
+    },
+    "xdg-nvfilechooser.nvim": {
+      "rev": "75cc489e6c6c39e8fa6ac67e9df08ee955498971",
+      "src": "https://github.com/shenawy29/xdg-nvfilechooser.nvim"
     },
     "zen.nvim": {
       "rev": "9a60e3fbef521f754cb54a78106647873a50a8ae",
