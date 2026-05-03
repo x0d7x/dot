@@ -1,4 +1,5 @@
-local capabilities = require("blink.cmp").get_lsp_capabilities()
+local ok, blink = pcall(require, "blink.cmp")
+local capabilities = ok and blink.get_lsp_capabilities() or {}
 capabilities = vim.tbl_deep_extend("force", capabilities, {
 	workspace = {
 		fileOperations = {

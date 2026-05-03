@@ -11,7 +11,12 @@ pack.add({
 	"https://github.com/darianmorat/gruvdark.nvim",
 	"https://github.com/connormxfadden/petrolnoir.nvim",
 	"https://github.com/mcauley-penney/techbase.nvim",
+	"https://github.com/54L1M/Oshen.nvim",
 })
+require("oshen").setup({
+	transparent = true, -- set false for opaque background
+})
+vim.cmd.colorscheme("Oshen")
 
 require("vague").setup({
 	transparent = true,
@@ -36,7 +41,7 @@ require("koda").setup({
 
 require("zen").setup({ transparent = false })
 
-vim.cmd("colorscheme zen")
+-- vim.cmd("colorscheme zen")
 
 require("darcubox").setup({
 	options = {
