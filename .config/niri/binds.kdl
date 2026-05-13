@@ -10,6 +10,7 @@ binds {
     // `niri msg action do-something`.
     F12 hotkey-overlay-title="Open a Launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
     Alt+S hotkey-overlay-title="Open a Settings" { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
+    Alt+Shift+P hotkey-overlay-title="toggle lock screen" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
     Alt+Shift+W hotkey-overlay-title="Open a Wallpaper" { spawn-sh "qs -c noctalia-shell ipc call wallpaper toggle"; }
     Mod+E { spawn-sh "qs -c noctalia-shell  ipc call launcher emoji"; }
     // Mod-Shift-/, which is usually the same as Mod-?,
@@ -231,5 +232,5 @@ binds {
 
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
-    Alt+Shift+P { power-off-monitors; }
+    // Alt+Shift+P { power-off-monitors; }
 }

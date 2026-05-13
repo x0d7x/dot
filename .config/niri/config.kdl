@@ -104,3 +104,6 @@ animations {
 include "rules.kdl"
 
 include "binds.kdl"
+
+include "./noctalia.kdl"
+
