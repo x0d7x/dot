@@ -1,7 +1,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 # A minimal left prompt
 format = """
-# $os\
+$os\
 $directory\
 $line_break\
 $character\
@@ -82,7 +82,7 @@ ignore_timeout = true
 
 [os.symbols]
 Macos = " "
-Linux = " "
+Linux = " "
 Windows = " "
 
 [character]

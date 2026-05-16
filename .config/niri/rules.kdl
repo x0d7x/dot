@@ -2,6 +2,15 @@
 // Find more information on the wiki:
 // https://niri-wm.github.io/niri/Configuration:-Window-Rules
 
+/* Noctalia: blur everywhere without xray for a better look */
+layer-rule {
+  match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
+    place-within-backdrop true
+  background-effect {
+    xray false
+  }
+}
+
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
 window-rule {
@@ -26,6 +35,22 @@ window-rule {
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
+    default-column-width { fixed 480; }
+    default-window-height { fixed 270; }
+}
+window-rule {
+    match app-id=r#"^localsend$"#
+    open-floating true
+    default-column-width { fixed 480; }
+    default-window-height { fixed 600; }
+    default-floating-position x=20 y=20 relative-to="top-right"
+}
+window-rule {
+         match app-id=r#"^org\.gnome\.Nautilus$"#
+         open-floating true
+    default-column-width { proportion 0.5; }
+    default-window-height { proportion 0.5; }
+    default-floating-position x=20 y=20 relative-to="top"
 }
 window-rule {
     match app-id=r#"^zen$"#
@@ -33,28 +58,29 @@ window-rule {
     open-maximized true
     open-focused true
 }
+
 window-rule {
-    // This app-id regular expression will work for both:
-    // - host Firefox (app-id is "firefox")
-    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"^zen$"# title="^Picture-in-Picture$"
     open-floating true
-    default-floating-position x=20 y=20 relative-to="bottom-right"
-    max-width 700
-    max-height 600
+    default-floating-position x=20 y=20 relative-to="top-right"
+    default-column-width { fixed 580; }
+    default-window-height { fixed 320; }
+    // max-width 700
+    // max-height 600
 clip-to-geometry true
 geometry-corner-radius 12
 border {
         on
         width 1
-        active-color "#ffc87f"
-        inactive-color "#505050"
+        // active-color "#ffc87f"
+        // inactive-color "#505050"
     }
 }
 window-rule {
     match app-id=r#"^kitty$"#
     open-on-workspace "T"
     open-focused true
+    // open-maximized true
 }
 window-rule {
     match app-id=r#"^vesktop$"#
@@ -73,30 +99,29 @@ window-rule {
     // Use this instead if you want them visible on third-party screenshot tools.
     // block-out-from "screencast"
 }
+
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
 window-rule {
-    geometry-corner-radius 14
-draw-border-with-background false
+    geometry-corner-radius 12
+    draw-border-with-background false
     clip-to-geometry true
-    opacity 0.80
-  background-effect {
-    blur true
-    // xray true
+    opacity 0.90
+    background-effect {
+      blur true
+    xray false
   }
+}
+window-rule {
+    match app-id=r#"^zen$"# title=r#"YouTube"#
+    opacity 1.0
 }
 /* Apps: blur them all without xray for a better look */
 // window-rule {
+    // place-within-backdrop true
 //   background-effect {
 //     blur true
 //     // xray true
 //   }
 // }
 
-/* Noctalia: blur everywhere without xray for a better look */
-layer-rule {
-  match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
-  background-effect {
-    xray false
-  }
-}

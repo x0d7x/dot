@@ -22,7 +22,7 @@
         "position": "center",
         "screenshotAnnotationTool": "",
         "showCategories": false,
-        "showIconBackground": true,
+        "showIconBackground": false,
         "sortByMostUsed": true,
         "terminalCommand": "alacritty -e",
         "viewMode": "list"
@@ -54,8 +54,8 @@
         "frameRadius": 12,
         "frameThickness": 8,
         "hideOnOverview": false,
-        "marginHorizontal": 4,
-        "marginVertical": 4,
+        "marginHorizontal": 200,
+        "marginVertical": 3,
         "middleClickAction": "none",
         "middleClickCommand": "",
         "middleClickFollowMouse": false,
@@ -75,9 +75,37 @@
         "showOnWorkspaceSwitch": true,
         "showOutline": false,
         "useSeparateOpacity": false,
-        "widgetSpacing": 6,
+        "widgetSpacing": 4,
         "widgets": {
             "center": [
+                {
+                    "defaultSettings": {
+                        "hideBackground": false,
+                        "minimumThreshold": 10
+                    },
+                    "id": "plugin:catwalk"
+                },
+                {
+                    "characterCount": 2,
+                    "colorizeIcons": false,
+                    "emptyColor": "secondary",
+                    "enableScrollWheel": true,
+                    "focusedColor": "primary",
+                    "followFocusedScreen": false,
+                    "fontWeight": "bold",
+                    "groupedBorderOpacity": 1,
+                    "hideUnoccupied": false,
+                    "iconScale": 0.8,
+                    "id": "Workspace",
+                    "labelMode": "name",
+                    "occupiedColor": "secondary",
+                    "pillSize": 0.63,
+                    "showApplications": true,
+                    "showApplicationsHover": true,
+                    "showBadge": true,
+                    "showLabelsOnlyWhenOccupied": true,
+                    "unfocusedIconsOpacity": 1
+                },
                 {
                     "compactMode": false,
                     "hideMode": "hidden",
@@ -95,25 +123,43 @@
                     "visualizerType": "wave"
                 },
                 {
-                    "characterCount": 2,
-                    "colorizeIcons": false,
-                    "emptyColor": "secondary",
-                    "enableScrollWheel": true,
-                    "focusedColor": "primary",
-                    "followFocusedScreen": false,
-                    "fontWeight": "bold",
-                    "groupedBorderOpacity": 1,
-                    "hideUnoccupied": false,
-                    "iconScale": 0.8,
-                    "id": "Workspace",
-                    "labelMode": "name",
-                    "occupiedColor": "secondary",
-                    "pillSize": 0.6,
-                    "showApplications": false,
-                    "showApplicationsHover": false,
-                    "showBadge": true,
-                    "showLabelsOnlyWhenOccupied": true,
-                    "unfocusedIconsOpacity": 1
+                    "commandPrefix": "music-search",
+                    "defaultSettings": {
+                        "autoSaveMp3AfterPlayback": false,
+                        "defaultPanelLibrarySection": "tracks",
+                        "defaultPanelTab": "search",
+                        "panelDensity": "balanced",
+                        "previewMetadataMode": "always",
+                        "previewPaneWidth": 0,
+                        "previewThumbnailSize": "comfortable",
+                        "showAlbumMetadata": true,
+                        "showBarHoverTrackTitle": true,
+                        "showDurationMetadata": true,
+                        "showHomeArtists": true,
+                        "showHomePlaylists": true,
+                        "showHomeRecent": true,
+                        "showHomeTags": true,
+                        "showHomeTop": true,
+                        "showPanelHeader": true,
+                        "showPanelNowPlaying": true,
+                        "showPanelPlaybackProgress": true,
+                        "showPanelPreview": true,
+                        "showPanelProviderChips": true,
+                        "showPanelQueueControls": true,
+                        "showPanelRecentTracks": true,
+                        "showPanelSearchHelper": true,
+                        "showPanelSpeedControls": true,
+                        "showPanelStatusBanner": true,
+                        "showPanelUrlActions": true,
+                        "showPlayStatsMetadata": true,
+                        "showPreviewChips": true,
+                        "showRatingMetadata": true,
+                        "showStatusMetadata": true,
+                        "showTagMetadata": true,
+                        "showUploaderMetadata": true,
+                        "ytPlayerClient": "android"
+                    },
+                    "id": "plugin:music-search"
                 }
             ],
             "left": [
@@ -126,21 +172,6 @@
                     "iconColor": "none",
                     "id": "Launcher",
                     "useDistroLogo": true
-                },
-                {
-                    "blacklist": [
-                    ],
-                    "chevronColor": "error",
-                    "colorizeIcons": false,
-                    "drawerEnabled": false,
-                    "hidePassive": false,
-                    "id": "Tray",
-                    "pinned": [
-                    ]
-                },
-                {
-                    "id": "Spacer",
-                    "width": 20
                 },
                 {
                     "compactMode": true,
@@ -178,8 +209,15 @@
             ],
             "right": [
                 {
-                    "id": "Spacer",
-                    "width": 4
+                    "blacklist": [
+                    ],
+                    "chevronColor": "error",
+                    "colorizeIcons": false,
+                    "drawerEnabled": false,
+                    "hidePassive": false,
+                    "id": "Tray",
+                    "pinned": [
+                    ]
                 },
                 {
                     "displayMode": "onhover",
@@ -192,10 +230,6 @@
                     "iconColor": "none",
                     "id": "Bluetooth",
                     "textColor": "none"
-                },
-                {
-                    "id": "Spacer",
-                    "width": 4
                 },
                 {
                     "deviceNativePath": "__default__",
@@ -257,7 +291,7 @@
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "monitorForColors": "",
-        "predefinedScheme": "Solarized",
+        "predefinedScheme": "Gruvbox",
         "schedulingMode": "off",
         "syncGsettings": true,
         "useWallpaperColors": true
@@ -318,6 +352,9 @@
                 },
                 {
                     "id": "NightLight"
+                },
+                {
+                    "id": "plugin:dns-switcher"
                 }
             ]
         }
@@ -401,7 +438,7 @@
         "animationDisabled": false,
         "animationSpeed": 1,
         "autoStartAuth": false,
-        "avatarImage": "/home/dox/.face",
+        "avatarImage": "/home/dox/Downloads/38E5F036-13D1-450C-9967-5D789EB8B64D-2.png",
         "boxRadiusRatio": 1,
         "clockFormat": "hh\\nmm",
         "clockStyle": "custom",
@@ -415,7 +452,8 @@
         "iRadiusRatio": 1,
         "keybinds": {
             "keyDown": [
-                "Down"
+                "Down",
+                "Ctrl+J"
             ],
             "keyEnter": [
                 "Return",
@@ -425,22 +463,25 @@
                 "Esc"
             ],
             "keyLeft": [
-                "Left"
+                "Left",
+                "Ctrl+H"
             ],
             "keyRemove": [
                 "Del"
             ],
             "keyRight": [
-                "Right"
+                "Right",
+                "Ctrl+L"
             ],
             "keyUp": [
-                "Up"
+                "Up",
+                "Ctrl+K"
             ]
         },
         "language": "",
         "lockOnSuspend": true,
         "lockScreenAnimations": false,
-        "lockScreenBlur": 0.09,
+        "lockScreenBlur": 0.72,
         "lockScreenCountdownDuration": 10000,
         "lockScreenMonitors": [
         ],
@@ -475,7 +516,7 @@
     "idle": {
         "customCommands": "[]",
         "enabled": true,
-        "fadeDuration": 5,
+        "fadeDuration": 6,
         "lockCommand": "",
         "lockTimeout": 660,
         "resumeLockCommand": "",
@@ -484,7 +525,7 @@
         "screenOffCommand": "",
         "screenOffTimeout": 280,
         "suspendCommand": "",
-        "suspendTimeout": 1800
+        "suspendTimeout": 0
     },
     "location": {
         "analogClockInCalendar": false,
@@ -695,15 +736,19 @@
             {
                 "enabled": true,
                 "id": "discord"
+            },
+            {
+                "enabled": true,
+                "id": "qt"
             }
         ],
         "enableUserTheming": false
     },
     "ui": {
         "boxBorderEnabled": true,
-        "fontDefault": "Sans Serif",
+        "fontDefault": "DepartureMono Nerd Font",
         "fontDefaultScale": 1,
-        "fontFixed": "monospace",
+        "fontFixed": "DepartureMono Nerd Font Propo",
         "fontFixedScale": 1,
         "panelBackgroundOpacity": 0.93,
         "panelsAttachedToBar": true,
@@ -759,6 +804,62 @@
                     "#ffb4ab"
                 ],
                 "path": "/home/dox/Documents/wallpaper/gruvbox-wallpapers/wallpapers/photography/garrett-parker-DlkF4-dbCOU.jpg",
+                "useWallpaperColors": true
+            },
+            {
+                "appearance": "dark",
+                "colorScheme": "Solarized",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ffb3ae",
+                    "#e7bdb9",
+                    "#e2c28c",
+                    "#ffb4ab"
+                ],
+                "path": "/home/dox/Documents/wallpaper/gruvbox-wallpapers/wallpapers/pixelart/girl-reading-book.png",
+                "useWallpaperColors": true
+            },
+            {
+                "appearance": "dark",
+                "colorScheme": "Solarized",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ffaced",
+                    "#dbbed1",
+                    "#f5b9a5",
+                    "#ffb4ab"
+                ],
+                "path": "/home/dox/Documents/wallpaper/walls/apocalypse/a_motorcycle_parked_outside_a_restaurant.jpg",
+                "useWallpaperColors": true
+            },
+            {
+                "appearance": "dark",
+                "colorScheme": "Solarized",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#e3c54a",
+                    "#d2c6a1",
+                    "#aad0b2",
+                    "#ffb4ab"
+                ],
+                "path": "/home/dox/Documents/wallpaper/gruvbox-wallpapers/wallpapers/minimalistic/ALLqk82.png",
+                "useWallpaperColors": true
+            },
+            {
+                "appearance": "dark",
+                "colorScheme": "Solarized",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#fdba4b",
+                    "#dcc3a1",
+                    "#b6cea3",
+                    "#ffb4ab"
+                ],
+                "path": "/home/dox/Documents/wallpaper/gruvbox-wallpapers/wallpapers/anime/light/vagabond.jpg",
                 "useWallpaperColors": true
             }
         ],

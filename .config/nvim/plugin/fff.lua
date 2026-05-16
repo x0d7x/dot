@@ -1,6 +1,7 @@
 local pack = require("core.pack")
 
 vim.g.fff = {
+	prompt_vim_mode = false,
 	lazy_sync = true,
 	debug = {
 		enabled = true,

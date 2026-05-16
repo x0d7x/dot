@@ -1,6 +1,7 @@
 acpi
 alacritty
 alsa-utils
+applesmc-next-dkms
 base
 base-devel
 bat
@@ -15,13 +16,14 @@ croc
 curl
 dkms
 duf
+efibootmgr
 eslint_d
 ex-vi-compat
 eza
 fastfetch
 fd
 fnm
-fuzzel
+foot
 fzf
 git
 glow
@@ -35,10 +37,14 @@ linux
 linux-firmware
 linux-headers
 linux-lts
+linux-lts-headers
+localsend-bin
 lua-language-server
+ly-git
 macbook12-spi-driver-dkms
 man-db
 man-pages
+mangowm-git
 mbpfan
 mesa
 mpd
@@ -62,6 +68,7 @@ pipewire
 pipewire-pulse
 pnpm
 prettier
+refind
 reflector
 ripgrep
 rsync
@@ -81,6 +88,7 @@ tree-sitter-cli
 ttf-jetbrains-mono-nerd
 ttf-scheherazade-new
 typescript-language-server
+unzip
 upower
 vesktop-bin
 vim
@@ -89,9 +97,11 @@ wget
 wl-clipboard
 xdg-desktop-portal-gnome
 xdg-desktop-portal-gtk
+xdg-desktop-portal-wlr
 xwayland-satellite
 yay-debug
 yazi
+yt-dlp
 zen-browser-bin
 zoxide
 zsh

@@ -1,3 +1,8 @@
+# add this to zshenv
+#      [[ -z "$XDG_CONFIG_HOME" ]] && export XDG_CONFIG_HOME="$HOME/.
+#      config"
+#      [[ -d "$XDG_CONFIG_HOME/zsh" ]] && export
+#      ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 if [[ -o interactive ]]; then
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -10,9 +15,9 @@ plug "romkatv/powerlevel10k"
 autoload -Uz compinit && compinit
 plug "Aloxaf/fzf-tab"
 plug "TunaCuma/zsh-vi-man"
-source "$HOME/aliases"
-source "$HOME/fzf"
-source "$HOME/func"
+source "$ZDOTDIR/aliases"
+source "$ZDOTDIR/fzf"
+source "$ZDOTDIR/func"
 
 setopt autocd
 setopt correct
@@ -44,7 +49,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --tree --color=always $realpath'
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f "$ZDOTDIR/.p10k.zsh" ]] || source "$ZDOTDIR/.p10k.zsh"
 fi
 
 setopt appendhistory
@@ -56,19 +61,10 @@ setopt hist_find_no_dups
 setopt hist_expire_dups_first
 setopt hist_reduce_blanks
 
-export GPG_TTY=$TTY
-export EDITOR=nvim
-export VISUAL=nvim
 export ZVM_MAN_PAGER='bat'
 export SUDO_EDITOR=nvim
 export FCEDIT=nvim
 
-path+=(
-$HOME/.local/bin
-$HOME/.bun/bin
-)
-typeset -gU path
-export PATH
 
 HISTSIZE=10000
 HISTFILE=$HOME/.zsh_history

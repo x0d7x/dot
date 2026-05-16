@@ -17,12 +17,14 @@ binds {
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+V hotkey-overlay-title="Open a Clipboard" { spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"; }
-
+    Mod+M hotkey-overlay-title="Open a Clipboard" { spawn-sh "qs -c noctalia-shell ipc call plugin:music launcher"; }
+    Alt+Shift+O hotkey-overlay-title="Open a Musci" { toggle-window-rule-opacity; }
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Alt+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Mod+D hotkey-overlay-title="Open a discord: vesktop" { spawn "vesktop"; }
     Mod+O hotkey-overlay-title="Open a screen-rec: OBS" { spawn "obs"; }
     Mod+B hotkey-overlay-title="Open a Zen-browser" { spawn "zen-browser"; }
+    Mod+L hotkey-overlay-title="Open a localsend" { spawn "localsend"; }
     // Alt+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
