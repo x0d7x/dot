@@ -27,7 +27,14 @@ require("conform").setup({
 		sh = { "shfmt" },
 		bash = { "shfmt" },
 		rust = { "rustfmt" },
+		-- kdl = { "kdlfmt" },
 	},
+	-- formatters = {
+	-- 	kdlfmt = {
+	-- 		command = "kdlfmt",
+	-- 		args = { "format" },
+	-- 	},
+	-- },
 	default_format_opts = {
 		lsp_fallback = true,
 	},

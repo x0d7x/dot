@@ -9,4 +9,4 @@ builtin cd -- "$cwd"
 fi
 rm -f -- "$tmp"
 }
-
+jjp() { jj git push "$@" && jj new; }
