@@ -6,13 +6,19 @@ export XDG_STATE_HOME=$HOME/.local/state
 export GPG_TTY=$TTY
 export EDITOR=nvim
 export VISUAL=nvim
+export BROWSER=${BROWSER:-zen-browser}
 path+=(
 $HOME/.local/bin
 $HOME/.bun/bin
 )
 typeset -gU path
 export PATH
-export MANPAGER=${MANPAGER:-"less -R"}
+# ---------- Pager ----------
+if command -v bat >/dev/null 2>&1; then
+  export MANPAGER="bat -l man -p"
+elif command -v batcat >/dev/null 2>&1; then
+  export MANPAGER="batcat -l man -p"
+fi
 xdg_base_dirs=("$XDG_CACHE_HOME" "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_STATE_HOME")
 for dir in "${xdg_base_dirs[@]}"; do
   if [[ ! -d "$dir" ]]; then

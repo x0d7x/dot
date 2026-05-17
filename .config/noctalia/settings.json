@@ -97,7 +97,7 @@
                     "hideUnoccupied": false,
                     "iconScale": 0.8,
                     "id": "Workspace",
-                    "labelMode": "name",
+                    "labelMode": "none",
                     "occupiedColor": "secondary",
                     "pillSize": 0.63,
                     "showApplications": true,
@@ -243,7 +243,7 @@
                 {
                     "clockColor": "none",
                     "customFont": "",
-                    "formatHorizontal": "HH:mm ddd, MMM dd",
+                    "formatHorizontal": "HH:mm ddd, MMM d",
                     "formatVertical": "HH mm - dd MM",
                     "id": "Clock",
                     "tooltipFormat": "HH:mm ddd, MMM dd",
@@ -291,7 +291,7 @@
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "monitorForColors": "",
-        "predefinedScheme": "Gruvbox",
+        "predefinedScheme": "Solarized",
         "schedulingMode": "off",
         "syncGsettings": true,
         "useWallpaperColors": true

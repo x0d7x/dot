@@ -16,7 +16,7 @@ pack.add({
 require("oshen").setup({
 	transparent = true, -- set false for opaque background
 })
-vim.cmd.colorscheme("Oshen")
+-- vim.cmd.colorscheme("Oshen")
 
 require("vague").setup({
 	transparent = true,
@@ -25,7 +25,7 @@ require("vague").setup({
 		comment = "#666666",
 	},
 })
--- vim.cmd.colorscheme("vague")
+vim.cmd.colorscheme("vague")
 
 require("sora").setup({ transparent = true })
 

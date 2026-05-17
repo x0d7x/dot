@@ -48,6 +48,8 @@
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
     vcs                     # git status
+    # jj_status                # jj status
+# jj
     command_execution_time  # duration of the last command
     background_jobs         # presence of background jobs
     direnv                  # direnv status (https://direnv.net/)
@@ -366,7 +368,6 @@
   # https://github.com/romkatv/gitstatus/blob/master/gitstatus.plugin.zsh.
   function my_git_formatter() {
     emulate -L zsh
-
     if [[ -n $P9K_CONTENT ]]; then
       # If P9K_CONTENT is not empty, use it. It's either "loading" or from vcs_info (not from
       # gitstatus plugin). VCS_STATUS_* parameters are not available in this case.

@@ -1,12 +1,12 @@
 # vim: set ft=bash:
 font-family = "DepartureMono Nerd Font Mono"
-font-size = 16
+font-size = 13
 font-thicken = true
-background-opacity = 0.7
-background-blur-radius = 27
+# background-opacity = 0.7
+# background-blur-radius = 27
 # themes i Like [Banana Blueberry,Everforest Dark - Hard,Batman,CrayonPonyFish,duckbones,Builtin Tango Dark,embers-dark,CGA,Earthsong,Espresso Libre, Adwaita Dark, 3024 Night, 0x96f, Adventure, flexoki-dark, Monokai Pro Ristretto, embers-dark, Solarized Dark Higher Contrast]
-theme = Black Metal
-font-thicken = true
+# theme = Black Metal
+# font-thicken = true
 cursor-text = white
 window-save-state = always
 cursor-style = block
@@ -22,6 +22,6 @@ shell-integration-features = true
 window-theme = ghostty
 auto-update = check
 window-padding-balance = true
-adjust-cell-height = 50%
+# adjust-cell-height = 50%
 keybind = cmd+s=toggle_quick_terminal
 keybind = super+i=inspector:toggle

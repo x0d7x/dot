@@ -12,12 +12,14 @@ fi
 plug "zsh-users/zsh-autosuggestions"
 plug "zdharma-continuum/fast-syntax-highlighting"
 plug "romkatv/powerlevel10k"
-autoload -Uz compinit && compinit
+autoload -Uz compinit 
+compinit -C -d "$XDG_CACHE_HOME/zsh/zcompdump"
 plug "Aloxaf/fzf-tab"
 plug "TunaCuma/zsh-vi-man"
 source "$ZDOTDIR/aliases"
 source "$ZDOTDIR/fzf"
 source "$ZDOTDIR/func"
+# source "$ZDOTDIR/plugins/p10k-jj.plugin.zsh"
 
 setopt autocd
 setopt correct
@@ -42,6 +44,13 @@ if command -v fzf >/dev/null 2>&1; then
   eval "$(fzf --zsh)"
 fi
 
+
+# Arch
+if [[ -f /usr/share/fzf/key-bindings.zsh ]]; then
+  source /usr/share/fzf/key-bindings.zsh
+  source /usr/share/fzf/completion.zsh
+fi
+
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select=2
 zstyle ':completion:*' special-dirs true
@@ -60,6 +69,7 @@ setopt hist_save_no_dups
 setopt hist_find_no_dups
 setopt hist_expire_dups_first
 setopt hist_reduce_blanks
+setopt NOBEEP
 
 export ZVM_MAN_PAGER='bat'
 export SUDO_EDITOR=nvim
@@ -67,6 +77,6 @@ export FCEDIT=nvim
 
 
 HISTSIZE=10000
-HISTFILE=$HOME/.zsh_history
+HISTFILE=$XDG_STATE_HOME/zsh/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase

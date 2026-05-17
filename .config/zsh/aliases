@@ -9,6 +9,8 @@ alias lsa='ls -lah'
 alias l='ls -lah'
 alias ll='ls -lh'
 alias la='ls -lAh'
+alias tree='eza --tree --icons'
+alias grep='rg --color=auto'
 alias tok='tokei'
 alias gcn="git clone --no-checkout"
 alias gsi="git sparse-checkout init"
