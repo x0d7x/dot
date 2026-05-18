@@ -11,9 +11,9 @@
         "enableClipboardChips": true,
         "enableClipboardHistory": true,
         "enableClipboardSmartIcons": true,
-        "enableSessionSearch": true,
-        "enableSettingsSearch": true,
-        "enableWindowsSearch": true,
+        "enableSessionSearch": false,
+        "enableSettingsSearch": false,
+        "enableWindowsSearch": false,
         "iconMode": "native",
         "ignoreMouseInput": false,
         "overviewLayer": false,
@@ -121,45 +121,6 @@
                     "textColor": "none",
                     "useFixedWidth": false,
                     "visualizerType": "wave"
-                },
-                {
-                    "commandPrefix": "music-search",
-                    "defaultSettings": {
-                        "autoSaveMp3AfterPlayback": false,
-                        "defaultPanelLibrarySection": "tracks",
-                        "defaultPanelTab": "search",
-                        "panelDensity": "balanced",
-                        "previewMetadataMode": "always",
-                        "previewPaneWidth": 0,
-                        "previewThumbnailSize": "comfortable",
-                        "showAlbumMetadata": true,
-                        "showBarHoverTrackTitle": true,
-                        "showDurationMetadata": true,
-                        "showHomeArtists": true,
-                        "showHomePlaylists": true,
-                        "showHomeRecent": true,
-                        "showHomeTags": true,
-                        "showHomeTop": true,
-                        "showPanelHeader": true,
-                        "showPanelNowPlaying": true,
-                        "showPanelPlaybackProgress": true,
-                        "showPanelPreview": true,
-                        "showPanelProviderChips": true,
-                        "showPanelQueueControls": true,
-                        "showPanelRecentTracks": true,
-                        "showPanelSearchHelper": true,
-                        "showPanelSpeedControls": true,
-                        "showPanelStatusBanner": true,
-                        "showPanelUrlActions": true,
-                        "showPlayStatsMetadata": true,
-                        "showPreviewChips": true,
-                        "showRatingMetadata": true,
-                        "showStatusMetadata": true,
-                        "showTagMetadata": true,
-                        "showUploaderMetadata": true,
-                        "ytPlayerClient": "android"
-                    },
-                    "id": "plugin:music-search"
                 }
             ],
             "left": [
@@ -174,7 +135,7 @@
                     "useDistroLogo": true
                 },
                 {
-                    "compactMode": true,
+                    "compactMode": false,
                     "diskPath": "/",
                     "iconColor": "none",
                     "id": "SystemMonitor",
@@ -193,7 +154,7 @@
                     "showSwapUsage": false,
                     "textColor": "none",
                     "useMonospaceFont": true,
-                    "usePadding": false
+                    "usePadding": true
                 },
                 {
                     "colorizeIcons": false,
@@ -287,7 +248,7 @@
     },
     "colorSchemes": {
         "darkMode": true,
-        "generationMethod": "rainbow",
+        "generationMethod": "tonal-spot",
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "monitorForColors": "",
@@ -367,30 +328,6 @@
             {
                 "name": "eDP-1",
                 "widgets": [
-                    {
-                        "clockColor": "none",
-                        "clockStyle": "digital",
-                        "customFont": "",
-                        "format": "HH:mm\\nd MMMM yyyy",
-                        "id": "Clock",
-                        "roundedCorners": true,
-                        "scale": 1,
-                        "showBackground": true,
-                        "useCustomFont": false,
-                        "x": 67,
-                        "y": 52
-                    },
-                    {
-                        "diskPath": "/",
-                        "id": "SystemStat",
-                        "layout": "bottom",
-                        "roundedCorners": true,
-                        "scale": 1.105642489678834,
-                        "showBackground": true,
-                        "statType": "CPU",
-                        "x": 13,
-                        "y": 218
-                    }
                 ]
             }
         ],
@@ -563,7 +500,7 @@
         "nightTemp": "4000"
     },
     "noctaliaPerformance": {
-        "disableDesktopWidgets": true,
+        "disableDesktopWidgets": false,
         "disableWallpaper": true
     },
     "notifications": {
@@ -617,9 +554,9 @@
         "notifyUpdates": true
     },
     "sessionMenu": {
-        "countdownDuration": 10000,
+        "countdownDuration": 5000,
         "enableCountdown": true,
-        "largeButtonsLayout": "grid",
+        "largeButtonsLayout": "single-row",
         "largeButtonsStyle": true,
         "position": "center",
         "powerOptions": [
@@ -719,10 +656,6 @@
             },
             {
                 "enabled": true,
-                "id": "gtk"
-            },
-            {
-                "enabled": true,
                 "id": "btop"
             },
             {
@@ -736,6 +669,10 @@
             {
                 "enabled": true,
                 "id": "discord"
+            },
+            {
+                "enabled": true,
+                "id": "gtk"
             },
             {
                 "enabled": true,
@@ -869,9 +806,9 @@
         "linkLightAndDarkWallpapers": true,
         "monitorDirectories": [
         ],
-        "overviewBlur": 0.4,
-        "overviewEnabled": false,
-        "overviewTint": 0.6,
+        "overviewBlur": 0,
+        "overviewEnabled": true,
+        "overviewTint": 0,
         "panelPosition": "center",
         "randomIntervalSec": 660,
         "setWallpaperOnAllMonitors": true,

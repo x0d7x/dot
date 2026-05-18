@@ -15,7 +15,7 @@ binds {
         spawn-sh "qs -c noctalia-shell ipc call settings toggle"
     }
     Alt+Shift+P hotkey-overlay-title="toggle lock screen" {
-        spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"
+        spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"
     }
     Alt+Shift+W hotkey-overlay-title="Open a Wallpaper" {
         spawn-sh "qs -c noctalia-shell ipc call wallpaper toggle"
@@ -23,15 +23,13 @@ binds {
     Mod+E {
         spawn-sh "qs -c noctalia-shell  ipc call launcher emoji"
     }
-    // Mod-Shift-/, which is usually the same as Mod-?,
-    // shows a list of important hotkeys.
-    Mod+Shift+Slash {
+    Alt+Shift+Slash {
         show-hotkey-overlay
     }
     Mod+V hotkey-overlay-title="Open a Clipboard" {
         spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"
     }
-    Mod+M hotkey-overlay-title="Open a Clipboard" { spawn-sh "qs -c noctalia-shell ipc call plugin:music launcher"; }
+    Mod+M hotkey-overlay-title="Open a music" { spawn-sh "qs -c noctalia-shell ipc call plugin:music launcher"; }
     // Mod+M hotkey-overlay-title="Open a music player" {
     //     spawn "spotify"
     // }
@@ -40,7 +38,10 @@ binds {
     }
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open a Terminal: kitty" {
-        spawn-sh "kitty --app-id kitty-terminal"
+        spawn "kitty" "--app-id" "kitty-terminal"
+    }
+    Mod+Shift+T hotkey-overlay-title="Open a Terminal: kitty" {
+        spawn "kitty" "--app-id" "kitty-float" "-1" "-o" "shell" "/bin/zsh"
     }
     Mod+D hotkey-overlay-title="Open a discord: vesktop" {
         spawn "vesktop"
@@ -60,7 +61,7 @@ binds {
     Mod+F hotkey-overlay-title="Open Yazi" {
         spawn "kitty" "yazi"
     }
-    Mod+S hotkey-overlay-title="Open a Clipboard" {
+    Mod+S hotkey-overlay-title="Open a Volume" {
         spawn-sh "qs -c noctalia-shell ipc call volume togglePanel"
     }
     // Alt+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
@@ -352,12 +353,18 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
     // Print { screenshot; }
-    Ctrl+Shift+1 {
-        screenshot-screen
-    }
-    Ctrl+Shift+2 {
-        screenshot-window
-    }
+     Ctrl+Shift+1 {
+         spawn-sh "screenshot.sh"
+     }
+     Ctrl+Shift+2 {
+         spawn-sh "screenshot.sh area"
+     }
+     Ctrl+Shift+3 {
+         spawn-sh "screenshot.sh edit"
+     }
+     Ctrl+Shift+4 {
+         spawn-sh "screenshot.sh edit-full"
+     }
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
     // so they may, for example, forward the key presses as-is to a remote machine.

@@ -86,12 +86,33 @@ window-rule {
     // open-maximized true
 }
 window-rule {
+    match app-id=r#"^swappy$"#
+    open-floating true
+    default-floating-position x=20 y=20 relative-to="top"
+    default-column-width { proportion 0.6; }
+    default-window-height { proportion 0.5; }
+}
+window-rule {
+    match app-id=r#"^kitty-float$"#
+    open-floating true
+    default-floating-position x=20 y=20 relative-to="top"
+    default-column-width { proportion 0.6; }
+    default-window-height { proportion 0.5; }
+}
+window-rule {
+    match app-id=r#"^mpv$"#
+    open-floating true
+    default-floating-position x=20 y=20 relative-to="top-right"
+    default-column-width { proportion 0.6; }
+    default-window-height { proportion 0.5; }
+}
+window-rule {
     match app-id=r#"^kitty$"# 
     match title=r#"^Yazi:"#
     open-floating true
     default-floating-position x=20 y=20 relative-to="top"
-    default-column-width { fixed 680; }
-    default-window-height { fixed 430; }
+    default-column-width { proportion 0.6; }
+    default-window-height { proportion 0.5; }
 }
 window-rule {
     match app-id=r#"^vesktop$"#
@@ -146,8 +167,8 @@ window-rule {
 
 /* Noctalia: blur everywhere without xray for a better look */
 layer-rule {
-match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
-    // place-within-backdrop true
+match namespace="^noctalia-(background|launcher-overlay|dock|wallpaper)-.*$"
+    place-within-backdrop true
   background-effect {
     xray false
     blur false

@@ -11,3 +11,16 @@ on = "<C-p>"
 run = '''
   shell 'qlmanage -p "$@"'
 '''
+# [[mgr.prepend_keymap]]
+# on = ["c", "b"]
+# run = '''
+# shell '
+# for f in "$@"; do
+# mime=$(file --mime-type -b "$f")
+# case "$mime" in
+# image/*|video/*) wl-copy -t "$mime" < "$f" ;;
+# esac
+# done
+# ' --confirm
+# '''
+# desc = "Copy file data to clipboard"
