@@ -12,7 +12,7 @@ if [[ $# -eq 1 ]]; then
   selected="$1"
 else
   selected="$(
-    fd -H -t d -d 2 --absolute-path . "${SEARCH_DIRS[@]}" |
+    fd -H -t d -d 2 -E '{.cache,.bun,.cargo}' --absolute-path . "${SEARCH_DIRS[@]}" |
       sed "s|^$HOME/||" |
       fzf --margin=2% --color --border --cycle --prompt="📁 search> " |
       sed "s|^|$HOME/|"

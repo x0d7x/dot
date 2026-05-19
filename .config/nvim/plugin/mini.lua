@@ -2,7 +2,6 @@ local pack = require("core.pack")
 
 pack.add({
 	"https://github.com/echasnovski/mini.nvim",
-	"https://github.com/echasnovski/mini.files",
 })
 
 require("mini.ai").setup({ n_lines = 500 })
@@ -20,6 +19,16 @@ require("mini.surround").setup({
 })
 
 require("mini.pairs").setup()
+
+---- mini notify ----
+require("mini.notify").setup({
+	-- only show messages
+	content = {
+		format = function(notif)
+			return notif.msg
+		end,
+	},
+})
 
 require("mini.files").setup({
 	mappings = {

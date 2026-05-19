@@ -21,6 +21,7 @@ efibootmgr
 eslint_d
 ex-vi-compat
 eza
+fail2ban
 fastfetch
 fd
 fnm
@@ -32,9 +33,11 @@ glow
 golangci-lint
 intel-media-driver
 intel-ucode
+jjui-bin
 jq
 jujutsu
 kitty
+libnotify
 linux
 linux-firmware
 linux-headers
@@ -61,6 +64,7 @@ noto-fonts-emoji
 npm
 nwg-look
 obs-studio
+obs-studio-plugin-browser
 opencode-bin
 otf-departure-mono-nerd
 paru
@@ -85,6 +89,7 @@ swappy
 swaybg
 tailwindcss-language-server
 thermald
+timeshift
 tldr
 tlp
 tlp-pd
@@ -95,6 +100,7 @@ tree-sitter-cli
 ttf-jetbrains-mono-nerd
 ttf-scheherazade-new
 typescript-language-server
+ufw
 unzip
 upower
 vesktop-bin
