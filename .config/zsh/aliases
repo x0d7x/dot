@@ -45,4 +45,4 @@ alias pi="paru -S"
 alias pr="paru -Rns"
 alias ps="paru -Ss"
 alias p="paru"
-
+alias jjg="jj diff --git"

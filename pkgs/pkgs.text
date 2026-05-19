@@ -1,4 +1,5 @@
 acpi
+adw-gtk-theme
 alacritty
 alsa-utils
 applesmc-next-dkms
@@ -25,6 +26,7 @@ fd
 fnm
 foot
 fzf
+ghostty
 git
 glow
 golangci-lint
@@ -57,6 +59,7 @@ noctalia-shell
 noto-fonts-cjk
 noto-fonts-emoji
 npm
+nwg-look
 obs-studio
 opencode-bin
 otf-departure-mono-nerd
@@ -68,6 +71,7 @@ pipewire
 pipewire-pulse
 pnpm
 prettier
+qt6ct
 qutebrowser
 refind
 reflector
@@ -77,6 +81,7 @@ sof-firmware
 spotify
 starship
 stow
+swappy
 swaybg
 tailwindcss-language-server
 thermald
@@ -93,6 +98,7 @@ typescript-language-server
 unzip
 upower
 vesktop-bin
+vial-appimage
 vim
 vulkan-intel
 wget

@@ -1,6 +1,6 @@
 # vim: set ft=bash:
 font-family = "DepartureMono Nerd Font Mono"
-font-size = 13
+font-size = 14
 font-thicken = true
 # background-opacity = 0.7
 # background-blur-radius = 27
@@ -14,7 +14,7 @@ cursor-style = block
 # cursor-color = #D59B53
 mouse-hide-while-typing = true
 macos-titlebar-style = hidden
-window-colorspace = "display-p3"
+# window-colorspace = "display-p3"
 confirm-close-surface = false
 initial-command = /bin/zsh --login -c "if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then tmux attach || tmux new -s Dev; else zsh; fi"
 cursor-style-blink = true
