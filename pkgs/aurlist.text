@@ -1,4 +1,5 @@
 applesmc-next-dkms
+droidcam-obs-plugin-git
 jjui-bin
 localsend-bin
 ly-git
@@ -6,6 +7,7 @@ macbook12-spi-driver-dkms
 mangowm-git
 mbpfan
 noctalia-shell
+obs-source-record
 opencode-bin
 otf-departure-mono-nerd
 paru

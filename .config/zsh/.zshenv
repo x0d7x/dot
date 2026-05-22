@@ -7,6 +7,7 @@ export GPG_TTY=$TTY
 export EDITOR=nvim
 export VISUAL=nvim
 export BROWSER=${BROWSER:-zen-browser}
+export DOCKER_HOST=unix:///run/user/$(id -u)/podman/podman.sock
 path+=(
 $HOME/.local/bin
 $HOME/.bun/bin

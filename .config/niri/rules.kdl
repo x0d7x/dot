@@ -139,7 +139,7 @@ window-rule {
     draw-border-with-background false
     clip-to-geometry true
     background-effect {
-      blur true
+    blur true
     xray false
   }
 }

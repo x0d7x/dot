@@ -25,7 +25,7 @@ require("vague").setup({
 		comment = "#666666",
 	},
 })
-vim.cmd.colorscheme("vague")
+-- vim.cmd.colorscheme("vague")
 
 require("sora").setup({ transparent = true })
 
@@ -37,7 +37,7 @@ require("koda").setup({
 		hl.Comment = { fg = "#666666", italic = true }
 	end,
 })
--- vim.cmd("colorscheme koda-dark")
+vim.cmd("colorscheme koda-dark")
 
 require("zen").setup({ transparent = false })
 
