@@ -2,6 +2,6 @@
 shaders
 .DS_Store
 .config/ghostty/ghostty-shader-playground/
-.config/tmux/plugins/
+plugins/
 .config/nix/
 

@@ -6,7 +6,8 @@ local build_hooks = {
 	["nvim-treesitter"] = ":TSUpdate",
 	["mason.nvim"] = ":MasonUpdate",
 	["blink.cmp"] = "cargo build --release",
-	["fff.nvim"] = "cargo build --release",
+	["cord.nvim"] = ":Cord update",
+  ["fff.nvim"] = "cargo build --release"
 }
 
 local function run_shell_build(name, cmd)

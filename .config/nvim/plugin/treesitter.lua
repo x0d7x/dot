@@ -6,18 +6,23 @@ pack.add({
 
 local ensure_installed = {
 	"bash",
+	"c",
 	"html",
 	"javascript",
 	"json",
 	"toml",
+	"lua",
 	"luadoc",
 	"luap",
+	"markdown",
 	"markdown_inline",
 	"python",
 	"regex",
 	"tsx",
 	"typescript",
 	"vue",
+	"vim",
+	"vimdoc",
 	"yaml",
 	"rust",
 	"go",
@@ -32,24 +37,40 @@ local ensure_installed = {
 local installed = {}
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = "*",
 	callback = function(args)
 		local buf = args.buf
-		local ft = vim.bo[buf].filetype
 
-		local lang = vim.treesitter.language.get_lang(ft)
-		if not lang then
+		if vim.bo[buf].buftype ~= "" then
 			return
 		end
 
-		local ok_add = pcall(vim.treesitter.language.add, lang)
-		if not ok_add then
+		local ft = vim.bo[buf].filetype
+		if not ft or ft == "" then
 			return
+		end
+
+		local ok, lang = pcall(vim.treesitter.language.get_lang, ft)
+		if not ok or not lang then
+			return
+		end
+
+		if not installed[lang] then
+			installed[lang] = true
+			require("nvim-treesitter").install(lang)
 		end
 
 		pcall(vim.treesitter.start, buf, lang)
+
+		vim.bo[buf].indentexpr = "v:lua.vim.treesitter.indentexpr()"
+
+		local win = vim.fn.bufwinid(buf)
+		if win ~= -1 then
+			vim.wo[win].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+			vim.wo[win].foldmethod = "expr"
+		end
 	end,
 })
+
 -- Install ensure_installed parsers on startup
 vim.api.nvim_create_autocmd("User", {
 	pattern = "VeryLazy",

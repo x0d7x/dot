@@ -23,16 +23,14 @@ fi
 
 selected_name="$(basename "$selected" | tr ' ./:' '_')"
 
-if [[ -z "${TMUX:-}" ]] && ! pgrep -x tmux >/dev/null 2>&1; then
-  exec tmux new-session -s "$selected_name" -c "$selected"
+if [[ -z "${HERDR_ENV:-}" ]]; then
+  exec herdr --session "$selected_name"
 fi
 
-if ! tmux has-session -t "$selected_name" 2>/dev/null; then
-  tmux new-session -ds "$selected_name" -c "$selected"
-fi
+workspace_id=$(herdr workspace list | jq -r ".workspaces[] | select(.label == \"$selected_name\") | .workspace_id" 2>/dev/null)
 
-if [[ -n "${TMUX:-}" ]]; then
-  tmux switch-client -t "$selected_name"
+if [ -n "$workspace_id" ]; then
+  herdr workspace focus "$workspace_id"
 else
-  exec tmux attach -t "$selected_name"
+  herdr workspace create --cwd "$selected" --label "$selected_name" --focus >/dev/null
 fi

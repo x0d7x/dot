@@ -10,7 +10,6 @@ environment {
     XDG_SESSION_TYPE  "wayland"
     GDK_BACKEND  "wayland"
     T_QPA_PLATFORM "wayland"
-    QT_QPA_PLATFORMTHEME "qt6ct"
     MOZ_ENABLE_WAYLAND "1"
     SDL_VIDEO_DRIVER "wayland"
     _JAVA_AWT_WM_NONREPARENTING "1"

@@ -1,4 +1,5 @@
 applesmc-next-dkms
+droidcam
 droidcam-obs-plugin-git
 jjui-bin
 localsend-bin
@@ -14,6 +15,5 @@ paru
 paru-debug
 spotify
 vesktop-bin
-vial-appimage
 yay-debug
 zen-browser-bin

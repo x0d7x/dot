@@ -13,7 +13,7 @@ vim.g.fff = {
 		move_down = "<C-j>",
 	},
 	layout = {
-		prompt_position = "top",
+		prompt_position = "bottom",
 	},
 }
 
