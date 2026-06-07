@@ -353,12 +353,18 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
     // Print { screenshot; }
-    Ctrl+Shift+1 {
-        screenshot-screen
-    }
-    Ctrl+Shift+2 {
-        screenshot-window
-    }
+     Ctrl+Shift+1 {
+         spawn-sh "screenshot.sh"
+     }
+     Ctrl+Shift+2 {
+         spawn-sh "screenshot.sh area"
+     }
+     Ctrl+Shift+3 {
+         spawn-sh "screenshot.sh edit"
+     }
+     Ctrl+Shift+4 {
+         spawn-sh "screenshot.sh edit-full"
+     }
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
     // so they may, for example, forward the key presses as-is to a remote machine.

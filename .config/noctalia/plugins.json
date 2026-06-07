@@ -15,13 +15,18 @@
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },
-        "mangowc-layout-switcher": {
-            "enabled": true,
-            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
-        },
         "music-search": {
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
+        },
+        "polkit-agent": {
+            "enabled": true
+        },
+        "privacy-indicator": {
+            "enabled": true
+        },
+        "screen-recorder": {
+            "enabled": true
         }
     },
     "version": 2
