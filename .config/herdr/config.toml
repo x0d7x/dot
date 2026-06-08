@@ -1,0 +1,54 @@
+onboarding = false
+
+[ui.toast]
+delivery = "terminal"
+
+[ui]
+show_agent_labels_on_pane_borders = false
+# sidebar_hidden_width = 0       # fully hide sidebar (no thin strip)
+# hide_tab_bar_when_single_tab = true  # hide tab bar at 1 tab
+
+[theme]
+name = "kanagawa"
+
+[keys]
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+zoom = "prefix+m"
+previous_workspace = "prefix+ctrl+k"
+# next_workspace = "prefix+ctrl+j"
+focus_agent = "prefix+ctrl+1..9"
+# switch_workspace = "prefix+shift+1..9"
+prefix = "ctrl+a"
+
+[[keys.command]]
+key = "prefix+ctrl+q"
+type = "pane"
+command = "btop"
+description = "run btop"
+
+[[keys.command]]
+key = "prefix+ctrl+j"
+type = "pane"
+command = "jjui"
+description = "run jjui"
+
+[[keys.command]]
+key = "prefix+ctrl+l"
+type = "pane"
+command = "lazydocker"
+description = "run lazydocker"
+
+[[keys.command]]
+key = "prefix+ctrl+g"
+type = "shell"
+command = "zsh -i -c github_open"
+description = "run github_open"
+
+[[keys.command]]
+key = "prefix+f"
+type = "pane"
+command = "zsh -i -c tmux-sessionizer"
+description = "run herdr_sessionizer"

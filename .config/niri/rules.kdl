@@ -20,15 +20,10 @@ block-out-from "screencast"
     open-focused true
 }
 
-// Open the Firefox picture-in-picture player as floating by default.
 window-rule {
-    // This app-id regular expression will work for both:
-    // - host Firefox (app-id is "firefox")
-    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id=r#"one.alynx.showmethekey$"# title="^Floating Window - Show Me The Key$"
     open-floating true
-    default-column-width { fixed 480; }
-    default-window-height { fixed 270; }
+    default-floating-position x=20 y=20 relative-to="bottom"
 }
 window-rule {
     match app-id=r#"^localsend$"#
@@ -138,7 +133,7 @@ window-rule {
 }
 window-rule {
     match is-active=true
-    opacity 0.87
+    opacity 1.0
 }
 // Inactive windows
 window-rule {

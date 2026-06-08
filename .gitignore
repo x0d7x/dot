@@ -5,3 +5,18 @@ shaders
 plugins/
 .config/nix/
 
+*.log
+
+# Session state files
+.config/herdr/sessions/*/session.json
+.config/herdr/session.json
+
+# Jujutsu binary metadata
+*.binpb
+
+# Large preview images from third-party themes
+.config/yazi/flavors/*/preview.png
+.config/noctalia/plugins/*/preview.png
+
+# Zsh completion dump
+.config/zsh/.zcompdump

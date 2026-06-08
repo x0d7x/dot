@@ -25,6 +25,7 @@ duf
 edk2-ovmf
 efibootmgr
 eslint_d
+evtest
 ex-vi-compat
 eza
 fail2ban
@@ -82,10 +83,12 @@ prettier
 qemu-desktop
 qt6ct
 qutebrowser
+rbw
 refind
 reflector
 ripgrep
 rsync
+showmethekey
 sof-firmware
 starship
 stow
