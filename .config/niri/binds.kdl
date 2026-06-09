@@ -49,8 +49,8 @@ binds {
     Mod+O hotkey-overlay-title="Open a screen-rec: OBS" {
         spawn "obs"
     }
-    Mod+B hotkey-overlay-title="Open a Zen-browser" {
-        spawn "zen-browser"
+    Mod+B hotkey-overlay-title="Open a Brave-browser" {
+        spawn "brave"
     }
     Mod+L hotkey-overlay-title="Open a localsend" {
         spawn "localsend"

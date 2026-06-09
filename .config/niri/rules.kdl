@@ -40,29 +40,35 @@ window-rule {
     default-floating-position x=20 y=20 relative-to="top"
 }
 window-rule {
+    match app-id=r#"^brave-browser$"#
+    open-on-workspace "B"
+    open-maximized true
+    open-focused true
+}
+window-rule {
     match app-id=r#"^zen$"#
     open-on-workspace "B"
     open-maximized true
     open-focused true
 }
 
-window-rule {
-    match app-id=r#"^zen$"# title="^Picture-in-Picture$"
-    open-floating true
-    default-floating-position x=20 y=20 relative-to="top-right"
-    default-column-width { fixed 580; }
-    default-window-height { fixed 320; }
-    // max-width 700
-    // max-height 600
-clip-to-geometry true
-geometry-corner-radius 12
-border {
-        on
-        width 1
-        // active-color "#ffc87f"
-        // inactive-color "#505050"
-    }
-}
+// window-rule {
+//     match app-id=r#"^zen$"# title="^Picture-in-Picture$"
+//     open-floating true
+//     default-floating-position x=20 y=20 relative-to="top-right"
+//     default-column-width { fixed 580; }
+//     default-window-height { fixed 320; }
+//     // max-width 700
+//     // max-height 600
+// clip-to-geometry true
+// geometry-corner-radius 12
+// border {
+//         on
+//         width 1
+//         // active-color "#ffc87f"
+//         // inactive-color "#505050"
+//     }
+// }
 window-rule {
     match app-id=r#"^Spotify$"#
     open-on-workspace "D"
@@ -133,7 +139,7 @@ window-rule {
 }
 window-rule {
     match is-active=true
-    opacity 1.0
+    opacity 0.85
 }
 // Inactive windows
 window-rule {
@@ -141,8 +147,22 @@ window-rule {
     opacity 0.67
 }
 window-rule {
-    match app-id=r#"^zen$"# title=r#"YouTube"#
+    match app-id=r#"^(brave-browser|zen)$"# title=r#"YouTube"#
     opacity 1.0
+}
+window-rule {
+    match title=r#"^[Pp]icture[- ][Ii]n[- ][Pp]icture$"#
+    open-floating true
+    default-floating-position x=20 y=20 relative-to="top-right"
+    default-column-width { fixed 580; }
+    default-window-height { fixed 320; }
+    clip-to-geometry true
+    opacity 0.9
+    geometry-corner-radius 12
+    border {
+        on
+        width 1
+    }
 }
 /* Apps: blur them all without xray for a better look */
 // window-rule {
@@ -159,7 +179,7 @@ match namespace="^noctalia-(background|launcher-overlay|dock|wallpaper)-.*$"
     place-within-backdrop true
   background-effect {
     xray false
-    blur false
+    blur true
   }
 }
 // layer-rule {

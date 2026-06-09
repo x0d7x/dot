@@ -1,6 +1,7 @@
 local pack = require("core.pack")
 
 pack.add({
+	"https://github.com/metalelf0/black-metal-theme-neovim",
 	"https://github.com/vague2k/vague.nvim",
 	"https://github.com/Aejkatappaja/sora",
 	"https://github.com/oskarnurm/koda.nvim",
@@ -17,7 +18,34 @@ require("oshen").setup({
 	transparent = true, -- set false for opaque background
 })
 -- vim.cmd.colorscheme("Oshen")
-
+require("black-metal").setup({ -- Can be one of: bathory | burzum | dark-funeral | darkthrone | emperor | gorgoroth | immortal | impaled-nazarene | khold | marduk | mayhem | nile | taake | thyrfing | venom | windir
+	theme = "dark-funeral",
+	-- Can be one of: 'light' | 'dark', or set via vim.o.background
+	variant = "dark",
+	-- Use an alternate, lighter bg
+	alt_bg = false,
+	-- If true, docstrings will be highlighted like strings, otherwise they will be
+	-- highlighted like comments. Note, behavior is dependent on the language server.
+	colored_docstrings = true,
+	-- If true, highlights the {sign,fold} column the same as cursorline
+	cursorline_gutter = true,
+	-- If true, highlights the gutter darker than the bg
+	dark_gutter = false,
+	-- if true favor treesitter highlights over semantic highlights
+	favor_treesitter_hl = false,
+	-- Don't set background of floating windows. Recommended for when using floating
+	-- windows with borders.
+	plain_float = false,
+	-- Show the end-of-buffer character
+	show_eob = true,
+	-- If true, enable the vim terminal colors
+	term_colors = true,
+	-- Keymap (in normal mode) to toggle between light and dark variants.
+	toggle_variant_key = nil,
+	-- Don't set background
+	transparent = false,
+})
+require("black-metal").load()
 require("vague").setup({
 	transparent = true,
 	colors = {
@@ -25,7 +53,7 @@ require("vague").setup({
 		comment = "#666666",
 	},
 })
-vim.cmd.colorscheme("vague")
+-- vim.cmd.colorscheme("vague")
 
 require("sora").setup({ transparent = true })
 
