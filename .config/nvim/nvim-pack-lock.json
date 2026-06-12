@@ -5,7 +5,7 @@
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
     "Oshen.nvim": {
-      "rev": "8eac34550bbb5b22788fd92e164e0c442d0dc4ba",
+      "rev": "cc69305a7fdbc78452316bc90ae33c342b5d6f7f",
       "src": "https://github.com/54L1M/Oshen.nvim"
     },
     "bafa.nvim": {
@@ -43,7 +43,7 @@
       "src": "https://github.com/sindrets/diffview.nvim"
     },
     "fff.nvim": {
-      "rev": "648f0168eccd2dbb5e6177e51f01dd80acaa7ed9",
+      "rev": "cf171e067d99a7ee1298bd3903f14a04addd8b39",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "flash.nvim": {
@@ -75,11 +75,11 @@
       "src": "https://github.com/rebelot/kanagawa.nvim"
     },
     "koda.nvim": {
-      "rev": "ac7e746882b31a68bdcd533464a20ca40b712bcb",
+      "rev": "a7da3ced59eadafbda6eb4d7f7e2a6a3d9ecf858",
       "src": "https://github.com/oskarnurm/koda.nvim"
     },
     "mason.nvim": {
-      "rev": "16ba83bfc8a25f52bb545134f5bee082b195c460",
+      "rev": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d",
       "src": "https://github.com/williamboman/mason.nvim"
     },
     "mini.files": {
@@ -87,7 +87,7 @@
       "src": "https://github.com/echasnovski/mini.files"
     },
     "mini.nvim": {
-      "rev": "ff8b3580935818ef2f21bdd651f057a2ae071eab",
+      "rev": "a59a9b7fb0a42cbcf022938ee5f0724320b66f63",
       "src": "https://github.com/echasnovski/mini.nvim"
     },
     "neogit": {
@@ -156,7 +156,7 @@
       "src": "https://github.com/folke/twilight.nvim"
     },
     "vague.nvim": {
-      "rev": "788697064264bed8390b52ca2ac9906a96712120",
+      "rev": "49fe06ad33d8847b931ba4279197bda222374cd1",
       "src": "https://github.com/vague2k/vague.nvim"
     },
     "vim-tmux-navigator": {

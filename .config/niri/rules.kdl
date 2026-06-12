@@ -11,6 +11,9 @@ window-rule {
     // You can get away with just app-id="wezterm" if you want.
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     default-column-width {}
+    open-on-workspace "T"
+    open-focused true
+    // open-maximized true
 }
 
 window-rule {
@@ -41,6 +44,12 @@ window-rule {
 }
 window-rule {
     match app-id=r#"^brave-browser$"#
+    open-on-workspace "B"
+    open-maximized true
+    open-focused true
+}
+window-rule {
+    match app-id=r#"^helium$"#
     open-on-workspace "B"
     open-maximized true
     open-focused true
@@ -85,6 +94,7 @@ window-rule {
     open-on-workspace "T"
     open-focused true
     open-maximized true
+opacity 1.0
 }
 window-rule {
     match app-id=r#"^kitty-float$"#
@@ -147,7 +157,7 @@ window-rule {
     opacity 0.67
 }
 window-rule {
-    match app-id=r#"^(brave-browser|zen)$"# title=r#"YouTube"#
+    match app-id=r#"^(brave-browser|zen|helium)$"# title=r#"YouTube"#
     opacity 1.0
 }
 window-rule {

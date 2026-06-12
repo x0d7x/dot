@@ -285,11 +285,11 @@
     },
     "colorSchemes": {
         "darkMode": true,
-        "generationMethod": "tonal-spot",
+        "generationMethod": "fruit-salad",
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "monitorForColors": "",
-        "predefinedScheme": "Solarized",
+        "predefinedScheme": "Ayu",
         "schedulingMode": "off",
         "syncGsettings": true,
         "useWallpaperColors": true
@@ -378,7 +378,7 @@
         "displayMode": "auto_hide",
         "dockType": "floating",
         "enabled": true,
-        "floatingRatio": 1,
+        "floatingRatio": 0,
         "groupApps": false,
         "groupClickAction": "cycle",
         "groupContextMenuMode": "extended",
@@ -720,9 +720,9 @@
     },
     "ui": {
         "boxBorderEnabled": true,
-        "fontDefault": "DepartureMono Nerd Font",
+        "fontDefault": "EnvyCodeR Nerd Font",
         "fontDefaultScale": 1,
-        "fontFixed": "DepartureMono Nerd Font Propo",
+        "fontFixed": "EnvyCodeR Nerd Font Mono",
         "fontFixedScale": 1,
         "panelBackgroundOpacity": 0.93,
         "panelsAttachedToBar": true,
@@ -814,13 +814,13 @@
                 "darkMode": true,
                 "generationMethod": "tonal-spot",
                 "paletteColors": [
-                    "#e3c54a",
-                    "#d2c6a1",
-                    "#aad0b2",
-                    "#ffb4ab"
+                    "#b58900",
+                    "#d33682",
+                    "#cb4b16",
+                    "#dc322f"
                 ],
                 "path": "/home/dox/Documents/wallpaper/gruvbox-wallpapers/wallpapers/minimalistic/ALLqk82.png",
-                "useWallpaperColors": true
+                "useWallpaperColors": false
             },
             {
                 "appearance": "dark",

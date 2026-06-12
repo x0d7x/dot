@@ -3,7 +3,7 @@
   "iconColor": "primary",
   "directory": "/home/dox/obs",
   "filenamePattern": "recording_yyyyMMdd_HHmmss",
-  "frameRate": "60",
+  "frameRate": "30",
   "audioCodec": "opus",
   "videoCodec": "hevc",
   "quality": "ultra",

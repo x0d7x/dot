@@ -53,10 +53,13 @@ binds {
         spawn "obs"
     }
     Mod+B hotkey-overlay-title="Open a Brave-browser" {
-        spawn "zen-browser"
+        spawn "helium-browser"
     }
     Mod+L hotkey-overlay-title="Open a localsend" {
         spawn "localsend"
+    }
+    Mod+J hotkey-overlay-title="Open Yazi" {
+        spawn "kitty" "lazydocker"
     }
     // Mod+F hotkey-overlay-title="Open a file manager" {
     //     spawn "nautilus"

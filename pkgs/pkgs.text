@@ -1,3 +1,4 @@
+7zip
 acpi
 adw-gtk-theme
 alsa-utils
@@ -30,6 +31,7 @@ eza
 fail2ban
 fastfetch
 fd
+flatpak
 fnm
 foot
 fzf
@@ -80,6 +82,7 @@ pnpm
 podman
 podman-compose
 prettier
+python-pip
 qemu-desktop
 qt6ct
 qutebrowser
@@ -115,6 +118,8 @@ upower
 vim
 virt-manager
 vulkan-intel
+webkit2gtk-4.1
+wezterm
 wget
 wl-clipboard
 xdg-desktop-portal-gnome

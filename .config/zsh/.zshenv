@@ -6,7 +6,7 @@ export XDG_STATE_HOME=$HOME/.local/state
 export GPG_TTY=$TTY
 export EDITOR=nvim
 export VISUAL=nvim
-export BROWSER=${BROWSER:-zen-browser}
+export BROWSER=${BROWSER:-helium-browser}
 export DOCKER_HOST=unix:///run/user/$(id -u)/podman/podman.sock
 path+=(
 $HOME/.local/bin
