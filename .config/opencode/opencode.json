@@ -7,11 +7,11 @@
       "command": ["bunx", "-y", "@modelcontextprotocol/server-github"],
       "enabled": true,
       "environment": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "{env:GITHUB_PERSONAL_ACCESS_TOKEN}"
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "{env:$GITHUB_PERSONAL_ACCESS_TOKEN}"
       }
     }
   },
   "default_agent": "plan",
   "autoshare": false,
-  "autoupdate": "notify"
+  "autoupdate": false
 }

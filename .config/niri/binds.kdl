@@ -40,6 +40,9 @@ binds {
     Mod+T hotkey-overlay-title="Open a Terminal: kitty" {
         spawn "kitty" "--app-id" "kitty-terminal"
     }
+    Mod+W hotkey-overlay-title="Open a sys-monitor: btop" {
+        spawn "kitty" "btop" 
+    }
     Mod+Shift+T hotkey-overlay-title="Open a Terminal: kitty" {
         spawn "kitty" "--app-id" "kitty-float" "-1" "-o" "shell" "/bin/zsh"
     }
@@ -50,7 +53,7 @@ binds {
         spawn "obs"
     }
     Mod+B hotkey-overlay-title="Open a Brave-browser" {
-        spawn "brave"
+        spawn "zen-browser"
     }
     Mod+L hotkey-overlay-title="Open a localsend" {
         spawn "localsend"

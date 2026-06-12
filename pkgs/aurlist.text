@@ -1,14 +1,11 @@
 applesmc-next-dkms
 brave-bin
 droidcam
-droidcam-obs-plugin-git
 hunk-bin
-idescriptor-git
 jjui-bin
 localsend-bin
 ly-git
 macbook12-spi-driver-dkms
-mangowm-git
 mbpfan
 neomd-bin
 noctalia-shell
@@ -17,6 +14,7 @@ opencode-bin
 otf-departure-mono-nerd
 paru
 paru-debug
+plumeimpactor-appimage
 spotify
 vesktop-bin
 yay-debug
