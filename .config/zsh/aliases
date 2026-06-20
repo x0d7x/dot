@@ -53,3 +53,6 @@ alias poc="podman-compose"
 alias find="fd"
 alias cfs="fd . ~ -H -t f -S +200M -x du -h {} | sort -hr"
 alias olm="ollama"
+alias em="neomd"
+alias inv="nvim --cmd 'set eventignore=FileType scrollback=1000000' --cmd 'autocmd! *' +'nnoremap q ZQ<CR>' +'call nvim_open_term(0, {})' +'set nolist' +'autocmd! *' +'$' -c 'normal gg'
+"

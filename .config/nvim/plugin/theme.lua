@@ -43,9 +43,9 @@ require("black-metal").setup({ -- Can be one of: bathory | burzum | dark-funeral
 	-- Keymap (in normal mode) to toggle between light and dark variants.
 	toggle_variant_key = nil,
 	-- Don't set background
-	transparent = false,
+	transparent = true,
 })
-require("black-metal").load()
+-- require("black-metal").load()
 require("vague").setup({
 	transparent = true,
 	colors = {
@@ -93,12 +93,12 @@ require("kanagawa").setup({
 })
 
 require("gruvbox").setup({
-	variant = "hard",
+	variant = "soft",
 	styles = {
 		transparency = true,
 	},
 })
--- vim.cmd.colorscheme("gruvbox")
+vim.cmd.colorscheme("gruvbox")
 
 require("gruvdark").setup({ transparent = false })
 

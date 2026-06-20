@@ -9,6 +9,7 @@ base
 base-devel
 bat
 bitwarden
+blanket
 bluez
 bluez-deprecated-tools
 bluez-utils
@@ -19,6 +20,7 @@ cifs-utils
 cliphist
 croc
 curl
+discord
 dkms
 dnsmasq
 duf

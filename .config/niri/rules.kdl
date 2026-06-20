@@ -43,22 +43,18 @@ window-rule {
     default-floating-position x=20 y=20 relative-to="top"
 }
 window-rule {
-    match app-id=r#"^brave-browser$"#
-    open-on-workspace "B"
-    open-maximized true
-    open-focused true
-}
-window-rule {
     match app-id=r#"^helium$"#
     open-on-workspace "B"
     open-maximized true
     open-focused true
+    // opacity 1.0
 }
 window-rule {
     match app-id=r#"^zen$"#
     open-on-workspace "B"
     open-maximized true
     open-focused true
+    // opacity 1.0
 }
 
 // window-rule {
@@ -94,7 +90,6 @@ window-rule {
     open-on-workspace "T"
     open-focused true
     open-maximized true
-opacity 1.0
 }
 window-rule {
     match app-id=r#"^kitty-float$"#
@@ -149,6 +144,9 @@ window-rule {
 }
 window-rule {
     match is-active=true
+    exclude app-id=r#"^zen$"#
+    exclude app-id=r#"^ZenNotes$"#
+    exclude app-id=r#"^helium$"#
     opacity 0.85
 }
 // Inactive windows
@@ -156,10 +154,10 @@ window-rule {
     match is-active=false
     opacity 0.67
 }
-window-rule {
-    match app-id=r#"^(brave-browser|zen|helium)$"# title=r#"YouTube"#
-    opacity 1.0
-}
+// window-rule {
+//     match app-id=r#"^(brave-browser|zen|helium)$"# title=r#"YouTube"#
+//     opacity 1.0
+// }
 window-rule {
     match title=r#"^[Pp]icture[- ][Ii]n[- ][Pp]icture$"#
     open-floating true

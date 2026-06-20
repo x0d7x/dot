@@ -24,10 +24,10 @@ require("blink.cmp").setup({
 	},
 	keymap = { preset = "enter" },
 	cmdline = {
-		enabled = false,
+		enabled = true,
 		completion = {
 			menu = {
-				auto_show = false,
+				auto_show = true,
 			},
 		},
 		keymap = {

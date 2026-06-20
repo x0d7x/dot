@@ -75,6 +75,12 @@ export ZVM_MAN_PAGER='bat'
 export SUDO_EDITOR=nvim
 export FCEDIT=nvim
 
+# Use gpg-agent as SSH agent
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+fi
+
 
 HISTSIZE=10000
 HISTFILE=$XDG_STATE_HOME/zsh/.zsh_history

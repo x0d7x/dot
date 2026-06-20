@@ -31,7 +31,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "cord.nvim": {
-      "rev": "2e6b16e0363f5a12483734ba96e6326ce2d6741e",
+      "rev": "e6ee37deea7b240d456a59aa7706eec006e56e79",
       "src": "https://github.com/vyfor/cord.nvim"
     },
     "darcubox-nvim": {
@@ -43,7 +43,7 @@
       "src": "https://github.com/sindrets/diffview.nvim"
     },
     "fff.nvim": {
-      "rev": "cf171e067d99a7ee1298bd3903f14a04addd8b39",
+      "rev": "957f222da76f120868defdf9e7204309c3800e5e",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "flash.nvim": {
@@ -55,7 +55,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "gitsigns.nvim": {
-      "rev": "25050e4ed39e628282831d4cbecb1850454ce915",
+      "rev": "2038c666bd9d8a0b7349a0b6ee00dc83104b9ecf",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "gruvbox": {
@@ -65,6 +65,10 @@
     "gruvdark.nvim": {
       "rev": "94afaee342e8dd0fae054a15402568ec0235c720",
       "src": "https://github.com/darianmorat/gruvdark.nvim"
+    },
+    "guh.nvim": {
+      "rev": "8e72fb815ed68c58b4f9f2c069b63603f4c54b91",
+      "src": "https://github.com/justinmk/guh.nvim"
     },
     "indent-blankline.nvim": {
       "rev": "d28a3f70721c79e3c5f6693057ae929f3d9c0a03",
@@ -83,19 +87,19 @@
       "src": "https://github.com/williamboman/mason.nvim"
     },
     "mini.files": {
-      "rev": "02874bc653fbecf2bee2c65441d0ebd09110f011",
+      "rev": "a5689dae6b732955e33eec225b798d6815063179",
       "src": "https://github.com/echasnovski/mini.files"
     },
     "mini.nvim": {
-      "rev": "a59a9b7fb0a42cbcf022938ee5f0724320b66f63",
+      "rev": "1345d191bb3da9c7b0e977f4387c5761f9bff68d",
       "src": "https://github.com/echasnovski/mini.nvim"
     },
     "neogit": {
-      "rev": "5a7fca171e3ad07380745d573d791e95268b8f3f",
+      "rev": "828dd073e6ad180fdb5c1603c7ad7f68a384c40b",
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "nvim-lint": {
-      "rev": "99cbc3ca8a76845fca50e496be7212bebf907dd3",
+      "rev": "01c9842c089069ab497430159312b2c8868a4590",
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-treesitter": {

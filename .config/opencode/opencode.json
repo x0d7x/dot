@@ -2,13 +2,25 @@
   "$schema": "https://opencode.ai/config.json",
   "mcp": {
     "github": {
-      "enabled": false,
-      "type": "local",
-      "command": ["bunx", "-y", "@modelcontextprotocol/server-github"],
       "enabled": true,
+      "type": "local",
+      "command": [
+        "bunx",
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
       "environment": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": "{env:$GITHUB_PERSONAL_ACCESS_TOKEN}"
       }
+    },
+    "opencode": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "opencode-docs-mcp"
+      ],
+      "enabled": true
     }
   },
   "default_agent": "plan",

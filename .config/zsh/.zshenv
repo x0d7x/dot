@@ -11,6 +11,7 @@ export DOCKER_HOST=unix:///run/user/$(id -u)/podman/podman.sock
 path+=(
 $HOME/.local/bin
 $HOME/.bun/bin
+$HOME/.local/share/pnpm/bin
 )
 typeset -gU path
 export PATH

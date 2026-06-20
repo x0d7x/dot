@@ -8,7 +8,6 @@ diff-formatter = ":git"
 [user]
 name = "x0d7x"
 email = "75843278+x0d7x@users.noreply.github.com"
-
 [signing]
 backend = "gpg"
 key = "672910B4BB401394"

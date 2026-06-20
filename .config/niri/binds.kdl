@@ -52,7 +52,7 @@ binds {
     Mod+O hotkey-overlay-title="Open a screen-rec: OBS" {
         spawn "obs"
     }
-    Mod+B hotkey-overlay-title="Open a Brave-browser" {
+    Mod+B hotkey-overlay-title="Open a helium-browser" {
         spawn "helium-browser"
     }
     Mod+L hotkey-overlay-title="Open a localsend" {
