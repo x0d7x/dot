@@ -30,6 +30,10 @@
         "screen-recorder": {
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
+        },
+        "clipmask": {
+            "enabled": true,
+            "sourceUrl": "local"
         }
     },
     "version": 2

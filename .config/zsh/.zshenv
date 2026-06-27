@@ -6,12 +6,14 @@ export XDG_STATE_HOME=$HOME/.local/state
 export GPG_TTY=$TTY
 export EDITOR=nvim
 export VISUAL=nvim
-export BROWSER=${BROWSER:-helium-browser}
+export BROWSER=${BROWSER:-brave-origin}
 export DOCKER_HOST=unix:///run/user/$(id -u)/podman/podman.sock
+export PI_CODING_AGENT_DIR=$HOME/.config/pi/agent/
 path+=(
 $HOME/.local/bin
 $HOME/.bun/bin
 $HOME/.local/share/pnpm/bin
+$HOME/go/bin
 )
 typeset -gU path
 export PATH
@@ -27,3 +29,4 @@ for dir in "${xdg_base_dirs[@]}"; do
     mkdir -p "$dir"
   fi
 done
+. "/home/dox/.local/share/bob/env/env.sh"

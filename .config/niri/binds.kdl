@@ -27,7 +27,7 @@ binds {
         show-hotkey-overlay
     }
     Mod+V hotkey-overlay-title="Open a Clipboard" {
-        spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"
+        spawn-sh "qs -c noctalia-shell ipc call plugin:clipmask toggle"
     }
     Mod+M hotkey-overlay-title="Open a music" { spawn-sh "qs -c noctalia-shell ipc call plugin:music launcher"; }
     // Mod+M hotkey-overlay-title="Open a music player" {
@@ -47,16 +47,16 @@ binds {
         spawn "kitty" "--app-id" "kitty-float" "-1" "-o" "shell" "/bin/zsh"
     }
     Mod+D hotkey-overlay-title="Open a discord: vesktop" {
-        spawn "vesktop"
+     spawn "flatpak" "run" "dev.vencord.Vesktop"
     }
     Mod+O hotkey-overlay-title="Open a screen-rec: OBS" {
-        spawn "obs"
+        spawn "flatpak" "run" "com.obsproject.Studio"
     }
-    Mod+B hotkey-overlay-title="Open a helium-browser" {
-        spawn "helium-browser"
+    Mod+B hotkey-overlay-title="Open a Brave-browser" {
+        spawn "flatpak" "run" "app.zen_browser.zen"
     }
     Mod+L hotkey-overlay-title="Open a localsend" {
-        spawn "localsend"
+        spawn "flatpak" "run" "org.localsend.localsend_app"
     }
     Mod+J hotkey-overlay-title="Open Yazi" {
         spawn "kitty" "lazydocker"

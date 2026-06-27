@@ -16,6 +16,10 @@ map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
 map("n", "<leader>cw", ":write<CR>", { desc = "write to file" })
 map("n", "<leader>co", ":update<CR> :source<CR>", { desc = "update the file and source it" })
+-- Terminal in splits
+map("n", "<leader>th", "<cmd>belowright 10split | terminal<CR>", { desc = "Terminal (Horizontal Split)" })
+map("n", "<leader>tv", "<cmd>80vsplit | terminal<CR>", { desc = "Terminal (Vertical Split)" })
+map("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit Terminal Mode" })
 -- Clear search highlight when pressing <Esc>
 map({ "i", "n", "s" }, "<esc>", function()
 	vim.cmd("noh")

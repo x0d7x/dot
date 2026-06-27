@@ -1,0 +1,8 @@
+Zen	app.zen_browser.zen	1.21.3b	stable	system
+Flatseal	com.github.tchx84.Flatseal	2.4.1	stable	system
+OBS Studio	com.obsproject.Studio	32.1.2	stable	system
+Blanket	com.rafaelmardojai.Blanket	0.8.0	stable	system
+Stremio	com.stremio.Stremio	1.0.0	stable	system
+Impactor	dev.khcrysalis.PlumeImpactor	v2.5.0	stable	system
+Vesktop	dev.vencord.Vesktop	1.6.5	stable	system
+LocalSend	org.localsend.localsend_app	1.17.0	stable	system

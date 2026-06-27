@@ -13,6 +13,7 @@ blanket
 bluez
 bluez-deprecated-tools
 bluez-utils
+bob
 brightnessctl
 btop
 bun
@@ -66,15 +67,12 @@ meson
 mpd
 mpv
 nautilus
-neovim
 networkmanager
 niri
 noto-fonts-cjk
 noto-fonts-emoji
 npm
 nwg-look
-obs-studio
-obs-studio-plugin-browser
 pacutils
 pass
 pavucontrol
@@ -87,7 +85,6 @@ prettier
 python-pip
 qemu-desktop
 qt6ct
-qutebrowser
 rbw
 refind
 reflector
@@ -117,6 +114,7 @@ typescript-language-server
 ufw
 unzip
 upower
+usbmuxd
 vim
 virt-manager
 vulkan-intel

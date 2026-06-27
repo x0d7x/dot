@@ -1,0 +1,14 @@
+{
+  "lastChangelogVersion": "0.80.3",
+  "theme": "gruvbox-dark",
+  "defaultProvider": "opencode",
+  "defaultModel": "big-pickle",
+  "defaultThinkingLevel": "low",
+  "terminal": {
+    "showTerminalProgress": false
+  },
+  "hideThinkingBlock": true,
+  "packages": [
+    "npm:pi-yt-summarizer"
+  ]
+}

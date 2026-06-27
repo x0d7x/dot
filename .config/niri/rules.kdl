@@ -43,37 +43,19 @@ window-rule {
     default-floating-position x=20 y=20 relative-to="top"
 }
 window-rule {
-    match app-id=r#"^helium$"#
-    open-on-workspace "B"
-    open-maximized true
+    match app-id=r#"^com\.stremio\.Stremio$"#
+    open-on-workspace "N"
     open-focused true
-    // opacity 1.0
+    open-maximized true
 }
 window-rule {
-    match app-id=r#"^zen$"#
+    match app-id=r#"^(app\.zen_browser\.zen|helium|brave-origin)$"#
     open-on-workspace "B"
     open-maximized true
     open-focused true
     // opacity 1.0
 }
 
-// window-rule {
-//     match app-id=r#"^zen$"# title="^Picture-in-Picture$"
-//     open-floating true
-//     default-floating-position x=20 y=20 relative-to="top-right"
-//     default-column-width { fixed 580; }
-//     default-window-height { fixed 320; }
-//     // max-width 700
-//     // max-height 600
-// clip-to-geometry true
-// geometry-corner-radius 12
-// border {
-//         on
-//         width 1
-//         // active-color "#ffc87f"
-//         // inactive-color "#505050"
-//     }
-// }
 window-rule {
     match app-id=r#"^Spotify$"#
     open-on-workspace "D"
@@ -142,20 +124,18 @@ window-rule {
     xray false
   }
 }
-window-rule {
-    match is-active=true
-    exclude app-id=r#"^zen$"#
-    exclude app-id=r#"^ZenNotes$"#
-    exclude app-id=r#"^helium$"#
-    opacity 0.85
-}
+// window-rule {
+//     match is-active=true
+//     exclude app-id=r#"^(brave-browser|app\.zen_browser\.zen|helium|brave-origin|ZenNotes|com.stremio.Stremio)$"#
+//     opacity 0.85
+// }
 // Inactive windows
 window-rule {
     match is-active=false
     opacity 0.67
 }
 // window-rule {
-//     match app-id=r#"^(brave-browser|zen|helium)$"# title=r#"YouTube"#
+//     match app-id=r#"^(brave-browser|zen|helium|brave-origin)$"# title=r#"YouTube"#
 //     opacity 1.0
 // }
 window-rule {

@@ -10,8 +10,11 @@ plugins/
 
 
 # Session state files
-.config/herdr/sessions/*/session.json
+.config/herdr/sessions/
 .config/herdr/session.json
+
+# Pi agent session logs
+.config/pi/agent/sessions/
 
 # Jujutsu binary metadata
 *.binpb
