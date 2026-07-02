@@ -45,7 +45,7 @@ require("black-metal").setup({ -- Can be one of: bathory | burzum | dark-funeral
 	-- Don't set background
 	transparent = true,
 })
--- require("black-metal").load()
+require("black-metal").load()
 require("vague").setup({
 	transparent = true,
 	colors = {
@@ -98,7 +98,7 @@ require("gruvbox").setup({
 		transparency = true,
 	},
 })
-vim.cmd.colorscheme("gruvbox")
+-- vim.cmd.colorscheme("gruvbox")
 
 require("gruvdark").setup({ transparent = false })
 
@@ -112,5 +112,5 @@ require("petrolnoir").setup({ transparent = true })
 -- bold = true,
 -- })
 -- vim.api.nvim_set_hl(0, "LineNr", { fg = "#666666", bg = "NONE" })
--- vim.api.nvim_set_hl(0, "Comment", { fg = "#666666", italic = true })
+vim.api.nvim_set_hl(0, "Comment", { fg = "#666666", italic = true })
 -- vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#CC7653", bold = true, bg = "NONE" })

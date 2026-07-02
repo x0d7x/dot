@@ -25,3 +25,4 @@ window-padding-balance = true
 # adjust-cell-height = 50%
 keybind = cmd+s=toggle_quick_terminal
 keybind = super+i=inspector:toggle
+theme = noctalia

@@ -2,15 +2,18 @@
  * Session Switcher & Theme Switcher Extension
  *
  * Features:
- *   - Ctrl+X then S — open session picker and switch
- *   - Ctrl+X then T — open theme picker and switch
+ *   - Ctrl+X then S — open session picker and switch (overlay UI)
+ *   - Ctrl+X then T — open theme picker and switch (overlay UI)
+ *   - Ctrl+X then K — show all keymaps (overlay UI)
  *   - /sessions     — list sessions and switch
  *   - /theme        — list themes and switch
+ *   - /keymaps      — show all keybindings
  */
 
 import type { ExtensionAPI, SessionInfo } from "@earendil-works/pi-coding-agent";
-import { SessionManager, CustomEditor } from "@earendil-works/pi-coding-agent";
+import { SessionManager, CustomEditor, DynamicBorder } from "@earendil-works/pi-coding-agent";
 import { matchesKey, Key, visibleWidth } from "@earendil-works/pi-tui";
+import { Container, Spacer, Text, SelectList } from "@earendil-works/pi-tui";
 
 // ── Shared state ─────────────────────────────────────────────────────
 
@@ -26,7 +29,64 @@ function formatSessionLabel(session: SessionInfo): string {
 	return `${name}  ${cwd}  ${date}  (${count} msgs)`;
 }
 
-// ── Session picker ──────────────────────────────────────────────────
+// ── Keymaps overlay ────────────────────────────────────────────────
+
+async function showKeymapsOverlay(ctx: any): Promise<void> {
+	if (!ctx.hasUI) return;
+
+	return ctx.ui.custom<void>((tui, theme, kb, done) => {
+		// Build keymap entries from the keybindings manager
+		const resolved = kb.getResolvedBindings();
+		const ids = Object.keys(resolved).sort();
+		const items = ids.map((id) => {
+			const def = kb.getDefinition(id);
+			const keys = resolved[id];
+			const keyStr = Array.isArray(keys) ? keys.join(", ") : keys ?? "";
+			const desc = def?.description ?? "";
+			return {
+				value: id,
+				label: `${keyStr.padEnd(22)}  ${desc}`,
+				description: id,
+			};
+		});
+		const container = new Container();
+		container.addChild(new DynamicBorder((s: string) => theme.fg("accent", s)));
+		container.addChild(new Text(theme.fg("accent", theme.bold("⌨️  Keymaps")), 1, 0));
+		container.addChild(new Spacer(1));
+
+		const maxVisible = Math.min(items.length, 14);
+		const selectList = new SelectList(items, maxVisible, {
+			selectedPrefix: (t: string) => theme.fg("accent", t),
+			selectedText: (t: string) => theme.fg("accent", t),
+			description: (t: string) => theme.fg("dim", t),
+			scrollInfo: (t: string) => theme.fg("dim", t),
+			noMatch: (t: string) => theme.fg("warning", t),
+		});
+		selectList.onSelect = () => done();
+		selectList.onCancel = () => done();
+		container.addChild(selectList);
+
+		container.addChild(new Spacer(1));
+		container.addChild(new Text(theme.fg("dim", "↑↓/jk scroll  esc close"), 1, 0));
+		container.addChild(new DynamicBorder((s: string) => theme.fg("accent", s)));
+
+		return {
+			render: (w: number) => container.render(w),
+			invalidate: () => container.invalidate(),
+			handleInput: (d: string) => {
+				if (d === "j") selectList.handleInput("\x1b[B");
+				else if (d === "k") selectList.handleInput("\x1b[A");
+				else selectList.handleInput(d);
+				tui.requestRender();
+			},
+		};
+	}, {
+		overlay: true,
+		overlayOptions: { width: "80%", minWidth: 60, maxHeight: "75%", anchor: "center" },
+	});
+}
+
+// ── Session picker (overlay) ─────────────────────────────────────
 
 async function pickSession(ctx: any): Promise<string | undefined> {
 	const allSessions = await SessionManager.listAll();
@@ -35,18 +95,17 @@ async function pickSession(ctx: any): Promise<string | undefined> {
 		return;
 	}
 	allSessions.sort((a: SessionInfo, b: SessionInfo) => b.modified.getTime() - a.modified.getTime());
-	const pathByLabel = new Map<string, string>();
-	const labels = allSessions.map((s: SessionInfo) => {
-		const label = formatSessionLabel(s);
-		pathByLabel.set(label, s.path);
-		return label;
-	});
-	const selected = await ctx.ui.select("Select a session to switch to:", labels);
-	if (!selected) return;
-	return pathByLabel.get(selected);
+
+	const items = allSessions.map((s: SessionInfo) => ({
+		value: s.path,
+		label: formatSessionLabel(s),
+		description: `${s.modified.toLocaleDateString()}  •  ${s.messageCount} msgs`,
+	}));
+
+	return showOverlayPicker(ctx, "📂  Switch Session", items, "No sessions found");
 }
 
-// ── Theme picker ────────────────────────────────────────────────────
+// ── Theme picker (overlay) ──────────────────────────────────────
 
 async function pickTheme(ctx: any): Promise<void> {
 	try {
@@ -56,8 +115,13 @@ async function pickTheme(ctx: any): Promise<void> {
 			return;
 		}
 
-		const labels = themes.map((t: any) => t.name);
-		const selected = await ctx.ui.select("Select a theme:", labels);
+		const items = themes.map((t: any) => ({
+			value: t.name,
+			label: t.name,
+			description: t.path ?? "",
+		}));
+
+		const selected = await showOverlayPicker<string>(ctx, "🎨  Switch Theme", items, "No themes available");
 		if (!selected) return;
 
 		const result = ctx.ui.setTheme(selected);
@@ -69,6 +133,58 @@ async function pickTheme(ctx: any): Promise<void> {
 	} catch (err) {
 		ctx.ui.notify(`Theme error: ${err}`, "error");
 	}
+}
+
+// ── Shared overlay picker ─────────────────────────────────────────
+
+async function showOverlayPicker<T>(
+	ctx: any,
+	title: string,
+	items: { value: T; label: string; description?: string }[],
+	emptyMsg: string,
+): Promise<T | undefined> {
+	if (!ctx.hasUI) return undefined;
+	if (items.length === 0) {
+		ctx.ui.notify(emptyMsg, "info");
+		return undefined;
+	}
+
+	return ctx.ui.custom<T | undefined>((tui, theme, _kb, done) => {
+		const container = new Container();
+		container.addChild(new DynamicBorder((s: string) => theme.fg("accent", s)));
+		container.addChild(new Text(theme.fg("accent", theme.bold(title)), 1, 0));
+		container.addChild(new Spacer(1));
+
+		const maxVisible = Math.min(items.length, 10);
+		const selectList = new SelectList(items, maxVisible, {
+			selectedPrefix: (t: string) => theme.fg("accent", t),
+			selectedText: (t: string) => theme.fg("accent", t),
+			description: (t: string) => theme.fg("dim", t),
+			scrollInfo: (t: string) => theme.fg("dim", t),
+			noMatch: (t: string) => theme.fg("warning", t),
+		});
+		selectList.onSelect = (item) => done(item.value as T);
+		selectList.onCancel = () => done(undefined);
+		container.addChild(selectList);
+
+		container.addChild(new Spacer(1));
+		container.addChild(new Text(theme.fg("dim", "↑↓/jk navigate  ↵ select  esc cancel"), 1, 0));
+		container.addChild(new DynamicBorder((s: string) => theme.fg("accent", s)));
+
+		return {
+			render: (w: number) => container.render(w),
+			invalidate: () => container.invalidate(),
+			handleInput: (d: string) => {
+				if (d === "j") selectList.handleInput("\x1b[B");
+				else if (d === "k") selectList.handleInput("\x1b[A");
+				else selectList.handleInput(d);
+				tui.requestRender();
+			},
+		};
+	}, {
+		overlay: true,
+		overlayOptions: { width: "75%", minWidth: 55, maxHeight: "65%", anchor: "center" },
+	});
 }
 
 // ── Prefix command definitions ──────────────────────────────────────
@@ -89,6 +205,9 @@ const PREFIX_COMMANDS: PrefixCommand[] = [
 	}},
 	{ key: "t", label: "theme", action: async (ctx) => {
 		await pickTheme(ctx);
+	}},
+	{ key: "k", label: "keymaps", action: async (ctx) => {
+		await showKeymapsOverlay(ctx);
 	}},
 ];
 
@@ -168,6 +287,14 @@ class SessionPrefixEditor extends CustomEditor {
 // ── Entry point ──────────────────────────────────────────────────────
 
 export default function (pi: ExtensionAPI) {
+	// ── /keymaps command ──────────────────────────────────────────
+	pi.registerCommand("keymaps", {
+		description: "Show all keybindings in an overlay",
+		handler: async (_args, ctx) => {
+			await showKeymapsOverlay(ctx);
+		},
+	});
+
 	// ── /sessions command ─────────────────────────────────────────
 	pi.registerCommand("sessions", {
 		description: "List all sessions and switch to one",

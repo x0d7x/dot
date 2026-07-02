@@ -1,17 +1,19 @@
 onboarding = false
 
 [ui.toast]
-delivery = "terminal"
+delivery = "system"
 
 [ui]
-show_agent_labels_on_pane_borders = false
-sidebar_hidden_width = 0       # fully hide sidebar (no thin strip)
+# sidebar_hidden_width = 0       # fully hide sidebar (no thin strip)
 hide_tab_bar_when_single_tab = true  # hide tab bar at 1 tab
-hide_pane_borders_when_zoomed = true
 # pane_borders = "minimal"
+sidebar_collapsed_mode = "hidden"
+pane_borders = true
+pane_gaps = false
+show_agent_labels_on_pane_borders = false
 
 [theme]
-name = "gruvbox"
+name = "vesper"
 
 # [keys]
 # detach = "prefix+q"
@@ -53,6 +55,7 @@ name = "gruvbox"
 # resize_mode = "prefix+r"
 # toggle_sidebar = "prefix+b"
 
+auto_switch = false
 [keys]
 last_pane = "prefix+,"
 focus_pane_left = "prefix+h"
