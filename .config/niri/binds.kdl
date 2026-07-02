@@ -9,27 +9,34 @@ binds {
     // Most actions that you can bind here can also be invoked programmatically with
     // `niri msg action do-something`.
     Alt+Return hotkey-overlay-title="Open a Launcher" {
-        spawn-sh "qs -c noctalia-shell ipc call launcher toggle"
+        spawn-sh "noctalia msg panel-toggle launcher"
     }
     Alt+S hotkey-overlay-title="Open a Settings" {
-        spawn-sh "qs -c noctalia-shell ipc call settings toggle"
+        spawn-sh "noctalia msg settings-toggle"
     }
     Alt+Shift+P hotkey-overlay-title="toggle lock screen" {
-        spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"
+        spawn-sh "noctalia msg panel-toggle session"
     }
     Alt+Shift+W hotkey-overlay-title="Open a Wallpaper" {
-        spawn-sh "qs -c noctalia-shell ipc call wallpaper toggle"
-    }
-    Mod+E {
-        spawn-sh "qs -c noctalia-shell  ipc call launcher emoji"
+        spawn-sh "noctalia msg panel-toggle wallpaper"
     }
     Alt+Shift+Slash {
         show-hotkey-overlay
     }
-    Mod+V hotkey-overlay-title="Open a Clipboard" {
-        spawn-sh "qs -c noctalia-shell ipc call plugin:clipmask toggle"
+    Mod+V hotkey-overlay-title="Open Clipboard (ClipMask)" {
+        spawn-sh "noctalia msg panel-toggle x0d7x/clipmask:panel"
     }
-    Mod+M hotkey-overlay-title="Open a music" { spawn-sh "qs -c noctalia-shell ipc call plugin:music launcher"; }
+Mod+C hotkey-overlay-title="Open caffinate"{
+spawn-sh "noctalia msg caffeine-toggle"
+}
+Mod+E hotkey-overlay-title="Open emoji picker"{
+spawn-sh "noctalia msg panel-toggle launcher /emo"
+}
+Mod+M hotkey-overlay-title="Open music player"{
+spawn-sh "kitty rmpc"
+}
+
+    // Mod+M hotkey-overlay-title="Open a music" { spawn-sh "qs -c noctalia-shell ipc call plugin:music launcher"; }
     // Mod+M hotkey-overlay-title="Open a music player" {
     //     spawn "spotify"
     // }
@@ -58,7 +65,7 @@ binds {
     Mod+L hotkey-overlay-title="Open a localsend" {
         spawn "flatpak" "run" "org.localsend.localsend_app"
     }
-    Mod+J hotkey-overlay-title="Open Yazi" {
+    Mod+J hotkey-overlay-title="Open lazydocker" {
         spawn "kitty" "lazydocker"
     }
     // Mod+F hotkey-overlay-title="Open a file manager" {
@@ -66,9 +73,6 @@ binds {
     // }
     Mod+F hotkey-overlay-title="Open Yazi" {
         spawn "kitty" "yazi"
-    }
-    Mod+S hotkey-overlay-title="Open a Volume" {
-        spawn-sh "qs -c noctalia-shell ipc call volume togglePanel"
     }
     // Alt+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
@@ -111,10 +115,10 @@ binds {
     // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
     // but you need to manually put each argument in separate "" quotes.
     XF86MonBrightnessUp {
-        spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "increase"
+        spawn-sh "noctalia msg brightness-up"
     }
     XF86MonBrightnessDown {
-        spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease"
+        spawn-sh "noctalia msg brightness-down"
     }
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,

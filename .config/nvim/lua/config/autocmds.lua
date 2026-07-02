@@ -105,6 +105,16 @@ api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+-- Close terminal with q in normal mode
+api.nvim_create_autocmd("TermOpen", {
+	desc = "Close terminal with q",
+	group = augroup("close_with_q"),
+	callback = function(event)
+		vim.bo[event.buf].bufhidden = "delete"
+		vim.keymap.set("n", "q", "<cmd>close<CR>", { buffer = event.buf, silent = true })
+	end,
+})
+
 api.nvim_create_autocmd("VimResized", {
 	desc = "Auto-resize windows when terminal is resized",
 	group = augroup("resize_splits"),

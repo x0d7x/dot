@@ -7,9 +7,9 @@
 // spawn-at-startup "waybar"
 // spawn-sh-at-startup "bash -c 'sleep 2 && qs -c noctalia-shell ipc call lockScreen lock'"
 spawn-sh-at-startup "/home/dox/.config/niri/scripts/niri-pip-daemon.sh"
-spawn-sh-at-startup "qs -c noctalia-shell"
-// spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
-// spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
+spawn-at-startup "noctalia"
+spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
+spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
 // spawn-at-startup "qs" "-c" "noctalia-shell"
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"

@@ -3,6 +3,24 @@ on = ["g", "b"]
 run = "cd ~/Developer"
 desc = "Cd to ~/Developer"
 [[mgr.prepend_keymap]]
+on = ["c", "i"]
+run = '''
+shell '
+for f in "$@"; do
+mime=$(file --mime-type -b "$f")
+case "$mime" in
+image/png|image/jpeg|image/gif)
+wl-copy -t "$mime" < "$f"
+;;
+*)
+echo "skip $f (not an image)" >&2
+;;
+esac
+done
+' --confirm
+'''
+desc = "Copy selected images to clipboard"
+[[mgr.prepend_keymap]]
 on = ["g", "w"]
 run = "cd ~/Documents"
 desc = "Cd to ~/Developer"

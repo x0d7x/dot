@@ -9,7 +9,6 @@ base
 base-devel
 bat
 bitwarden
-blanket
 bluez
 bluez-deprecated-tools
 bluez-utils
@@ -21,7 +20,6 @@ cifs-utils
 cliphist
 croc
 curl
-discord
 dkms
 dnsmasq
 duf
@@ -38,7 +36,6 @@ flatpak
 fnm
 foot
 fzf
-ghostty
 git
 github-cli
 glow
@@ -82,6 +79,7 @@ pnpm
 podman
 podman-compose
 prettier
+python-mutagen
 python-pip
 qemu-desktop
 qt6ct
@@ -89,6 +87,7 @@ rbw
 refind
 reflector
 ripgrep
+rmpc
 rsync
 showmethekey
 sof-firmware
@@ -119,7 +118,6 @@ vim
 virt-manager
 vulkan-intel
 webkit2gtk-4.1
-wezterm
 wget
 wl-clipboard
 xdg-desktop-portal-gnome

@@ -19,6 +19,10 @@ map("n", "<leader>co", ":update<CR> :source<CR>", { desc = "update the file and 
 -- Terminal in splits
 map("n", "<leader>th", "<cmd>belowright 10split | terminal<CR>", { desc = "Terminal (Horizontal Split)" })
 map("n", "<leader>tv", "<cmd>80vsplit | terminal<CR>", { desc = "Terminal (Vertical Split)" })
+-- Floating terminal (native)
+map("n", "<leader>tf", function()
+	require("custom.terminal").toggle()
+end, { desc = "Floating Terminal" })
 map("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit Terminal Mode" })
 -- Clear search highlight when pressing <Esc>
 map({ "i", "n", "s" }, "<esc>", function()
