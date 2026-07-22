@@ -2,8 +2,8 @@
   "lastChangelogVersion": "0.80.3",
   "theme": "gruvbox-dark",
   "defaultProvider": "opencode",
-  "defaultModel": "big-pickle",
-  "defaultThinkingLevel": "low",
+  "defaultModel": "deepseek-v4-flash-free",
+  "defaultThinkingLevel": "high",
   "terminal": {
     "showTerminalProgress": false
   },
