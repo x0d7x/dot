@@ -8,7 +8,7 @@ delivery = "system"
 hide_tab_bar_when_single_tab = true  # hide tab bar at 1 tab
 # pane_borders = "minimal"
 sidebar_collapsed_mode = "hidden"
-pane_borders = true
+pane_borders = false
 pane_gaps = false
 show_agent_labels_on_pane_borders = false
 
