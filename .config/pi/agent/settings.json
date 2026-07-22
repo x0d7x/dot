@@ -1,13 +1,14 @@
 {
-  "lastChangelogVersion": "0.80.3",
+  "lastChangelogVersion": "0.84.1",
   "theme": "gruvbox-dark",
   "defaultProvider": "opencode",
-  "defaultModel": "deepseek-v4-flash-free",
+  "defaultModel": "big-pickle",
   "defaultThinkingLevel": "high",
   "terminal": {
     "showTerminalProgress": false
   },
   "hideThinkingBlock": true,
+  "quietStartup": true,
   "packages": [
     "npm:pi-yt-summarizer"
   ]

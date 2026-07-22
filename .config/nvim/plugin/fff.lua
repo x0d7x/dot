@@ -1,14 +1,14 @@
 local pack = require("core.pack")
 
 vim.g.fff = {
-	prompt_vim_mode = false,
+	prompt_vim_mode = true,
 	lazy_sync = true,
 	debug = {
 		enabled = true,
 		show_scores = true,
 	},
 	keymaps = {
-		close = "q",
+		-- close = "q",
 		move_up = "<C-k>",
 		move_down = "<C-j>",
 	},

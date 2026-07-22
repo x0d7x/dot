@@ -68,7 +68,7 @@ c.hints.border = "#d4d4d4" # Example color
 # c.url.default_page = ""
 
 c.tabs.title.format = "{audio}{current_title}"
-c.fonts.web.size.default = 18
+c.fonts.web.size.default = 16
 c.url.searchengines = {
 # note - if you use duckduckgo, you can make use of its built in bangs, of which there are many! https://duckduckgo.com/bangs
         'DEFAULT': 'https://duckduckgo.com/?q={}',
@@ -76,6 +76,7 @@ c.url.searchengines = {
         '!yt': 'https://www.youtube.com/results?search_query={}',
         '!g': 'https://www.google.com/search?q={}',
         '!nix': 'https://mynixos.com/search?q={}',
+        '!aur': 'https://aur.archlinux.org/packages?O=0&K={}',
         }
 
 c.completion.open_categories = ['searchengines', 'quickmarks', 'bookmarks', 'history', 'filesystem']
@@ -106,6 +107,7 @@ config.bind('gp', ' tab-prev ')
 config.bind('X', ' undo ')
 config.bind('jk', 'mode-leave', mode='insert')
 config.bind('<Backspace>', 'mode-leave', mode='hint')
+config.bind(",v", "hint links spawn --detach mpv {hint-url}")
 # dark mode setup
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
@@ -121,7 +123,7 @@ c.tabs.width = '7%'
 
 # fonts
 c.fonts.default_family = []
-c.fonts.default_size = '15pt'
+c.fonts.default_size = '13pt'
 c.fonts.web.family.fixed = 'monospace'
 c.fonts.web.family.sans_serif = 'monospace'
 c.fonts.web.family.serif = 'monospace'
@@ -147,7 +149,6 @@ config.set("content.cookies.store", True)
 c.content.blocking.enabled = True
 c.content.blocking.method = 'adblock' # uncomment this if you install python-adblock
 c.content.blocking.adblock.lists = [
-        "https://github.com/ewpratten/youtube_ad_blocklist/blob/master/blocklist.txt",
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/legacy.txt",
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt",
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt",
@@ -161,7 +162,10 @@ c.content.blocking.adblock.lists = [
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt",
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances-cookies.txt",
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances-others.txt",
-        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/quick-fixes.txt",
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt",
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt"]
+
+# Bitwarden/rbw integration
+config.bind('<Ctrl-b>', 'spawn --userscript rbw-fill', mode='insert')
+config.bind('pw', 'spawn --userscript rbw-fill', mode='normal')

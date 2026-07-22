@@ -211,6 +211,9 @@ local function set_ascii_bg()
 			layout = {
 				fullscreen = false,
 			},
+			preview = {
+				enabled = false,
+			},
 		})
 	end, { buffer = buf })
 

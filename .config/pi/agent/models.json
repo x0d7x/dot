@@ -1,0 +1,29 @@
+{
+  "providers": {
+    "agentrouter": {
+      "baseUrl": "https://agentrouter.org",
+      "api": "anthropic-messages",
+      "apiKey": "!rbw get agent-router-key",
+      "models": [
+        {
+          "id": "claude-opus-4-6",
+          "name": "Claude Opus 4.6 (AgentRouter)",
+          "api": "anthropic-messages",
+          "baseUrl": "https://agentrouter.org"
+        },
+        {
+          "id": "gpt-5.5",
+          "name": "GPT 5.5 (AgentRouter)",
+          "api": "openai-completions",
+          "baseUrl": "https://agentrouter.org/v1"
+        },
+        {
+          "id": "glm-5.2",
+          "name": "GLM 5.2 (AgentRouter)",
+          "api": "openai-completions",
+          "baseUrl": "https://agentrouter.org/v1"
+        }
+      ]
+    }
+  }
+}

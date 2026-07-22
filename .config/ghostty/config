@@ -1,28 +1,41 @@
 # vim: set ft=bash:
-font-family = "DepartureMono Nerd Font Mono"
+font-family = "IoskeleyMono Nerd Font"
+font-family = "thmanyah sans"
 font-size = 13
 font-thicken = true
-# background-opacity = 0.7
-# background-blur-radius = 27
+background-opacity = 0.7
+background-blur-radius = 27
 # themes i Like [Banana Blueberry,Everforest Dark - Hard,Batman,CrayonPonyFish,duckbones,Builtin Tango Dark,embers-dark,CGA,Earthsong,Espresso Libre, Adwaita Dark, 3024 Night, 0x96f, Adventure, flexoki-dark, Monokai Pro Ristretto, embers-dark, Solarized Dark Higher Contrast]
 # theme = Black Metal
-# font-thicken = true
-cursor-text = white
+font-thicken = true
 window-save-state = always
 cursor-style = block
+cursor-style-blink = true
 # alpha-blending = linear-corrected
-# cursor-color = #D59B53
 mouse-hide-while-typing = true
 macos-titlebar-style = hidden
 window-colorspace = "display-p3"
 confirm-close-surface = false
 initial-command = /bin/zsh --login -c "if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then tmux attach || tmux new -s Dev; else zsh; fi"
+# initial-command = /bin/zsh --login -c "[ -z "$HERDR_SESSION" ] && herdr --session Dev || zsh"
 cursor-style-blink = true
 shell-integration-features = true
+custom-shader = shaders/cursor_tail.glsl
 window-theme = ghostty
 auto-update = check
 window-padding-balance = true
-# adjust-cell-height = 50%
-keybind = cmd+s=toggle_quick_terminal
+adjust-cell-height = 4
+# adjust-cell-height = -10
+# adjust-cell-width = -10
+# window-step-resize = true # only works in macOS
+# window-padding-y = 3
+# window-padding-x = 0
+# adjust-font-baseline = -5
+keybind = super+shift+t=toggle_quick_terminal
 keybind = super+i=inspector:toggle
 theme = noctalia
+
+# opensession-tmux-ext — bell when the pi agent needs attention
+bell-features = audio, attention, title, border
+bell-audio-path = /usr/share/sounds/freedesktop/stereo/bell.oga
+bell-audio-volume = 0.5

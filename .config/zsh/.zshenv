@@ -9,7 +9,7 @@ export VISUAL=nvim
 export BROWSER=${BROWSER:-flatpak run app.zen_browser.zen}
 export DOCKER_HOST=unix:///run/user/$(id -u)/podman/podman.sock
 export PI_CODING_AGENT_DIR=$HOME/.config/pi/agent/
-export MANGO_INSTANCE_SIGNATURE=$(ls /run/user/1000/mango-*.sock 2>/dev/null | head -1)
+# export MANGO_INSTANCE_SIGNATURE=$(ls /run/user/1000/mango-*.sock 2>/dev/null | head -1)
 path+=(
 $HOME/.local/bin
 $HOME/.bun/bin

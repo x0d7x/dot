@@ -5,4 +5,5 @@ Blanket	com.rafaelmardojai.Blanket	0.8.0	stable	system
 Stremio	com.stremio.Stremio	1.0.0	stable	system
 Impactor	dev.khcrysalis.PlumeImpactor	v2.5.0	stable	system
 Vesktop	dev.vencord.Vesktop	1.6.5	stable	system
+Gear Lever	it.mijorus.gearlever	4.6.2	stable	system
 LocalSend	org.localsend.localsend_app	1.17.0	stable	system

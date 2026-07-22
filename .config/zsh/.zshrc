@@ -86,3 +86,6 @@ HISTSIZE=10000
 HISTFILE=$XDG_STATE_HOME/zsh/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
+if [[ -z "$TMUX" ]] && ! tmux list-sessions &>/dev/null; then
+    exec tmux new-session -s Dev
+fi

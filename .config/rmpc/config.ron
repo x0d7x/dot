@@ -5,7 +5,7 @@
     password: None,
     enable_config_hot_reload: true,
     address: "/tmp/mpd_socket",
-    cache_dir: Some("/tmp/rmpc/cache"),
+    cache_dir: Some("~/.cache/rmpc/yt"),
     theme: "noctalia",
     on_song_change: None,
     volume_step: 5,
