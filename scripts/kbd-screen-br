@@ -1,0 +1,15 @@
+#!/bin/bash
+SCREEN=/sys/class/backlight/gmux_backlight
+KBD=/sys/class/leds/spi::kbd_backlight
+SMAX=$(cat "$SCREEN/max_brightness")
+KMAX=$(cat "$KBD/max_brightness")
+LAST=
+while true; do
+  CUR=$(cat "$SCREEN/actual_brightness")
+  if [ "$CUR" != "$LAST" ]; then
+    VAL=$((CUR * KMAX / SMAX))
+    printf '%s\n' "$VAL" >"$KBD/brightness"
+    LAST=$CUR
+  fi
+  sleep 1
+done

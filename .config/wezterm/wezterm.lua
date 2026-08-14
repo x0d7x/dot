@@ -11,7 +11,7 @@ wezterm.on("gui-startup", function(cmd)
 			"zsh",
 			"-i",
 			"-c",
-			'if command -v tmux >/dev/null 2>&1 && [ -z "$TMUX" ]; then tmux attach || tmux new -s Dev; else exec zsh; fi',
+			'if command -v herdr >/dev/null 2>&1 && [ -z "$HERDR_SESSION" ]; then herdr --session Dev || zsh; fi',
 		},
 	})
 	-- (Optional) Maximize the window
@@ -22,12 +22,12 @@ return {
 	-- =================== Fonts ===================
 	font = wezterm.font_with_fallback({
 		{
-			family = "DepartureMono Nerd Font Mono",
-			weight = "Bold",
+			family = "EnvyCodeR Nerd Font Mono",
+			-- weight = "Bold",
 		},
 	}),
-	font_size = 17,
-	-- line_height = 1.2,
+	font_size = 14,
+	line_height = 1.2,
 
 	-- =================== Cursor ===================
 	-- WezTerm doesn’t support trail, but we use smooth blinking animation

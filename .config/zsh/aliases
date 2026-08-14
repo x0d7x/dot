@@ -1,0 +1,59 @@
+# --------------aliases----------------
+alias ls="eza --all --icons=always --long --git --color=always --no-user --no-filesize --no-time"
+alias c="clear"
+alias e="exit"
+alias v="nvim"
+alias lg="lazygit"
+alias cat="bat"
+alias lsa='ls -lah'
+alias l='ls -lah'
+alias ll='ls -lh'
+alias la='ls -lAh'
+alias tree='eza --tree --icons'
+alias grep='rg --color=auto'
+alias tok='tokei'
+alias gcn="git clone --no-checkout"
+alias gsi="git sparse-checkout init"
+alias gss="git sparse-checkout set"
+alias gemi="gemini"
+alias g="z"
+alias gi="zi"
+# alias mpd="mpd ~/.config/mpd/mpd.conf"
+alias convert='magick convert'
+alias lzd="lazydocker"
+alias mpt="mpv --vo=tct --quiet --really-quiet"
+alias rec='asciinema rec'
+alias aggif="agg --font-family 'JetBrainsMono Nerd Font Mono,NotoColorEmoji'"
+alias asp="asciinema play"
+alias opc="opencode"
+alias kitty-theme='tmux detach-client; kitty +kitten themes'
+# Bun Aliases
+alias bni="bun install"
+alias bnr="bun run"
+alias bnd="bun run dev"
+alias bnc="bun create"
+alias bnrm="bun remove"
+# nix aliases
+alias nsw="sudo darwin-rebuild switch --flake .#dox"
+alias nfu="nix flake update"
+# brew aliases
+alias brs="brew search"
+alias bri="brew install"
+alias brt="brew tap"
+alias pau="paru -Syu"
+alias pai="paru -S"
+alias par="paru -Rns"
+alias pss="paru -Ss"
+alias p="paru"
+alias docker="podman"
+alias jjg="jj diff --git"
+alias ldo="lazydocker"
+alias po="podman"
+alias poc="podman-compose"
+alias find="fd"
+alias cfs="fd . ~ -H -t f -S +200M -x du -h {} | sort -hr"
+alias olm="ollama"
+alias em="neomd"
+alias inv="nvim --cmd 'set eventignore=FileType scrollback=1000000' --cmd 'autocmd! *' +'nnoremap q ZQ<CR>' +'call nvim_open_term(0, {})' +'set nolist' +'autocmd! *' +'$' -c 'normal gg'
+"
+alias cls="clear"

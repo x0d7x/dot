@@ -1,0 +1,115 @@
+store_sent_drafts_in_sending_account = false
+auto_bcc = ""
+
+[[accounts]]
+  name = "Personal"
+  imap = "imap.gmail.com:993"
+  smtp = "smtp.gmail.com:587"
+  user = "a.bakider@gmail.com"
+  password = "rxhi dywi yfxv ivfb"
+  from = "abdulrhman BK <a.bikider@gmail.com>"
+  starttls = false
+  tls_cert_file = ""
+  imap_disabled = false
+  auth_type = ""
+  oauth2_client_id = ""
+  oauth2_client_secret = ""
+  oauth2_issuer_url = ""
+  oauth2_auth_url = ""
+  oauth2_token_url = ""
+  oauth2_redirect_port = 0
+
+[[accounts]]
+  name = "vlog"
+  imap = "imap.gmail.com:993"
+  smtp = "smtp.gmail.com:587"
+  user = "havlog012@gmail.com"
+  password = "phkl qlnj kkmy vhxj"
+  from = "x0d7x <havlog012@gmail.com>"
+  starttls = false
+  tls_cert_file = ""
+  imap_disabled = false
+  auth_type = ""
+  oauth2_client_id = ""
+  oauth2_client_secret = ""
+  oauth2_issuer_url = ""
+  oauth2_auth_url = ""
+  oauth2_token_url = ""
+  oauth2_redirect_port = 0
+
+[screener]
+  screened_in = "/home/dox/.config/neomd/lists/screened_in.txt"
+  screened_out = "/home/dox/.config/neomd/lists/screened_out.txt"
+  feed = "/home/dox/.config/neomd/lists/feed.txt"
+  papertrail = "/home/dox/.config/neomd/lists/papertrail.txt"
+  spam = "/home/dox/.config/neomd/lists/spam.txt"
+  notify = "/home/dox/.config/neomd/lists/notify.txt"
+
+[folders]
+inbox        = "INBOX"
+sent         = "[Gmail]/Sent Mail"
+trash        = "[Gmail]/Trash"
+drafts       = "[Gmail]/Drafts"
+to_screen    = "ToScreen"
+feed         = "Feed"
+papertrail   = "PaperTrail"
+screened_out = "ScreenedOut"
+archive      = "Archive Neomd"
+waiting      = "Waiting"
+scheduled    = "Scheduled Neomd"
+someday      = "Someday"
+spam         = "[Gmail]/Spam"
+tab_order    = ["inbox", "to_screen", "feed", "papertrail",
+"waiting", "someday", "scheduled", "sent", "archive",
+"screened_out", "trash"]
+
+[ui]
+  theme = "gruvbox"
+  inbox_count = 500
+  signature = "*sent from [neomd](https://neomd.ssp.sh)*"
+  bg_sync_interval = 5
+  bulk_progress_threshold = 0
+  draft_backup_count = 0
+  mark_as_read_after_secs = 7
+  [ui.signature_block]
+    text = ""
+    html = ""
+
+[notifications]
+  enabled = true
+  command = "notify-send"
+  icon = "mail-message-new"
+  expire_ms = 5000
+  folders = ["Inbox"]
+
+[ai]
+  command = "opencode"
+  args = ["edit {file}: {prompt}"]
+
+[theme]
+  bg = ""
+  border = ""
+  subtle = ""
+  selected = ""
+  text = ""
+  muted = ""
+  primary = ""
+  unread = ""
+  number = ""
+  date = ""
+  author_read = ""
+  subject_read = ""
+  size_col = ""
+  author_unread = ""
+  subject_unread = ""
+  error = ""
+  success = ""
+
+[calendar]
+  open_command = ""
+
+[listmonk]
+  url = ""
+  api_user = ""
+  api_token = ""
+  delay_minutes = 0

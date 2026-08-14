@@ -1,0 +1,19 @@
+#!/bin/bash
+# Toggle wshowkeys on/off
+
+PIDFILE="${XDG_RUNTIME_DIR:-/tmp}/wshowkeys.pid"
+
+if [ -f "$PIDFILE" ]; then
+    OLD_PID=$(cat "$PIDFILE")
+    if kill -0 "$OLD_PID" 2>/dev/null; then
+        kill "$OLD_PID" 2>/dev/null
+        rm -f "$PIDFILE"
+        notify-send "wshowkeys" "stopped" -t 800
+        exit 0
+    fi
+    rm -f "$PIDFILE"
+fi
+
+wshowkeys -a bottom &
+echo $! > "$PIDFILE"
+notify-send "wshowkeys" "started" -t 800

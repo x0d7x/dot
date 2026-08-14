@@ -1,7 +1,27 @@
-.opencode
+opencode/
+.opencode/
 shaders
 .DS_Store
 .config/ghostty/ghostty-shader-playground/
-.config/tmux/plugins/
+plugins/
 .config/nix/
 
+*.log
+
+
+# Session state files
+.config/herdr/sessions/
+.config/herdr/session.json
+
+# Pi agent session logs
+.config/pi/agent/sessions/
+
+# Jujutsu binary metadata
+*.binpb
+
+# Large preview images from third-party themes
+.config/yazi/flavors/*/preview.png
+.config/noctalia/plugins/*/preview.png
+
+# Zsh completion dump
+.config/zsh/.zcompdump

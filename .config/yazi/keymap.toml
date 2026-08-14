@@ -3,6 +3,30 @@ on = ["g", "b"]
 run = "cd ~/Developer"
 desc = "Cd to ~/Developer"
 [[mgr.prepend_keymap]]
+on = ["g", "r"]
+run = "cd /"
+desc = "Cd to root /"
+
+[[mgr.prepend_keymap]]
+on = ["c", "i"]
+run = '''
+shell -- sh -c '
+for f; do
+	mime=$(file --mime-type -b "$f")
+	case "$mime" in
+		image/png|image/jpeg|image/gif|image/webp|image/bmp|image/tiff)
+			wl-copy -t "$mime" < "$f"
+			;;
+		*)
+			echo "skip $f (not an image)" >&2
+			;;
+	esac
+done
+' _ %s
+'''
+desc = "Copy selected images to clipboard"
+
+[[mgr.prepend_keymap]]
 on = ["g", "w"]
 run = "cd ~/Documents"
 desc = "Cd to ~/Developer"
@@ -11,3 +35,16 @@ on = "<C-p>"
 run = '''
   shell 'qlmanage -p "$@"'
 '''
+# [[mgr.prepend_keymap]]
+# on = ["c", "b"]
+# run = '''
+# shell '
+# for f in "$@"; do
+# mime=$(file --mime-type -b "$f")
+# case "$mime" in
+# image/*|video/*) wl-copy -t "$mime" < "$f" ;;
+# esac
+# done
+# ' --confirm
+# '''
+# desc = "Copy file data to clipboard"

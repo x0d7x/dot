@@ -64,10 +64,38 @@ local function dismiss_intro()
 	end
 	intro_buf = nil
 
-	api.nvim_win_set_option(win, "colorcolumn", "100")
-	api.nvim_win_set_option(win, "relativenumber", true)
-	api.nvim_win_set_option(win, "number", true)
-	api.nvim_win_set_option(win, "list", true)
+	api.nvim_set_option_value("colorcolumn", "100", { win = win })
+	api.nvim_set_option_value("relativenumber", true, { win = win })
+	api.nvim_set_option_value("number", true, { win = win })
+	api.nvim_set_option_value("list", true, { win = win })
+end
+
+local function get_pack_plugin_count()
+	local lock_path = vim.fn.stdpath("config") .. "/nvim-pack-lock.json"
+	local fd = vim.loop.fs_open(lock_path, "r", 438)
+	if not fd then
+		return nil
+	end
+	local stat = vim.loop.fs_fstat(fd)
+	if not stat or stat.size == 0 then
+		vim.loop.fs_close(fd)
+		return nil
+	end
+	local data = vim.loop.fs_read(fd, stat.size, 0)
+	vim.loop.fs_close(fd)
+	if not data or data == "" then
+		return nil
+	end
+	local ok, decoded = pcall(vim.json.decode, data)
+	if not ok or type(decoded) ~= "table" then
+		return nil
+	end
+	local plugins = decoded.plugins or {}
+	local count = 0
+	for _ in pairs(plugins) do
+		count = count + 1
+	end
+	return count
 end
 
 local function get_stats()
@@ -75,22 +103,17 @@ local function get_stats()
 		return cached_stats
 	end
 
-	local ok, lazy = pcall(require, "lazy")
-	if not ok then
+	local count = get_pack_plugin_count()
+	if not count or count == 0 then
 		return "⚡ Loading..."
 	end
 
-	local stats = lazy.stats()
-	if not stats or stats.loaded == 0 then
-		return "⚡ Loading..."
+	local startup_ms = math.floor((vim.loop.hrtime() - start_time) / 1000000)
+	if startup_ms < 0 then
+		startup_ms = 0
 	end
 
-	local startup_ms = stats.startuptime
-	if not startup_ms or startup_ms == 0 then
-		startup_ms = math.floor((vim.loop.hrtime() - start_time) / 1000000)
-	end
-
-	cached_stats = "⚡ " .. stats.loaded .. " plugins in " .. math.floor(startup_ms) .. "ms"
+	cached_stats = "⚡ " .. count .. " plugins in " .. startup_ms .. "ms"
 	return cached_stats
 end
 
@@ -99,8 +122,8 @@ local function set_ascii_bg()
 		return
 	end
 
-	local height = api.nvim_get_option("lines")
-	local width = api.nvim_get_option("columns")
+	local height = vim.o.lines
+	local width = vim.o.columns
 
 	local ascii = {
 		[[_,    _   _    ,_]],
@@ -173,20 +196,23 @@ local function set_ascii_bg()
 	api.nvim_buf_set_lines(buf, 0, -1, false, ascii)
 	vim.cmd("redraw")
 
-	api.nvim_buf_set_option(buf, "modified", false)
-	api.nvim_buf_set_option(buf, "buflisted", false)
-	api.nvim_buf_set_option(buf, "bufhidden", "wipe")
-	api.nvim_buf_set_option(buf, "buftype", "nofile")
-	api.nvim_buf_set_option(buf, "swapfile", false)
-	api.nvim_win_set_option(win, "colorcolumn", "")
-	api.nvim_win_set_option(win, "relativenumber", false)
-	api.nvim_win_set_option(win, "number", false)
-	api.nvim_win_set_option(win, "list", false)
+	api.nvim_set_option_value("modified", false, { buf = buf })
+	api.nvim_set_option_value("buflisted", false, { buf = buf })
+	api.nvim_set_option_value("bufhidden", "wipe", { buf = buf })
+	api.nvim_set_option_value("buftype", "nofile", { buf = buf })
+	api.nvim_set_option_value("swapfile", false, { buf = buf })
+	api.nvim_set_option_value("colorcolumn", "", { win = win })
+	api.nvim_set_option_value("relativenumber", false, { win = win })
+	api.nvim_set_option_value("number", false, { win = win })
+	api.nvim_set_option_value("list", false, { win = win })
 
 	vim.keymap.set("n", "f", function()
 		require("fff").find_files({
 			layout = {
 				fullscreen = false,
+			},
+			preview = {
+				enabled = false,
 			},
 		})
 	end, { buffer = buf })
@@ -200,8 +226,7 @@ local function set_ascii_bg()
 	end, { buffer = buf })
 
 	vim.keymap.set("n", "r", function()
-		dismiss_intro()
-		Snacks.picker.oldfiles()
+		Snacks.picker.recent()
 	end, { buffer = buf })
 
 	vim.keymap.set("n", "c", function()
@@ -211,7 +236,7 @@ local function set_ascii_bg()
 
 	vim.keymap.set("n", "o", function()
 		dismiss_intro()
-		require("persistence").load({ last = true })
+		require("persistence").load()
 	end, { buffer = buf })
 
 	vim.keymap.set("n", "h", function()
@@ -275,9 +300,9 @@ vim.api.nvim_create_autocmd("VimEnter", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("User", {
-	pattern = "LazyDone",
+vim.api.nvim_create_autocmd("PackChanged", {
 	callback = function()
+		cached_stats = nil
 		if intro_active then
 			vim.defer_fn(function()
 				if intro_active then

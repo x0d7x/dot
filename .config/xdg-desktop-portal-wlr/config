@@ -1,0 +1,5 @@
+[screencast]
+chooser_type=dmenu
+chooser_cmd=noctalia dmenu -p "Select screen"
+max_fps=60
+force_mod_linear=true

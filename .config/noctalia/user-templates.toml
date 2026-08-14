@@ -1,0 +1,3 @@
+# User-defined templates
+# Colors are generated via hook in config.toml (colors_changed)
+# This file is kept empty - see hooks/generate-rmpc-theme.sh

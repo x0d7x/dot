@@ -1,0 +1,65 @@
+{
+  // ── Permission Gate v2 configuration ─────────────────────────────────
+  // States: "allow" (no prompt) | "ask" (prompt) | "deny" (block)
+  // Within each map the LAST matching rule wins — put broad catch-alls first,
+  // specific overrides after (e.g. **/.env.example allow after **/.env.* deny).
+  //
+  // Pattern syntax:
+  //   *   any chars except "/"
+  //   **  any chars including "/"  (so **/.env matches .env at any depth)
+  //   ~   expands to your home dir
+  //   Bash patterns match across "/" and spaces (git * matches "git status -s")
+  //
+  // Built-in safety floor (cannot be lowered, deny still wins):
+  //   rm -rf / chmod|chown 777 / dd if= / shutdown|reboot / mv → /dev/null /
+  //   writing to /dev/sdX always prompt.
+  //
+  // Commands: /perm  /perm read|strict|reload|approvals|clear
+  // ─────────────────────────────────────────────────────────────────────
+
+  "permission": {
+    "tools": {
+      "*": "allow",
+      "edit": "ask",
+      "write": "ask"
+      // "read": "ask"        // or toggle at runtime with /perm read
+    },
+
+    "path": {
+      "*": "allow",
+      "**/.env": "deny",
+      "**/.env.*": "deny",
+      "**/.env.example": "allow",
+      "**/.git-credentials": "deny",
+      "**/.ssh/**": "deny",
+      "**/id_rsa": "deny",
+      "**/id_ed25519": "deny",
+      "**/*.pem": "deny",
+      "**/*.key": "deny"
+    },
+
+    "external_directory": {
+      "*": "ask",
+      "~/.cargo/**": "allow",
+      "~/.npm/**": "allow",
+      "~/.cache/**": "allow"
+    },
+
+    "bash": {
+      "*": "allow",
+      "git *": "allow",
+      "rm -rf *": "deny",
+      "rm -fr *": "deny",
+      "rm -r *": "ask",
+      "sudo *": "ask",
+      "chmod * 777*": "ask",
+      "dd *if=*": "ask",
+      "shutdown *": "ask",
+      "reboot *": "ask",
+      "mv * /dev/null": "ask"
+    }
+  },
+
+  "strictMode": true,
+  "confirmRead": false
+}

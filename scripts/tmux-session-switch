@@ -1,29 +1,82 @@
-#!/bin/bash
-# Get a list of tmux sessions, and allow switching to one of them.
+#!/usr/bin/env bash
 
-# Get the list of sessions.
-SESSIONS=$(tmux list-sessions -F '#S (#{session_windows} windows, #{session_panes} panes)')
+SEARCH_DIRS=(
+  "$HOME"
+  "$HOME/Developer"
+  "$HOME/repo"
+  "$HOME/dot"
+  "$HOME/.config"
+)
 
-# If there are no sessions, we can exit.
-if [ -z "$SESSIONS" ]; then
-  exit 0
+if [[ $# -eq 1 ]]; then
+  selected="$1"
+  selected_name="$(basename "$selected" | tr ' ./:' '_')"
+else
+  selected=""
+  selected_name=""
+  while :; do
+    # Existing tmux sessions, space-joined for the awk lookup below.
+    sessions="$(tmux list-sessions -F '#{session_name}' 2>/dev/null | tr '\n' ' ')"
+
+    out="$(
+      fd -H -t d -d 2 -E '{.cache,.bun,.cargo}' --absolute-path . "${SEARCH_DIRS[@]}" |
+        sed "s|^$HOME/||; s|/*$||" |
+        LC_ALL=C sort -u |
+        # One pass: count basename duplicates, derive session names (unique
+        # folders keep their basename; duplicates get a per-path slug such as
+        # A/foo -> A_foo), and tag each row [switch]/[new].
+        awk -v s="$sessions" -F/ '
+          { cnt[$NF]++; rels[NR] = $0 }
+          END {
+            for (i = 1; i <= NR; i++) {
+              rel = rels[i]
+              base = rel
+              sub(/^.*\//, "", base)
+              if (cnt[base] > 1) { name = rel; gsub(/[ ./:]/, "_", name) }
+              else               { name = base; gsub(/[ ./:]/, "_", name) }
+              tag = index(" " s " ", " " name " ") ? "[switch]" : "[new]"
+              print tag "\t" name "\t" rels[i]
+            }
+          }
+        ' |
+        LC_ALL=C sort -t$'\t' -k1,1r -k3,3 |
+        fzf --margin=2% --color --border --cycle --prompt="📁 search> " \
+            --delimiter=$'\t' --with-nth=1,3 --tiebreak=index \
+            --header='enter: switch/create · ctrl-x: kill session · esc: cancel' --header-first \
+            --expect=ctrl-x
+    )"
+
+    [[ -z "$out" ]] && exit 0
+
+    first="${out%%$'\n'*}"
+    if [[ "$first" == "ctrl-x" ]]; then
+      # Ctrl-X: kill the session under the cursor, then refresh the picker
+      selection="${out#*$'\n'}"
+      tag="${selection%%$'\t'*}"
+      if [[ "$tag" == "[switch]" ]]; then
+        rest="${selection#*$'\t'}"
+        name="${rest%%$'\t'*}"
+        tmux kill-session -t "$name" 2>/dev/null || true
+      fi
+      continue
+    fi
+
+    # Normal selection: <tag> <name> <rel>
+    rest="${out#*$'\t'}"
+    selected_name="${rest%%$'\t'*}"
+    rel="${rest#*$'\t'}"
+    selected="$HOME/$rel"
+    break
+  done
 fi
 
-# Use fzf to select a session.
-SELECTED_SESSION=$(echo "$SESSIONS" | fzf --reverse \
-  --prompt="-> " \
-  --header="═══ Session Switcher ═══ | Ctrl-R: refresh | Ctrl-D: delete | Ctrl-N: new-session" \
-  --header-first \
-  --color="header:italic" \
-  --bind="ctrl-r:reload(tmux list-sessions -F \"#{session_name}|#{session_windows}|#{?session_attached,attached,detached}\" | grep -v \"^\$(tmux display-message -p \"#S\")|\" | awk -F\"|\" \"{status = (\\\$3 == \\\"attached\\\") ? \\\"\\\" : \\\"\\\"; printf \\\"%-20s %s %2s windows %s\\\\n\\\", \\\$1, status, \\\$2, \\\"\\\"}\")" \
-  --bind="ctrl-d:execute(tmux kill-session -t {1})+reload(tmux list-sessions -F \"#{session_name}|#{session_windows}|#{?session_attached,attached,detached}\" | grep -v \"^\$(tmux display-message -p \"#S\")|\" | awk -F\"|\" \"{status = (\\\$3 == \\\"attached\\\") ? \\\"\\\" : \\\"\\\"; printf \\\"%-20s %s %2s windows %s\\\\n\\\", \\\$1, status, \\\$2, \\\"\\\"}\")" \
-  --info=inline \
-  --layout=reverse |
-  awk "{print \$1}" |
-  xargs -r tmux switch-client -t)
+[[ -z "$selected" ]] && exit 0
 
-# If the user selected a session, switch to it.
-if [ -n "$SELECTED_SESSION" ]; then
-  SESSION_NAME=$(echo "$SELECTED_SESSION" | awk '{print $1}')
-  tmux switch-client -t "$SESSION_NAME"
+if [[ -z "${TMUX:-}" ]]; then
+  tmux new-session -A -s "$selected_name" -c "$selected"
+else
+  if ! tmux has-session -t "$selected_name" 2>/dev/null; then
+    tmux new-session -d -s "$selected_name" -c "$selected"
+  fi
+  tmux switch-client -t "$selected_name"
 fi

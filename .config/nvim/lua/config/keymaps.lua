@@ -4,13 +4,26 @@ map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true
 map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
-map("n", "<leader>u", "<cmd>Undotree<cr>", { desc = "Undotree" })
+map("n", "<leader>tu", "<cmd>Undotree<cr>", { desc = "Undotree" })
+map("n", "<C-d>", "<C-d>zz") -- Scroll down and center the cursor
+map("n", "<C-u>", "<C-u>zz") -- Scroll up and center the cursor
+-- Goto
+map("n", "gl", "$", { desc = "Go to end of line" })
+map("n", "gh", "^", { desc = "Go to start of line" })
 -- splits
 map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
 map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
 map("n", "<leader>cw", ":write<CR>", { desc = "write to file" })
 map("n", "<leader>co", ":update<CR> :source<CR>", { desc = "update the file and source it" })
+-- Terminal in splits
+map("n", "<leader>th", "<cmd>belowright 10split | terminal<CR>", { desc = "Terminal (Horizontal Split)" })
+map("n", "<leader>tv", "<cmd>80vsplit | terminal<CR>", { desc = "Terminal (Vertical Split)" })
+-- Floating terminal (native)
+map("n", "<leader>tf", function()
+	require("custom.terminal").toggle()
+end, { desc = "Floating Terminal" })
+map("t", "jk", "<C-\\><C-n>", { desc = "Exit Terminal Mode" })
 -- Clear search highlight when pressing <Esc>
 map({ "i", "n", "s" }, "<esc>", function()
 	vim.cmd("noh")
@@ -24,11 +37,8 @@ map("v", "<", "<gv")
 map("v", ">", ">gv")
 map("n", "<leader>nr", ":restart<CR>", { desc = "restart  nvim" })
 map("i", "jk", "<Esc>", { noremap = false })
-map("n", "<leader>L", ":Lazy<CR>", { desc = "Lazy" })
-map("n", "<leader>bs", function()
-	require("snipe").open_buffer_menu()
-end, { desc = "Open Snipe buffer menu" })
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
+map("n", "<leader>pu", "<cmd>lua vim.pack.update()<cr>", { desc = "Update Plugins" })
 -- tmux navigate
 map("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>")
 map("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>")
@@ -39,23 +49,26 @@ map("n", "<leader>cv", function()
 	vim.diagnostic.config({ virtual_lines = new_config })
 end, { desc = "Toggle diagnostic virtual_lines" })
 -- snapcode
-map("x", "<leader>cp", "<cmd>CodeSnap<cr>", { desc = "Save selected code snapshot into clipboard" })
-map("x", "<leader>cP", "<cmd>CodeSnapASCII<cr>", { desc = "make ascii snapshot" })
 map("n", "<leader>uD", "<cmd>Twilight<cr>", { desc = "toggle diming" })
 -- buffer
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
-map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+-- map("n", "bp", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 map("n", "<leader>bd", function()
 	Snacks.bufdelete()
 end, { desc = "Delete Buffer" })
 map("n", "<leader>bo", function()
 	Snacks.bufdelete.other()
 end, { desc = "Delete Other Buffers" })
-map("n", "<leader>cp", "<cmd>CccPick<cr>", { desc = "Code color Picker" })
+map("n", "<leader>cp", function()
+	vim.cmd("CccPick")
+end, { desc = "Code color Picker" })
 map("n", "<leader>,", function()
 	require("bafa").toggle()
 end, { desc = "Buffers" })
-
+map("n", "<leader>R", function()
+	require("persistence").save()
+	vim.cmd("restart source " .. vim.fn.fnameescape(require("persistence").current()))
+end, { desc = "Restart Neovim" })
 ------------------- Snacks -------------------------
 -- map("n", "<leader>,", function()
 -- 	Snacks.picker.buffers()
@@ -147,28 +160,22 @@ end, { desc = "Git Log" })
 map("n", "<leader>gL", function()
 	Snacks.picker.git_log_line()
 end, { desc = "Git Log Line" })
-map("n", "<leader>gdv", function()
-	if next(require("diffview.lib").views) == nil then
-		vim.cmd("DiffviewFileHistory")
-	else
-		vim.cmd("DiffviewClose")
-	end
-end, { desc = "Toggle Diffview window" })
+map("n", "<leader>gd", "<cmd>Zdiff<cr>", { desc = "Zdiff (uncommitted)" })
 map("n", "<leader>gs", function()
 	Snacks.picker.git_status()
 end, { desc = "Git Status" })
 map("n", "<leader>gS", function()
 	Snacks.picker.git_stash()
 end, { desc = "Git Stash" })
-map("n", "<leader>gdh", function()
-	Snacks.picker.git_diff()
-end, { desc = "Git Diff (Hunks)" })
+map("n", "<leader>gF", "<cmd>Gitsigns toggle_current_line_blame<cr>", { desc = "Gitsigns Toggle Current Line Blame" })
 map("n", "<leader>gf", function()
 	Snacks.picker.git_log_file()
 end, { desc = "Git Log File" })
 map("n", "<leader>gB", "<cmd>Gitsigns blame<cr>", { desc = "preview_blame" })
 map("n", "<leader>gh", "<cmd>Gitsigns preview_hunk<cr>", { desc = "preview_hunk" })
-map("n", "<leader>gg", "<cmd>Neogit<cr>", { desc = "Neogit" })
+map("n", "<leader>gg", function()
+	require("neogit").open({ kind = "vsplit" })
+end, { desc = "Open Neogit UI" })
 -- files
 map("n", "<leader><space>", function()
 	require("fff").live_grep({ grep = { modes = { "fuzzy", "plain" } } })
@@ -177,7 +184,7 @@ map("n", "<leader>fc", function()
 	Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
 end, { desc = "Find Config File" })
 map("n", "<leader>ff", function()
-	require("fff").find_files()
+	require("fff").find_files({ preview = { enabled = false } })
 end, { desc = "Find Files" })
 map("n", "<leader>fg", function()
 	Snacks.picker.git_files()
@@ -247,3 +254,46 @@ map(
 )
 map("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location List (Trouble)" })
 map("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix List (Trouble)" })
+-- Copy file path / selection reference for pasting into AI chats
+local function copy_ref(opts)
+	-- "%" is the current buffer's file name; ":." makes it relative to the cwd
+	local path = vim.fn.expand("%:.")
+	-- ref is what ends up in the clipboard; start with just the path
+	local ref = path
+
+	if opts.visual then
+		-- '< and '> are only set after leaving visual mode, so read the live selection:
+		-- "v" is the line where visual mode was started (the anchor)
+		local start_line = vim.fn.line("v")
+		-- "." is the line the cursor is on now (the moving end of the selection)
+		local end_line = vim.fn.line(".")
+		-- if the selection was made upward, swap so start is always the smaller line
+		if start_line > end_line then
+			start_line, end_line = end_line, start_line
+		end
+		-- append the range, e.g. "lua/config/keymaps.lua:1:23"
+		ref = path .. ":" .. start_line .. ":" .. end_line
+	end
+
+	-- ask for an optional free-text note on the command line (Enter to skip)
+	local note = vim.fn.input("Prompt (optional): ")
+	if note ~= "" then
+		-- append the note after the ref, separated by a space
+		ref = ref .. " " .. note
+	end
+
+	-- write ref into the "+" register, which is the system clipboard
+	vim.fn.setreg("+", ref)
+	-- show a confirmation message with what was copied
+	vim.notify("Copied: " .. ref)
+end
+
+-- normal mode: copy just the file path
+vim.keymap.set("n", "<leader>ca", function()
+	copy_ref({})
+end, { desc = "Copy file path" })
+
+-- visual mode: copy the file path plus the selected line range
+vim.keymap.set("v", "<leader>ca", function()
+	copy_ref({ visual = true })
+end, { desc = "Copy file path with line range" })

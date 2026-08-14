@@ -1,0 +1,552 @@
+{
+  "plugin": {
+    "name": "music-search"
+  },
+  "command": {
+    "description": "Rechercher avec music-search ({provider}), lire l'audio et enregistrer les favoris."
+  },
+  "common": {
+    "untitled": "Sans titre",
+    "customUrl": "URL personnalisée",
+    "downloadedTrack": "Piste téléchargée",
+    "queuedUrl": "URL en file d'attente",
+    "music": "music-search",
+    "onePlay": "1 lecture",
+    "plays": "{count} lectures"
+  },
+  "providers": {
+    "youtube": "YouTube",
+    "soundcloud": "SoundCloud",
+    "local": "Local"
+  },
+  "sort": {
+    "savedDate": "Date d'enregistrement",
+    "date": "Date",
+    "title": "Titre",
+    "duration": "Durée",
+    "rating": "Note"
+  },
+  "status": {
+    "starting": "Démarrage de la lecture",
+    "nowPlaying": "En cours de lecture",
+    "ready": "music-search prêt",
+    "backgroundPlayback": "Lecture mpv en arrière-plan",
+    "searchPrompt": "Recherchez {provider}, collez une URL ou ouvrez une piste enregistrée.",
+    "startingProviderPlayback": "Démarrage de la lecture {provider}...",
+    "connectingYoutube": "Connexion à YouTube...",
+    "connectingSoundcloud": "Connexion à SoundCloud...",
+    "openingLocal": "Ouverture de la piste locale...",
+    "startingPlayback": "Démarrage de la lecture..."
+  },
+  "notices": {
+    "libraryUpdated": "Bibliothèque mise à jour.",
+    "playlistsUpdated": "Listes de lecture mises à jour.",
+    "savedMp3": "MP3 enregistré localement.",
+    "savedMp3To": "MP3 enregistré dans {path}",
+    "addedToQueue": "Ajouté à la file d'attente.",
+    "folderImported": "Dossier importé comme liste de lecture.",
+    "importingFolder": "Importation du dossier comme liste de lecture...",
+    "syncingFolder": "Synchronisation du dossier de la liste de lecture...",
+    "savingMp3": "Enregistrement de la piste actuelle en MP3...",
+    "downloadFolderUpdated": "Dossier de téléchargement mis à jour.",
+    "cacheLimitUpdated": "Limite de cache MP3 mise à jour.",
+    "playlistEmpty": "La liste de lecture est vide.",
+    "switchedTo": "Passé à {provider}.",
+    "ytClientSet": "Client du lecteur YouTube réglé sur {client}.",
+    "sortSet": "Tri par défaut réglé sur {sort}.",
+    "addedPlaylistToQueue": "Liste de lecture \"{name}\" ajoutée à la file d'attente.",
+    "addedShuffledPlaylistToQueue": "Liste de lecture mélangée \"{name}\" ajoutée à la file d'attente.",
+    "playingPlaylist": "Lecture de la liste de lecture \"{name}\".",
+    "playingShuffledPlaylist": "Lecture de la liste de lecture mélangée \"{name}\"."
+  },
+  "errors": {
+    "playbackFailed": "La commande de lecture music-search a échoué.",
+    "libraryFailed": "La commande de bibliothèque music-search a échoué.",
+    "mp3SaveFailed": "Impossible d'enregistrer le MP3 localement.",
+    "queueFailed": "Impossible d'ajouter la piste à la file d'attente.",
+    "queuePlaylistTrackFailed": "Impossible d'ajouter la piste de la liste de lecture à la file d'attente.",
+    "queueActionFailed": "Impossible de {action} la file d'attente.",
+    "folderImportFailed": "Impossible d'importer le dossier comme liste de lecture.",
+    "seekMalformed": "La réponse de recherche était malformée.",
+    "seekFailed": "Impossible de rechercher dans la lecture.",
+    "speedFailed": "Impossible de changer la vitesse de lecture.",
+    "searchMalformed": "Les résultats de recherche étaient malformés.",
+    "lastError": "Dernière erreur : {error}"
+  },
+  "search": {
+    "searching": "Recherche sur {provider}",
+    "failed": "La recherche a échoué",
+    "failedDefault": "yt-dlp n'a pas pu résoudre les résultats.",
+    "title": "Rechercher avec music-search",
+    "hint": "Essayez `>music-search burial`, `yt: burial`, `sc: artist`, `local: song`, `queue`, `#night`, `artist:name`, `rating:>=4`, `provider:local`, `playlist:name`, `speed:1.05`, ou collez une URL.",
+    "noResults": "Aucun résultat enregistré ou de recherche pour \"{query}\".",
+    "typeMore": "Tapez au moins 2 caractères pour rechercher sur {provider}."
+  },
+  "library": {
+    "label": "Bibliothèque",
+    "empty": "La bibliothèque est vide",
+    "emptyDesc": "Enregistrez les résultats de recherche et ils apparaîtront ici la prochaine fois.",
+    "saved": "Enregistré",
+    "playlistOnly": "Liste de lecture uniquement",
+    "savedTracks": "Pistes enregistrées",
+    "libraryEmpty": "Votre bibliothèque est vide.",
+    "savedEmpty": "votre bibliothèque enregistrée est vide.",
+    "noMatches": "Aucune piste enregistrée ne correspond à \"{query}\".",
+    "noFilterMatches": "Aucune piste enregistrée ne correspond à vos filtres.",
+    "noTagged": "Aucune piste marquée \"{tag}\".",
+    "oneTrack": "1 piste enregistrée",
+    "trackCount": "{count} pistes enregistrées"
+  },
+  "home": {
+    "recentlyPlayed": "Écoutés récemment",
+    "recentlyPlayedDesc": "Vos dernières écoutes enregistrées.",
+    "mostPlayed": "Les plus écoutés",
+    "mostPlayedDesc": "Les pistes que vous écoutez le plus.",
+    "tags": "Tags",
+    "tagsDesc": "Parcourez votre bibliothèque par ambiance et thème.",
+    "artists": "Artistes",
+    "artistsDesc": "Naviguez dans votre bibliothèque enregistrée par auteur.",
+    "playlists": "Listes de lecture",
+    "playlistsDesc": "Lancez rapidement vos listes enregistrées.",
+    "recent": "Récent",
+    "recentWithTime": "Récent • {time}",
+    "top": "Top",
+    "topWithPlays": "Top • {plays}",
+    "artist": "Artiste",
+    "artistWithTime": "Artiste • {time}"
+  },
+  "queue": {
+    "title": "File d'attente",
+    "nextUp": "À suivre",
+    "queued": "En file d'attente",
+    "active": "La file d'attente est active et attend la fin de la piste actuelle.",
+    "idle": "La file d'attente est inactive.",
+    "start": "Démarrer la file d'attente",
+    "startNow": "Commencer la lecture de la file d'attente maintenant.",
+    "startArm": "Armer la file d'attente ou démarrer la première piste de la file.",
+    "stop": "Arrêter la file d'attente",
+    "stopPause": "Mettre en pause le mode file d'attente sans vider la liste.",
+    "stopKeep": "Désactiver l'avance automatique et conserver les pistes en file d'attente.",
+    "skip": "Passer au suivant",
+    "skipNow": "Démarrer la piste suivante de la file maintenant.",
+    "skipJump": "Sauter à la piste suivante de la file d'attente.",
+    "clear": "Vider la file d'attente",
+    "clearRemove": "Supprimer toutes les pistes de la file d'attente.",
+    "clearEmpty": "Vider la liste de la file d'attente.",
+    "autoplaySaved": "Lecture auto des pistes enregistrées",
+    "autoplaySavedDesc": "Charger la bibliothèque enregistrée dans la file d'attente et lancer la lecture.",
+    "autoplaySavedActiveDesc": "Transformer votre bibliothèque musicale enregistrée en file d'attente active.",
+    "autoplaySavedShuffle": "Lecture auto des pistes enregistrées (aléatoire)",
+    "autoplaySavedShuffleDesc": "Mélanger la bibliothèque enregistrée dans la file d'attente et lancer la lecture.",
+    "autoplaySavedShuffleActiveDesc": "Mélanger votre bibliothèque musicale enregistrée dans la file d'attente active.",
+    "empty": "La file d'attente est vide",
+    "emptyDesc": "Utilisez les actions d'enregistrement, les listes de lecture ou les actions en ligne pour ajouter des pistes.",
+    "removed": "Piste retirée de la file d'attente.",
+    "cleared": "File d'attente vidée.",
+    "playingSaved": "Lecture des pistes enregistrées.",
+    "playingShuffledSaved": "Lecture aléatoire des pistes enregistrées.",
+    "savedEmpty": "La bibliothèque enregistrée est vide.",
+    "loaded": "File d'attente chargée.",
+    "loadedEmpty": "La file d'attente est vide.",
+    "armed": "File d'attente armée. Elle démarrera après la fin de la chanson actuelle.",
+    "stopped": "File d'attente arrêtée.",
+    "noNext": "Pas de piste suivante en file d'attente.",
+    "loadingSaved": "Chargement des pistes enregistrées dans la file d'attente...",
+    "loadingShuffledSaved": "Chargement des pistes enregistrées dans la file d'attente mélangée...",
+    "nowPlaying": "Lecture en file d'attente : {title}",
+    "errorExhausted": "La file d'attente s'est épuisée après une erreur de lecture.",
+    "finished": "File d'attente terminée."
+  },
+  "speed": {
+    "title": "Vitesse de lecture",
+    "setTo": "Régler la vitesse à {speed}",
+    "desc": "Ajuster la vitesse de lecture actuelle.",
+    "current": "Actuelle : {speed}",
+    "multiplier": "{speed}x",
+    "noPlayback": "Démarrez d'abord la lecture, puis utilisez `speed:1.05` ou les boutons de prévisualisation.",
+    "useNumber": "Utilisez un nombre comme `speed:1.05`."
+  },
+  "import": {
+    "title": "Importer un dossier comme liste de lecture",
+    "desc": "Utilisez `import: /chemin/vers/dossier` pour transformer l'audio local en liste de lecture.",
+    "createPlaylist": "Créer la liste de lecture \"{name}\" à partir de {path}",
+    "hint": "Tapez `import: /chemin/vers/dossier` pour importer des fichiers audio locaux comme liste de lecture."
+  },
+  "tags": {
+    "manage": "Gérer les tags",
+    "noTags": "Pas encore de tags",
+    "oneTag": "1 tag",
+    "tagCount": "{count} tags",
+    "headerDescription": "{title} • {count}",
+    "editor": "Éditeur de tags",
+    "chooseTrack": "Choisissez d'abord une piste enregistrée, puis utilisez l'action tag pour éditer ses tags.",
+    "add": "Ajouter #{tag}",
+    "remove": "Supprimer #{tag}",
+    "applyTo": "Appliquer à {title}",
+    "removeFrom": "Retirer de {title}",
+    "noMatch": "Aucun tag ne correspond à \"{query}\" pour l'instant. Sélectionnez l'action d'ajout pour le créer.",
+    "hint": "Tapez après `tag:` pour ajouter un nouveau tag, ou sélectionnez un tag existant pour le supprimer."
+  },
+  "metadata": {
+    "titleField": "Titre",
+    "artistField": "Artiste",
+    "albumField": "Album",
+    "label": "Métadonnées",
+    "edit": "Modifier les métadonnées",
+    "chooseTrack": "Choisissez d'abord une piste de la bibliothèque, puis utilisez l'action de modification pour mettre à jour le titre, l'artiste ou l'album.",
+    "fieldEditor": "Éditeur de {field}",
+    "headerDescription": "{title} • {value}",
+    "currentlyEmpty": "actuellement vide",
+    "editField": "Modifier {field}",
+    "empty": "Actuellement vide",
+    "setField": "Définir {field}",
+    "clearField": "Effacer {field}",
+    "clearValue": "Effacer la valeur",
+    "chooseField": "Choisissez quel champ modifier pour \"{title}\".",
+    "albumHint": "Tapez un nouveau nom d'album, ou choisissez l'action d'effacement pour le supprimer.",
+    "typeNew": "Tapez une nouvelle valeur pour {field}."
+  },
+  "playlists": {
+    "none": "Aucune liste de lecture",
+    "createHint": "Tapez `playlist:nom` pour en créer une.",
+    "untitled": "Liste de lecture sans titre",
+    "oneTrack": "1 piste",
+    "trackCount": "{count} pistes",
+    "syncedFolder": "dossier synchronisé",
+    "syncedFolderDescription": "{count} • {source}",
+    "rename": "Renommer la liste de lecture",
+    "renameTitle": "Renommage de la liste de lecture",
+    "typeNewName": "Tapez un nouveau nom pour \"{name}\".",
+    "typeDifferent": "Tapez un nom différent pour renommer cette liste de lecture.",
+    "alreadyExists": "La liste de lecture \"{name}\" existe déjà.",
+    "renameTo": "Renommer en \"{name}\"",
+    "updateTitle": "Mettre à jour le titre de la liste de lecture.",
+    "create": "Créer la liste de lecture \"{name}\"",
+    "createAndAdd": "Créer la liste de lecture \"{name}\" et ajouter la piste",
+    "addAfterCreate": "Ajouter {title} après l'avoir créée.",
+    "createNew": "Créer une nouvelle liste de lecture.",
+    "addTo": "Ajouter à {name}",
+    "choose": "Choisir une liste de lecture",
+    "chooseFor": "Tapez un nom de liste de lecture pour en créer une pour {title}.",
+    "chooseFirst": "Choisissez d'abord une liste de lecture, puis utilisez l'action de renommage."
+  },
+  "actions": {
+    "stopMusic": "Arrêter la musique",
+    "stopTitle": "Arrêter {title}",
+    "stopDesc": "Arrêter la lecture en arrière-plan.",
+    "alreadyStopped": "music-search est déjà arrêté",
+    "nothingPlaying": "Rien n'est actuellement en cours de lecture.",
+    "searchMprisTrack": "Rechercher la piste MPRIS actuelle",
+    "mprisTrackDesc": "Rechercher \"{title}\" sur {provider}.",
+    "mprisTrackDescWithPlayer": "Rechercher \"{title}\" sur {provider} depuis {player}.",
+    "playUrl": "Lire l'URL",
+    "saveUrl": "Enregistrer l'URL dans la bibliothèque",
+    "saveUrlMp3": "Enregistrer l'URL en MP3",
+    "downloadDesc": "Télécharger dans ~/Music/Noctalia"
+  },
+  "bar_widget": {
+    "tooltipIdle": "Ouvrir le panneau musical",
+    "tooltipPlaying": "Ouvrir le panneau musical\nEn cours : {title}",
+    "settings": "Paramètres du widget"
+  },
+  "panel": {
+    "title": "Panneau musical",
+    "subtitle": "Recherchez, mettez en file d'attente et contrôlez la lecture sans ouvrir le lanceur.",
+    "openLauncher": "Lanceur",
+    "openSettings": "Paramètres",
+    "close": "Fermer",
+    "hidePreview": "Masquer l'aperçu",
+    "showPreview": "Afficher l'aperçu",
+    "search": "Recherche",
+    "library": "Enregistré",
+    "queue": "File d'attente",
+    "tracks": "Pistes",
+    "playlists": "Listes de lecture",
+    "artists": "Artistes",
+    "tags": "Tags",
+    "searchPlaceholder": "Rechercher de la musique, coller une URL ou utiliser yt:/sc:/local:",
+    "libraryPlaceholder": "Filtrer les pistes enregistrées",
+    "playlistsPlaceholder": "Filtrer les listes de lecture",
+    "artistsPlaceholder": "Filtrer les artistes",
+    "tagsPlaceholder": "Filtrer les tags",
+    "searchHint": "Recherchez sur {provider}, collez une URL ou passez aux onglets Enregistré et File d'attente.",
+    "typeMore": "Tapez au moins 2 caractères pour rechercher sur {provider}.",
+    "searching": "Recherche sur {provider}...",
+    "noSearchResults": "Aucun résultat pour \"{query}\".",
+    "playUrl": "Lire l'URL",
+    "saveUrl": "Enregistrer l'URL",
+    "queueUrl": "File d'attente URL",
+    "playSaved": "Lire enregistré",
+    "shuffleSaved": "Aléatoire enregistré",
+    "startQueue": "Démarrer file",
+    "skipQueue": "Passer",
+    "clearQueue": "Vider",
+    "pause": "Pause",
+    "resume": "Reprendre",
+    "stop": "Arrêter",
+    "speed": "Vitesse",
+    "saveCurrent": "Enregistrer piste",
+    "saveCurrentMp3": "Enregistrer MP3",
+    "refresh": "Actualiser",
+    "nowPlaying": "En cours de lecture",
+    "nothingPlaying": "Rien ne joue actuellement.",
+    "savedCount": "{count} pistes enregistrées",
+    "queueCount": "{count} pistes en file",
+    "recentTracks": "Pistes enregistrées récentes",
+    "previewTitle": "Aperçu",
+    "queued": "En file",
+    "queuedAt": "En file à {time}",
+    "emptyLibrary": "Pas encore de pistes enregistrées.",
+    "emptyQueue": "La file d'attente est vide.",
+    "savedLabel": "Enregistré",
+    "playAction": "Lire",
+    "queueAction": "File",
+    "saveAction": "Enregistrer",
+    "openAction": "Ouvrir",
+    "backAction": "Retour",
+    "shuffleAction": "Aléatoire",
+    "downloadAction": "MP3",
+    "removeAction": "Retirer",
+    "playlistCount": "{count} listes de lecture",
+    "artistCount": "{count} artistes",
+    "tagCount": "{count} tags",
+    "helperHint": "Toute la surface de commande est toujours disponible dans le lanceur via >music-search.",
+    "emptyPlaylists": "Aucune liste de lecture ne correspond à ce filtre pour le moment.",
+    "emptyArtists": "Aucun artiste enregistré ne correspond à ce filtre pour le moment.",
+    "emptyTags": "Aucun tag enregistré ne correspond à ce filtre pour le moment.",
+    "emptyScopedLibrary": "Aucune piste n'est disponible dans cette section pour le moment."
+  },
+  "tooltip": {
+    "addToQueue": "Ajouter à la file d'attente",
+    "playNow": "Lire maintenant",
+    "saveToLibrary": "Enregistrer dans la bibliothèque",
+    "saveMp3Current": "Enregistrer la piste actuelle en MP3",
+    "resume": "Reprendre",
+    "pause": "Pause",
+    "editMetadata": "Modifier les métadonnées",
+    "manageTags": "Gérer les tags",
+    "addToPlaylist": "Ajouter à la liste de lecture",
+    "addSavedToPlaylist": "Ajouter la piste enregistrée à la liste de lecture",
+    "switchProvider": "Changer de fournisseur ({provider})",
+    "sort": "Tri : {sort}",
+    "removeFromLibrary": "Retirer de la bibliothèque",
+    "saveMp3": "Enregistrer en MP3",
+    "saveFirst": "Enregistrez d'abord, puis ajoutez à une liste de lecture",
+    "saveUrlToLibrary": "Enregistrer l'URL dans la bibliothèque",
+    "rate": "Noter ({rating})",
+    "playPlaylist": "Lire la liste de lecture",
+    "shufflePlay": "Lecture aléatoire",
+    "queuePlaylist": "Mettre la liste en file d'attente",
+    "renamePlaylist": "Renommer la liste de lecture",
+    "deletePlaylist": "Supprimer la liste de lecture",
+    "syncFolder": "Synchroniser le dossier de la liste",
+    "removeFromPlaylist": "Retirer de la liste de lecture",
+    "removeFromQueue": "Retirer de la file d'attente",
+    "unrated": "non noté"
+  },
+  "artists": {
+    "noArtists": "Enregistrez des pistes avec des métadonnées d'auteur pour parcourir les artistes ici.",
+    "noMatch": "Aucun artiste enregistré ne correspond à \"{query}\"."
+  },
+  "preview": {
+    "chipSaved": "Enregistré",
+    "chipStarting": "Démarrage",
+    "length": "Longueur",
+    "album": "Album",
+    "plays": "Lectures",
+    "lastPlayed": "Dernière lecture",
+    "uploaded": "Mis en ligne",
+    "reach": "Portée",
+    "status": "Statut",
+    "lastPlaybackError": "Dernière erreur de lecture : {error}",
+    "readLess": "Lire moins",
+    "readMore": "Lire plus",
+    "loadingMetadata": "Chargement de métadonnées enrichies...",
+    "metadataParseError": "L'aperçu des métadonnées n'a pas pu être analysé.",
+    "metadataUnavailable": "Aperçu des métadonnées indisponible.",
+    "viewCount": "{count} vues",
+    "viewCountB": "{count} Md de vues",
+    "viewCountM": "{count} M de vues",
+    "viewCountK": "{count} k de vues"
+  },
+  "settings": {
+    "provider": {
+      "label": "Fournisseur global",
+      "desc": "Choisissez le fournisseur par défaut utilisé pour les recherches musicales normales lorsque vous n'utilisez pas de préfixe comme `yt:` ou `sc:`."
+    },
+    "sort": {
+      "label": "Tri par défaut",
+      "desc": "Choisissez comment les pistes enregistrées sont triées dans les vues de votre bibliothèque."
+    },
+    "ytClient": {
+      "label": "Client du lecteur YouTube",
+      "desc": "Quel client yt-dlp utiliser pour les flux YouTube. Essayez de changer si la lecture échoue ou est ralentie.",
+      "android": "Android",
+      "web": "Web",
+      "default": "Par défaut (yt-dlp décide)"
+    },
+    "downloads": {
+      "title": "Téléchargements",
+      "currentFolder": "Dossier actuel : {path}",
+      "chooseFolder": "Choisir le dossier MP3",
+      "applyFolder": "Appliquer le dossier",
+      "folderPickerTitle": "Choisir le dossier de téléchargement MP3"
+    },
+    "cache": {
+      "label": "Taille max du cache MP3",
+      "desc": "Limitez la taille du dossier de téléchargement en Mo. Les fichiers plus anciens sont purgés après les téléchargements. Réglez à 0 pour illimité.",
+      "apply": "Appliquer la limite de cache"
+    },
+    "autoSave": {
+      "label": "Enregistrer les pistes distantes en MP3 après le début de la lecture",
+      "desc": "Une fois qu'une piste YouTube ou SoundCloud a commencé à jouer avec succès, enregistrez également une copie MP3 dans le dossier de téléchargement actuel."
+    },
+    "bar": {
+      "title": "Widget de barre",
+      "hoverTitle": {
+        "label": "Afficher le titre de la piste au survol",
+        "desc": "Agrandir le widget de barre au survol pour afficher et faire défiler le titre de la piste actuelle."
+      }
+    },
+    "home": {
+      "title": "Accueil",
+      "recent": {
+        "label": "Afficher les écoutés récemment",
+        "desc": "Afficher la section des écoutes récentes sur l'accueil du lanceur."
+      },
+      "top": {
+        "label": "Afficher les plus écoutés",
+        "desc": "Afficher vos pistes les plus écoutées sur l'accueil du lanceur."
+      },
+      "tags": {
+        "label": "Afficher les Tags",
+        "desc": "Afficher les raccourcis de tags sur l'accueil du lanceur."
+      },
+      "artists": {
+        "label": "Afficher les Artistes",
+        "desc": "Afficher les raccourcis de navigation par artiste sur l'accueil du lanceur."
+      },
+      "playlists": {
+        "label": "Afficher les Listes de lecture",
+        "desc": "Afficher les raccourcis de listes de lecture sur l'accueil du lanceur."
+      }
+    },
+    "panel": {
+      "title": "Panneau",
+      "defaultTab": {
+        "label": "Onglet par défaut du panneau",
+        "desc": "Choisissez quel onglet de premier niveau s'ouvre en premier lors de l'ouverture du panneau."
+      },
+      "defaultLibrarySection": {
+        "label": "Section Enregistré par défaut",
+        "desc": "Choisissez quelle section secondaire s'ouvre en premier dans l'onglet Enregistré."
+      },
+      "density": {
+        "label": "Densité du panneau",
+        "desc": "Ajuster l'espacement et la taille des cartes dans le panneau.",
+        "compact": "Compact",
+        "balanced": "Équilibré",
+        "roomy": "Spacieux"
+      },
+      "header": {
+        "label": "Afficher l'en-tête du panneau",
+        "desc": "Afficher la ligne de titre avec les actions lanceur, paramètres et fermeture en haut du panneau."
+      },
+      "nowPlaying": {
+        "label": "Afficher le bloc En cours de lecture",
+        "desc": "Afficher les contrôles de lecture et le bloc de la piste actuelle en haut du panneau."
+      },
+      "playbackProgress": {
+        "label": "Afficher la progression de la lecture",
+        "desc": "Afficher la barre de recherche et la ligne de temps dans le bloc En cours de lecture."
+      },
+      "providerChips": {
+        "label": "Afficher les jetons de fournisseur",
+        "desc": "Afficher les raccourcis des fournisseurs YouTube, SoundCloud et Local sur l'onglet Recherche."
+      },
+      "recentTracks": {
+        "label": "Afficher les pistes enregistrées récentes",
+        "desc": "Afficher les pistes récemment enregistrées sous l'aide à la recherche du panneau lorsque l'onglet Recherche est vide."
+      },
+      "searchHelper": {
+        "label": "Afficher l'aide à la recherche",
+        "desc": "Afficher l'astuce de recherche et le conseil du lanceur lorsque l'onglet Recherche est vide."
+      },
+      "preview": {
+        "label": "Afficher l'aperçu de la piste",
+        "desc": "Afficher un volet d'aperçu à côté des onglets du panneau. Cliquez sur l'en-tête d'une carte de piste pour l'inspecter."
+      },
+      "urlActions": {
+        "label": "Afficher les actions d'URL",
+        "desc": "Afficher les boutons Lire l'URL, Enregistrer l'URL et File d'attente URL lorsque le champ de recherche contient une URL."
+      },
+      "speedControls": {
+        "label": "Afficher les contrôles de vitesse",
+        "desc": "Afficher les contrôles de vitesse de lecture dans la zone En cours de lecture."
+      },
+      "queueControls": {
+        "label": "Afficher les contrôles de file d'attente",
+        "desc": "Afficher les boutons Démarrer, Passer et Vider en haut de l'onglet File d'attente."
+      },
+      "statusBanner": {
+        "label": "Afficher la bannière de statut",
+        "desc": "Afficher les notifications de succès et d'erreur entre le bloc de lecture et la zone des onglets."
+      }
+    },
+    "preview": {
+      "title": "Aperçu",
+      "metadata": {
+        "label": "Métadonnées d'aperçu enrichies",
+        "desc": "Choisissez quand l'aperçu du lanceur doit récupérer les miniatures, descriptions, vues et détails de mise en ligne.",
+        "all": "Tous les aperçus",
+        "playing": "Uniquement la piste en cours",
+        "disabled": "Désactivé",
+        "neverHint": "Les panneaux d'aperçu resteront légers et utiliseront uniquement les métadonnées déjà présentes dans les résultats du lanceur.",
+        "playingHint": "Seul l'élément en cours de lecture récupérera des données d'aperçu enrichies. Les résultats enregistrés et de recherche restent rapides.",
+        "alwaysHint": "Chaque aperçu peut récupérer des métadonnées enrichies, y compris les miniatures et les détails longs."
+      },
+      "thumbnail": {
+        "label": "Taille de la miniature",
+        "desc": "Choisissez la taille de l'illustration d'aperçu dans le panneau latéral.",
+        "small": "Petite",
+        "comfortable": "Confortable",
+        "large": "Grande"
+      },
+      "chips": {
+        "label": "Afficher les jetons d'aperçu",
+        "desc": "Afficher les jetons de source, d'enregistrement, de démarrage et de tag au-dessus du titre de la piste dans l'aperçu."
+      }
+    },
+    "metadata": {
+      "title": "Métadonnées visibles",
+      "uploader": {
+        "label": "Afficher l'auteur",
+        "desc": "Afficher les noms d'artiste/auteur dans les résultats du lanceur et les panneaux d'aperçu."
+      },
+      "album": {
+        "label": "Afficher l'album",
+        "desc": "Afficher les métadonnées de l'album lorsqu'elles sont disponibles, en particulier pour les fichiers locaux."
+      },
+      "duration": {
+        "label": "Afficher la durée",
+        "desc": "Afficher la longueur de la piste dans les descriptions du lanceur et les détails de l'aperçu."
+      },
+      "rating": {
+        "label": "Afficher les notes",
+        "desc": "Inclure les notes par étoiles dans les descriptions du lanceur pour les pistes enregistrées."
+      },
+      "tags": {
+        "label": "Afficher les tags",
+        "desc": "Inclure les tags de la piste dans les descriptions du lanceur."
+      },
+      "playStats": {
+        "label": "Afficher les stats de lecture",
+        "desc": "Afficher le nombre de lectures et les informations de dernière lecture dans la vue d'accueil et l'aperçu."
+      },
+      "status": {
+        "label": "Afficher le statut",
+        "desc": "Afficher les métadonnées de disponibilité comme public ou non répertorié dans les détails de l'aperçu enrichi."
+      }
+    }
+  }
+}

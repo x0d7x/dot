@@ -1,9 +1,13 @@
 "$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
 
+[ui]
+gitignore = "/home/dox/.config/jj/gitignore"
+pager = ["hunk", "pager"]
+diff-formatter = ":git"
+
 [user]
 name = "x0d7x"
 email = "75843278+x0d7x@users.noreply.github.com"
-
 [signing]
 backend = "gpg"
 key = "672910B4BB401394"
