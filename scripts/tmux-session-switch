@@ -4,7 +4,7 @@ SEARCH_DIRS=(
   "$HOME"
   "$HOME/Developer"
   "$HOME/repo"
-  "$HOME/dot-backup-2026-10-25-001002"
+  "$HOME/dot"
   "$HOME/.config"
 )
 
