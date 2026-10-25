@@ -4,14 +4,16 @@
 #      [[ -d "$XDG_CONFIG_HOME/zsh" ]] && export
 #      ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 if [[ -o interactive ]]; then
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+# source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 [ ! -d "${XDG_DATA_HOME:-$HOME/.local/share}/zap" ] && git clone -b release-v1 https://github.com/zap-zsh/zap.git "${XDG_DATA_HOME:-$HOME/.local/share}/zap"
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 plug "zsh-users/zsh-autosuggestions"
 plug "zdharma-continuum/fast-syntax-highlighting"
-plug "romkatv/powerlevel10k"
+# plug "Giammarco-Ferranti/deja"
+# plug "romkatv/powerlevel10k"
+fpath=(~/.config/zsh/completions $fpath)
 autoload -Uz compinit 
 compinit -C -d "$XDG_CACHE_HOME/zsh/zcompdump"
 plug "Aloxaf/fzf-tab"
@@ -19,7 +21,6 @@ plug "TunaCuma/zsh-vi-man"
 source "$ZDOTDIR/aliases"
 source "$ZDOTDIR/fzf"
 source "$ZDOTDIR/func"
-# source "$ZDOTDIR/plugins/p10k-jj.plugin.zsh"
 
 setopt autocd
 setopt correct
@@ -33,6 +34,11 @@ setopt promptsubst
 bindkey -v
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
+bindkey -M viins '^A' beginning-of-line
+bindkey -M viins '^E' end-of-line
+bindkey -M viins  '^f' forward-char
+bindkey -M viins  '^b' backward-char
+# bindkey -M viins -s '^G' 'tmux-session-switch\n'
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
@@ -42,6 +48,9 @@ if command -v zoxide >/dev/null 2>&1; then
 fi
 if command -v fzf >/dev/null 2>&1; then
   eval "$(fzf --zsh)"
+fi
+if command -v fzf >/dev/null 2>&1; then
+  eval "$(starship init zsh)"
 fi
 
 
@@ -58,9 +67,10 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --tree --color=always $realpath'
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
-[[ ! -f "$ZDOTDIR/.p10k.zsh" ]] || source "$ZDOTDIR/.p10k.zsh"
+# [[ ! -f "$ZDOTDIR/.p10k.zsh" ]] || source "$ZDOTDIR/.p10k.zsh"
 fi
 
+#opts
 setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_space
@@ -71,6 +81,13 @@ setopt hist_expire_dups_first
 setopt hist_reduce_blanks
 setopt NOBEEP
 
+#history
+HISTSIZE=10000
+HISTFILE=$XDG_STATE_HOME/zsh/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+
+#env
 export ZVM_MAN_PAGER='bat'
 export SUDO_EDITOR=nvim
 export FCEDIT=nvim
@@ -82,7 +99,3 @@ if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
 fi
 
 
-HISTSIZE=10000
-HISTFILE=$XDG_STATE_HOME/zsh/.zsh_history
-SAVEHIST=$HISTSIZE
-HISTDUP=erase

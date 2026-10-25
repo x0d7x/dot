@@ -6,19 +6,20 @@ export XDG_STATE_HOME=$HOME/.local/state
 export GPG_TTY=$TTY
 export EDITOR=nvim
 export VISUAL=nvim
-export BROWSER=${BROWSER:-flatpak run app.zen_browser.zen}
+export BROWSER=${BROWSER:-helium-browser}
 export DOCKER_HOST=unix:///run/user/$(id -u)/podman/podman.sock
 export PI_CODING_AGENT_DIR=$HOME/.config/pi/agent/
-export MANGO_INSTANCE_SIGNATURE=$(ls /run/user/1000/mango-*.sock 2>/dev/null | head -1)
 path+=(
 $HOME/.local/bin
 $HOME/.bun/bin
 $HOME/.local/share/pnpm/bin
 $HOME/go/bin
+$HOME/.cache/.bun/bin
+$HOME/.cargo/bin
 )
 typeset -gU path
 export PATH
-# ---------- Pager ----------
+
 if command -v bat >/dev/null 2>&1; then
   export MANPAGER="bat -l man -p"
 elif command -v batcat >/dev/null 2>&1; then

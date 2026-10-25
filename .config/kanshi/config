@@ -1,0 +1,22 @@
+output "BNQ BenQ EW270Q T5T00894019" {
+       mode 2560x1440@200Hz
+        position 0,0
+        alias $BENQ
+}
+
+output "eDP-1" {
+        mode 2880x1800@60Hz
+        position 0,0
+        scale 1.7
+        alias $MacBook
+}
+
+
+profile home {
+    output $BENQ enable
+    output $MacBook disable
+}
+
+profile outside {
+    output $MacBook enable
+}

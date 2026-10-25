@@ -1,0 +1,36 @@
+# Background
+image=/home/dox/Documents/wallpaper/Wallpaper_152.png
+scaling=fill
+
+# Indicator
+indicator-radius=110
+indicator-thickness=8
+indicator-idle-visible
+
+# Default state
+inside-color=32302fdd
+ring-color=fabd2fff
+line-color=928374ff
+text-color=ebdbb2ff
+
+# Verifying password
+inside-ver-color=504945ff
+ring-ver-color=fabd2fff
+text-ver-color=fbf1c7ff
+
+# Wrong password
+inside-wrong-color=3c3836ff
+ring-wrong-color=fb4934ff
+text-wrong-color=282828ff
+
+# Cleared input
+inside-clear-color=3c3836ff
+ring-clear-color=8ec07cff
+text-clear-color=ebdbb2ff
+
+# Keyboard feedback
+key-hl-color=83a598ff
+bs-hl-color=fb4934ff
+
+# Authentication feedback
+show-failed-attempts

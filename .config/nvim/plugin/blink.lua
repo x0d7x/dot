@@ -22,7 +22,7 @@ require("blink.cmp").setup({
 	sources = {
 		default = { "lsp", "path", "snippets", "buffer" },
 	},
-	keymap = { preset = "enter" },
+	keymap = { preset = "enter", ["<C-x>"] = { "show", "show_documentation", "hide_documentation" } },
 	cmdline = {
 		enabled = true,
 		completion = {
@@ -37,7 +37,7 @@ require("blink.cmp").setup({
 	completion = {
 		accept = { auto_brackets = { enabled = false } },
 		menu = {
-			auto_show = true,
+			auto_show = false,
 			border = nil,
 			winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder,Pmenu:Pmenu",
 			scrolloff = 1,

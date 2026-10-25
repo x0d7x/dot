@@ -1,0 +1,187 @@
+@import "colors.css";
+
+* {
+  font-family: "JetBrainsMono NF";
+  font-size: 15px;
+  font-weight: 800;
+  min-height: 0;
+  border: none;
+  background: transparent;
+}
+
+window#waybar {
+  background: transparent;
+  border-radius: 20px;
+  color: @accent;
+  opacity: 0.95;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  background: alpha(@background, 0.58);
+  border-radius: 25px;
+  border: 1px solid alpha(@border, 0.45);
+}
+/* Base pill style */
+/* #custom-arch, */
+/* #custom-notification, */
+#cpu,
+#temperature,
+#memory,
+#workspaces,
+#window,
+#pulseaudio,
+#network,
+#group-tray,
+#upower,
+#power-profiles-daemon {
+  background: transparent;
+  padding: 4px 5px;
+  margin: 4px 4px;
+  color: @accent;
+}
+
+/* Left-side groups */
+#custom-arch {
+  /* padding: 4px 12px; */
+  margin-left: 15px;
+  font-size: 13px;
+}
+
+#cpu,
+#temperature,
+#memory {
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 0;
+  margin: 5px;
+}
+
+/* Center group */
+#workspaces,
+#layout,
+#language,
+#window {
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 0;
+}
+
+#workspaces {
+  border-radius: 18px 0 0 18px;
+  padding-left: 12px;
+}
+
+#workspaces button {
+  color: @accent;
+  background: transparent;
+  padding: 0 5px;
+  margin: 0 1px;
+  border-radius: 12px;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+#workspaces button.active {
+  color: @accent_container_fg;
+  /* background: alpha(@accent, 0.22); */
+}
+
+#workspaces button:hover {
+  background: alpha(@accent, 0.15);
+  box-shadow: none;
+}
+
+#window {
+  border-radius: 0 18px 18px 0;
+  padding-right: 12px;
+}
+
+/* Microphone and clock */
+#pulseaudio.source {
+  margin-left: 6px;
+  margin-right: 2px;
+}
+
+#language,
+#clock {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+#custom-notification {
+  margin-right: 8px;
+  padding-right: 8px;
+}
+/* Right-side status modules */
+#tray {
+  margin-left: 8px;
+  margin-right: 6px;
+}
+
+#custom-tray-arrow {
+  padding: 5px 8px;
+  color: @accent;
+  opacity: 0.8;
+}
+
+#network,
+#power-profiles-daemon,
+#group-tray,
+#upower,
+#backlight,
+#pulseaudio {
+  border-radius: 0;
+  margin: 4px 8px;
+  padding-left: 5px;
+  padding-right: 8px;
+}
+
+#backlight-slider slider {
+  min-height: 0px;
+  min-width: 0px;
+  opacity: 0;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+}
+
+#backlight-slider trough {
+  min-height: 10px;
+  min-width: 80px;
+  border-radius: 20px;
+  background-color: alpha(@background, 0.8);
+}
+
+#backlight-slider highlight {
+  min-width: 10px;
+  border-radius: 5px;
+  background-color: @accent;
+}
+
+/* Tooltips */
+#tray menu,
+tooltip {
+  background: black;
+  color: @tooltip_fg;
+  border: 1px solid alpha(@border, 0.25);
+  border-radius: 10px;
+}
+
+tooltip label {
+  color: @tooltip_fg;
+  padding: 4px;
+}
+
+#keymode.default {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  font-size: 0;
+  border: none;
+}
+
+#keymode.obs {
+  color: alpha(@foreground, 0.8);
+}

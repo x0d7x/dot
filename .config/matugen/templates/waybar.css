@@ -1,0 +1,15 @@
+@define-color background {{colors.surface.default.hex}};
+@define-color foreground {{colors.on_surface.default.hex}};
+
+@define-color color0 {{colors.surface_container_lowest.default.hex}};
+@define-color color1 {{colors.error.default.hex}};
+@define-color color2 {{colors.primary.default.hex}};
+@define-color color3 {{colors.tertiary.default.hex}};
+@define-color color4 {{colors.secondary.default.hex}};
+@define-color color5 {{colors.primary_container.default.hex}};
+@define-color color6 {{colors.secondary_container.default.hex}};
+@define-color color7 {{colors.surface_container_high.default.hex}};
+
+@define-color accent {{colors.primary.default.hex}};
+@define-color accent_fg {{colors.on_primary.default.hex}};
+@define-color border {{colors.outline.default.hex}};

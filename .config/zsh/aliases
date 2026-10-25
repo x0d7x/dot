@@ -10,7 +10,7 @@ alias l='ls -lah'
 alias ll='ls -lh'
 alias la='ls -lAh'
 alias tree='eza --tree --icons'
-alias grep='rg --color=auto'
+# alias grep='rg --color=auto'
 alias tok='tokei'
 alias gcn="git clone --no-checkout"
 alias gsi="git sparse-checkout init"
@@ -40,13 +40,16 @@ alias nfu="nix flake update"
 alias brs="brew search"
 alias bri="brew install"
 alias brt="brew tap"
-alias pau="paru -Syu"
-alias pai="paru -S"
-alias par="paru -Rns"
-alias pss="paru -Ss"
+alias u="sudo pacman -Syu"
+alias i="sudo pacman -S"
+alias re="sudo pacman -Rns"
+alias q="paru -Ss"
+alias qi="paru -Si"
 alias p="paru"
+alias s="pacman -Ss"
 alias docker="podman"
 alias jjg="jj diff --git"
+alias jj="jj --no-pager"
 alias ldo="lazydocker"
 alias po="podman"
 alias poc="podman-compose"
@@ -56,3 +59,4 @@ alias olm="ollama"
 alias em="neomd"
 alias inv="nvim --cmd 'set eventignore=FileType scrollback=1000000' --cmd 'autocmd! *' +'nnoremap q ZQ<CR>' +'call nvim_open_term(0, {})' +'set nolist' +'autocmd! *' +'$' -c 'normal gg'
 "
+# alias icm="gst-launch-1.0 souphttpsrc location=http://192.168.100.82:8081/video user-id=admin user-pw=admin ! jpegdec ! videoconvert ! autovideosink "

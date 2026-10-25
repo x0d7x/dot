@@ -7,12 +7,12 @@ local Snacks = require("snacks")
 Snacks.setup({
 	dashboard = { enabled = false },
 	bigfile = { enabled = true },
-	dim = {
-		enabled = true,
-		padding = { 4, 4 },
-		alpha = 0.4,
-		exclude = {},
-	},
+	-- dim = {
+	-- 	enabled = true,
+	-- 	padding = { 4, 4 },
+	-- 	alpha = 0.4,
+	-- 	exclude = {},
+	-- },
 	indent = { enabled = false },
 	input = { enabled = false },
 	notifier = {
@@ -42,7 +42,7 @@ vim.api.nvim_create_autocmd("User", {
 			Snacks.debug.backtrace()
 		end
 		vim.print = _G.dd
-		Snacks.dim()
+		-- Snacks.dim()
 		Snacks.toggle.scroll():map("<leader>uS")
 		Snacks.toggle.animate():map("<leader>ua")
 		Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")

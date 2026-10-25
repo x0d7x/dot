@@ -80,6 +80,12 @@
       "format": "{name} ({cores-physical}c/{cores-logical}t)",
     },
     {
+      "type": "gpu",
+      "key": "  󰍛 gpu     ",
+      "keyColor": "cyan",
+      "format": "{name}",
+    },
+    {
       "type": "memory",
       "key": "  󰍛 ram     ",
       "keyColor": "cyan",

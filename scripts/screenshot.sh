@@ -29,16 +29,20 @@ file="$DIR/Screenshot from $(date '+%Y-%m-%d %H-%M-%S').png"
 
 case "${1:-full}" in
     edit)
-        # Select region → annotate in swappy → save to $file
-        if ! grim -g "$(slurp)" - | swappy -f - -o "$file"; then
+        # Select region → annotate in satty → save to $file on Enter
+        if ! grim -g "$(slurp)" - | satty --filename - \
+            --output-filename "$file" \
+            --actions-on-enter "save-to-file" --early-exit "all"; then
             notify "Screenshot" "Cancelled or no screenshot was taken."
             exit 1
         fi
         ;;
 
     edit-full)
-        # Full screen → annotate in swappy → save to $file
-        if ! grim - | swappy -f - -o "$file"; then
+        # Full screen → annotate in satty (fullscreen UI) → save to $file on Enter
+        if ! grim - | satty --filename - --fullscreen \
+            --output-filename "$file" \
+            --actions-on-enter "save-to-file" --early-exit "all"; then
             notify "Screenshot" "Cancelled or no screenshot was taken."
             exit 1
         fi
@@ -64,8 +68,8 @@ case "${1:-full}" in
         echo "Usage:"
         echo "  screenshot full        — full screen, no annotation"
         echo "  screenshot area        — select region, no annotation"
-        echo "  screenshot edit        — select region, then annotate (swappy)"
-        echo "  screenshot edit-full   — full screen, then annotate (swappy)"
+        echo "  screenshot edit        — select region, then annotate (satty)"
+        echo "  screenshot edit-full   — full screen, then annotate (satty)"
         exit 1
         ;;
 esac

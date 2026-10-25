@@ -10,3 +10,24 @@ fi
 rm -f -- "$tmp"
 }
 jjp() { jj git push "$@" && jj new; }
+   icm() {
+     gst-launch-1.0 -v \
+       souphttpsrc location=http://192.168.100.46:8081/video user-id=admin user-pw=admin \
+       ! multipartdemux \
+       ! jpegdec \
+       ! videoconvert \
+       ! v4l2sink device=/dev/video91 &
+
+     ffmpeg -loglevel warning \
+       -i "http://admin:admin@192.168.100.46:8081/audio.opus" \
+       -f s16le -ar 48000 -ac 1 - \
+       | pacat --raw --rate=48000 --format=s16le --channels=1 --device=iphone_mic
+
+     wait
+   }
+vcm(){
+    ffmpeg -loglevel warning \
+-i "http://admin:admin@192.168.100.46:8081/audio.opus" \
+-f s16le -ar 48000 -ac 1 - \
+| pacat --raw --rate=48000 --format=s16le --channels=1 --device=iphone_mic 
+  }

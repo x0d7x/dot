@@ -1,0 +1,85 @@
+include = ["~/.cache/matugen/veila.toml"]
+theme = "catppuccin"
+
+[background]
+blur_strength = 10
+dim_strength = 40
+mode = "file"
+path = "/home/dox/.cache/veila/wallpaper.jpg"
+scaling = "fill"
+
+[visuals.avatar]
+image_path = "/home/dox/Downloads/7E1FA24E-E49E-469C-B7D1-02749AC79861.PNG"
+
+[lock]
+auth_backoff_base_ms = 750
+auth_backoff_max_seconds = 12
+auto_reload_config = true
+auto_reload_debounce_ms = 250
+hide_cursor = false
+screen_off_seconds = 180
+
+[visuals.clock]
+enabled = true
+font_family = "thmanyah serif display"
+font_size = 88
+font_weight = 600
+format = "24h"
+style = "standard"
+
+[visuals.input]
+border_width = 1
+placeholder = "Password"
+radius = 16
+width = 320
+
+[visuals.power.reboot]
+enabled = true
+confirm = true
+
+[visuals.power.poweroff]
+enabled = true
+confirm = true
+
+[visuals.now_playing]
+enabled = true
+fade_duration_ms = 320
+
+# [visuals.now_playing.artwork]
+# enabled = true
+# size = 44
+# radius = 8
+# opacity = 90
+# halign = "right"
+# valign = "bottom"
+# x = -388
+# y = -56
+#
+# [visuals.now_playing.artist]
+# enabled = true
+# width = 318
+# color = "#FFFFFF63"
+# font_family = "Google Sans Flex"
+# font_size = 16
+# font_weight = 400
+# font_style = "normal"
+# halign = "right"
+# valign = "bottom"
+# x = -52
+# y = -88
+#
+# [visuals.now_playing.title]
+# enabled = true
+# width = 318
+# color = "#FFFFFFAF"
+# font_family = "Google Sans Flex"
+# font_size = 16
+# font_weight = 400
+# font_style = "normal"
+# halign = "right"
+# valign = "bottom"
+# x = -52
+# y = -56
+#
+[visuals.outputs]
+ui_mode = "all"

@@ -7,7 +7,6 @@ local build_hooks = {
 	["mason.nvim"] = ":MasonUpdate",
 	["blink.cmp"] = "cargo build --release",
 	["cord.nvim"] = ":Cord update",
-  ["fff.nvim"] = "cargo build --release"
 }
 
 local function run_shell_build(name, cmd)

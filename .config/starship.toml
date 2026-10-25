@@ -7,7 +7,6 @@ $line_break\
 $character\
 """
 right_format = """
-$cmd_duration\
 ${custom.jj}\
 """
 
@@ -17,10 +16,11 @@ command_timeout = 500
 palette = "gruvbox_dark"
 
 [os]
+format = "[$symbol ]($style)"
 disabled = false
 
 [line_break]
-disabled = true
+disabled = false
 
 [custom.giturl]
 description = "Display symbol for remote Git server"
@@ -77,12 +77,13 @@ disabled = true
 when = "jj-starship detect"
 shell = ["jj-starship"]
 format = "$output "
-ignore_timeout = true
+# ignore_timeout = true
 
 
 [os.symbols]
 Macos = " "
 Linux = " "
+Arch = " "
 Windows = " "
 
 [character]

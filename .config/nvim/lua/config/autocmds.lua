@@ -6,7 +6,7 @@ local function augroup(name)
 end
 
 vim.cmd.packadd("nvim.undotree")
--- ========== Basic Autocmds ========== --
+-- Basic Autocmds
 
 api.nvim_create_autocmd("BufEnter", {
 	desc = "Don't auto comment new lines",
@@ -15,11 +15,13 @@ api.nvim_create_autocmd("BufEnter", {
 		vim.opt.formatoptions:remove({ "c", "r", "o" })
 	end,
 })
+
 api.nvim_create_autocmd({ "RecordingEnter", "RecordingLeave" }, {
 	group = augroup("recording"),
 	callback = function(event)
 		if event.event == "RecordingEnter" then
 			local reg = vim.fn.reg_recording()
+
 			if reg ~= "" then
 				vim.notify("🔴 Recording macro @" .. reg, vim.log.levels.INFO, { title = "Macro" })
 			end
@@ -34,7 +36,10 @@ api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight selection on yank",
 	group = augroup("highlight_on_yank"),
 	callback = function()
-		vim.highlight.on_yank({ timeout = 200 })
+		vim.hl.hl_op({
+			event = vim.v.event,
+			timeout = 200,
+		})
 	end,
 })
 
@@ -62,12 +67,12 @@ api.nvim_create_autocmd("FileType", {
 		opt.colorcolumn = "80"
 	end,
 })
--- open help in vertical split
+--  open help in vertical split
 api.nvim_create_autocmd("FileType", {
 	pattern = "help",
 	command = "wincmd L",
 })
--- syntax highlighting for dotenv files
+--  syntax highlighting for dotenv files
 api.nvim_create_autocmd("BufRead", {
 	group = vim.api.nvim_create_augroup("dotenv_ft", { clear = true }),
 	pattern = { ".env", ".env.*" },
@@ -75,14 +80,24 @@ api.nvim_create_autocmd("BufRead", {
 		vim.bo.filetype = "dosini"
 	end,
 })
--- no auto continue comments on new line
+--  no auto continue comments on new line
+local no_auto_comment = api.nvim_create_augroup("no_auto_comment", {
+	clear = true,
+})
+
 api.nvim_create_autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("no_auto_comment", {}),
+	group = no_auto_comment,
 	callback = function()
 		vim.opt_local.formatoptions:remove({ "c", "r", "o" })
 	end,
 })
+
+local close_with_q = api.nvim_create_augroup("close_with_q", {
+	clear = true,
+})
+
 api.nvim_create_autocmd("FileType", {
+	group = close_with_q,
 	pattern = {
 		"help",
 		"man",
@@ -96,16 +111,19 @@ api.nvim_create_autocmd("FileType", {
 		"neotest-output",
 		"neotest-summary",
 		"neotest-output-panel",
+		"nvim-pack",
 	},
 	desc = "Map 'q' to close certain filetypes",
-	group = augroup("close_with_q"),
 	callback = function(event)
 		vim.bo[event.buf].buflisted = false
-		vim.keymap.set("n", "q", "<cmd>close<CR>", { buffer = event.buf, silent = true })
+
+		vim.keymap.set("n", "q", "<cmd>close<CR>", {
+			buffer = event.buf,
+			silent = true,
+		})
 	end,
 })
-
--- Close terminal with q in normal mode
+--  Close terminal with q in normal mode
 api.nvim_create_autocmd("TermOpen", {
 	desc = "Close terminal with q",
 	group = augroup("close_with_q"),
@@ -121,22 +139,29 @@ api.nvim_create_autocmd("VimResized", {
 	command = "wincmd =",
 })
 
--- cursorline on active window
+--  cursorline on active window
 
 local function set_cursorline_for_active_window()
+	local current_win = api.nvim_get_current_win()
+
 	for _, win in ipairs(api.nvim_list_wins()) do
-		api.nvim_set_option_value("cursorline", win == api.nvim_get_current_win(), { win = win })
+		api.nvim_set_option_value("cursorline", win == current_win, {
+			win = win,
+		})
 	end
 end
 
-local cursorline_group = api.nvim_create_augroup("CursorLineActiveOnly", { clear = true })
-
-api.nvim_create_autocmd({ "WinEnter", "BufWinEnter", "InsertLeave" }, {
-	group = cursorline_group,
-	callback = set_cursorline_for_active_window,
+local cursorline_group = api.nvim_create_augroup("CursorLineActiveOnly", {
+	clear = true,
 })
 
-api.nvim_create_autocmd({ "WinLeave", "InsertEnter" }, {
+api.nvim_create_autocmd({
+	"WinEnter",
+	"BufWinEnter",
+	"InsertLeave",
+	"InsertEnter",
+	"WinLeave",
+}, {
 	group = cursorline_group,
 	callback = set_cursorline_for_active_window,
 })
@@ -150,23 +175,23 @@ api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 		opt.spelllang = { "en" }
 	end,
 })
--- ide like highlight when stopping cursor
+--  ide like highlight when stopping cursor
 api.nvim_create_autocmd("CursorMoved", {
 	group = vim.api.nvim_create_augroup("LspReferenceHighlight", { clear = true }),
 	desc = "Highlight references under cursor",
 	callback = function()
-		-- Only run if the cursor is not in insert mode
+		--  Only run if the cursor is not in insert mode
 		if vim.fn.mode() ~= "i" then
 			local clients = vim.lsp.get_clients({ bufnr = 0 })
 			local supports_highlight = false
 			for _, client in ipairs(clients) do
 				if client.server_capabilities.documentHighlightProvider then
 					supports_highlight = true
-					break -- Found a supporting client, no need to check others
+					break --  Found a supporting client, no need to check others
 				end
 			end
 
-			-- 3. Proceed only if an LSP is active AND supports the feature
+			--  3. Proceed only if an LSP is active AND supports the feature
 			if supports_highlight then
 				vim.lsp.buf.clear_references()
 				vim.lsp.buf.document_highlight()
@@ -175,7 +200,7 @@ api.nvim_create_autocmd("CursorMoved", {
 	end,
 })
 
--- ide like highlight when stopping cursor
+--  ide like highlight when stopping cursor
 api.nvim_create_autocmd("CursorMovedI", {
 	group = "LspReferenceHighlight",
 	desc = "Clear highlights when entering insert mode",
@@ -184,7 +209,7 @@ api.nvim_create_autocmd("CursorMovedI", {
 	end,
 })
 
--- ========== LSP Attach Keymaps ========== --
+-- LSP Attach Keymaps
 
 api.nvim_create_autocmd("LspAttach", {
 	group = augroup("lsp_keymaps"),
@@ -210,7 +235,7 @@ api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
--- inline_hints
+--  inline_hints
 api.nvim_create_autocmd("LspAttach", {
 	group = augroup("lsp_inlay_hints"),
 	callback = function(args)
@@ -226,7 +251,7 @@ api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
--- Pack Delete and Update cmds are built-in on Nightly 0.13
+--  Pack Delete and Update cmds are built-in on Nightly 0.13
 vim.api.nvim_create_user_command("PackDel", function(opts)
 	vim.pack.del(opts.fargs)
 end, { nargs = "+", desc = "Delete plugins (:PackDel plugin1 plugin2)" })
@@ -236,14 +261,14 @@ vim.api.nvim_create_user_command("PackAdd", function(opts)
 end, { nargs = "+", desc = "Add plugins (:PackAdd user/repo1 user/repo2)" })
 
 vim.api.nvim_create_user_command("PackUpdate", function(opts)
-	-- checks if any argument is passed
+	--  checks if any argument is passed
 	if opts.args:match("%S") then
-		-- update specific plugins
+		--  update specific plugins
 		local plugins = vim.split(opts.args, "%s+", { trimempty = true })
-		-- update only specified plugins
+		--  update only specified plugins
 		vim.pack.update(plugins)
 	else
-		-- update all
+		--  update all
 		vim.pack.update()
 	end
 end, { nargs = "*", desc = "Update all plugins or specific ones" })

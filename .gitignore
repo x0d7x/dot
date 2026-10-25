@@ -7,6 +7,16 @@ plugins/
 .config/nix/
 
 *.log
+*.env
+.env
+**/*.env
+# Database files
+*.db
+*.db-shm
+*.db-wal
+**/*.db
+**/*.db-shm
+**/*.db-wal
 
 
 # Session state files
@@ -25,3 +35,20 @@ plugins/
 
 # Zsh completion dump
 .config/zsh/.zcompdump
+
+.config/fastfetch/logo1.png
+.config/pi/agent/models.db
+scripts/obs-sen/obs-scene
+
+# Environment files
+*.env
+.env
+**/*.env
+
+# SQLite databases
+*.db
+*.db-shm
+*.db-wal
+**/*.db
+**/*.db-shm
+**/*.db-wal

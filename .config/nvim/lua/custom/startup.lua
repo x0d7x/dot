@@ -1,6 +1,7 @@
 if vim.fn.argc() > 0 then
 	return
 end
+local finder = require("custom.finder")
 
 local api = vim.api
 local cmd = vim.cmd
@@ -207,20 +208,12 @@ local function set_ascii_bg()
 	api.nvim_set_option_value("list", false, { win = win })
 
 	vim.keymap.set("n", "f", function()
-		require("fff").find_files({
-			layout = {
-				fullscreen = false,
-			},
-		})
-	end, { buffer = buf })
+		finder.files()
+	end, { buffer = buf, desc = "find files" })
 
 	vim.keymap.set("n", "g", function()
-		require("fff").live_grep({
-			layout = {
-				fullscreen = false,
-			},
-		})
-	end, { buffer = buf })
+		finder.grep()
+	end, { buffer = buf, desc = "Grep files" })
 
 	vim.keymap.set("n", "r", function()
 		Snacks.picker.recent()
@@ -276,6 +269,11 @@ end
 vim.api.nvim_create_autocmd("VimEnter", {
 	once = true,
 	callback = function()
+		local startreason = vim.v.startreason or ""
+		if startreason == "restart" or startreason == "restart!" then
+			return
+		end
+
 		intro_active = true
 		set_ascii_bg()
 

@@ -2,7 +2,7 @@
 
 [ui]
 gitignore = "/home/dox/.config/jj/gitignore"
-pager = ["hunk", "pager"]
+pager = ["delta"]
 diff-formatter = ":git"
 
 [user]

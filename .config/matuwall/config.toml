@@ -1,0 +1,57 @@
+[general]
+directory = "/home/dox/Documents/wallpaper/"
+backend = "awww"
+recursive = false
+[backend.sweetbg]
+args = []
+
+[backend.awww]
+args = ["--resize", "crop", "-t", "random", "--transition-fps", "60"]
+
+[backend.plasma]
+args = []
+
+[backend.command]
+apply = "noctalia msg wallpaper-set {path}"
+
+[window]
+preview = false
+close_on_focus_loss = false
+position = "center"
+background = "none"
+margin = 10
+edge_margin = 10
+radius = 40
+
+[input]
+mouse = false
+
+[animation]
+navigation_ms = 410
+zoom_percent = 2
+
+[grid]
+columns = 10
+visible_rows = 1
+carousel = true
+edge = "peek"
+spacing = 20
+radius = 50
+border_width = 2
+shadow_width = 0
+ring_width = 2
+
+[thumbnail]
+width = 300
+height = 600
+
+[colors]
+tile = "#313244ff"
+border = "#ffffffff"
+shadow = "#00000066"
+ring = "#f2cdcdff"
+spinner = "#cdd0e6ff"
+
+[hooks]
+# i cloud put this cmd for gentrate theme from wallpaper : matugen image {path} --source-color-index 0 -m dark 
+on_apply = [ "matugen json /home/dox/.config/matugen/templates/gruvbox-dark-medium.json","/home/dox/.cache/matugen/wall.sh {path}"]

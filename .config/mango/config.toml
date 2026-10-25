@@ -1,0 +1,150 @@
+# MangoWM TOML configuration
+# https://mangowm.github.io/docs/configuration/toml/
+
+
+[global]
+
+# Window effects
+blur = 1
+blur_layer = 0
+blur_optimized = 1
+blur_params_num_passes = 2
+blur_params_radius = 5
+# blur_params_noise = 0.2
+blur_params_brightness = 0.9
+blur_params_contrast = 0.9
+blur_params_saturation = 1.2
+
+shadows = 1
+layer_shadows = 0
+shadow_only_floating = 0
+shadows_size = 15
+shadows_blur = 20
+shadows_position_x = 0
+shadows_position_y = 0
+shadows_color = 0x000000ff
+
+# border_radius = 24
+no_radius_when_single = 0
+focused_opacity = 1.0
+unfocused_opacity = 1.0
+dim_enable = 1
+dim_focused_color = 0x00000000
+dim_unfocused_color = 0x00000040
+auto_reload_config = 1
+
+# Animation configuration
+animations = 1
+layer_animations = 1
+animation_type_open = "zoom"
+animation_type_close = "zoom"
+animation_fade_in = 1
+animation_fade_out = 1
+tag_animation_direction = 0
+zoom_initial_ratio = 0.4
+zoom_end_ratio = 0.8
+fade_in_begin_opacity = 0.5
+fade_out_begin_opacity = 0.8
+animation_duration_move = 500
+animation_duration_open = 480
+animation_duration_tag = 430
+animation_duration_close = 150
+animation_duration_focus = 0
+animation_curve_open = [0.34, 1.56, 0.64, 1]
+animation_curve_move = [0.34, 1.56, 0.64, 1]
+animation_curve_tag = [0.34, 1.56, 0.64, 1]
+animation_curve_close = [0.08, 0.92, 0, 1]
+animation_curve_focus = [0.46, 1.0, 0.29, 1]
+animation_curve_opacity_fade_out = [0.5, 0.5, 0.5, 0.5]
+animation_curve_opacity_fade_in = [0.46, 1.0, 0.29, 1]
+
+# Overview settings
+hotarea_size = 10
+enable_hotarea = 0
+hotarea_corner = 0
+# ov_tab_mode = 1
+overview_gap_inner = 15
+overview_gap_outer = 25
+overcircle_center_ratio = 0.5
+
+# Miscellaneous
+no_border_when_single = 0
+axis_bind_apply_timeout = 100
+focus_on_activate = 1
+allow_lock_transparent = 1
+idle_inhibit_ignore_visible = 0
+idle_inhibit_when_fullscreen = 1
+sloppy_focus = 1
+warp_cursor = 0
+focus_cross_monitor = 0
+focus_cross_tag = 0
+enable_floating_snap = 0
+snap_distance = 30
+cursor_size = 20
+cursor_theme = "Bibata-Modern-Amber"
+cursor_hide_on_keypress = 1
+drag_tile_to_tile = 1
+drag_tile_small = 1
+focus_direction_only_zone_overlap = 0
+drag_corner = 4
+
+# Keyboard
+repeat_rate = 25
+repeat_delay = 300
+numlock_on = 0
+xkb_rules_layout = "us,ara"
+xkb_rules_variant = ",mac"
+# xkb_rules_options = "grp:win_space_toggle"
+
+# Trackpad
+# Need to relogin to apply
+disable_trackpad = 0
+tap_to_click = 0
+tap_and_drag = 1
+drag_lock = 1
+trackpad_natural_scrolling = 1
+trackpad_disable_while_typing = 1
+trackpad_left_handed = 0
+trackpad_scroll_method = 1
+trackpad_click_method = 2
+trackpad_middle_button_emulation = 0
+swipe_min_threshold = 1
+button_map = 1
+
+# Mouse
+# Need to relogin to apply
+mouse_natural_scrolling = 1
+
+# Appearance
+gap_inner_horizontal = 20
+gap_inner_vertical = 15
+gap_outer_horizontal = 20
+gap_outer_vertical = 12
+scratchpad_width_ratio = 0.8
+scratchpad_height_ratio = 0.9
+border_px = 3
+root_color = 0x201b14ff
+border_color = 0x444444ff
+drop_color = 0x8FBA7C55
+focus_color = 0xc9b890ff
+maximized_screen_color = 0x89aa61ff
+urgent_color = 0xad401fff
+scratchpad_color = 0x516c93ff
+global_color = 0xb153a7ff
+overlay_color = 0x14a57cff
+
+# Autostart scripts
+# exec-once=mmsg dispatch create_virtual_output
+exec_once = ["bash ~/.config/mango/autostart.sh"]
+exec = ["pkill -x kanshi; kanshi -c \"$HOME/.config/kanshi/config\" >/tmp/kanshi.log 2>&1 &"]
+
+
+# Sub-configurations
+# Each file can use its own .conf or .toml parser.
+source = [
+    "./binds.toml",
+    "./env.toml",
+    "./matugen.conf",
+    "./rules.toml",
+    "./layouts.toml"
+]

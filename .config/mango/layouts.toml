@@ -1,0 +1,46 @@
+# Scroller Layout Setting
+scroller_structs = 20
+scroller_default_proportion = 0.5
+scroller_focus_center = 0
+scroller_prefer_center = 0
+scroller_prefer_overspread = 1
+edge_scroller_pointer_focus = 0
+scroller_ignore_proportion_single = 0
+scroller_default_proportion_single = 1.0
+scroller_proportion_preset = [0.5, 0.8, 1.0]
+
+# Master-Stack Layout Setting
+new_is_master = 0
+default_master_factor = 0.55
+default_master_count = 1
+center_when_single_stack = 1
+smart_gaps = 0
+tag_gather = 0
+tag_num = 5 # Number of tags or workspaces
+
+# Layout support:
+# tile, scroller, grid, deck, monocle, center_tile,
+# vertical_tile, vertical_scroller
+[[rule.tag_rule]]
+id = "*"
+layout_name = "dwindle"
+
+# [[tag_rule]]
+# id = "1"
+# layout_name = "dwindle"
+
+# [[tag_rule]]
+# id = "2"
+# layout_name = "tile"
+
+# [[tag_rule]]
+# id = "3"
+# layout_name = "tile"
+
+# [[tag_rule]]
+# id = "4"
+# layout_name = "tile"
+
+# [[tag_rule]]
+# id = "5"
+# layout_name = "tile"

@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+# qutebrowser userscript: fill credentials from rbw via Noctalia dmenu
+# Dependencies: rbw, jq, noctalia
+
+set -euo pipefail
+
+url="${QUTE_URL:-}"
+[ -n "$url" ] || { echo "rbw-fill: no URL" >&2; exit 1; }
+
+# Extract domain from URL
+domain=$(echo "$url" | sed -E 's|https?://([^/]+).*|\1|')
+main_domain=$(echo "$domain" | sed -E 's/^[^.]+\.(.+\..+)$/\1/')
+
+# Get all entries as JSON
+entries=$(rbw list --raw 2>/dev/null || true)
+[ -n "$entries" ] || exit 0
+
+# Filter by URI matching the domain or main_domain
+matches=$(echo "$entries" | jq -c --arg d "$domain" --arg md "$main_domain" '
+  [.[] | select(.uris // [] | map(ascii_downcase) | any(index($d) or index($md)))]
+')
+count=$(echo "$matches" | jq 'length')
+
+if [ "$count" -eq 0 ]; then
+    # Fallback: try matching by name
+    bare=$(echo "$domain" | sed -E 's/^[^.]+\.//; s/\.[^.]+$//')
+    matches=$(echo "$entries" | jq -c --arg b "$bare" '
+      [.[] | select(.name | ascii_downcase | contains($b))]
+    ')
+    count=$(echo "$matches" | jq 'length')
+fi
+
+if [ "$count" -eq 0 ]; then
+    echo "rbw-fill: no matches for $domain" >&2
+    exit 0
+elif [ "$count" -eq 1 ]; then
+    entry=$(echo "$matches" | jq -c '.[0]')
+else
+    # Build display lines: "name<TAB>user"
+    display=$(echo "$matches" | jq -r '.[] | "\(.name)\t\(.user)"')
+    
+    selected=$(echo "$display" | noctalia dmenu -p "noctalia dmnue" 2>/dev/null || true)
+    [ -n "$selected" ] || exit 0
+    
+    # Parse selected line back to name + user
+    name="${selected%%$'\t'*}"
+    user="${selected#*$'\t'}"
+    if [ "$name" = "$user" ]; then
+        # No tab separator — user didn't pick a disambiguated line
+        entry=$(echo "$matches" | jq -c --arg n "$name" '.[] | select(.name == $n)' | head -1)
+    else
+        entry=$(echo "$matches" | jq -c --arg n "$name" --arg u "$user" '.[] | select(.name == $n and .user == $u)' | head -1)
+    fi
+fi
+
+# Extract name and user from the selected entry
+name=$(echo "$entry" | jq -r '.name')
+user=$(echo "$entry" | jq -r '.user')
+password=$(rbw get "$name" "$user" 2>/dev/null || true)
+totp=$(rbw code "$name" "$user" 2>/dev/null || true)
+
+[ -n "$password" ] || exit 0
+
+# Escape for JavaScript
+js_escape() { printf '%s' "$1" | sed "s/[\\\"']/\\\\&/g"; }
+u=$(js_escape "$user")
+p=$(js_escape "$password")
+
+# Inject via jseval
+js="(function(){var i=document.querySelectorAll('input:not([type=hidden])'),u=false,p=false;for(var j=0;j<i.length;j++){var e=i[j];if(!u&&(e.type==='text'||e.type==='email'||e.type==='tel'||(e.type==='password'&&!p))){e.value='';e.focus();e.value='$u';e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));u=true}else if(!p&&e.type==='password'){e.value='';e.focus();e.value='$p';e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));p=true}if(u&&p)break}})();"
+echo "jseval -q $js" >> "$QUTE_FIFO"
+
+# Copy TOTP to clipboard if available
+if [ -n "$totp" ]; then
+    if [ -n "${WAYLAND_DISPLAY:-}" ]; then
+        echo -n "$totp" | wl-copy 2>/dev/null || true
+    else
+        echo -n "$totp" | xclip -selection clipboard 2>/dev/null || true
+    fi
+fi

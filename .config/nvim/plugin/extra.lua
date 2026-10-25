@@ -2,7 +2,6 @@ local pack = require("core.pack")
 
 pack.add({
 	"https://github.com/folke/flash.nvim",
-	{ src = "https://github.com/mistweaverco/bafa.nvim", version = "main" },
 	"https://github.com/christoomey/vim-tmux-navigator",
 	"https://github.com/folke/persistence.nvim",
 	"https://github.com/nvzone/showkeys",
@@ -10,6 +9,8 @@ pack.add({
 	"https://github.com/nvim-lua/plenary.nvim",
 	"https://github.com/uga-rosa/ccc.nvim",
 	"https://github.com/folke/twilight.nvim",
+	"https://github.com/rachartier/tiny-cmdline.nvim",
+	"https://github.com/rachartier/tiny-inline-diagnostic.nvim",
 })
 
 require("flash").setup({
@@ -54,6 +55,12 @@ require("ccc").setup({
 		auto_enable = true,
 		lsp = false,
 	},
+})
+
+vim.o.cmdheight = 0
+
+require("tiny-cmdline").setup({
+	on_reposition = require("tiny-cmdline").adapters.blink,
 })
 
 require("twilight").setup({})

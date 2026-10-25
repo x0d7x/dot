@@ -1,0 +1,17 @@
+#!/bin/bash
+# Toggle unfocused window opacity between 0.6 (normal) and 1.0 (fully opaque)
+
+STATE_FILE="${XDG_RUNTIME_DIR:-/tmp}/mango-opacity-state"
+
+if [ -f "$STATE_FILE" ]; then
+    VALUE="0.6"
+    TEXT="opacity: 0.6"
+    rm -f "$STATE_FILE"
+else
+    VALUE="1.0"
+    TEXT="opacity: 1.0 (off)"
+    touch "$STATE_FILE"
+fi
+
+mmsg dispatch setoption,unfocused_opacity,"$VALUE"
+notify-send "Window opacity" "$TEXT" -t 800
