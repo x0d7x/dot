@@ -1,0 +1,132 @@
+[
+  {
+    "plugin_id": "url.fzf-picker",
+    "name": "FZF URL Picker",
+    "version": "0.1.0",
+    "min_herdr_version": "0.7.0",
+    "description": "Scan terminal panes for URLs and interactively pick one with fzf",
+    "manifest_path": "/home/dox/Developer/hurl/herdr-fzf-url/herdr-plugin.toml",
+    "plugin_root": "/home/dox/Developer/hurl/herdr-fzf-url",
+    "enabled": true,
+    "platforms": [
+      "linux",
+      "macos"
+    ],
+    "build": [
+      {
+        "command": [
+          "go",
+          "build",
+          "-o",
+          "herdr-fzf-url"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "pick-url",
+        "title": "Pick URL from Panes",
+        "contexts": [
+          "pane"
+        ],
+        "command": [
+          "./herdr-fzf-url"
+        ]
+      }
+    ],
+    "panes": [
+      {
+        "id": "url-picker",
+        "title": "URL Picker",
+        "placement": "overlay",
+        "command": [
+          "./herdr-fzf-url"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "local"
+    }
+  },
+  {
+    "plugin_id": "nathanflurry.jj-workspace",
+    "name": "jj workspaces",
+    "version": "0.1.0",
+    "min_herdr_version": "0.7.0",
+    "description": "Create and remove Jujutsu (jj) workspaces as Herdr workspaces or tabs.",
+    "manifest_path": "/home/dox/.config/herdr/sessions/Dev/plugins/github/nathanflurry.jj-workspace-19f0b858b2b4/herdr-plugin.toml",
+    "plugin_root": "/home/dox/.config/herdr/sessions/Dev/plugins/github/nathanflurry.jj-workspace-19f0b858b2b4",
+    "enabled": true,
+    "platforms": [
+      "linux",
+      "macos"
+    ],
+    "build": [
+      {
+        "command": [
+          "cargo",
+          "build",
+          "--release"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "new",
+        "title": "New jj workspace",
+        "contexts": [
+          "workspace",
+          "global"
+        ],
+        "command": [
+          "./target/release/jj-workspace",
+          "open",
+          "workspace"
+        ]
+      },
+      {
+        "id": "new-tab",
+        "title": "New jj workspace (in tab)",
+        "contexts": [
+          "workspace",
+          "global"
+        ],
+        "command": [
+          "./target/release/jj-workspace",
+          "open",
+          "tab"
+        ]
+      },
+      {
+        "id": "remove",
+        "title": "Remove jj workspace",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "./target/release/jj-workspace",
+          "remove"
+        ]
+      }
+    ],
+    "panes": [
+      {
+        "id": "wizard",
+        "title": "New jj workspace",
+        "placement": "overlay",
+        "command": [
+          "./target/release/jj-workspace",
+          "wizard"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "NathanFlurry",
+      "repo": "herdr-plugin-jj-workspace",
+      "resolved_commit": "29650eaea69795dd4414be26b434e0fd43a59463",
+      "managed_path": "/home/dox/.config/herdr/sessions/Dev/plugins/github/nathanflurry.jj-workspace-19f0b858b2b4",
+      "installed_unix_ms": 1782333322865
+    }
+  }
+]

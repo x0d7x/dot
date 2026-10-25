@@ -1,0 +1,15 @@
+@define-color background #282828;
+@define-color foreground #ebdbb2;
+
+@define-color color0 #1d2021;
+@define-color color1 #fb4934;
+@define-color color2 #fabd2f;
+@define-color color3 #83a598;
+@define-color color4 #8ec07c;
+@define-color color5 #504945;
+@define-color color6 #3c3836;
+@define-color color7 #3c3836;
+
+@define-color accent #fabd2f;
+@define-color accent_fg #282828;
+@define-color border #928374;

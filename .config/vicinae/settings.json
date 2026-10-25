@@ -1,0 +1,127 @@
+// This configuration is merged with the default vicinae configuration file, which you can obtain by running the `vicinae config default` command.
+// Every item defined in this file takes precedence over the values defined in the default config or any other imported file.
+//
+// You can make manual edits to this file, however you should keep in mind that this file may be written to by vicinae when a configuration change is made through the GUI.
+// When that happens, any custom comments or formatting will be lost.
+//
+// If you want to maintain a configuration file with your own comments and formatting, you should create a separate file and add it to the 'imports' array.
+//
+// Learn more about configuration at https://docs.vicinae.com/config
+
+{
+   "$schema": "https://vicinae.com/schemas/config.json",
+   "close_on_focus_loss": false,
+   "pop_to_root_on_close": true,
+   "escape_key_behavior": "",
+   "keybinding": "vim",
+   "input_server": {
+      "enabled": false
+   },
+   "font": {
+      "normal": {
+         "family": "thmanyah sans"
+      }
+   },
+   "theme": {
+      "dark": {
+         "name": "matugen",
+         "icon_theme": "Bibata-Original-Ice-Right"
+      }
+   },
+   "telemetry": {
+      "system_info": false
+   },
+   "launcher_window": {
+      "client_side_decorations": {
+         "enabled": true
+      },
+      "compact_mode": {
+         "enabled": true
+      },
+      "layer_shell": {
+         "enabled": true
+      }
+   },
+   "providers": {
+      "applications": {
+         "entrypoints": {
+            "avahi-discover": {
+               "enabled": false
+            },
+            "bssh": {
+               "enabled": false
+            },
+            "bvnc": {
+               "enabled": false
+            },
+            "cmake-gui": {
+               "enabled": false
+            },
+            "com.nuvio.media": {
+               "enabled": true
+            },
+            "foot-server": {
+               "enabled": false
+            },
+            "footclient": {
+               "enabled": false
+            },
+            "lstopo": {
+               "enabled": false
+            },
+            "qv4l2": {
+               "enabled": false
+            },
+            "qvidcap": {
+               "enabled": false
+            },
+            "vesktop": {
+               "enabled": true
+            },
+            "xdvi": {
+               "enabled": false
+            },
+            "xgps": {
+               "enabled": false
+            },
+            "xgpsspeed": {
+               "enabled": false
+            }
+         }
+      },
+      "calculator": {
+         "preferences": {
+            "backend": "qalculate"
+         }
+      },
+      "files": {
+         "enabled": false,
+         "preferences": {
+            "autoIndexing": false,
+            "indexingPaths": [
+               "/home/dox"
+            ],
+            "excludedIndexingPaths": []
+         }
+      },
+      "power": {
+         "entrypoints": {
+            "lock": {
+               "preferences": {
+                  "confirm": false,
+                  "customProgram": "veila lock "
+               }
+            }
+         }
+      },
+      "snippets": {
+         "preferences": {
+            "enabled": true,
+            "undo": true,
+            "layout": "",
+            "prePasteDelay": "0",
+            "keyDelay": "2"
+         }
+      }
+   }
+}

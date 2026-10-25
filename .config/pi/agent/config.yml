@@ -1,0 +1,34 @@
+theme:
+  dark: dark-gruvbox
+  light: light
+defaultProvider: opencode
+defaultModel: gpt-5.4-mini
+defaultThinkingLevel: high
+terminal:
+  showTerminalProgress: false
+hideThinkingBlock: true
+quietStartup: true
+packages:
+  - npm:pi-yt-summarizer
+symbolPreset: nerd
+composer:
+  shape: borderless
+setupVersion: 2
+modelRoles:
+  slow: opencode-zen/gpt-5.6-luna
+statusLine:
+  preset: default
+  transparent: false
+tui:
+  textSizing: false
+display:
+  hideToolActivity: false
+  showTokenUsage: true
+retry:
+  maxRetries: 3
+checkpoint:
+  enabled: true
+github:
+  enabled: true
+browser:
+  headless: false

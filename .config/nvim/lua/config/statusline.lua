@@ -142,9 +142,9 @@ vim.opt.statusline = table.concat({
 	"%{v:lua.DiagnosticStatus()}",
 	"%{exists('g:last_key') ? (' ' .. g:last_key .. ' ') : ''}",
 	"%{v:lua.BufferStatus()}", -- buffer
+	" %l:%c", -- line and column
+	" %p%%", -- percentage
 	"%{v:lua.Lsp_status()}", -- lsp
 	-- "%{v:lua.Linter_status()}",  -- linter
 	-- "%{v:lua.Formatter_status()}",  -- formatter
-	-- " %l:%c",  -- line and column
-	-- " %p%%", -- percentage
 })

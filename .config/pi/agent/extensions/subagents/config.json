@@ -1,0 +1,6 @@
+{
+	"asyncByDefault": false,
+	"maxConcurrency": 4,
+	"maxParallelTasks": 8,
+	"fleetWidget": true
+}

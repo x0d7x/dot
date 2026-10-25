@@ -1,0 +1,10 @@
+Zen	app.zen_browser.zen	1.23.4b	stable	flathub	system
+Flatseal	com.github.tchx84.Flatseal	2.4.1	stable	flathub	system
+Easy Effects	com.github.wwmm.easyeffects	8.3.0	stable	flathub	system
+Nuvio	com.nuvio.media.desktop	0.1.30-alpha	master	desktop-origin	user
+Blanket	com.rafaelmardojai.Blanket	0.8.0	stable	flathub	system
+Stremio	com.stremio.Stremio	1.2.2	stable	flathub	system
+Impactor	dev.khcrysalis.PlumeImpactor	v2.7.0	stable	flathub	system
+AIOStreams	io.github.viren070.aiostreams	0.18.0	master	aiostreams-origin	user
+Gear Lever	it.mijorus.gearlever	4.6.2	stable	flathub	system
+LocalSend	org.localsend.localsend_app	1.18.2	stable	flathub	system

@@ -1,0 +1,260 @@
+#![enable(implicit_some)]
+#![enable(unwrap_newtypes)]
+#![enable(unwrap_variant_newtypes)]
+
+(
+    default_album_art_path: None,
+    draw_borders: false,
+    show_song_table_header: false,
+
+    symbols: (
+        song: "🎵",
+        dir: "📁",
+        marker: "\u{e0b0}",
+    ),
+
+    layout: Split(
+        direction: Vertical,
+        panes: [
+            (
+                size: "9",
+                borders: "ALL",
+                pane: Split(
+                    direction: Horizontal,
+                    panes: [
+                        (
+                            size: "20%",
+                            pane: Pane(AlbumArt),
+                        ),
+                        (
+                            size: "70%",
+                            pane: Split(
+                                direction: Vertical,
+                                panes: [
+                                    (
+                                        size: "2",
+                                        pane: Pane(Header),
+                                    ),
+                                    (
+                                        size: "2",
+                                        pane: Pane(ProgressBar),
+                                    ),
+                                ],
+                            ),
+                        ),
+                    ],
+                ),
+            ),
+            (
+                size: "2",
+                pane: Pane(Tabs),
+            ),
+            (
+                size: "70%",
+                pane: Pane(TabContent),
+            ),
+        ],
+    ),
+
+    progress_bar: (
+        symbols: ["█", "█", " "],
+        track_style: (
+            bg: "{{colors.surface_container_high.default.hex}}",
+        ),
+        elapsed_style: (
+            fg: "{{colors.on_primary.default.hex}}",
+            bg: "{{colors.primary.default.hex}}",
+        ),
+        thumb_style: (
+            fg: "{{colors.tertiary.default.hex}}",
+            bg: "{{colors.primary.default.hex}}",
+        ),
+    ),
+
+    scrollbar: (
+        symbols: ["│", "█", "▲", "▼"],
+        track_style: (),
+        ends_style: (),
+        thumb_style: (
+            fg: "{{colors.secondary.default.hex}}",
+        ),
+    ),
+
+    browser_column_widths: [20, 38, 42],
+
+    text_color: "{{colors.on_surface.default.hex}}",
+    background_color: None,
+    header_background_color: None,
+    modal_background_color: None,
+    modal_backdrop: false,
+
+    tab_bar: (
+        active_style: (
+            fg: "{{colors.on_primary.default.hex}}",
+            bg: "{{colors.primary.default.hex}}",
+            modifiers: "Bold",
+        ),
+        inactive_style: (
+            fg: "{{colors.on_surface_variant.default.hex}}",
+        ),
+    ),
+
+    borders_style: (
+        fg: "{{colors.outline_variant.default.hex}}",
+    ),
+
+    highlighted_item_style: (
+        fg: "{{colors.on_surface.default.hex}}",
+        modifiers: "Bold",
+    ),
+
+    current_item_style: (
+        fg: "{{colors.on_primary.default.hex}}",
+        bg: "{{colors.primary.default.hex}}",
+        modifiers: "Bold",
+    ),
+
+    highlight_border_style: (
+        fg: "{{colors.secondary.default.hex}}",
+    ),
+
+    song_table_format: [
+        (
+            prop: (
+                kind: Property(Artist),
+                style: (fg: "{{colors.secondary.default.hex}}"),
+                default: (
+                    kind: Text("Unknown"),
+                    style: (fg: "{{colors.on_surface_variant.default.hex}}"),
+                ),
+            ),
+            width: "50%",
+            alignment: Right,
+        ),
+        (
+            prop: (
+                kind: Text("-"),
+                style: (fg: "{{colors.outline.default.hex}}"),
+                default: (kind: Text("Unknown")),
+            ),
+            width: "1",
+            alignment: Center,
+        ),
+        (
+            prop: (
+                kind: Property(Title),
+                style: (fg: "{{colors.tertiary.default.hex}}"),
+                default: (
+                    kind: Text("Unknown"),
+                    style: (fg: "{{colors.on_surface_variant.default.hex}}"),
+                ),
+            ),
+            width: "50%",
+        ),
+    ],
+
+    header: (
+        rows: [
+            (
+                left: [
+                    (
+                        kind: Text("["),
+                        style: (
+                            fg: "{{colors.secondary.default.hex}}",
+                            modifiers: "Bold",
+                        ),
+                    ),
+                    (
+                        kind: Property(Status(State)),
+                        style: (
+                            fg: "{{colors.secondary.default.hex}}",
+                            modifiers: "Bold",
+                        ),
+                    ),
+                    (
+                        kind: Text("]"),
+                        style: (
+                            fg: "{{colors.secondary.default.hex}}",
+                            modifiers: "Bold",
+                        ),
+                    ),
+                    (
+                        kind: Property(Status(StateV2(
+                            playing_label: "􀊄",
+                            paused_label: "􀊆",
+                            stopped_label: "􀛷",
+                        ))),
+                        style: (
+                            fg: "{{colors.secondary.default.hex}}",
+                            modifiers: "Bold",
+                        ),
+                    ),
+                ],
+
+                center: [
+                    (
+                        kind: Property(Song(Artist)),
+                        style: (
+                            fg: "{{colors.on_surface.default.hex}}",
+                            modifiers: "Bold",
+                        ),
+                        default: (
+                            kind: Text("Unknown"),
+                            style: (
+                                fg: "{{colors.on_surface_variant.default.hex}}",
+                                modifiers: "Bold",
+                            ),
+                        ),
+                    ),
+                    (kind: Text(" - ")),
+                    (
+                        kind: Property(Song(Title)),
+                        style: (
+                            fg: "{{colors.tertiary.default.hex}}",
+                            modifiers: "Bold",
+                        ),
+                        default: (
+                            kind: Text("No Song"),
+                            style: (
+                                fg: "{{colors.tertiary.default.hex}}",
+                                modifiers: "Bold",
+                            ),
+                        ),
+                    ),
+                    (kind: Text(" - ")),
+                    (
+                        kind: Property(Status(Elapsed)),
+                        style: (
+                            fg: "{{colors.primary.default.hex}}",
+                            modifiers: "Bold",
+                        ),
+                    ),
+                ],
+
+                right: [
+                    (
+                        kind: Text("Vol: "),
+                        style: (
+                            fg: "{{colors.secondary.default.hex}}",
+                            modifiers: "Bold",
+                        ),
+                    ),
+                    (
+                        kind: Property(Widget(Volume)),
+                        style: (
+                            fg: "{{colors.secondary.default.hex}}",
+                            modifiers: "Bold",
+                        ),
+                    ),
+                    (
+                        kind: Text("% "),
+                        style: (
+                            fg: "{{colors.secondary.default.hex}}",
+                            modifiers: "Bold",
+                        ),
+                    ),
+                ],
+            ),
+        ],
+    ),
+)

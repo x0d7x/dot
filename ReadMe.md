@@ -4,8 +4,7 @@ A curated collection of dotfiles to create a beautiful and productive developmen
 
 ## Showcase
 
-[![Desktop Screenshot](https://i.imgur.com/LTLFeW9.jpeg)](https://i.imgur.com/LTLFeW9.jpeg)
-_Wallpaper: [City Night](https://i.imgur.com/3VeMb4x.jpeg)_
+[![Desktop Screenshot](https://www.pasteboard.co/M6vdAl8KvJH4.png)](https://www.pasteboard.co/M6vdAl8KvJH4.png)
 
 ---
 
@@ -13,17 +12,17 @@ _Wallpaper: [City Night](https://i.imgur.com/3VeMb4x.jpeg)_
 
 This setup is built around a collection of powerful and customizable tools:
 
-| Type                     | Tool                                                                                                  | Description                                                                                                                 |
-| ------------------------ | ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| **Window Manager**       | [Rift](https://github.com/riftWM/rift)                                                                 | A modern, dynamic tiling window manager for macOS, configured declaratively via nix-darwin.                                    |
-| **Terminal**             | [Kitty](https://github.com/kovidgoyal/kitty)                                                          | A fast, feature-rich, GPU-based terminal emulator.                                                                          |
+| Type                     | Tool                                                                                                  | Description                                                                                                                      |
+| ------------------------ | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| **Window Manager**       | [Rift](https://github.com/riftWM/rift)                                                                | A modern, dynamic tiling window manager for macOS, configured declaratively via nix-darwin.                                      |
+| **Terminal**             | [Kitty](https://github.com/kovidgoyal/kitty)                                                          | A fast, feature-rich, GPU-based terminal emulator.                                                                               |
 | **Shell**                | [Zsh](https://www.zsh.org/) + [10kpowerlevel](https://github.com/10kpowerlevel/10kpowerlevel)         | A powerful shell configured with plugins, themes, and environment variables via nix-darwin, combined with a feature-rich prompt. |
-| **Code Editor**          | [Neovim](https://neovim.io/)                                                                          | A highly extensible, Vim-based text editor, configured for a modern IDE experience with Blink.cmp.                              |
-| **Terminal Multiplexer** | [Tmux](https://github.com/tmux/tmux)                                                                  | Manages multiple terminal sessions, making it easy to switch between projects and preserve layouts.                         |
-| **Menu Bar**             | [SketchyBar](https://github.com/FelixKratz/SketchyBar)                                                | A highly customizable status bar that displays system information and workspaces.                                           |
-| **Web Browsers**         | [Zen](https://github.com/zen-browser/www) & [Qutebrowser](https://github.com/qutebrowser/qutebrowser) | Keyboard-driven and minimalist web browsers designed for efficiency and security.                                           |
-| **Package Manager**      | [Nix](https://nixos.org/) (with [nix-darwin](https://github.com/nix-darwin/nix-darwin))               | Declarative package and system management for macOS, ensuring reproducible environments.                                    |
-| **File Manager**         | [Yazi](https://github.com/sxyazi/yazi)                                                                | A blazing-fast terminal file manager written in Rust, with a rich feature set and plugin support.                           |
+| **Code Editor**          | [Neovim](https://neovim.io/)                                                                          | A highly extensible, Vim-based text editor, configured for a modern IDE experience with Blink.cmp.                               |
+| **Terminal Multiplexer** | [Tmux](https://github.com/tmux/tmux)                                                                  | Manages multiple terminal sessions, making it easy to switch between projects and preserve layouts.                              |
+| **Menu Bar**             | [SketchyBar](https://github.com/FelixKratz/SketchyBar)                                                | A highly customizable status bar that displays system information and workspaces.                                                |
+| **Web Browsers**         | [Zen](https://github.com/zen-browser/www) & [Qutebrowser](https://github.com/qutebrowser/qutebrowser) | Keyboard-driven and minimalist web browsers designed for efficiency and security.                                                |
+| **Package Manager**      | [Nix](https://nixos.org/) (with [nix-darwin](https://github.com/nix-darwin/nix-darwin))               | Declarative package and system management for macOS, ensuring reproducible environments.                                         |
+| **File Manager**         | [Yazi](https://github.com/sxyazi/yazi)                                                                | A blazing-fast terminal file manager written in Rust, with a rich feature set and plugin support.                                |
 
 ---
 
@@ -35,6 +34,7 @@ My environment is managed declaratively using Nix and nix-darwin. The system con
 - **Contains:** Zsh config, Rift window manager config, Home Manager, system packages, and more
 
 To update packages or settings, clone the nix-config repo and run:
+
 ```sh
 darwin-rebuild switch --flake .#dox
 ```
@@ -89,15 +89,15 @@ This environment is enhanced by a suite of modern command-line tools for a more 
 
 A collection of scripts to automate common tasks:
 
-| Script                  | Description                                                                         |
-| ---------------------- | ---------------------------------------------------------------------------------- |
-| `tmux-sessionizer`     | A script to easily find, create, and switch between tmux sessions.                |
-| `tmux-session-switch`  | Quickly switch between existing tmux sessions.                                     |
-| `github_open`          | Opens the GitHub repository for the current directory in your browser.            |
-| `notes`                | Quick note-taking script.                                                          |
-| `sticky`                | Create floating sticky notes on macOS.                                             |
-| `rename_files_with_fd` | Batch rename files using fd and fzf.                                               |
-| `obs_switch.lua`       | OBS scene switcher for streaming/recording.                                        |
-| `chbg`                 | Change desktop wallpaper.                                                          |
-| `brewls`               | Lists installed Homebrew packages (legacy, for reference).                        |
-| `install`              | Legacy installation script (deprecated).                                          |
+| Script                 | Description                                                            |
+| ---------------------- | ---------------------------------------------------------------------- |
+| `tmux-sessionizer`     | A script to easily find, create, and switch between tmux sessions.     |
+| `tmux-session-switch`  | Quickly switch between existing tmux sessions.                         |
+| `github_open`          | Opens the GitHub repository for the current directory in your browser. |
+| `notes`                | Quick note-taking script.                                              |
+| `sticky`               | Create floating sticky notes on macOS.                                 |
+| `rename_files_with_fd` | Batch rename files using fd and fzf.                                   |
+| `obs_switch.lua`       | OBS scene switcher for streaming/recording.                            |
+| `chbg`                 | Change desktop wallpaper.                                              |
+| `brewls`               | Lists installed Homebrew packages (legacy, for reference).             |
+| `install`              | Legacy installation script (deprecated).                               |

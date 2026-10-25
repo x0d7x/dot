@@ -1,0 +1,36 @@
+# Background
+image=/home/dox/Documents/wallpaper/Wallpaper_152.png
+scaling=fill
+
+# Indicator
+indicator-radius=110
+indicator-thickness=8
+indicator-idle-visible
+
+# Default state
+inside-color={{colors.surface_container.default.hex_stripped}}dd
+ring-color={{colors.primary.default.hex_stripped}}ff
+line-color={{colors.outline.default.hex_stripped}}ff
+text-color={{colors.on_surface.default.hex_stripped}}ff
+
+# Verifying password
+inside-ver-color={{colors.primary_container.default.hex_stripped}}ff
+ring-ver-color={{colors.primary.default.hex_stripped}}ff
+text-ver-color={{colors.on_primary_container.default.hex_stripped}}ff
+
+# Wrong password
+inside-wrong-color={{colors.error_container.default.hex_stripped}}ff
+ring-wrong-color={{colors.error.default.hex_stripped}}ff
+text-wrong-color={{colors.on_error.default.hex_stripped}}ff
+
+# Cleared input
+inside-clear-color={{colors.surface_container_high.default.hex_stripped}}ff
+ring-clear-color={{colors.secondary.default.hex_stripped}}ff
+text-clear-color={{colors.on_surface.default.hex_stripped}}ff
+
+# Keyboard feedback
+key-hl-color={{colors.tertiary.default.hex_stripped}}ff
+bs-hl-color={{colors.error.default.hex_stripped}}ff
+
+# Authentication feedback
+show-failed-attempts

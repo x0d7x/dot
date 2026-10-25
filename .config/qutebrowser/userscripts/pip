@@ -1,0 +1,29 @@
+#!/bin/sh
+
+cat <<'EOF' > /tmp/qute-pip.js
+(async () => {
+    const videos = [...document.querySelectorAll("video")];
+
+    if (!videos.length) {
+        console.log("No video found");
+        return;
+    }
+
+    const video =
+        videos.find(v => !v.paused && v.readyState >= 2) ||
+        videos.find(v => v.readyState >= 2) ||
+        videos[0];
+
+    try {
+        if (document.pictureInPictureElement) {
+            await document.exitPictureInPicture();
+        } else {
+            await video.requestPictureInPicture();
+        }
+    } catch (e) {
+        console.error("PiP failed:", e);
+    }
+})();
+EOF
+
+qutebrowser ":jseval --file /tmp/qute-pip.js"

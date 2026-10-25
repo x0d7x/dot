@@ -1,0 +1,133 @@
+onboarding = false
+
+[ui.toast]
+delivery = "system"
+
+[ui]
+# sidebar_hidden_width = 0       # fully hide sidebar (no thin strip)
+hide_tab_bar_when_single_tab = true  # hide tab bar at 1 tab
+# pane_borders = "minimal"
+sidebar_collapsed_mode = "hidden"
+pane_borders = false
+pane_gaps = false
+show_agent_labels_on_pane_borders = false
+
+[theme]
+name = "vesper"
+
+# [keys]
+# detach = "prefix+q"
+# workspace_picker = "prefix+w"
+# goto = "prefix+g"
+# new_workspace = "prefix+shift+n"
+# new_worktree = "prefix+shift+g"
+# rename_workspace = "prefix+shift+w"
+# close_workspace = "prefix+shift+d"
+# navigate_workspace_up = "up"
+# navigate_workspace_down = "down"
+# navigate_pane_left = "h"
+# navigate_pane_down = "j"
+# navigate_pane_up = "k"
+# navigate_pane_right = "l"
+# remote_image_paste = "ctrl+v"
+# new_tab = "prefix+c"
+# previous_tab = "prefix+p"
+# next_tab = "prefix+n"
+# switch_tab = "prefix+1..9"
+# rename_tab = "prefix+shift+t"
+# close_tab = "prefix+shift+x"
+# copy_mode = "prefix+["
+# focus_pane_left = "prefix+h"
+# focus_pane_down = "prefix+j"
+# focus_pane_up = "prefix+k"
+# focus_pane_right = "prefix+l"
+# swap_pane_left = "prefix+shift+h"
+# swap_pane_down = "prefix+shift+j"
+# swap_pane_up = "prefix+shift+k"
+# swap_pane_right = "prefix+shift+l"
+# cycle_pane_next = "prefix+tab"
+# cycle_pane_previous = "prefix+shift+tab"
+# last_pane = ""
+# split_vertical = "prefix+v"
+# split_horizontal = "prefix+minus"
+# close_pane = "prefix+x"
+# zoom = "prefix+z"
+# resize_mode = "prefix+r"
+# toggle_sidebar = "prefix+b"
+
+auto_switch = false
+[keys]
+last_pane = "prefix+,"
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+reload_config = "prefix+r"
+resize_mode = "prefix+R"
+# goto = "prefix+s"
+navigate_workspace_up = "ctrl+k"
+navigate_workspace_down = "ctrl+j"
+zoom = "prefix+m"
+previous_workspace = "prefix+ctrl+k"
+# next_workspace = "prefix+ctrl+j"
+focus_agent = "prefix+ctrl+1..9"
+# switch_workspace = "prefix+shift+1..9"
+prefix = "ctrl+a"
+# split_vertical = "prefix+|"
+
+[[keys.command]]
+key = "prefix+ctrl+q"
+type = "pane"
+command = "btop"
+description = "run btop"
+
+[[keys.command]]
+key = "prefix+ctrl+j"
+type = "pane"
+command = "jjui"
+description = "run jjui"
+
+[[keys.command]]
+key = "prefix+ctrl+l"
+type = "pane"
+command = "lazydocker"
+description = "run lazydocker"
+
+[[keys.command]]
+key = "prefix+ctrl+g"
+type = "shell"
+command = "zsh -i -c github_open"
+description = "run github_open"
+
+[[keys.command]]
+key = "prefix+f"
+type = "pane"
+command = "zsh -i -c tmux-sessionizer"
+description = "run herdr_sessionizer"
+
+[experimental]
+kitty_graphics = true
+
+[[keys.command]]
+key = "prefix+a"
+type = "plugin_action"
+command = "nathanflurry.jj-workspace.new"
+description = "new jj workspace"
+
+[[keys.command]]
+key = "prefix+u"
+type = "plugin_action"
+command = "url.fzf-picker.pick-url"
+description = "Pick URL from Panes"
+
+[[keys.command]]
+key = "prefix+shift+a"
+type = "plugin_action"
+command = "nathanflurry.jj-workspace.new-tab"
+description = "new jj workspace (in tab)"
+
+[[keys.command]]
+key = "prefix+d"
+type = "plugin_action"
+command = "nathanflurry.jj-workspace.remove"
+description = "remove jj workspace"

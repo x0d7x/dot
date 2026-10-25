@@ -1,0 +1,109 @@
+{
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "positionX": "center",
+  "positionY": "top",
+  "layer": "overlay",
+  "control-center-layer": "top",
+  "layer-shell": true,
+  "cssPriority": "application",
+  "control-center-width": 500,
+  "control-center-height": 840,
+  "notification-window-width": 400,
+  "notification-icon-size": 48,
+  "notification-body-image-height": 120,
+  "notification-body-image-width": 200,
+  "timeout": 5,
+  "timeout-low": 2,
+  "timeout-critical": 7,
+  "image-visibility": "when-available",
+  "fit-to-screen": false,
+  "control-center-margin-top": 12,
+  "control-center-margin-bottom": 12,
+  "control-center-margin-right": 12,
+  "control-center-margin-left": 0,
+  "notification-2fa-action": true,
+  "widgets": [
+    "buttons-grid",
+    "mpris",
+    "volume",
+    "backlight#internal",
+    // "slider#benq",
+    "dnd",
+    "title",
+    "notifications"
+  ],
+  "widget-config": {
+    "buttons-grid": {
+      "actions": [
+        {
+          "label": "󰐥",
+          "type": "command",
+          "command": "loginctl poweroff"
+        },
+        {
+          "label": "",
+          "type": "command",
+          "command": "veila lock"
+        },
+        {
+          "label": "󰤨",
+          "type": "button",
+          "visible": true,
+          "command": "nm-connection-editor"
+        },
+        {
+          "label": "󰂯",
+          "type": "toggle",
+          "visible": true,
+          "command": "~/.config/waybar/scripts/blue.sh"
+        },
+        {
+          "label": "󰖁",
+          "type": "toggle",
+          "command": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        },
+        {
+          "label": "",
+          "type": "toggle",
+          "command": "playerctl play-pause"
+        },
+        {
+          "label": "",
+          "type": "toggle",
+          "visible": true,
+          "command": "sway-client -t -s; ~/.local/bin/idle-veila.sh"
+        },
+        {
+          "label": "",
+          "type": "button",
+          "visible": true,
+          "command": "sway-client -t -s;~/.local/bin/power.sh"
+        }
+      ]
+    },
+    "mpris": {
+      "image-size": 64,
+      "image-radius": 50,
+      "autohide": true,
+      "show-album-art": "playing"
+    },
+    "volume": {
+      "label": "󰕾"
+    },
+    "backlight#internal": {
+      "label": "󱣴",
+      "device": "gmux_backlight",
+      "subsystem": "backlight",
+      "min": 0,
+      "max": 100
+    },
+    "dnd": {
+      "text": "Do Not Disturb"
+    },
+    "title": {
+      "text": "Notifications",
+      "clear-all-button": true,
+      "button-text": "Clear All"
+    }
+  }
+}

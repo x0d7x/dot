@@ -1,0 +1,14 @@
+{
+  "lastChangelogVersion": "1.0.2",
+  "theme": "gruvbox-dark",
+  "defaultProvider": "opencode",
+  "defaultModel": "deepseek-v4-flash-free",
+  "defaultThinkingLevel": "high",
+  "terminal": {
+    "showTerminalProgress": false
+  },
+  "hideThinkingBlock": true,
+  "packages": [
+    "npm:pi-yt-summarizer"
+  ]
+}

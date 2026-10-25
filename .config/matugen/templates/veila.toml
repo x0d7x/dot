@@ -1,0 +1,26 @@
+[visuals.clock]
+color = "{{colors.primary.default.hex}}"
+
+[visuals.username]
+color = "{{colors.on_surface.default.hex}}"
+
+[visuals.input]
+background_color = "{{colors.surface_container.default.hex}}"
+border_color = "{{colors.primary.default.hex}}"
+mask_color = "{{colors.on_surface.default.hex}}"
+
+[visuals.placeholder]
+color = "{{colors.on_surface_variant.default.hex}}"
+
+[visuals.status]
+color = "{{colors.on_surface.default.hex}}"
+pending_color = "{{colors.primary.default.hex}}"
+rejected_color = "{{colors.error.default.hex}}"
+
+[visuals.keyboard]
+color = "{{colors.on_surface.default.hex}}"
+background_color = "{{colors.surface_container.default.hex}}"
+
+[visuals.battery]
+color = "{{colors.on_surface.default.hex}}"
+background_color = "{{colors.surface_container.default.hex}}"

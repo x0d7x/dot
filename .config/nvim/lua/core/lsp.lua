@@ -1,4 +1,5 @@
-local capabilities = require("blink.cmp").get_lsp_capabilities()
+local ok, blink = pcall(require, "blink.cmp")
+local capabilities = ok and blink.get_lsp_capabilities() or {}
 capabilities = vim.tbl_deep_extend("force", capabilities, {
 	workspace = {
 		fileOperations = {
@@ -11,10 +12,10 @@ capabilities = vim.tbl_deep_extend("force", capabilities, {
 local ft_to_lsp = {
 	lua = "lua_ls",
 	go = "gopls",
-	typescript = "ts_ls",
-	typescriptreact = "ts_ls",
-	javascript = "ts_ls",
-	javascriptreact = "ts_ls",
+	typescript = "tsgo",
+	typescriptreact = "tsgo",
+	javascript = "tsgo",
+	javascriptreact = "tsgo",
 	astro = "astro",
 	html = "html",
 	css = "cssls",
@@ -83,7 +84,7 @@ local function restart_lsp(bufnr)
 	local clients = vim.lsp.get_clients({ bufnr = bufnr })
 
 	for _, client in ipairs(clients) do
-		vim.lsp.stop_client(client.id)
+		client:stop()
 	end
 
 	vim.defer_fn(function()
@@ -219,7 +220,7 @@ local function lsp_info()
 	print("           LSP INFORMATION          ")
 	print("═══════════════════════════════════\n")
 
-	print("󰈙 Log file:        " .. vim.lsp.get_log_path())
+	print("󰈙 Log file:        " .. vim.lsp.log.get_filename())
 	print("󰈔 Filetype:        " .. vim.bo.filetype)
 	print("󰈮 Buffer:          " .. bufnr)
 	print("󰈔 CWD:             " .. (vim.fn.getcwd() or "N/A") .. "\n")
@@ -535,9 +536,9 @@ do
 		},
 		-- spinner_frames = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' },
 		-- spinner_frames = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
-		-- spinner_frames = { "◐", "◓", "◑", "◒" },
+		spinner_frames = { "◐", "◓", "◑", "◒" },
 		-- spinner_frames = { "◰", "◳", "◲", "◱" },
-		spinner_frames = { "▱", "▰", "▰▱", "▰▰" },
+		-- spinner_frames = { "▱", "▰", "▰▱", "▰▰" },
 		-- spinner_frames = { "○", "⬭", "●", "⬮" },
 		-- spinner_frames = { "○   ", " ○  ", "  ○ ", "   ○", "  ○ ", " ○  " },
 		-- spinner_frames = {

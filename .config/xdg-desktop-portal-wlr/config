@@ -1,0 +1,7 @@
+[screencast]
+chooser_type=dmenu
+chooser_cmd=vicinae dmenu --placeholder "Select screen"
+max_fps=60
+force_mod_linear=true
+exec_before=swaync-client --inhibitor-add "xdg-desktop-portal-wlr"
+exec_after=swaync-client --inhibitor-remove "xdg-desktop-portal-wlr"

@@ -86,7 +86,7 @@ keybindings:
     - key: C
       name: code review
       command: >
-        tmux new-window -n "PR-{{.PrNumber}}" 
+        herdr pane split --direction right --current --env "PR-{{.PrNumber}}" 
         'wt switch pr:{{.PrNumber}} -x "opencode --prompt `@code-reviewer: review-pr-for-this-branch`"'
 theme:
   colors:
@@ -110,7 +110,7 @@ theme:
       compact: false
 repoPaths: {}
 pager:
-  diff: ""
+  diff: "hunk pager"
 confirmQuit: false
 showAuthorIcons: true
 smartFilteringAtLaunch: true

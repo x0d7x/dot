@@ -12,11 +12,11 @@ opacity = 0.6
 blur = true
 option_as_alt = "Both"
 [font]
-size = 17.5
-normal.family = "DepartureMono Nerd Font Mono"
+size = 14.5
+# normal.family = "DepartureMono Nerd Font Mono"
 [selection]
 save_to_clipboard = true
 [mouse]
 hide_when_typing = true
-[terminal]
-shell ={ program = "zsh", args = ["-l", "-c", "tmux attach -t Dev || tmux new -s Dev"]}
+# [terminal]
+# shell ={ program = "zsh", args = ["-l", "-c", "tmux attach -t Dev || tmux new -s Dev"]}

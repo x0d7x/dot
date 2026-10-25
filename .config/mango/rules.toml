@@ -1,0 +1,183 @@
+
+# Monitor Rules
+# [[rule.monitor_rule]]
+# name = "eDP-1"
+# scale = 1.75
+# refresh = 60
+# height = 1880
+# width = 2880
+
+[[rule.monitor_rule]]
+model = "BenQ EW270Q"
+vrr = 1 # Avoid tearing artifacts from the previous wallpaper
+
+[[rule.monitor_rule]]
+name = "0"
+refresh = 200
+height = 1440
+width = 2560
+x = 2560
+y = 0 # Avoid tearing artifacts from the previous wallpaper
+
+
+# Floating overlays: MPV and Restream Chat
+[[rule.window_rule]]
+is_floating = 1
+app_id = "^(mpv|Restream Chat)$"
+is_overlay = 1
+is_global = 1
+width = 700
+height = 450
+offset_x = 100
+offset_y = -100
+focused_opacity = 1
+is_open_silent = 1
+allow_csd = 0
+
+# Picture-in-Picture
+[[rule.window_rule]]
+is_floating = 1
+is_global = 1
+is_overlay = 1
+width = 700
+height = 400
+offset_x = 100
+offset_y = -50
+unfocused_opacity = 1
+title = "^[Pp]icture[- ][Ii]n[- ][Pp]icture"
+is_tag_silent = 1
+is_open_silent = 1
+
+
+# Browsers: Tag 2
+[[rule.window_rule]]
+force_fake_maximize = 1
+tags = 2
+app_id = "^(app\\.zen_browser\\.zen|org\\.qutebrowser\\.qutebrowser|helium)"
+allow_csd = 0
+
+# [[rule.window_rule]]
+# focused_opacity = 1
+# title = ".*YouTube.*"
+
+
+# Media: Tag 3
+[[rule.window_rule]]
+force_fake_maximize = 1
+tags = 3
+app_id = "^(harbor|steam|com\\.stremio\\.Stremio|steam|com-nuvio-app-MainKt|vesktop)$"
+
+# For opacity
+# [[rule.window_rule]]
+# app_id = "^(harbor|steam|com\\.stremio\\.Stremio|steam|com-nuvio-app-MainKt|vesktop)$"
+# focused_opacity = 1
+
+
+# Graphics: Tag 4
+[[rule.window_rule]]
+force_fake_maximize = 1
+tags = 4
+app_id = "^(gimp|com\\.obsproject\\.Studio|org\\.kde\\.kdenlive|ai\\.storyteller\\.filmcraft)$"
+
+
+# Mirror: Tag 5
+[[rule.window_rule]]
+is_fullscreen = 1
+tags = 5
+app_id = "^at\\.yrlf\\.wl_mirror$"
+
+
+# TUI terminals: Tag 1
+[[rule.window_rule]]
+is_term = 1
+force_fake_maximize = 1
+app_id = "^(kitty|com\\.mitchellh\\.ghostty|foot)$"
+tags = 1
+
+# Named scratchpads
+[[rule.window_rule]]
+is_named_scratchpad = 1
+is_floating = 1
+no_swallow = 1
+width = 1300
+height = 800
+app_id = "^(com\\.mitchellh\\.ghostty\\.(rmpc|yazi|btop|float|scratch)|yazi|btop|rmpc|scratch|foot\\.scratch|spf|edit)$"
+
+# [[rule.window_rule]]
+# focused_opacity = 1
+# title = "^(Noctalia Settings|Vicinae Settings)$"
+
+# [[rule.window_rule]]
+# is_floating = 1
+# no_swallow = 1
+# width = 900
+# height = 700
+# title = "^(youtube\\.com/live_chat\\?is_popout=1.*)$"
+
+
+# GStreamer
+[[rule.window_rule]]
+is_floating = 1
+width = 540
+height = 360
+offset_x = 100
+offset_y = -100
+app_id = "^GStreamer$"
+is_global = 1
+is_overlay = 1
+is_open_silent = 1
+unfocused_opacity = 1
+
+# [[rule.window_rule]]
+# is_named_scratchpad = 1
+# no_swallow = 1
+# width = 1300
+# height = 800
+# app_id = "^foot.scratch$"
+
+
+# GUI applications
+[[rule.window_rule]]
+is_floating = 1
+width = 800
+height = 600
+app_id = "^(org.gnome.Nautilus|org.localsend.localsend_app)$"
+
+
+# Layer Rules
+
+# Kitty quick access
+[[rule.layer_rule]]
+animation_type_open = "zoom"
+animation_type_close = "zoom"
+layer_name = "^kitty-quick-access"
+no_shadow = 1
+no_blur = 1
+
+# [[rule.layer_rule]]
+# no_animation = 1
+# layer_name = "^(awww-daemon)$"
+# no_shadow = 1
+# no_blur = 1
+
+# Noctalia backdrop (wallpaper): no blur, no shadow, no animation
+[[rule.layer_rule]]
+no_blur = 0
+no_shadow = 0
+no_animation = 1
+layer_name = "^noctalia-backdrop$"
+
+# Vicinae, Matuwall, Waybar
+[[rule.layer_rule]]
+animation_type_open = "slide"
+animation_type_close = "fade"
+no_blur = 1
+no_shadow = 1
+layer_name = "^(vicinae|matuwall|waybar)$"
+
+# Noctalia bar: smooth appearance
+[[rule.layer_rule]]
+no_blur = 1
+no_animation = 1
+no_shadow = 1
+layer_name = "^noctalia-(bar-[^\"]+|attached-panel|panel|notification|osd|dock)$"

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Get current pane directory
-dir=$(tmux display -p -F "#{pane_current_path}")
+# Get current directory
+dir=$(pwd)
 cd "$dir" || exit 1
 
 # Get remote URL
